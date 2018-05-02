@@ -4,6 +4,7 @@
 #include <string.h>
 #include "jugador.h"
 #include "utilidades.h"
+#include "Pregunta_respuestas.h"
 
 class DBConnector
 {
