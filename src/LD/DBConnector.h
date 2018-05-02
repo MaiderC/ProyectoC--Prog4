@@ -23,18 +23,20 @@ class DBConnector
 	int leer_Jugadores(jugador* listaTodosJugadores);
 	int cant_Jugadores(int* sizeTotalJugadores);
 	int drop_Jugadores ();
+	int Jugador_existe(jugador jugador);
 
 	//-----------------------------------
 
 	//----------Pregunta_respuestas----------
 	int create_table_Preguntas ();
-  	int insert_Pregunta (jugador jugadorInsertar);
-	int update_Pregunta(jugador jugadorModificar);
-	int delete_Pregunta(jugador jugadorBorrar);
-	int leer_Preguntas(jugador* listaTodosJugadores);
+  	int insert_Pregunta (Pregunta_respuestas jugadorInsertar);
+	int update_Pregunta(Pregunta_respuestas jugadorModificar);
+	int delete_Pregunta(Pregunta_respuestas jugadorBorrar);
+	int leer_Preguntas(Pregunta_respuestas* listaTodosJugadores);
 	int cant_Preguntas(int* sizeTotalJugadores);
 	int drop_Preguntas ();
-	
+	int Pregunta_existe(Pregunta_respuestas jugador)
+
 	//---------------------------------------
 
 	
