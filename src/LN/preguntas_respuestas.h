@@ -1,15 +1,46 @@
 #ifndef PREGUNTAS_RESPUESTAS_H
 #define PREGUNTAS_RESPUESTAS_H
 
-typedef struct
+#include <iostream>
+using namespace std;
+
+/*
+	clase madre con una pregunta y una respuesta, la cual será heredada por sus clases hijas 
+	que tendrán más o menos preguntas según dificultad escogida
+*/
+
+class preguntas_respuestas
 {
-	char Pregunta[250 + 1];
-	char Respuesta1[1 + 250 + 1];
-	char Respuesta2[250 + 1];
-	char Respuesta3[250 + 1];
+	protected: //para que sean accesibles para las clases derivadas
 
-} t_pregunta_respuestas;
+		string Pregunta;
+		string Respuesta1;
+		string dificultad;
 
-void prepararRespuestas(t_pregunta_respuestas* pregunta);
+	public:
+
+		//constructores
+		preguntas_respuestas();
+		preguntas_respuestas(string pregunta, string Respuesta1, string dificultad);
+
+		//destructor
+		virtual ~preguntas_respuestas();
+
+		//constructor copia
+		preguntas_respuestas(const preguntas_respuestas &p_r);
+
+		//getters y setters
+		void setPregunta(string pregunta);
+		void setRespuesta1(string RUno);
+		void setDificultad(string dificultad);
+
+		string getPregunta() const;
+		string getRespuesta1() const;
+		string getDificultad() const;
+
+		//metodos de clase madre
+		virtual void sumarPunto(jugador jugador);
+		virtual void prepararRespuestas();
+};
 
 #endif

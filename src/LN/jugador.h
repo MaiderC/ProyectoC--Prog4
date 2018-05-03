@@ -1,16 +1,39 @@
 #ifndef JUGADOR_H
 #define JUGADOR_H
 
-typedef struct
+#include <iostream>
+using namespace std;
+
+class jugador
 {
-	char nick[50];
-	int puntuacion;
+	private:
 
-} t_jugador;
+		string nick;
+		int puntuacion;
 
-t_jugador crearJugador(char* Nick);
-void sumarPunto(t_jugador* Jugador);
-int existeJugador(t_jugador* listaJugadores, char* Nick); // No creo que este deba estar aquí...
-t_jugador* actualizarPuntuacion(t_jugador* listaTodosJugadores, int* numTodos, t_jugador* listaJugadoresSesion, int numElem);
+	public:
+
+	//constructores
+	juagdor();
+	jugador(string nick, int puntuacion);
+
+	//destructor
+	~juagdor();
+
+	//constructor copia
+	jugador(const jugador &j);
+
+	//getters y setters
+	void setNick (string nick);
+	void setPuntuacion(int punt);
+
+	string getNick() const;
+	int getPuntuacion() const;
+
+	//metodos
+	// void sumar_puntos(jugador j, string dificultad);
+	int existeJugador(jugador* listaJugadores, char* Nick); 
+	jugador* actualizarPuntuacion(jugador* listaTodosJugadores, int* numTodos, jugador* listaJugadoresSesion, int numElem);
+};
 
 #endif
