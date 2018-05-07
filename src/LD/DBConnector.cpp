@@ -902,16 +902,16 @@ int DBConnector::drop_Jugadores ()
 	char sql[] = "DROP TABLE if exists Jugadores";
     
     //Preparar el statement:
-    int result = sqlite3_prepare_v2(db, sql, strlen(sql) + 1, &stmt, NULL) ;
-    if (result != SQLITE_OK) 
-    {
-      std::cout << "Error preparing statement (INSERT)" << std::endl;
-      std::cout << sqlite3_errmsg(db) << std::endl;
-      return result;
-    }
+    // int result = sqlite3_prepare_v2(db, sql, strlen(sql) + 1, &stmt, NULL) ;
+    // if (result != SQLITE_OK) 
+    // {
+    //   std::cout << "Error preparing statement (INSERT)" << std::endl;
+    //   std::cout << sqlite3_errmsg(db) << std::endl;
+    //   return result;
+    // }
 
-     //Ejecutamos el DROP
-    result = sqlite3_step(stmt);
+    //  //Ejecutamos el DROP
+    result = sqlite3_exec(db, sql, NULL, NULL, NULL);
     if (result != SQLITE_DONE) 
     {
       std::cout << "Error DROPING Jugadores"<< std::endl;
@@ -934,15 +934,15 @@ int DBConnector::drop_Preguntas ()
 	char sql[] = "DROP TABLE if exists Preguntas";
     
     //Preparar el statement:
-    int result = sqlite3_prepare_v2(db, sql, strlen(sql) + 1, &stmt, NULL) ;
-    if (result != SQLITE_OK) 
-    {
-      std::cout << "Error preparing statement" << std::endl;
-      std::cout << sqlite3_errmsg(db) << std::endl;
-      return result;
-    }
+    // int result = sqlite3_prepare_v2(db, sql, strlen(sql) + 1, &stmt, NULL) ;
+    // if (result != SQLITE_OK) 
+    // {
+    //   std::cout << "Error preparing statement" << std::endl;
+    //   std::cout << sqlite3_errmsg(db) << std::endl;
+    //   return result;
+    // }
 
-    result = sqlite3_step(stmt);
+    result = sqlite3_exec(db, sql, NULL, NULL, NULL);
     if (result != SQLITE_DONE) 
     {
       std::cout << "Error DROPING Preguntas"<< std::endl;
