@@ -513,22 +513,22 @@ int DBConnector::update_Jugador(Pregunta_Respuestas preguntaModificar)
 		    }
 		    else
 		    {
-		    	//NULL
-		    	// result = sqlite3_bind_text(stmt, 5, NULL, NULL, SQLITE_STATIC);
-			    // if (result != SQLITE_OK)
-			    // {
-			    //   std::cout << "Error binding parameters" << std::endl;
-			    //   std::cout << sqlite3_errmsg(db) << std::endl;
-			    //   sqlite3_finalize(stmt);
-			    //   return result;
-			    // }
+		    	//NULL -> si es facil, le metemos NULL en r3
+		    	result = sqlite3_bind_text(stmt, 5, NULL, 0, SQLITE_STATIC);
+			    if (result != SQLITE_OK)
+			    {
+			      std::cout << "Error binding parameters" << std::endl;
+			      std::cout << sqlite3_errmsg(db) << std::endl;
+			      sqlite3_finalize(stmt);
+			      return result;
+			    }
 		    }
 
 		    //SOLO EN DIFÍCIL
 		    //R4:
 		    if (dificultad == "###")
 		    {
-			    
+			    //Es dificil
 			    result = sqlite3_bind_text(stmt, 5, r4.c_str(), r4.length(), SQLITE_STATIC);
 			    if (result != SQLITE_OK)
 			    {
@@ -540,15 +540,16 @@ int DBConnector::update_Jugador(Pregunta_Respuestas preguntaModificar)
 		    }
 		    else
 		    {
+		    	// Es media o facil, no tiene R4
 		    	//NULL
-		    	// result = sqlite3_bind_text(stmt, 5, NULL, NULL, SQLITE_STATIC);
-			    // if (result != SQLITE_OK)
-			    // {
-			    //   std::cout << "Error binding parameters" << std::endl;
-			    //   std::cout << sqlite3_errmsg(db) << std::endl;
-			    //   sqlite3_finalize(stmt);
-			    //   return result;
-			    // }
+		    	result = sqlite3_bind_text(stmt, 5, NULL, 0, SQLITE_STATIC);
+			    if (result != SQLITE_OK)
+			    {
+			      std::cout << "Error binding parameters" << std::endl;
+			      std::cout << sqlite3_errmsg(db) << std::endl;
+			      sqlite3_finalize(stmt);
+			      return result;
+			    }
 		    }
 
 		    //DIFICULTAD
@@ -918,13 +919,13 @@ int DBConnector::drop_Jugadores ()
       sqlite3_finalize(stmt);
       return result;
     }
-
-    result = sqlite3_finalize(stmt);
-    if (result != SQLITE_OK) 
-    {
-      std::cout << "Error finalizing statement (UPDATE)" << std::endl;
-      std::cout << sqlite3_errmsg(db) << std::endl;
-    }
+ //Esto solo habrá que hacerlo si hacemos prepare statement
+    // result = sqlite3_finalize(stmt);
+    // if (result != SQLITE_OK) 
+    // {
+    //   std::cout << "Error finalizing statement (UPDATE)" << std::endl;
+    //   std::cout << sqlite3_errmsg(db) << std::endl;
+    // }
 	return result;
 }
 
@@ -950,11 +951,12 @@ int DBConnector::drop_Preguntas ()
       return result;
     }
 
-    result = sqlite3_finalize(stmt);
-    if (result != SQLITE_OK) 
-    {
-      std::cout << "Error finalizing statement " << std::endl;
-      std::cout << sqlite3_errmsg(db) << std::endl;
-    }
+    //Esto solo habrá que hacerlo si hacemos prepare statement
+    // result = sqlite3_finalize(stmt);
+    // if (result != SQLITE_OK) 
+    // {
+    //   std::cout << "Error finalizing statement " << std::endl;
+    //   std::cout << sqlite3_errmsg(db) << std::endl;
+    // }
 	return result;
 }
