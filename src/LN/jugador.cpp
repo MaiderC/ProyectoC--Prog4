@@ -188,3 +188,25 @@ jugador* actualizarPuntuacion(jugador* listaTodosJugadores, int* numTodos, jugad
                   return listaTodosJugadores;
     }
 }
+
+bool operator<(const t_jugador& jugador)
+{
+  if(this->puntuacion < jugador.puntuacion)
+  {
+    return true;
+  } else
+  {
+    return false;
+  }
+}
+
+bool operator>(const t_jugador& jugador)
+{
+  if(this->puntuacion > jugador.puntuacion)
+  {
+    return true;
+  } else
+  {
+    return false;
+  }
+}

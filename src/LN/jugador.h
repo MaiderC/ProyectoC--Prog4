@@ -34,6 +34,9 @@ class jugador
 	// void sumar_puntos(jugador j, string dificultad);
 	int existeJugador(jugador* listaJugadores, char* Nick); 
 	jugador* actualizarPuntuacion(jugador* listaTodosJugadores, int* numTodos, jugador* listaJugadoresSesion, int numElem);
+
+	friend bool operator<(const t_jugador& jugador);
+	friend bool operator>(const t_jugador& jugador);
 };
 
 #endif
