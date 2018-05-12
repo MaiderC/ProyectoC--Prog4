@@ -30,5 +30,8 @@ class prdificil :  public preguntas_respuestas
 		//metodos de clse
 		virtual void sumarPunto(jugador jugador);
 		virtual void prepararRespuestas();
+
+		friend ostream& operator<< (ostream& out, const t_pregunta_respuestas& Pregunta);
+		friend istream& operator>>(istream& in, t_pregunta_respuestas& Pregunta);
 };
 
