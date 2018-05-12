@@ -702,9 +702,9 @@ int DBConnector::delete_Pregunta(Preguntas_Respuestas preguntaBorrar)
 }
 
 //SELECT
-int DBConnector::leer_Jugadores(jugador* listaTodosJugadores)
+int DBConnector::leer_Jugadores(vector <jugador> listaTodosJugadores)
 {
-	int cont = 0;
+	//int cont = 0;
 	sqlite3_stmt *stmt; 
 	char sql[] = "select NICK, PUNTUACION from Jugadores";
    
@@ -731,9 +731,10 @@ int DBConnector::leer_Jugadores(jugador* listaTodosJugadores)
   
       	//Crear un jugador con esos atributos
       	jugador jugador = new jugador( nick, puntuacion);
-    
-      	listaTodosJugadores[cont] = jugador;
-      	cont++;
+    	
+    	listaTodosJugadores.pus_back (jugador);
+      	// listaTodosJugadores[cont] = jugador;
+      	// cont++;
       }
     } while (result == SQLITE_ROW);
 
@@ -781,7 +782,7 @@ int DBConnector::cant_Jugadores(int* sizeTotalJugadores)
     return SQLITE_OK;
 }
 
-int DBConnector::leer_Preguntas(Pregunta_Respuestas listaTodasPreguntas)
+int DBConnector::leer_Preguntas(vector <Pregunta_respuestas> listaTodoasPreguntas)
 {
 	int cont = 0;
 	sqlite3_stmt *stmt; 
@@ -847,8 +848,9 @@ int DBConnector::leer_Preguntas(Pregunta_Respuestas listaTodasPreguntas)
       		Preguntas_Respuestas p = new (pregunta,r1, r2, dificultad, true);//el ultimo es true para no darle el ID
       		p.setID (ID);
       	}
-      	listaTodasPreguntas[cont] = p;
-      	cont++;  
+      	// listaTodasPreguntas[cont] = p;
+      	// cont++;  
+      	listaTodasPreguntas.pus_back(p);
       }
     } while (result == SQLITE_ROW);
 
