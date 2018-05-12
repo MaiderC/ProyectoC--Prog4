@@ -28,4 +28,7 @@ class prfacil :  public preguntas_respuestas
 		//métodos de clase
 		virtual void sumarPunto(jugador jugador);
 		virtual void prepararRespuestas(); 
+
+		friend ostream& operator<< (ostream& out, const t_pregunta_respuestas& Pregunta);
+		friend istream& operator>>(istream& in, t_pregunta_respuestas& Pregunta);
 };
