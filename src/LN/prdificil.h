@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include "jugador.h"
+#include "preguntas_respuestas.h"
 
 using namespace std;
 

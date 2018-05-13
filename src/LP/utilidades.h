@@ -9,6 +9,7 @@ namespace utilidades
 	#include "../LN/prfacil.h"
 	#include "../LN/prmedio.h"
 	#include "../LN/prdificil.h"
+	#include "../LN/jugador.h"
 
 	void mostrarMensaje(const string& str);
 	void mostrarInt(const int& i);
