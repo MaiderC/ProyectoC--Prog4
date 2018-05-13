@@ -14,13 +14,13 @@ void individual();
 void multijugador();
 void ranking();
 void acabar();
-void RealizarPreguntasMultijugador(vector<t_jugador> multijugadores, int cantPreg)
+void RealizarPreguntasMultijugador(vector<jugador> multijugadores, int cantPreg)
 int elegirDificultad();
 
-vector<t_pregunta_respuestas> preguntasSalidas; // Lista de las preguntas que ya han salido en la ejecución del juego
-vector<t_pregunta_respuestas> arrPreg; // Lista de todas las preguntas de la base de datos
-vector<t_jugador> listaTodosJugadores; // Lista de todos los jugadores de la base de datos
-t_jugador jugadorPrincipal; // Jugador que inicia la partida
+vector<preguntas_respuestas> preguntasSalidas; // Lista de las preguntas que ya han salido en la ejecución del juego
+vector<preguntas_respuestas> arrPreg; // Lista de todas las preguntas de la base de datos
+vector<jugador> listaTodosJugadores; // Lista de todos los jugadores de la base de datos
+jugador jugadorPrincipal; // Jugador que inicia la partida
 
 int main(int argc, char** argv)
 {
@@ -50,7 +50,7 @@ int main(int argc, char** argv)
 	  		string nick;
 	  		recogerNick(nick);
 
-	 		jugadorPrincipal = new t_jugador(nick, 0);
+	 		jugadorPrincipal = new jugador(nick, 0);
 
 	 		mostrarMensaje("Hola "); mostrarMensaje(nick); mostrarMensaje("!");
 	    	menuJugador();
@@ -274,8 +274,8 @@ int main(int argc, char** argv)
  	int opcionDificultad;
  	int cant_preguntas;
  	int max_preguntas; //Leer las preguntas, meterlas en un array y contar la cantidad de posiciones de ese array
- 	vector<t_pregunta_respuestas> PreguntasSeleccionadas;
- 	t_pregunta_respuestas pregunta;
+ 	vector<preguntas_respuestas> PreguntasSeleccionadas;
+ 	preguntas_respuestas pregunta;
  	int random; //variable en la que guardaremos el numero aleatorio para elegir una pregunta aleatoria
  	int repetida = 0; //Variable para ver si en cada momento la pregunta elegida aleatoriamente es i no alguna que ya ha salido
  	int cantidadPreguntasValida = 0; //Variable para ver si se ha pasado o no con la cantidad de preguntas
@@ -407,9 +407,9 @@ void multijugador()
  	int opcionDificultad
  	int cantJugadores;
  	int cantPreg;
- 	vector<t_pregunta_respuestas> PreguntasSeleccionadas;
- 	vector<t_jugador> multijugadores;
- 	vector<t_jugador> empatados;
+ 	vector<preguntas_respuestas> PreguntasSeleccionadas;
+ 	vector<jugador> multijugadores;
+ 	vector<jugador> empatados;
  	int cantidadPreguntasValida;
  	int puntMaxima;
  	int opcionDesempatar;
@@ -564,13 +564,13 @@ void multijugador()
 	 }
  }
 
- void RealizarPreguntasMultijugador(vector<t_jugador> multijugadores, int cantPreg)
+ void RealizarPreguntasMultijugador(vector<jugador> multijugadores, int cantPreg)
  {
  	int cont = 0;
  	int respValida = -1;
  	int random;//variable en la que guardaremos el numero aleatorio para elegir una pregunta aleatoria
  	int repetida = 0; //Variable para ver si en cada momento la pregunta elegida aleatoriamente es i no alguna que ya ha salido
- 	t_pregunta_respuestas pregunta;
+ 	preguntas_respuestas pregunta;
  	char respuesta;
  	int correcta = 0;
 

@@ -13,12 +13,12 @@ void mostrarInt(const int& i)
 	cout << i << endl;
 }
 
-void mostrarPregunta(const t_pregunta_respuestas& Pregunta)
+void mostrarPregunta(const preguntas_respuestas& Pregunta)
 {
 	cout << Pregunta;
 }
 
-void mostrarTodasPreguntas(const vector<t_pregunta_respuestas> TodasPreguntas)
+void mostrarTodasPreguntas(const vector<preguntas_respuestas> TodasPreguntas)
 {
 	for(int i = 0; i < TodasPreguntas.size(); i++)
 	{
@@ -30,17 +30,17 @@ void mostrarTodasPreguntas(const vector<t_pregunta_respuestas> TodasPreguntas)
 
 	cout << "Indica la repuesta que consideras correcta (a, b o c):  "; //Ponerlo donde tenga que ir
 
-void mostrarPuntuacion(const t_jugador& jugador)
+void mostrarPuntuacion(const jugador& jugador)
 {
 	cout << jugador.getNick() << ": " << jugador.getPuntuacion() << " puntos" << endl;
 }
 
-void mensajeGanador(const t_jugador& ganador) //A este metodo se le llamara antes de actualizar las puntuaciones, con lo que la puntuación sera la acumulada en esa partida
+void mensajeGanador(const jugador& ganador) //A este metodo se le llamara antes de actualizar las puntuaciones, con lo que la puntuación sera la acumulada en esa partida
 {
 	cout << "El jugador ganador de esta partida ha sido " << ganador.getNick() << " con " << ganador.getPuntuacion() << " puntos. ¡Enhorabuena!" << endl;
 }
 
-int mensajeEmpate(const vector<t_jugador>& empatados) //Recibe una lista con los jugadores que han empatado
+int mensajeEmpate(const vector<jugador>& empatados) //Recibe una lista con los jugadores que han empatado
 {
 	int opcion;
 
@@ -115,7 +115,7 @@ int recogerOpcionRespuesta(string& respuesta_recoger, string dificultad)
 	}
 }
 
-void recogerPregunta(t_pregunta_respuestas& Pregunta)
+void recogerPregunta(preguntas_respuestas& Pregunta)
 {
 	cin >> Pregunta;
 }

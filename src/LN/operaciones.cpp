@@ -8,10 +8,10 @@
 #include <prmedio.h>
 #include <prdificil.h>
 
-t_pregunta_respuestas generarPregunta(const vector<t_pregunta_respuestas>& arrPreg, vector<t_pregunta_respuestas>& preguntasSalidas)
+preguntas_respuestas generarPregunta(const vector<preguntas_respuestas>& arrPreg, vector<preguntas_respuestas>& preguntasSalidas)
 {
 	int random = 0;
-	t_pregunta_respuestas pregunta;
+	preguntas_respuestas pregunta;
 	int repetida = 0;
 	int cont = 0;
 	int MAX_INTENTOS = 20;
@@ -90,9 +90,9 @@ int maxPreguntas(const int cantPreguntas, const int sizeTotalPreguntas)
 	return valido;
 }
 
- void ordenarJugadores(vector<t_jugador>& jugadoresLeidos)
+ void ordenarJugadores(vector<jugador>& jugadoresLeidos)
  {
- 	t_jugador temp; //variable auxiliar
+ 	jugador temp; //variable auxiliar
 
  	// recorrer todos los elementos del array
    for(int i = 0; i < jugadoresLeidos.size(); i++) 
@@ -110,7 +110,7 @@ int maxPreguntas(const int cantPreguntas, const int sizeTotalPreguntas)
  	}
 }
 
-int maxPuntuacion(const vector<t_jugador>& jugadores)
+int maxPuntuacion(const vector<jugador>& jugadores)
 {
 	int max = jugadores[0].getPuntuacion();
 
