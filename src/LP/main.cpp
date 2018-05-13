@@ -27,9 +27,10 @@ jugador jugadorPrincipal; // Jugador que inicia la partida
 
 int main(int argc, char** argv)
 {
-	DBConnector::leer_Jugadores(listaTodosJugadores);
+	DBConnector BD = new DBConnector("./Data/BD.sqlite");
+	BD.leer_Jugadores(listaTodosJugadores);
 
-  	DBConnector::leer_Preguntas(listaTodasPreguntas);
+  	BD.leer_Preguntas(listaTodasPreguntas);
 
   	if(argc == 2)
   	{
@@ -649,4 +650,6 @@ void multijugador()
  	//guardarJugadores(listaTodosJugadores, (*numJugadores));
 
  	delete listaTodosJugadores;
+
+ 	delete BD;
  }
