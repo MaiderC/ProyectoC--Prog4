@@ -132,15 +132,15 @@ using namespace std;
   int DBConnector::Jugador_existe(jugador jugador)
   {
   	int sizeTotalJugadores;
-  	canjuGadores(&sizeTotalJugadores);
+  	cant_Jugadores(&sizeTotalJugadores);
 
-  	jugador * Jugadores;
-  	Jugadores = new jugador [sizeTotalJugadores];
+  	vector <jugador> Jugadores;
+
   	leer_Jugadores(Jugadores);
 
   	for(int i=0; i<sizeTotalJugadores; i++)
   	{
-  		if(jugador.nick == Jugadores[i].nick)
+  		if(jugador.getNick == Jugadores[i].getNick)
   			return 1;
   	}
 

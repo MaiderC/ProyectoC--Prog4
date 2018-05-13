@@ -18,7 +18,7 @@ class jugador
 	jugador(string nick, int puntuacion);
 
 	//destructor
-	~juagdor();
+	~jugador();
 
 	//constructor copia
 	jugador(const jugador &j);
