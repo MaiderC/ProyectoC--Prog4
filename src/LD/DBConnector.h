@@ -5,6 +5,9 @@
 #include <string.h>
 #include "../LN/jugador.h"
 #include "../LN/preguntas_respuestas.h"
+#include "../LN/prfacil.h"
+#include "../LN/prmedio.h"
+#include "../LN/prdificil.h"
 #include "../LP/utilidades.h"
 
 using namespace std;
