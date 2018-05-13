@@ -3,9 +3,9 @@
 #include <vector>
 #include <stdio.h>
 #include <string.h>
-#include "jugador.h"
-#include "utilidades.h"
-#include "Pregunta_respuestas.h"
+#include "../LN/jugador.h"
+#include "../LP/utilidades.h"
+#include "../LN/preguntas_respuestas.h"
 
 class DBConnector
 {

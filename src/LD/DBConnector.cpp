@@ -1,5 +1,4 @@
 #include "DBConnector.h"
-#include "utilidades.h"
 
 using namespace std;
 
