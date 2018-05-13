@@ -133,8 +133,7 @@ using namespace std;
   {
   	int sizeTotalJugadores;
   	cant_Jugadores(&sizeTotalJugadores);
-
-  	vector <jugador> Jugadores;
+  	vector<jugador> Jugadores;
 
   	leer_Jugadores(Jugadores);
 
