@@ -146,13 +146,13 @@
   	return 0;
   }
 
-  int DBConnector::Pregunta_existe(Preguntas_Respuestas p)
+  int DBConnector::Pregunta_existe(preguntas_respuestas p)
   {
   	int sizeTotalPreguntas;
   	cant_Preguntas(&sizeTotalJugadores);
 
-  	Preguntas_Respuestas * Preguntas;
-  	Preguntas = new Preguntas_Respuestas [sizeTotalPreguntas];
+  	preguntas_respuestas * Preguntas;
+  	Preguntas = new preguntas_respuestas [sizeTotalPreguntas];
   	leer_Preguntas(Preguntas);
 
   	for(int i=0; i<sizeTotalPreguntas; i++)
@@ -650,7 +650,7 @@ int DBConnector::delete_Jugador(jugador jugadorBorrar)
 	}
 }
 
-int DBConnector::delete_Pregunta(Preguntas_Respuestas preguntaBorrar)
+int DBConnector::delete_Pregunta(preguntas_respuestas preguntaBorrar)
 {
 	if(Jugador_existe(preguntaBorrar) == 1) 
   	{ 
@@ -833,19 +833,19 @@ int DBConnector::leer_Preguntas(vector <Pregunta_respuestas>& listaTodoasPregunt
        		p.setRespuesta4 (r4);
 
        		//Creamos una Pregunta_respuestas con estos atributos:
-      		Preguntas_Respuestas p = new (pregunta,r1, r2, r3, r4, dificultad, true);//el ultimo es true para no darle el ID
+      		preguntas_respuestas p = new (pregunta,r1, r2, r3, r4, dificultad, true);//el ultimo es true para no darle el ID
       		p.setID (ID);
       	}
       	else if(strcmp(dificultad, "##") == 0)
       	{
       		//Es media
       		p.SetRespuesta3 ( r3 );
-      		Preguntas_Respuestas p = new (pregunta,r1, r2, r3, dificultad, true);//el ultimo es true para no darle el ID
+      		preguntas_respuestas p = new (pregunta,r1, r2, r3, dificultad, true);//el ultimo es true para no darle el ID
       		p.setID (ID);
       	}
       	else
       	{
-      		Preguntas_Respuestas p = new (pregunta,r1, r2, dificultad, true);//el ultimo es true para no darle el ID
+      		preguntas_respuestas p = new (pregunta,r1, r2, dificultad, true);//el ultimo es true para no darle el ID
       		p.setID (ID);
       	}
       	// listaTodasPreguntas[cont] = p;
