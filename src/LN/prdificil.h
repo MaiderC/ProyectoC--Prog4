@@ -14,14 +14,14 @@ class prdificil :  public preguntas_respuestas
 	public:
 
 		//constructores
-		prdificil(): preguntas_respuestas();
-		prdificil(string pregunta, string respuesta1, string respuesta2, string respuesta3, string respuesta4, string dificultad): preguntas_respuestas(pregunta, respuesta1, dificultad);
+		prdificil(): preguntas_respuestas(){};
+		prdificil(string pregunta, string respuesta1, string respuesta2, string respuesta3, string respuesta4, string dificultad): preguntas_respuestas(pregunta, respuesta1, dificultad){};
 	
 		//destructor
-		virtual ~prdificil(): preguntas_respuestas();
+		virtual ~prdificil();
 
 		//constructor copia
-		prdificil(const prdificil &pd): preguntas_respuestas(pd);
+		prdificil(const prdificil &pd): preguntas_respuestas(pd){};
 
 		//getter y setter
 		void setRespuesta4(string RCuatro);

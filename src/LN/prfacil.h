@@ -12,14 +12,14 @@ class prfacil :  public preguntas_respuestas
 	public:
 
 		//constructores
-		prfacil(): preguntas_respuestas();
-		prfacil(string pregunta, string respuesta1, string respuesta2, string dificultad): preguntas_respuestas(pregunta, respuesta1, dificultad);
+		prfacil(): preguntas_respuestas(){};
+		prfacil(string pregunta, string respuesta1, string respuesta2, string dificultad): preguntas_respuestas(pregunta, respuesta1, dificultad){};
 		
 		//destructor
 		virtual ~prfacil();
 
 		//constructor copia
-		prfacil(const prfacil &pf): preguntas_respuestas(pf);
+		prfacil(const prfacil &pf): preguntas_respuestas(pf){};
 
 		//setter y getter
 		void setRespuesta2(string RDos);

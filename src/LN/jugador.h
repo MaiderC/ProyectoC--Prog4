@@ -14,7 +14,7 @@ class jugador
 	public:
 
 	//constructores
-	juagdor();
+	jugador();
 	jugador(string nick, int puntuacion);
 
 	//destructor
