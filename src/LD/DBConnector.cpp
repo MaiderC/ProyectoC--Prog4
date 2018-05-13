@@ -229,15 +229,15 @@ int DBConnector::insert_Pregunta (preguntas_respuestas PreguntaInsertar)
 
 	    if (PreguntaInsertar.getDificultad()=="###")
 	    {
-	    	prdificil* p = (prdificil)PreguntaInsertar;
+	    	prdificil p = (prdificil)PreguntaInsertar;
 	    }
 	    else if(PreguntaInsertar.getDificultad()=="##")
 	    {
-	    	prmedio* p = (prmedio)PreguntaInsertar;
+	    	prmedio p = (prmedio)PreguntaInsertar;
 	    }
 	    else
 	    {
-	    	prfacil* p = (prfacil)PreguntaInsertar;
+	    	prfacil p = (prfacil)PreguntaInsertar;
 	    }
 
 
@@ -457,15 +457,15 @@ int DBConnector::update_Pregunta(preguntas_respuestas preguntaModificar)
 
 		if (preguntaModificar.getDificultad()=="###")
 	    {
-	    	prdificil* p = (prdificil)preguntaModificar;
+	    	prdificil p = (prdificil)preguntaModificar;
 	    }
 	    else if(preguntaModificar.getDificultad()=="##")
 	    {
-	    	prmedio* p = (prmedio)preguntaModificar;
+	    	prmedio p = (prmedio)preguntaModificar;
 	    }
 	    else
 	    {
-	    	prfacil* p = (prfacil)preguntaModificar;
+	    	prfacil p = (prfacil)preguntaModificar;
 	    }
 
 	     string pregunta = p.getPregunta();
@@ -481,7 +481,7 @@ int DBConnector::update_Pregunta(preguntas_respuestas preguntaModificar)
 
 	    	//ID
 
-	    	result = sqlite3_bind_int(stmt, 7, ID);
+	    	int result = sqlite3_bind_int(stmt, 7, ID);
 	    	if (result != SQLITE_OK)
 		    {
 		       cout << "Error binding parameters" <<  endl;
@@ -678,7 +678,7 @@ int DBConnector::delete_Jugador(jugador jugadorBorrar)
 
 int DBConnector::delete_Pregunta(preguntas_respuestas preguntaBorrar)
 {
-	if(Jugador_existe(preguntaBorrar) == 1) 
+	if(Pregunta_existe(preguntaBorrar) == 1) 
   	{ 
 		sqlite3_stmt *stmt;
 		char sql[] = "DELETE from Preguntas where ID = ?";
@@ -756,9 +756,9 @@ int DBConnector::leer_Jugadores(vector <jugador>& listaTodosJugadores)
       	puntuacion = sqlite3_column_int(stmt, 1);
   
       	//Crear un jugador con esos atributos
-      	jugador jugador = new jugador( nick, puntuacion);
+      	jugador jug = new jugador( nick, puntuacion);
     	
-    	listaTodosJugadores.pus_back (jugador);
+    	listaTodosJugadores.push_back (jug);
       	// listaTodosJugadores[cont] = jugador;
       	// cont++;
       }
@@ -808,7 +808,7 @@ int DBConnector::cant_Jugadores(int* sizeTotalJugadores)
     return SQLITE_OK;
 }
 
-int DBConnector::leer_Preguntas(vector <Pregunta_respuestas>& listaTodoasPreguntas)
+int DBConnector::leer_Preguntas(vector <preguntas_respuestas>& listaTodasPreguntas)
 {
 	int cont = 0;
 	sqlite3_stmt *stmt; 
@@ -876,7 +876,7 @@ int DBConnector::leer_Preguntas(vector <Pregunta_respuestas>& listaTodoasPregunt
       	}
       	// listaTodasPreguntas[cont] = p;
       	// cont++;  
-      	listaTodasPreguntas.pus_back(p);
+      	listaTodasPreguntas.push_back(p);
       }
     } while (result == SQLITE_ROW);
 
@@ -940,7 +940,7 @@ int DBConnector::drop_Jugadores ()
     // }
 
     //  //Ejecutamos el DROP
-    result = sqlite3_exec(db, sql, NULL, NULL, NULL);
+    int result = sqlite3_exec(db, sql, NULL, NULL, NULL);
     if (result != SQLITE_DONE) 
     {
        cout << "Error DROPING Jugadores"<<  endl;
@@ -971,7 +971,7 @@ int DBConnector::drop_Preguntas ()
     //   return result;
     // }
 
-    result = sqlite3_exec(db, sql, NULL, NULL, NULL);
+    int result = sqlite3_exec(db, sql, NULL, NULL, NULL);
     if (result != SQLITE_DONE) 
     {
        cout << "Error DROPING Preguntas"<<  endl;
