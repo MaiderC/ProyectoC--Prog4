@@ -229,15 +229,15 @@ int DBConnector::insert_Pregunta (preguntas_respuestas PreguntaInsertar)
 
 	    if (PreguntaInsertar.getDificultad()=="###")
 	    {
-	    	prdificil p = (prdificil)PreguntaInsertar;
+	    	prdificil* p = (prdificil)PreguntaInsertar;
 	    }
 	    else if(PreguntaInsertar.getDificultad()=="##")
 	    {
-	    	prmedio p = (prmedio)PreguntaInsertar;
+	    	prmedio* p = (prmedio)PreguntaInsertar;
 	    }
 	    else
 	    {
-	    	prfacil p = (prfacil)PreguntaInsertar;
+	    	prfacil* p = (prfacil)PreguntaInsertar;
 	    }
 
 
@@ -457,15 +457,15 @@ int DBConnector::update_Pregunta(preguntas_respuestas preguntaModificar)
 
 		if (preguntaModificar.getDificultad()=="###")
 	    {
-	    	prdificil p = (prdificil)preguntaModificar;
+	    	prdificil* p = (prdificil)preguntaModificar;
 	    }
 	    else if(preguntaModificar.getDificultad()=="##")
 	    {
-	    	prmedio p = (prmedio)preguntaModificar;
+	    	prmedio* p = (prmedio)preguntaModificar;
 	    }
 	    else
 	    {
-	    	prfacil p = (prfacil)preguntaModificar;
+	    	prfacil* p = (prfacil)preguntaModificar;
 	    }
 
 	     string pregunta = p.getPregunta();
