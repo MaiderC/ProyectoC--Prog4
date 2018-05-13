@@ -129,7 +129,7 @@ using namespace std;
   }
 
   //Para INSERT, UPDATE y DELETE, ver si el jugador existe:
-  int DBConnector::Jugador_existe(jugador jugador)
+  int DBConnector::Jugador_existe(jugador jug)
   {
   	int sizeTotalJugadores;
   	cant_Jugadores(&sizeTotalJugadores);
@@ -139,7 +139,7 @@ using namespace std;
 
   	for(int i=0; i<sizeTotalJugadores; i++)
   	{
-  		if(jugador.getNick == Jugadores[i].getNick)
+  		if(jug.getNick() == Jugadores[i].getNick())
   			return 1;
   	}
 
@@ -157,7 +157,7 @@ using namespace std;
 
   	for(int i=0; i<sizeTotalPreguntas; i++)
   	{
-  		if(p.ID == Preguntas[i].ID)
+  		if(p.getID() == Preguntas[i].getID())
   			return 1;
   	}
   	return 0;
