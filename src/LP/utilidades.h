@@ -4,20 +4,23 @@
 	#include <string.h>
 	#include <stdio.h>
 	#include <stdlib.h>
-	#include "../INCLUDES/preguntas_respuestas.h"
-	#include "../INCLUDES/jugador.h"
+	#include <../LN/preguntas_respuestas.h>
+	#include <../LN/jugador.h>
+	#include <../LN/prfacil.h>
+	#include <../LN/prmedio.h>
+	#include <../LN/prdificil.h>
 
-	void mostrarMensaje(char * str); 
-	void mostrarInt(int i);
-	void mostrarPregunta(t_pregunta_respuestas preg);
-	void mostrarRespuestas(t_pregunta_respuestas preg);
-	void mostrarPuntuacion(t_jugador jugador);
-	void mensajeGanador(t_jugador ganador);
-	void mensajeEmpate(t_jugador* empatados, int sizeEmpatados, int *opcion);
-	void recogerString (char** punt_string, int max_long);
-	void recogerNick (char** punt_nick);
-	void recogerInt (int* punt_numero);
-	int recogerRespuesta (char* respuesta);
-	void clear_if_needed(char *str);
+	void mostrarMensaje(const string& str);
+	void mostrarInt(const int& i);
+	void mostrarPregunta(const t_pregunta_respuestas& Pregunta);
+	void mostrarTodasPreguntas(const vector<t_pregunta_respuestas> TodasPreguntas);
+	void mostrarPuntuacion(const t_jugador& jugador);
+	void mensajeGanador(const t_jugador& ganador);
+	int mensajeEmpate(const vector<t_jugador>& empatados);
+	void recogerString(string& string_recoger);
+	void recogerNick(string& nick_recoger);
+	void recogerInt(int& numero_recoger);
+	int recogerOpcionRespuesta(string& respuesta_recoger, string dificultad) ;
+	void recogerPregunta(t_pregunta_respuestas& Pregunta);
 
 #endif
