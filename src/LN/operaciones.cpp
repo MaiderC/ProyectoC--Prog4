@@ -37,7 +37,7 @@ preguntas_respuestas operaciones::generarPregunta(const vector<preguntas_respues
 				 		for(int j = 0; j < preguntasSalidas.size(); j++)
 				 		{
 				 			//si son iguales, será 0
-				 			if(pregunta.getPregunta() == preguntasSalidas[j].getPregunta())
+				 			if(pregunta.getID() == preguntasSalidas[j].getID())
 				 			{
 				 				repetida = 1; //si son iguales, será 1
 				 			}
