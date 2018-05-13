@@ -227,11 +227,25 @@ int DBConnector::insert_Pregunta (preguntas_respuestas PreguntaInsertar)
 	      return result;
 	    }
 
+	    if (PreguntaInsertar.getDificultad()=="###")
+	    {
+	    	prdificil p = PreguntaInsertar;
+	    }
+	    else if(PreguntaInsertar.getDificultad()=="##")
+	    {
+	    	prmedio p = PreguntaInsertar;
+	    }
+	    else
+	    {
+	    	prfacil p = PreguntaInsertar;
+	    }
+
+
 	    //ATRIBUTOS QUE TENDRÁN TODAS:
 
 	    	//ID
 
-	    	result = sqlite3_bind_int(stmt, 1, PreguntaInsertar.getID());
+	    	result = sqlite3_bind_int(stmt, 1, p.getID());
 	    	if (result != SQLITE_OK)
 		    {
 		       cout << "Error binding parameters" <<  endl;
@@ -241,7 +255,7 @@ int DBConnector::insert_Pregunta (preguntas_respuestas PreguntaInsertar)
 		    }
 
 		    //PREGUNTA
-		     string pregunta = PreguntaInsertar.getPregunta();
+		     string pregunta = p.getPregunta();
 	
 		    result = sqlite3_bind_text(stmt, 2, pregunta.c_str(), pregunta.length(), SQLITE_STATIC);
 		    if (result != SQLITE_OK)
@@ -254,7 +268,7 @@ int DBConnector::insert_Pregunta (preguntas_respuestas PreguntaInsertar)
 
 
 		    //R1:
-		     string r1 = PreguntaInsertar.getRespuesta1();
+		     string r1 = p.getRespuesta1();
 	
 		    result = sqlite3_bind_text(stmt, 3, r1.c_str(), r1.length(), SQLITE_STATIC);
 		    if (result != SQLITE_OK)
@@ -266,7 +280,7 @@ int DBConnector::insert_Pregunta (preguntas_respuestas PreguntaInsertar)
 		    }
 
 		    //R2:
-		     string r2 = PreguntaInsertar.getRespuesta2();
+		     string r2 = p.getRespuesta2();
 
 		    result = sqlite3_bind_text(stmt, 4, r2.c_str(), r2.length(), SQLITE_STATIC);
 		    if (result != SQLITE_OK)
@@ -279,9 +293,9 @@ int DBConnector::insert_Pregunta (preguntas_respuestas PreguntaInsertar)
 
 		    //SOLO EN MEDIA O DIFÍCIL
 		    //R3:
-		    if (PreguntaInsertar.getDificultad() != "#")
+		    if (p.getDificultad() != "#")
 		    {
-			     string r3 = PreguntaInsertar.getRespuesta3();
+			     string r3 = p.getRespuesta3();
 			    
 			    result = sqlite3_bind_text(stmt, 5, r3.c_str(), r3.length(), SQLITE_STATIC);
 			    if (result != SQLITE_OK)
@@ -307,9 +321,9 @@ int DBConnector::insert_Pregunta (preguntas_respuestas PreguntaInsertar)
 
 		    //SOLO EN DIFÍCIL
 		    //R4:
-		    if (PreguntaInsertar.getDificultad() == "###")
+		    if (p.getDificultad() == "###")
 		    {
-			     string r4 = PreguntaInsertar.getRespuesta4();
+			     string r4 = p.getRespuesta4();
 			    
 			    result = sqlite3_bind_text(stmt, 6, r4.c_str(), r4.length(), SQLITE_STATIC);
 			    if (result != SQLITE_OK)
@@ -334,7 +348,7 @@ int DBConnector::insert_Pregunta (preguntas_respuestas PreguntaInsertar)
 		    }
 
 		    //DIFICULTAD
-		     string dificultad = PreguntaInsertar.getDificultad();
+		     string dificultad = p.getDificultad();
 	
 		    result = sqlite3_bind_text(stmt, 7, dificultad.c_str(), dificultad.length(), SQLITE_STATIC);
 		    if (result != SQLITE_OK)
@@ -433,20 +447,34 @@ int DBConnector::update_Jugador(jugador jugadorModificar)//Pasar el jugador comp
 	}
 }
 
-int DBConnector::update_Jugador(Pregunta_Respuestas preguntaModificar)
+int DBConnector::update_Pregunta(preguntas_respuestas preguntaModificar)
 {
 	if(Pregunta_existe(preguntaModificar) == 1) 
   	{ 
 		sqlite3_stmt *stmt;
 		char sql[] = "update Preguntas set PREGUNTA = ?, R1 = ?, R2 = ?, R3 = ?, R4 = ?, DIFICULTAD = ? where ID = ?";
-	    
-	     string pregunta = preguntaModificar.getPregunta();
-	     string r1 = preguntaModificar.getRespuesta1();
-	     string r2 = preguntaModificar.getRespuesta2();
-	     string r3 = preguntaModificar.getRespuesta3();
-	     string r4 = preguntaModificar.getRespuesta4();
-	     string dificultad = preguntaModificar.getDificultad();
-	    int ID = preguntaModificar.ID;
+	   
+
+		if (preguntaModificar.getDificultad()=="###")
+	    {
+	    	prdificil p = preguntaModificar;
+	    }
+	    else if(preguntaModificar.getDificultad()=="##")
+	    {
+	    	prmedio p = preguntaModificar;
+	    }
+	    else
+	    {
+	    	prfacil p = preguntaModificar;
+	    }
+
+	     string pregunta = p.getPregunta();
+	     string r1 = p.getRespuesta1();
+	     string r2 = p.getRespuesta2();
+	     string r3 = p.getRespuesta3();
+	     string r4 = p.getRespuesta4();
+	     string dificultad = p.getDificultad();
+	     int ID = p.getID();
 
 	    //Preparar el statement:
 	   	//ATRIBUTOS QUE TENDRÁN TODAS:
