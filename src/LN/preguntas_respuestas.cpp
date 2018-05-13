@@ -101,11 +101,11 @@ int preguntas_respuestas:: getID () const
 
 //metodos de clase madre sin implementación (métodos es puros), pero sí la tendrán sus hijas
 //es para hacer abstracta la clase madre
- void sumarPunto(jugador jugador) = 0;
- void prepararRespuestas() = 0;
+ void preguntas_respuestas::sumarPunto(jugador jugador) = 0;
+ void preguntas_respuestas::prepararRespuestas() = 0;
 
 //sobrecarga de operador =
-bool operator=(const preguntas_respuestas& p_r)
+bool preguntas_respuestas::operator=(const preguntas_respuestas& p_r)
 {
   this -> pregunta = p_r.pregunta;
   this -> respuesta1 = p_r.respuesta1;

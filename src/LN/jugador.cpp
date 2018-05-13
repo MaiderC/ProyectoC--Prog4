@@ -52,7 +52,7 @@ int jugador:: getPuntuacion() const
 }
 
 //sobrecarga de operadores
-bool operator==(const jugador& jug)
+bool jugador:: operator==(const jugador& jug)
 {
   bool retorno;
 
@@ -61,7 +61,7 @@ bool operator==(const jugador& jug)
   return retorno;
 }
 
-bool operator<(const jugador& jug)
+bool jugador::operator<(const jugador& jug)
 {
   bool retorno;
 
@@ -70,7 +70,7 @@ bool operator<(const jugador& jug)
   return retorno;
 }
 
-bool operator>(const jugador& jug)
+bool jugador::operator>(const jugador& jug)
 {
   bool retorno;
 
@@ -79,7 +79,7 @@ bool operator>(const jugador& jug)
   return retorno;
 }
 
-bool operator!=(const jugador& jug)
+bool jugador::operator!=(const jugador& jug)
 {
   bool retorno;
 
@@ -88,13 +88,13 @@ bool operator!=(const jugador& jug)
   return retorno;
 }
 
-bool operator=(const jugador& jug)
+bool jugador::operator=(const jugador& jug)
 {
   this -> nick = j.nick;
   this -> puntuacion = j.puntuacion;
 }
 
-ostream& operator<<(ostream& out, const jugador& jugador)
+ostream& operator<< (ostream& out, const jusgador& jugador)
 {
   out << jugador.nick << ": "<< jugador.puntuacion << endl;
 

@@ -33,7 +33,7 @@ class jugador
 	//metodos
 	
 	// void sumar_puntos(jugador j, string dificultad);
-	int existeJugador(jugador* listaJugadores, char* Nick); 
+	// int existeJugador(jugador* listaJugadores, char* Nick); 
 
 	//Sobrecarga de operadores
 	bool operator==(const jugador& jug);
@@ -41,9 +41,11 @@ class jugador
 	bool operator>(const jugador& jug);
 	bool operator!=(const jugador& jug);
 	bool operator=(const jugador& jug);
-	//Sobrecarga E/S
-	friend ostream& operator<< (ostream& out, const jugador& Pregunta);
+	
+	// Sobrecarga E/S
+	friend ostream& operator<<(ostream& out, const jugador& Pregunta);
 	friend istream& operator>>(istream& in, jugador& Pregunta);
+
 };
 
 #endif
