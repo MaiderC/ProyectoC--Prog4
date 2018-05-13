@@ -1,11 +1,11 @@
-#include <utilidades.h>
-#include <../LN/jugador.h>
-#include <../LN/operaciones.h>
-#include <../LN/prdificil.h>
-#include <../LN/preguntas_respuestas.h>
-#include <../LN/prfacil.h>
-#include <../LN/prmedio.h>
-#include <string.h>
+#include "utilidades.h"
+#include "../LN/jugador.h"
+#include "../LN/operaciones.h"
+#include "../LD/DBConnector.h"
+#include "../LN/prfacil.h"
+#include "../LN/prmedio.h"
+#include "../LN/prdificil.h"
+#include <iostream>
 
 using namespace std;
 using namespace utilidades;
@@ -39,7 +39,7 @@ int main(int argc, char** argv)
 		if (admin == 0)
 		{
 			main::menuAdmin();
-		}	
+		}
   	}
   	else //es un jugador
   	{

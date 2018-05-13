@@ -31,4 +31,7 @@ class prfacil :  public preguntas_respuestas
 
 		//sobrecarga de operador =
 		bool operator=(const prfacil& pf);
+
+		friend ostream& operator<< (ostream& out, const t_pregunta_respuestas& Pregunta);
+		friend istream& operator>>(istream& in, t_pregunta_respuestas& Pregunta);
 };

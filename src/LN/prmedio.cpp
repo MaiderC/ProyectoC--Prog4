@@ -107,3 +107,69 @@ bool operator=(const prmedio& pm)
 	this -> respuesta2 = pm.respuesta2;
 	this -> respuesta3 = pm.respuesta3;
 }
+
+ostream& operator<< (ostream& out, const t_pregunta_respuestas& Pregunta)
+{
+	out << Pregunta.Pregunta << endl;
+
+	out << "a) ";
+	if(Pregunta.Respuesta1[0] == '#')
+	{
+		string aux = Pregunta.Respuesta1;
+
+		aux.erase(0, 1);
+
+		out << aux << endl;
+	} else
+	{
+		out << Pregunta.Respuesta1 << endl;
+	}
+
+	out << "b) ";
+	if(Pregunta.Respuesta2[0] == '#')
+	{
+		string aux = Pregunta.Respuesta2;
+
+		aux.erase(0, 1);
+
+		out << aux << endl;
+	} else
+	{
+		out << Pregunta.Respuesta2 << endl;
+	}
+
+	out << "c) ";
+	if(Pregunta.Respuesta3[0] == '#')
+	{
+		string aux = Pregunta.Respuesta3;
+
+		aux.erase(0, 1);
+
+		out << aux << endl;
+	} else
+	{
+		out << Pregunta.Respuesta3 << endl;
+	}
+
+	return out;
+}
+
+istream& operator>>(istream& in, t_pregunta_respuestas& Pregunta)
+{
+	mostrarMensaje("Introduce la pregunta a insertar: ");
+	in >> Pregunta.Pregunta;
+
+	mostrarMensaje("*La respuesta no debe contener la letra de la opcion (a o b) ni signos de puntuacion al inicio (salvo que se trate de un guion, por ser la respuesta un numero negativo)");
+	mostrarMensaje("Introduce la respuesta correcta: ");
+	in >> Pregunta.Respuesta1;
+
+	Pregunta.Respuesta1 = '#' + Pregunta.Respuesta1;
+
+	mostrarMensaje("Introduce otra respuesta (una incorrecta): ");
+	in >> Pregunta.Respuesta2;
+
+	mostrarMensaje("Introduce otra respuesta (una incorrecta): ");
+	in >> Pregunta.Respuesta3;
+
+	return in;
+}
