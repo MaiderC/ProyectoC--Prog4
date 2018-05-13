@@ -8,6 +8,23 @@
 #include <prmedio.h>
 #include <prdificil.h>
 
+void operaciones::siguienteID(const vector<preguntas_respuestas>& listaTodasRespuestas)
+{
+	int cont = 0;
+	preguntas_respuestas p_r;
+
+	for (int i = 0; i < listaTodasRespuestas.size(); i++)
+	{
+		if(cont<p_r.getID())
+		{
+			cont = p_r.getID();
+		}
+	}
+
+	cont++;
+	p_r.setCont(cont);
+}
+
 preguntas_respuestas operaciones::generarPregunta(const vector<preguntas_respuestas>& listaTodasPreguntas, vector<preguntas_respuestas>& preguntasSalidas)
 {
 	int random = 0;
@@ -125,7 +142,7 @@ int operaciones::maxPuntuacion(const vector<jugador>& jugadores)
 	return max;
 }
 
-void operaciones::guardarJugadores(vector<jugador> ListaTodosJugadores, DBConnector BD)
+void operaciones::guardarJugadores(const vector<jugador>& ListaTodosJugadores, DBConnector BD)
 {
 	int result;
 	for (int i = 0; i < ListaTodosJugadores.size(); ++i)
