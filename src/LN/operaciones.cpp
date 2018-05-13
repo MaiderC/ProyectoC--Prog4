@@ -8,7 +8,7 @@
 #include <prmedio.h>
 #include <prdificil.h>
 
-preguntas_respuestas generarPregunta(const vector<preguntas_respuestas>& arrPreg, vector<preguntas_respuestas>& preguntasSalidas)
+preguntas_respuestas operaciones::generarPregunta(const vector<preguntas_respuestas>& arrPreg, vector<preguntas_respuestas>& preguntasSalidas)
 {
 	int random = 0;
 	preguntas_respuestas pregunta;
@@ -49,14 +49,14 @@ preguntas_respuestas generarPregunta(const vector<preguntas_respuestas>& arrPreg
 		 	preguntasSalidas.push_back(pregunta);
 	}
 
-	 prepararRespuestas(pregunta);
+	 pregunta.prepararRespuestas();
 
 	 return pregunta;
 }
 
 //Verificar si la respuesta elegida es la correcta
 //(ver si la respuesta a la que se le ha asignado el valor de la letra que se ha elegido empieza por punto)
-int comprobarRespuesta(const string& respuesta)
+int operaciones::comprobarRespuesta(const string& respuesta)
 {
 	int correcto;
 
@@ -74,7 +74,7 @@ int comprobarRespuesta(const string& respuesta)
 	return correcto;
 }
 
-int maxPreguntas(const int cantPreguntas, const int sizeTotalPreguntas)
+int operaciones::maxPreguntas(const int cantPreguntas, const int sizeTotalPreguntas)
 {	
 	int valido;	//si es 1 es válido, si es 0 no lo es.
 
@@ -90,7 +90,7 @@ int maxPreguntas(const int cantPreguntas, const int sizeTotalPreguntas)
 	return valido;
 }
 
- void ordenarJugadores(vector<jugador>& jugadoresLeidos)
+ void operaciones::ordenarJugadores(vector<jugador>& jugadoresLeidos)
  {
  	jugador temp; //variable auxiliar
 
@@ -110,7 +110,7 @@ int maxPreguntas(const int cantPreguntas, const int sizeTotalPreguntas)
  	}
 }
 
-int maxPuntuacion(const vector<jugador>& jugadores)
+int operaciones::maxPuntuacion(const vector<jugador>& jugadores)
 {
 	int max = jugadores[0].getPuntuacion();
 

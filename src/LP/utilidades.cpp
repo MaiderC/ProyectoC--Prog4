@@ -3,22 +3,24 @@
 
 using namespace std;
 
-void mostrarMensaje(const string& str)
+namespace utilidades
+{
+void utilidades::mostrarMensaje(const string& str)
 {
 	cout << str << endl;
 }
 
-void mostrarInt(const int& i)
+void utilidades::mostrarInt(const int& i)
 {
 	cout << i << endl;
 }
 
-void mostrarPregunta(const preguntas_respuestas& Pregunta)
+void utilidades::mostrarPregunta(const preguntas_respuestas& Pregunta)
 {
 	cout << Pregunta;
 }
 
-void mostrarTodasPreguntas(const vector<preguntas_respuestas> TodasPreguntas)
+void utilidades::mostrarTodasPreguntas(const vector<preguntas_respuestas> TodasPreguntas)
 {
 	for(int i = 0; i < TodasPreguntas.size(); i++)
 	{
@@ -30,17 +32,17 @@ void mostrarTodasPreguntas(const vector<preguntas_respuestas> TodasPreguntas)
 
 	cout << "Indica la repuesta que consideras correcta (a, b o c):  "; //Ponerlo donde tenga que ir
 
-void mostrarPuntuacion(const jugador& jugador)
+void utilidades::mostrarPuntuacion(const jugador& jugador)
 {
 	cout << jugador.getNick() << ": " << jugador.getPuntuacion() << " puntos" << endl;
 }
 
-void mensajeGanador(const jugador& ganador) //A este metodo se le llamara antes de actualizar las puntuaciones, con lo que la puntuación sera la acumulada en esa partida
+void utilidades::mensajeGanador(const jugador& ganador) //A este metodo se le llamara antes de actualizar las puntuaciones, con lo que la puntuación sera la acumulada en esa partida
 {
 	cout << "El jugador ganador de esta partida ha sido " << ganador.getNick() << " con " << ganador.getPuntuacion() << " puntos. ¡Enhorabuena!" << endl;
 }
 
-int mensajeEmpate(const vector<jugador>& empatados) //Recibe una lista con los jugadores que han empatado
+int utilidades::mensajeEmpate(const vector<jugador>& empatados) //Recibe una lista con los jugadores que han empatado
 {
 	int opcion;
 
@@ -59,23 +61,23 @@ int mensajeEmpate(const vector<jugador>& empatados) //Recibe una lista con los j
 }
 
 //-----------------------------------------------------------------
-void recogerString(string& string_recoger)
+void utilidades::recogerString(string& string_recoger)
 {
 	cin >> string_recoger;
 }
 
-void recogerNick(string& nick_recoger)
+void utilidades::recogerNick(string& nick_recoger)
 {
 	cout << "Indica el nick del jugador: ";
 	recogerString(nick_recoger);
 }
 
-void recogerInt(int& numero_recoger)
+void utilidades::recogerInt(int& numero_recoger)
 {
 	cin >> numero_recoger;
 }
 
-int recogerOpcionRespuesta(string& respuesta_recoger, string dificultad) 
+int utilidades::recogerOpcionRespuesta(string& respuesta_recoger, string dificultad) 
 {
 	int Dificultad = dificultad.size();
 	int error = 0;
@@ -115,7 +117,8 @@ int recogerOpcionRespuesta(string& respuesta_recoger, string dificultad)
 	}
 }
 
-void recogerPregunta(preguntas_respuestas& Pregunta)
+void utilidades::recogerPregunta(preguntas_respuestas& Pregunta)
 {
 	cin >> Pregunta;
+}
 }

@@ -7,6 +7,9 @@
 #include <../LN/prmedio.h>
 #include <string.h>
 
+using namespace std;
+using namespace utilidades;
+
 //Declaracion de MeTODOS
 void menuAdmin();
 void menuJugador();
@@ -35,7 +38,7 @@ int main(int argc, char** argv)
 
 		if (admin == 0)
 		{
-			menuAdmin();
+			main::menuAdmin();
 		}	
   	}
   	else //es un jugador
@@ -53,7 +56,7 @@ int main(int argc, char** argv)
 	 		jugadorPrincipal = new jugador(nick, 0);
 
 	 		mostrarMensaje("Hola "); mostrarMensaje(nick); mostrarMensaje("!");
-	    	menuJugador();
+	    	main::menuJugador();
 		}
   	}
 
@@ -226,22 +229,22 @@ int main(int argc, char** argv)
   	{
   		case 1: 
 	  		mostrarMensaje("Has elegido la opcion numero 1: JUGAR PARTIDA INDIVIDUAL");
-	  		individual();
+	  		main::individual();
 	  		break;
 
   		case 2:
 	  		mostrarMensaje("Has elegido la opcion numero 2: JUGAR PARTIDA MULTIJUGADOR");
-	  		multijugador();
+	  		main::multijugador();
 	  		break;
 
   		case 3:
 	  		mostrarMensaje("Has elegido la opcion numero 3: VER RANKING"); 
-	  		ranking();
+	  		main::ranking();
 	  		break;
 
   		case 4:
 	  		mostrarMensaje("Gracias por jugar ¡Vuelve pronto!"); 
-	  		acabar();
+	  		main::acabar();
 	  		exit(0);
 	  		break;
 
@@ -250,7 +253,7 @@ int main(int argc, char** argv)
   	} 
  }
 
- int elegirDificultad()
+ int main::elegirDificultad()
  {
  	int opcionDificultad;
 
@@ -269,7 +272,7 @@ int main(int argc, char** argv)
  	return opcionDificultad;
  }
 
- void individual()
+ void main::individual()
  {
  	int opcionDificultad;
  	int cant_preguntas;
@@ -286,7 +289,7 @@ int main(int argc, char** argv)
 
  	int opcionRepetir; //Para la eleccion del final: repetir o no la partida
 
- 	opcionDificultad = elegirDificultad();
+ 	opcionDificultad = main::elegirDificultad();
 
  	if(opcionDificultad == 1)
  	{
@@ -323,7 +326,7 @@ int main(int argc, char** argv)
  	mostrarMensaje("¿Cuantas preguntas deseas que se te realicen?");
  	recogerInt(cant_preguntas);
 
- 	cantidadPreguntasValida = maxPreguntas(cant_preguntas, PreguntasSeleccionadas.size());
+ 	cantidadPreguntasValida = operaciones::operaciones::maxPreguntas(cant_preguntas, PreguntasSeleccionadas.size());
  	
  	while(cant_preguntas<0 || cantidadPreguntasValida == 0)
  	{
@@ -333,12 +336,12 @@ int main(int argc, char** argv)
 
 		mostrarMensaje("Por favor, introduce otro numero:");
  		recogerInt(cant_preguntas);
- 		cantidadPreguntasValida = maxPreguntas(cant_preguntas, PreguntasSeleccionadas.size());
+ 		cantidadPreguntasValida = operaciones::operaciones::maxPreguntas(cant_preguntas, PreguntasSeleccionadas.size());
  	}
 
  	for(int i = 0; i < cant_preguntas; i++)
  	{
- 		 pregunta = generarPregunta(PreguntasSeleccionadas, preguntasSalidas);
+ 		 pregunta = operaciones::operaciones::generarPregunta(PreguntasSeleccionadas, preguntasSalidas);
 		 mostrarPregunta(pregunta);
 		 respValida = recogerOpcionRespuesta(respuesta, pregunta.getDificultad());
 
@@ -350,25 +353,25 @@ int main(int argc, char** argv)
 		switch (respuesta)
 		{
 			case 'a':
-				respCorrecta = comprobarRespuesta(pregunta.getRespuesta1());
+				respCorrecta = operaciones::comprobarRespuesta(pregunta.getRespuesta1());
 				break;
 
 			case 'b':
-				respCorrecta = comprobarRespuesta(pregunta.getRespuesta2());
+				respCorrecta = operaciones::comprobarRespuesta(pregunta.getRespuesta2());
 				break;
 
 			case 'c':
-				respCorrecta = comprobarRespuesta(pregunta.getRespuesta3());
+				respCorrecta = operaciones::comprobarRespuesta(pregunta.getRespuesta3());
 				break;
 
 			case 'd':
-				respCorrecta = comprobarRespuesta(pregunta.getRespuesta4());
+				respCorrecta = operaciones::comprobarRespuesta(pregunta.getRespuesta4());
 		}
 				
 		 if(respCorrecta == 1)
 		 {
 		 	mostrarMensaje("Respuesta correcta");
-		 	sumarPunto(jugadorPrincipal);
+		 	pergunta.sumarPunto(jugadorPrincipal);
 		 }
 		 else
 		 {
@@ -383,7 +386,7 @@ int main(int argc, char** argv)
 	 mostrarMensaje("Introduce la opcion deseada:");
 	 recogerInt(opcionRepetir);
 
-	 listaTodosJugadores = actualizarPuntuacion(listaTodosJugadores, listaTodosJugadores, jugadorPrincipal, 1);
+	 //listaTodosJugadores = actualizarPuntuacion(listaTodosJugadores, listaTodosJugadores, jugadorPrincipal, 1);
 	 jugadorPrincipal.setPuntuacion(0);
 
 	 while(opcionRepetir != 1 && opcionRepetir != 2)
@@ -394,11 +397,11 @@ int main(int argc, char** argv)
 
 	 if(opcionRepetir == 1)
 	 {
-	 	individual();
+	 	main::individual();
 	 }
 	 else
 	 {
-	 	menuJugador();
+	 	main::menuJugador();
 	 }
  }
 
@@ -417,7 +420,7 @@ void multijugador()
 
  	string NickAux;
 
- 	opcionDificultad = elegirDificultad();
+ 	opcionDificultad = main::elegirDificultad();
 
  	if(opcionDificultad == 1)
  	{
@@ -454,13 +457,13 @@ void multijugador()
 	mostrarMensaje("¿Cuantos jugadores van a jugar?");
  	recogerInt(cantJugadores);
 
- 	cantidadPreguntasValida = maxPreguntas(cantJugadores, PreguntasSeleccionadas.size());
+ 	cantidadPreguntasValida = operaciones::maxPreguntas(cantJugadores, PreguntasSeleccionadas.size());
  	while(cantJugadores<2 ||  cantidadPreguntasValida == 0)
  	{
  		mostrarMensaje("El numero introducido es incorrecto (o por ser inferior a 2 o por exceder la cantidad de preguntas disponibles. \n");
  		mostrarMensaje("\nPor favor, intoduce cuantos jugadores van a jugar: \t");
  		recogerInt(cantJugadores);
- 		cantidadPreguntasValida = maxPreguntas(cantJugadores, PreguntasSeleccionadas.size());
+ 		cantidadPreguntasValida = operaciones::maxPreguntas(cantJugadores, PreguntasSeleccionadas.size());
  	}
 
  	//El primer jugador es el actual 
@@ -472,23 +475,23 @@ void multijugador()
  	{
  		mostrarMensaje("J");mostrarInt(i);mostrarMensaje(": "); //Para que aparezca como JX: 
  		recogerNick(NickAux);
- 		multijugadores.push_back(crearJugador(NickAux));
+ 		multijugadores.push_back(new jugador(NickAux));
  		multijugadores[i].setPuntuacion(0);
  	}
 
  	mostrarMensaje("¿Cuantas preguntas deseas que se le realicen a cada jugador?\t");
  	recogerInt(cantPreg);
- 	cantidadPreguntasValida = maxPreguntas(multijugadores.size()*cantPreg, PreguntasSeleccionadas.size());
+ 	cantidadPreguntasValida = operaciones::maxPreguntas(multijugadores.size()*cantPreg, PreguntasSeleccionadas.size());
 
 	while(cantPreg<1 || cantidadPreguntasValida == 0)
  	{
  		mostrarMensaje("El numero introducido es incorrecto (o por ser inferior a 1 o por exceder la cantidad de preguntas disponibles para la cantidad de jugadores elegida.");
  		mostrarMensaje("Por favor, intoduce cuantas preguntas deseas que se le realicen a cada jugador:");
  		recogerInt(cantPreg);
- 		cantidadPreguntasValida = maxPreguntas(multijugadores.size()*cantPreg, PreguntasSeleccionadas.size());
+ 		cantidadPreguntasValida = operaciones::maxPreguntas(multijugadores.size()*cantPreg, PreguntasSeleccionadas.size());
  	}
 
- 	RealizarPreguntasMultijugador(multijugadores, cantPreg);
+ 	main::RealizarPreguntasMultijugador(multijugadores, cantPreg);
  	
 	 do
 	 {
@@ -510,7 +513,7 @@ void multijugador()
 	 		if(opcionDesempatar == 1)
 	 		{
 	 			//Realizamos una sola pregunta entre los jugadores que han empatado para ver si asi deshacen el empate
-		 		RealizarPreguntasMultijugador(empatados, 1);
+		 		main::RealizarPreguntasMultijugador(empatados, 1);
 		 		c = 0;
 		 		for (int i = 0; i < multijugadores.size(); ++i)
 		 		{
@@ -532,7 +535,7 @@ void multijugador()
 	 		{
 	 			mensajeGanador(multijugadores[i]);
 	 		}
-	 		listaTodosJugadores = actualizarPuntuacion(listaTodosJugadores, numJugadores, multijugadores[i], 1);
+	 		//listaTodosJugadores = actualizarPuntuacion(listaTodosJugadores, numJugadores, multijugadores[i], 1);
 	 	}
 
 	  for (int i=0; i < multijugadores.size(); i++)
@@ -556,15 +559,15 @@ void multijugador()
 
 	 if(opcionRepetir == 1)
 	 {
-	 	multijugador(dificultad);
+	 	main::multijugador();
 	 }
 	 else
 	 {
-	 	menuJugador();
+	 	main::menuJugador();
 	 }
  }
 
- void RealizarPreguntasMultijugador(vector<jugador> multijugadores, int cantPreg)
+ void main::RealizarPreguntasMultijugador(vector<jugador> multijugadores, int cantPreg)
  {
  	int cont = 0;
  	int respValida = -1;
@@ -581,7 +584,7 @@ void multijugador()
  			mostrarMensaje("\nPregunta para el jugador #" + (j+1) + "->" + multijugadores[j].nick);
 
  			//Preparar la pregunta aleatoria para el jugador
- 			pregunta = generarPregunta (arrPreg, preguntasSalidas);
+ 			pregunta = operaciones::generarPregunta(arrPreg, preguntasSalidas);
 
 			mostrarPregunta(pregunta);
 			respValida = recogerOpcionRespuesta(respuesta, pregunta.getDificultad());
@@ -594,26 +597,26 @@ void multijugador()
 			switch (respuesta)
 			{
 			case 'a':
-				correcta = comprobarRespuesta(pregunta.getRespuesta1());
+				correcta = operaciones::comprobarRespuesta(pregunta.getRespuesta1());
 				break;
 
 			case 'b':
-				correcta = comprobarRespuesta(pregunta.getRespuesta2());
+				correcta = operaciones::comprobarRespuesta(pregunta.getRespuesta2());
 				break;
 
 			case 'c':
-				correcta = comprobarRespuesta(pregunta.getRespuesta3());
+				correcta = operaciones::comprobarRespuesta(pregunta.getRespuesta3());
 				break;
 
 			case 'd':
-				correcta = comprobarRespuesta(pregunta.getRespuesta4());
+				correcta = operaciones::comprobarRespuesta(pregunta.getRespuesta4());
 				break;
 			}
 
 			if(correcta == 1)
 			{
 			 	mostrarMensaje("Respuesta correcta");
-			 	sumarPunto(multijugadores[j]);
+			 	pregunta.sumarPunto(multijugadores[j]);
 			}
 			else
 			{
@@ -626,7 +629,7 @@ void multijugador()
 
   void ranking()
  {
- 	ordenarJugadores(listaTodosJugadores);
+ 	operaciones::ordenarJugadores(listaTodosJugadores);
 
  	mostrarMensaje("\nRANKING DE JUGADORES");
  	for(int i = 0; i < listaTodosJugadores.size(); i++)
@@ -635,7 +638,7 @@ void multijugador()
  		mostrarPuntuacion(listaTodosJugadores[i]);
  	}
  		mostrarMensaje("\n");
-	 menuJugador();
+	 main::menuJugador();
  }
 
  void acabar() //metodo para liberar recursos
@@ -643,7 +646,7 @@ void multijugador()
  	delete preguntasSalidas;
  	delete arrPreg;
 
- 	guardarJugadores(listaTodosJugadores, (*numJugadores));
+ 	//guardarJugadores(listaTodosJugadores, (*numJugadores));
 
  	delete listaTodosJugadores;
  }

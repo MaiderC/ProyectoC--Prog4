@@ -1,6 +1,8 @@
 #ifndef UTILIDADES_H
 #define UTILIDADES_H
 
+namespace utilidades
+{
 	#include <string.h>
 	#include <stdio.h>
 	#include <stdlib.h>
@@ -22,5 +24,6 @@
 	void recogerInt(int& numero_recoger);
 	int recogerOpcionRespuesta(string& respuesta_recoger, string dificultad) ;
 	void recogerPregunta(preguntas_respuestas& Pregunta);
+}
 
 #endif
