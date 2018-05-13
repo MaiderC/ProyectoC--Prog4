@@ -2,6 +2,8 @@
 #define PREGUNTAS_RESPUESTAS_H
 
 #include <iostream>
+#include "jugador.h"
+
 using namespace std;
 
 /*
@@ -47,7 +49,7 @@ class preguntas_respuestas
 		int getID () const;
 
 		//metodos de clase madre
-		virtual void sumarPunto(jugador jugador);
+		virtual void sumarPunto(jugador jug);
 		virtual void prepararRespuestas();
 
 		//sobrecarga de operador =
