@@ -1,8 +1,8 @@
 #include "jugador.h"
 #include "../LD/DBConnector.h"
 
-#define DEFAULT_NICK playerOne
-#define DEFAULT_PUNTUACION 0
+#define DEFAULT_NICK playerOne;
+#define DEFAULT_PUNTUACION 0;
 
 //contrsuctores
 jugador::jugador ()

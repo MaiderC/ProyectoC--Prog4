@@ -212,7 +212,7 @@ using namespace std;
 	}
 }
 
-int DBConnector::insert_Pregunta (Pregunta_Respuestas PreguntaInsertar)
+int DBConnector::insert_Pregunta (preguntas_respuestas PreguntaInsertar)
   {
   	if(Pregunta_existe(PreguntaInsertar) == 0)
   	{ 
