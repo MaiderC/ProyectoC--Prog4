@@ -9,14 +9,14 @@
 #define DEFAULT_DIFICULTAD ###
 
 //constructores
-prdificil:: preguntas_respuestas()
+prdificil::preguntas_respuestas()
 {
   this -> respuesta2 = DEFAULT_RESPUESTA2;
   this -> respuesta3 = DEFAULT_RESPUESTA3;
   this -> respuesta4 = DEFAULT_RESPUESTA4;
 }
 		
-prdificil:: preguntas_respuestas(string pregunta, string respuesta1, string respuesta2, string respuesta3, string respuesta4, string dificultad): preguntas_respuestas(pregunta, respuesta1, dificultad)
+prdificil::preguntas_respuestas(string pregunta, string respuesta1, string respuesta2, string respuesta3, string respuesta4, string dificultad): preguntas_respuestas(pregunta, respuesta1, dificultad)
 {
   // this -> pregunta = pregunta;
   // this -> respuesta1 = respuesta1;
@@ -43,24 +43,24 @@ prdificil::prdificil(const prdificil &pd): preguntas_respuestas(pd)
 }
 
 //getter y setter
-void prdificil::void setRespuesta4(string RCuatro)
+void prdificil::setRespuesta4(string RCuatro)
 {
 	this -> respuesta4 = RCuatro;
 }
 
-string prdificil::void getRespuesta4() const
+string prdificil::getRespuesta4() const
 {
 	return respuesta4;
 }
 
 //metodos 
 
- void sumarPunto(jugador jugador)
+ void prdificil::sumarPunto(jugador jugador)
 {
 	jugador.puntuacion =+ 3;
 }
 
- void prepararRespuestas(pregunta_respuestas pregunta, string dificil)
+ void prdificil::prepararRespuestas(pregunta_respuestas pregunta, string dificil)
 {
 	int i = 3;
 	int igual = 0;
@@ -94,9 +94,9 @@ string prdificil::void getRespuesta4() const
 	}
 
 	respuestas[random[0]] = this -> respuesta1;
-	respuestas[random[1]] = this->respuesta2;
+	respuestas[random[1]] = this -> respuesta2;
 	respuestas[random[2]] = this -> respuesta3;
-	respuestas[random[3]] = this->respuesta4;
+	respuestas[random[3]] = this -> respuesta4;
 		
 	this->respuesta1 = respuestas[0];
 	this->respuesta2 = respuestas[1];
@@ -105,19 +105,19 @@ string prdificil::void getRespuesta4() const
 }
 
 //sobrecarga de operador =
-bool operator=(const prdificil& pd)
+bool prdificil::operator=(const prdificil& pd)
 {
 	this -> respuesta2 = pd.respuesta2;
 	this -> respuesta3 = pd.respuesta3;
 	this -> respuesta4 = pd.respuesta4;
 }
 
-ostream& operator<< (ostream& out, const t_pregunta_respuestas& Pregunta)
+ostream& operator<<(ostream& out, const t_pregunta_respuestas& Pregunta)
 {
 	out << Pregunta.Pregunta << endl;
 
 	out << "a) ";
-	if(Pregunta.Respuesta1[0] == '#')
+	if((Pregunta.Respuesta1.c_str())[0] == '#')
 	{
 		string aux = Pregunta.Respuesta1;
 
@@ -130,7 +130,7 @@ ostream& operator<< (ostream& out, const t_pregunta_respuestas& Pregunta)
 	}
 
 	out << "b) ";
-	if(Pregunta.Respuesta2[0] == '#')
+	if((Pregunta.Respuesta2.c_str())[0] == '#')
 	{
 		string aux = Pregunta.Respuesta2;
 
@@ -143,7 +143,7 @@ ostream& operator<< (ostream& out, const t_pregunta_respuestas& Pregunta)
 	}
 
 	out << "c) ";
-	if(Pregunta.Respuesta3[0] == '#')
+	if((Pregunta.Respuesta3.c_str())[0] == '#')
 	{
 		string aux = Pregunta.Respuesta3;
 
@@ -156,7 +156,7 @@ ostream& operator<< (ostream& out, const t_pregunta_respuestas& Pregunta)
 	}
 
 	out << "d) ";
-	if(Pregunta.Respuesta4[0] == '#')
+	if((Pregunta.Respuesta4.c_str())[0] == '#')
 	{
 		string aux = Pregunta.Respuesta3;
 

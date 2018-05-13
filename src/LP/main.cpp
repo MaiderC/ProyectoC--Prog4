@@ -105,7 +105,7 @@ int main(int argc, char** argv)
 				    for (int i = 0; i < cant_p; i++)
 				    {
 				    	recogerPregunta(preg_r);
-				    	DBConnector::insert_Pregunta(preg_r);
+				    	BD.insert_Pregunta(preg_r);
 				    }
 
 				    mostrarMensaje("¿Quieres seguir introduciendo preguntas?");
@@ -186,7 +186,7 @@ int main(int argc, char** argv)
 					mostrarMensaje("¿Que pregunta quieres eliminar?");
 					recogerInt(opcionEliminar);
 
-					DBConnector::delete_Pregunta(listaTodasPreguntas[opcionEliminar-1]);
+					BD.delete_Pregunta(listaTodasPreguntas[opcionEliminar-1]);
 					listaTodasPreguntas.erase(opcionEliminar-1);
 
 					mostrarMensaje("¿Quieres seguir eliminando preguntas?");
@@ -198,6 +198,7 @@ int main(int argc, char** argv)
 
 			case 5:
 				mostrarMensaje("Modo administrador cerrado finalizado.");
+				main::acaba();
 				break;
 
 			default:
@@ -327,7 +328,7 @@ int main(int argc, char** argv)
  	mostrarMensaje("¿Cuantas preguntas deseas que se te realicen?");
  	recogerInt(cant_preguntas);
 
- 	cantidadPreguntasValida = operaciones::operaciones::maxPreguntas(cant_preguntas, PreguntasSeleccionadas.size());
+ 	cantidadPreguntasValida = operaciones::maxPreguntas(cant_preguntas, PreguntasSeleccionadas.size());
  	
  	while(cant_preguntas<0 || cantidadPreguntasValida == 0)
  	{
@@ -337,12 +338,12 @@ int main(int argc, char** argv)
 
 		mostrarMensaje("Por favor, introduce otro numero:");
  		recogerInt(cant_preguntas);
- 		cantidadPreguntasValida = operaciones::operaciones::maxPreguntas(cant_preguntas, PreguntasSeleccionadas.size());
+ 		cantidadPreguntasValida = operaciones::maxPreguntas(cant_preguntas, PreguntasSeleccionadas.size());
  	}
 
  	for(int i = 0; i < cant_preguntas; i++)
  	{
- 		 pregunta = operaciones::operaciones::generarPregunta(PreguntasSeleccionadas, preguntasSalidas);
+ 		 pregunta = operaciones::generarPregunta(PreguntasSeleccionadas, preguntasSalidas);
 		 mostrarPregunta(pregunta);
 		 respValida = recogerOpcionRespuesta(respuesta, pregunta.getDificultad());
 
@@ -372,7 +373,7 @@ int main(int argc, char** argv)
 		 if(respCorrecta == 1)
 		 {
 		 	mostrarMensaje("Respuesta correcta");
-		 	pergunta.sumarPunto(jugadorPrincipal);
+		 	pregunta.sumarPunto(jugadorPrincipal);
 		 }
 		 else
 		 {

@@ -8,7 +8,7 @@
 #include <prmedio.h>
 #include <prdificil.h>
 
-preguntas_respuestas operaciones::generarPregunta(const vector<preguntas_respuestas>& arrPreg, vector<preguntas_respuestas>& preguntasSalidas)
+preguntas_respuestas operaciones::generarPregunta(const vector<preguntas_respuestas>& listaTodasPreguntas, vector<preguntas_respuestas>& preguntasSalidas)
 {
 	int random = 0;
 	preguntas_respuestas pregunta;
@@ -21,7 +21,7 @@ preguntas_respuestas operaciones::generarPregunta(const vector<preguntas_respues
 		repetida = 0;
 
 		random = rand() % sizeTotalPreguntas; //genera un número aleatorio entre 0 y sizeTotalPreguntas-1
-		pregunta(arrPreg[random]);
+		pregunta(listaTodasPreguntas[random]);
 
 		preguntasSalidas.push_back(pregunta);
 	}
@@ -32,7 +32,7 @@ preguntas_respuestas operaciones::generarPregunta(const vector<preguntas_respues
 			 		repetida = 0;
 			 		random = rand() % sizeTotalPreguntas; //Genera un número aleatorio entre 0 y sizeTotalPreguntas-1
 
-			 		pregunta(arrPreg[random]);
+			 		pregunta(listaTodasPreguntas[random]);
 			 		
 				 		for(int j = 0; j < preguntasSalidas.size(); j++)
 				 		{
@@ -62,7 +62,7 @@ int operaciones::comprobarRespuesta(const string& respuesta)
 
 	//si correcto es 1, ha contestado bien
 
-	if (respuesta[0] == '#')
+	if ((respuesta.c_str())[0] == '#')
 	{
 		correcto = 1;
 	}

@@ -9,13 +9,13 @@
 
 
 //constructores
-prmedio:: preguntas_respuestas()
+prmedio::preguntas_respuestas()
 {
   this -> respuesta2 = DEFAULT_RESPUESTA2;
   this -> respuesta3 = DEFAULT_RESPUESTA3;
 }
 		
-prmedio:: preguntas_respuestas(string pregunta, string respuesta1, string respuesta2, string respuesta3, string dificultad)
+prmedio::preguntas_respuestas(string pregunta, string respuesta1, string respuesta2, string respuesta3, string dificultad)
 {
   this -> respuesta2 = respuesta2;
   this -> respuesta3 = respuesta3;
@@ -42,24 +42,24 @@ prmedio::prmedio(const prmedio &pm): preguntas_respuestas(pm)
 }
 
 //getter y setter
-void prmedio::void setRespuesta3(string RTres)
+void prmedio::setRespuesta3(string RTres)
 {
 	this -> respuesta3 = RTres;
 }
 
-string prmedio::void getRespuesta3() const
+string prmedio::getRespuesta3() const
 {
 	return respuesta3;
 }
 
 //metodos
 
- void sumarPunto(jugador jugador)
+ void prmedio::sumarPunto(jugador jugador)
 {
 	jugador.puntuacion =+ 2;
 }
 
- void prepararRespuestas(pregunta_respuestas pregunta, string medio)
+ void prmedio::prepararRespuestas(pregunta_respuestas pregunta, string medio)
 {
 	int i = 2;
 	int igual = 0;
@@ -92,17 +92,17 @@ string prmedio::void getRespuesta3() const
 	}
 
 	respuestas[random[0]] = this -> respuesta1;
-	respuestas[random[1]] = this->respuesta2;
-	respuestas[random[2]] = this->respuesta3;
+	respuestas[random[1]] = this -> respuesta2;
+	respuestas[random[2]] = this -> respuesta3;
 	
-	this->respuesta1 = respuestas[0];
-	this->respuesta2 = respuestas[1];
-	this->respuesta3 = respuestas[2];
+	this -> respuesta1 = respuestas[0];
+	this -> respuesta2 = respuestas[1];
+	this -> respuesta3 = respuestas[2];
 
 	
 }
 
-bool operator=(const prmedio& pm)
+bool prmedio::operator=(const prmedio& pm)
 {
 	this -> respuesta2 = pm.respuesta2;
 	this -> respuesta3 = pm.respuesta3;
@@ -113,7 +113,7 @@ ostream& operator<< (ostream& out, const t_pregunta_respuestas& Pregunta)
 	out << Pregunta.Pregunta << endl;
 
 	out << "a) ";
-	if(Pregunta.Respuesta1[0] == '#')
+	if((Pregunta.Respuesta1.c_str())[0] == '#')
 	{
 		string aux = Pregunta.Respuesta1;
 
@@ -126,7 +126,7 @@ ostream& operator<< (ostream& out, const t_pregunta_respuestas& Pregunta)
 	}
 
 	out << "b) ";
-	if(Pregunta.Respuesta2[0] == '#')
+	if((Pregunta.Respuesta2.c_str())[0] == '#')
 	{
 		string aux = Pregunta.Respuesta2;
 
@@ -139,7 +139,7 @@ ostream& operator<< (ostream& out, const t_pregunta_respuestas& Pregunta)
 	}
 
 	out << "c) ";
-	if(Pregunta.Respuesta3[0] == '#')
+	if((Pregunta.Respuesta3.c_str())[0] == '#')
 	{
 		string aux = Pregunta.Respuesta3;
 
