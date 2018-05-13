@@ -142,6 +142,55 @@ int operaciones::maxPuntuacion(const vector<jugador>& jugadores)
 	return max;
 }
 
+vector<jugador> operaciones::actualizarPuntuacion(const vector<jugador>& listaTodosJugadores, vector<jugador>& listaJugadoresSesion)
+{
+    int coincidencias = 0;
+   
+    if(listaTodosJugadores.size() == 0)
+    {
+        return listaJugadoresSesion;
+    }
+    else
+    {
+      for(int i = 0; i < listaTodosJugadores.size(); i++)
+      {
+        for(int j = 0; j < listaJugadoresSesion.size(); j++)
+        {
+          if(listaTodosJugadores[i].getNick() == listaJugadoresSesion[j].getNick())
+          {
+            listaTodosJugadores[i].setPuntuacion(listaTodosJugadores[i].getPuntuacion() + listaJugadoresSesion[j].getPuntuacion());
+            listaJugadoresSesion.erase(j);
+          }
+        }
+      }
+    }
+
+    for(int i = 0; i < listaJugadoresSesion.size(); i++)
+    {
+      listaTodosJugadores.push_back(listaJugadoresSesion[i]);
+      listaJugadoresSesion.erase(i);
+    }
+
+    return listaTodosJugadores;
+}
+
+vector<jugador> operaciones::actualizarPuntuacion(const vector<jugador>& listaTodosJugadores, jugador jugadorPrincipal)
+{
+  for(int i = 0; i < listaTodosJugadores.size(); i++)
+  {
+    if(jugadorPrincipal.getNick() == listaTodosJugadores[i].getNick())
+    {
+     listaTodosJugadores[i].setPuntuacion(listaTodosJugadores[i].getPuntuacion() + jugadorPrincipal[i].getPuntuacion());
+    }
+    else
+    {
+      listaTodosJugadores.push_back(jugadorPrincipal);
+    }
+  }
+
+  return listaTodosJugadores;
+}
+
 void operaciones::guardarJugadores(const vector<jugador>& ListaTodosJugadores, DBConnector BD)
 {
 	int result;

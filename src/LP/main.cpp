@@ -394,7 +394,7 @@ int main(int argc, char** argv)
 	 mostrarMensaje("Introduce la opcion deseada:");
 	 recogerInt(opcionRepetir);
 
-	 //listaTodosJugadores = actualizarPuntuacion(listaTodosJugadores, listaTodosJugadores, jugadorPrincipal, 1);
+	 listaTodosJugadores = actualizarPuntuacion(listaTodosJugadores, jugadorPrincipal);
 	 jugadorPrincipal.setPuntuacion(0);
 
 	 while(opcionRepetir != 1 && opcionRepetir != 2)
@@ -543,13 +543,8 @@ void multijugador()
 	 		{
 	 			mensajeGanador(multijugadores[i]);
 	 		}
-	 		//listaTodosJugadores = actualizarPuntuacion(listaTodosJugadores, numJugadores, multijugadores[i], 1);
+	 		listaTodosJugadores = actualizarPuntuacion(listaTodosJugadores, multijugadores);
 	 	}
-
-	  for (int i=0; i < multijugadores.size(); i++)
-	 {
-	 	multijugadores[i].setPuntuacion(0);
-	 }
 
 	 //Volver al menu o volver a jugar
 	 mostrarMensaje("Fin de la partida.");
