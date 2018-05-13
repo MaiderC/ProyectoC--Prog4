@@ -108,7 +108,7 @@ bool prmedio::operator=(const prmedio& pm)
 	this -> respuesta3 = pm.respuesta3;
 }
 
-ostream& operator<< (ostream& out, const t_pregunta_respuestas& Pregunta)
+ostream& operator<<(ostream& out, const preguntas_respuestas& Pregunta)
 {
 	out << Pregunta.Pregunta << endl;
 
@@ -154,7 +154,7 @@ ostream& operator<< (ostream& out, const t_pregunta_respuestas& Pregunta)
 	return out;
 }
 
-istream& operator>>(istream& in, t_pregunta_respuestas& Pregunta)
+istream& operator>>(istream& in, preguntas_respuestas& Pregunta)
 {
 	mostrarMensaje("Introduce la pregunta a insertar: ");
 	in >> Pregunta.Pregunta;

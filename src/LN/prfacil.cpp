@@ -94,7 +94,7 @@ bool prfacil::operator=(const prfacil& pf)
 	this -> respuesta2 = pf.respuesta2;
 }
 
-ostream& operator<<(ostream& out, const preguntas_respuestas& Pregunta)
+ostream& operator<<(ostream& out, const preguntas_respuestas& Pregunta)
 {
 	out << Pregunta.pregunta << endl;
 
