@@ -6,6 +6,7 @@
 #include "../LN/prmedio.h"
 #include "../LN/prdificil.h"
 #include <iostream>
+#include <vector>
 
 using namespace std;
 using namespace utilidades;

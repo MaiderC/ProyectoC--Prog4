@@ -6,6 +6,7 @@
 	#include "prmedio.h"
 	#include "prdificil.h"
 	#include "jugador.h"
+	#include <vector>
 
 	preguntas_respuestas generarPregunta(const vector<preguntas_respuestas>& arrPreg, vector<preguntas_respuestas>& preguntasSalidas);
 	int comprobarRespuesta(const string& respuesta);

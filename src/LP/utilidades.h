@@ -3,13 +3,13 @@
 
 namespace utilidades
 {
-	#include <iostream>
-	#include "../LN/preguntas_respuestas.h"
 	#include "../LN/jugador.h"
+	#include <iostream>
+	#include <vector>
+	#include "../LN/preguntas_respuestas.h"
 	#include "../LN/prfacil.h"
 	#include "../LN/prmedio.h"
 	#include "../LN/prdificil.h"
-	#include "../LN/jugador.h"
 
 	void mostrarMensaje(const string& str);
 	void mostrarInt(const int& i);
