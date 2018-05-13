@@ -94,4 +94,18 @@ bool operator=(const jugador& jug)
   this -> puntuacion = j.puntuacion;
 }
 
+ostream& operator<<(ostream& out, const jugador& jugador)
+{
+  out << jugador.nick << ": "<< jugador.puntuacion << endl;
 
+  return out;
+}
+
+istream& operator>>(istream& in, jugador& jugador)
+{
+  mostrarMensaje( "Indica el nick del jugador: ");
+
+  in >> jugador.nick;
+  
+  return in;
+}

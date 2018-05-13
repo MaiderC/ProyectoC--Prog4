@@ -83,6 +83,12 @@ int main(int argc, char** argv)
 
 	  	recogerInt(opcionMenu);
 
+	  	while(opcionMenu < 1 || opcionMenu > 5)
+	 	{
+	 	 	mostrarMensaje("\nLa opcion introducida no es valida. Por favor, intentalo de nuevo:  ");
+	 	 	recogerInt(opcionMenu);
+	 	}
+
 	  	switch(opcionMenu)
 	  	{
 	  		case 1:
@@ -648,7 +654,7 @@ void multijugador()
  	delete preguntasSalidas;
  	delete listaTodasPreguntas;
 
- 	//guardarJugadores(listaTodosJugadores, (*numJugadores));
+ 	operaciones::guardarJugadores(listaTodosJugadores);
 
  	delete listaTodosJugadores;
 
