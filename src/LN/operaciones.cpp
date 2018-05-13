@@ -1,12 +1,9 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
 #include <vector>
-#include <operaciones.h>
-#include <jugador.h>
-#include <prfacil.h>
-#include <prmedio.h>
-#include <prdificil.h>
+#include "operaciones.h"
+#include "jugador.h"
+#include "prfacil.h"
+#include "prmedio.h"
+#include "prdificil.h"
 
 void operaciones::siguienteID(const vector<preguntas_respuestas>& listaTodasRespuestas)
 {

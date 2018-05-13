@@ -1,4 +1,5 @@
 #include "preguntas_respuestas.h"
+#include "jugador.h"
 
 #define DEFAULT_PREGUNTA defaultQuestion
 #define DEFAULT_RESPUESTA defaultAnswer1

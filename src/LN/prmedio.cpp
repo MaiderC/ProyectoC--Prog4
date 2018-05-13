@@ -1,4 +1,5 @@
 #include "prmedio.h"
+#include "jugador.h"
 
 // using namespace std;
 

@@ -1,4 +1,5 @@
 #include "prdificil.h"
+#include "jugador.h"
 
 // #include <iostream>
 // using namespace std;
