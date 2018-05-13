@@ -41,6 +41,9 @@ class jugador
 	bool operator>(const jugador& jug);
 	bool operator!=(const jugador& jug);
 	bool operator=(const jugador& jug);
+	//Sobrecarga E/S
+	friend ostream& operator<< (ostream& out, const jugador& Pregunta);
+	friend istream& operator>>(istream& in, jugador& Pregunta);
 };
 
 #endif

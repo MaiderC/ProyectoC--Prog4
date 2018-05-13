@@ -66,12 +66,6 @@ namespace utilidades
 		cin >> string_recoger;
 	}
 
-	void utilidades::recogerNick(string& nick_recoger)
-	{
-		cout << "Indica el nick del jugador: ";
-		recogerString(nick_recoger);
-	}
-
 	void utilidades::recogerInt(int& numero_recoger)
 	{
 		cin >> numero_recoger;
