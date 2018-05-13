@@ -74,7 +74,7 @@ int operaciones::comprobarRespuesta(const string& respuesta)
 	return correcto;
 }
 
-int operaciones::maxPreguntas(const int cantPreguntas, const int sizeTotalPreguntas)
+int operaciones::maxPreguntas(const int& cantPreguntas, const int& sizeTotalPreguntas)
 {	
 	int valido;	//si es 1 es válido, si es 0 no lo es.
 
@@ -102,10 +102,10 @@ int operaciones::maxPreguntas(const int cantPreguntas, const int sizeTotalPregun
       {
         if(jugadoresLeidos[j] < jugadoresLeidos[j+1])
          {
-            temp(jugadoresLeidos[j]);
-            jugadoresLeidos[j](jugadoresLeidos[j+1]);
-            jugadoresLeidos[j+1](temp);	
-         }		
+            temp = jugadoresLeidos[j];
+            jugadoresLeidos[j] = jugadoresLeidos[j+1];
+            jugadoresLeidos[j+1] = temp;
+         }
       }
  	}
 }
