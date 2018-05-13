@@ -18,10 +18,9 @@ jugador::jugador (string nick, int puntuacion)
 }
 
 //destructor
-jugador::~jugador (string nick, int puntuacion)
+jugador::~jugador ()
 {
   delete nick;
-  delete puntuacion;
 }
 
 //constructor copia
@@ -90,22 +89,22 @@ bool jugador::operator!=(const jugador& jug)
 
 bool jugador::operator=(const jugador& jug)
 {
-  this -> nick = j.nick;
-  this -> puntuacion = j.puntuacion;
+  this -> nick = jug.nick;
+  this -> puntuacion = jug.puntuacion;
 }
 
-ostream& operator<< (ostream& out, const jusgador& jugador)
+ostream& operator<< (ostream& out, const jugador& jug)
 {
-  out << jugador.nick << ": "<< jugador.puntuacion << endl;
+  out << jug.nick << ": "<< jug.puntuacion << endl;
 
   return out;
 }
 
-istream& operator>>(istream& in, jugador& jugador)
+istream& operator>>(istream& in, jugador& jug)
 {
   mostrarMensaje( "Indica el nick del jugador: ");
 
-  in >> jugador.nick;
+  in >> jug.nick;
   
   return in;
 }

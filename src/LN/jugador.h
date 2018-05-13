@@ -2,6 +2,8 @@
 #define JUGADOR_H
 
 #include <iostream>
+#include "../LP/utilidades.h"
+
 using namespace std;
 
 class jugador
@@ -43,8 +45,8 @@ class jugador
 	bool operator=(const jugador& jug);
 	
 	// Sobrecarga E/S
-	friend ostream& operator<<(ostream& out, const jugador& Pregunta);
-	friend istream& operator>>(istream& in, jugador& Pregunta);
+	friend ostream& operator<<(ostream& out, const jugador& jug);
+	friend istream& operator>>(istream& in, jugador& jug);
 
 };
 
