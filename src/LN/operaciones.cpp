@@ -124,3 +124,17 @@ int operaciones::maxPuntuacion(const vector<jugador>& jugadores)
 	
 	return max;
 }
+
+void operaciones::guardarJugadores(vector<jugador> ListaTodosJugadores, DBConnector BD)
+{
+	int result;
+	for (int i = 0; i < ListaTodosJugadores.size(); ++i)
+	{
+		result = BD.update_Jugador(ListaTodosJugadores[i]);
+		if (result == 0)
+		{
+			//No ha podido hacer update porque no existe el jugador; hacemos insert:
+			result = BD.insert_Jugador(ListaTodosJugadores[i]);
+		}
+	}
+}

@@ -648,7 +648,7 @@ void multijugador()
  	delete preguntasSalidas;
  	delete listaTodasPreguntas;
 
- 	//guardarJugadores(listaTodosJugadores, (*numJugadores));
+ 	operaciones::guardarJugadores(listaTodosJugadores);
 
  	delete listaTodosJugadores;
 
