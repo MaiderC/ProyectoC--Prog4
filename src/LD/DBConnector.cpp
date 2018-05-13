@@ -149,10 +149,8 @@ using namespace std;
   int DBConnector::Pregunta_existe(preguntas_respuestas p)
   {
   	int sizeTotalPreguntas;
-  	cant_Preguntas(&sizeTotalJugadores);
-
-  	preguntas_respuestas * Preguntas;
-  	Preguntas = new preguntas_respuestas [sizeTotalPreguntas];
+  	cant_Preguntas(&sizeTotalPreguntas);
+  	vector<preguntas_respuestas> Preguntas;
   	leer_Preguntas(Preguntas);
 
   	for(int i=0; i<sizeTotalPreguntas; i++)
