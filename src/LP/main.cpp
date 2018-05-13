@@ -21,7 +21,7 @@ void RealizarPreguntasMultijugador(vector<jugador> multijugadores, int cantPreg)
 int elegirDificultad();
 
 vector<preguntas_respuestas> preguntasSalidas; // Lista de las preguntas que ya han salido en la ejecución del juego
-vector<preguntas_respuestas> arrPreg; // Lista de todas las preguntas de la base de datos
+vector<preguntas_respuestas> listaTodasPreguntas; // Lista de todas las preguntas de la base de datos
 vector<jugador> listaTodosJugadores; // Lista de todos los jugadores de la base de datos
 jugador jugadorPrincipal; // Jugador que inicia la partida
 
@@ -29,7 +29,7 @@ int main(int argc, char** argv)
 {
 	DBConnector::leer_Jugadores(listaTodosJugadores);
 
-  	DBConnector::leer_Preguntas(arrPreg);
+  	DBConnector::leer_Preguntas(listaTodasPreguntas);
 
   	if(argc == 2)
   	{
@@ -43,7 +43,7 @@ int main(int argc, char** argv)
   	}
   	else //es un jugador
   	{
-  		if(arrPreg.size() == 0)
+  		if(listaTodasPreguntas.size() == 0)
   		{
   			mostrarMensaje("No hay preguntas en el sistema :(");
   		}
@@ -181,12 +181,12 @@ int main(int argc, char** argv)
 				do
 				{
 					int opcionEliminar = 0;
-					mostrarTodasPreguntas(arrPreg);
+					mostrarTodasPreguntas(listaTodasPreguntas);
 					mostrarMensaje("¿Que pregunta quieres eliminar?");
 					recogerInt(opcionEliminar);
 
-					DBConnector::delete_Pregunta(arrPreg[opcionEliminar-1]);
-					arrPreg.erase(opcionEliminar-1);
+					DBConnector::delete_Pregunta(listaTodasPreguntas[opcionEliminar-1]);
+					listaTodasPreguntas.erase(opcionEliminar-1);
 
 					mostrarMensaje("¿Quieres seguir eliminando preguntas?");
 			 		mostrarMensaje("1.- Si");
@@ -293,34 +293,34 @@ int main(int argc, char** argv)
 
  	if(opcionDificultad == 1)
  	{
- 		for(int i = 0; i < arrPreg.size(); i++)
+ 		for(int i = 0; i < listaTodasPreguntas.size(); i++)
  		{
- 			if(arrPreg[i].getDificultad == "#")
- 				PreguntasSeleccionadas.push_back(arrPreg[i]);
+ 			if(listaTodasPreguntas[i].getDificultad == "#")
+ 				PreguntasSeleccionadas.push_back(listaTodasPreguntas[i]);
  		}
  	}
 
  	if(opcionDificultad == 2)
  	{
- 		for(int i = 0; i < arrPreg.size(); i++)
+ 		for(int i = 0; i < listaTodasPreguntas.size(); i++)
  		{
- 			if(arrPreg[i].getDificultad == "##")
- 				PreguntasSeleccionadas.push_back(arrPreg[i]);
+ 			if(listaTodasPreguntas[i].getDificultad == "##")
+ 				PreguntasSeleccionadas.push_back(listaTodasPreguntas[i]);
  		}
  	}
 
  	if(dificopcionDificultadultad == 3)
  	{
- 		for(int i = 0; i < arrPreg.size(); i++)
+ 		for(int i = 0; i < listaTodasPreguntas.size(); i++)
  		{
- 			if(arrPreg[i].getDificultad == "###")
- 				PreguntasSeleccionadas.push_back(arrPreg[i]);
+ 			if(listaTodasPreguntas[i].getDificultad == "###")
+ 				PreguntasSeleccionadas.push_back(listaTodasPreguntas[i]);
  		}
  	}
 
  	if(opcionDificultad == 4)
  	{
- 		PreguntasSeleccionadas = arrPreg;
+ 		PreguntasSeleccionadas = listaTodasPreguntas;
  	}
 
  	mostrarMensaje("¿Cuantas preguntas deseas que se te realicen?");
@@ -424,34 +424,34 @@ void multijugador()
 
  	if(opcionDificultad == 1)
  	{
- 		for(int i = 0; i < arrPreg.size(); i++)
+ 		for(int i = 0; i < listaTodasPreguntas.size(); i++)
  		{
- 			if(arrPreg[i].getDificultad == "#")
- 				PreguntasSeleccionadas.push_back(arrPreg[i]);
+ 			if(listaTodasPreguntas[i].getDificultad == "#")
+ 				PreguntasSeleccionadas.push_back(listaTodasPreguntas[i]);
  		}
  	}
 
  	if(opcionDificultad == 2)
  	{
- 		for(int i = 0; i < arrPreg.size(); i++)
+ 		for(int i = 0; i < listaTodasPreguntas.size(); i++)
  		{
- 			if(arrPreg[i].getDificultad == "##")
- 				PreguntasSeleccionadas.push_back(arrPreg[i]);
+ 			if(listaTodasPreguntas[i].getDificultad == "##")
+ 				PreguntasSeleccionadas.push_back(listaTodasPreguntas[i]);
  		}
  	}
 
  	if(dificopcionDificultadultad == 3)
  	{
- 		for(int i = 0; i < arrPreg.size(); i++)
+ 		for(int i = 0; i < listaTodasPreguntas.size(); i++)
  		{
- 			if(arrPreg[i].getDificultad == "###")
- 				PreguntasSeleccionadas.push_back(arrPreg[i]);
+ 			if(listaTodasPreguntas[i].getDificultad == "###")
+ 				PreguntasSeleccionadas.push_back(listaTodasPreguntas[i]);
  		}
  	}
 
  	if(opcionDificultad == 4)
  	{
- 		PreguntasSeleccionadas = arrPreg;
+ 		PreguntasSeleccionadas = listaTodasPreguntas;
  	}
 
 	mostrarMensaje("¿Cuantos jugadores van a jugar?");
@@ -584,7 +584,7 @@ void multijugador()
  			mostrarMensaje("\nPregunta para el jugador #" + (j+1) + "->" + multijugadores[j].nick);
 
  			//Preparar la pregunta aleatoria para el jugador
- 			pregunta = operaciones::generarPregunta(arrPreg, preguntasSalidas);
+ 			pregunta = operaciones::generarPregunta(listaTodasPreguntas, preguntasSalidas);
 
 			mostrarPregunta(pregunta);
 			respValida = recogerOpcionRespuesta(respuesta, pregunta.getDificultad());
@@ -644,7 +644,7 @@ void multijugador()
  void acabar() //metodo para liberar recursos
  {
  	delete preguntasSalidas;
- 	delete arrPreg;
+ 	delete listaTodasPreguntas;
 
  	//guardarJugadores(listaTodosJugadores, (*numJugadores));
 
