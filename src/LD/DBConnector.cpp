@@ -702,7 +702,7 @@ int DBConnector::delete_Pregunta(Preguntas_Respuestas preguntaBorrar)
 }
 
 //SELECT
-int DBConnector::leer_Jugadores(vector <jugador> listaTodosJugadores)
+int DBConnector::leer_Jugadores(vector <jugador>& listaTodosJugadores)
 {
 	//int cont = 0;
 	sqlite3_stmt *stmt; 
@@ -782,7 +782,7 @@ int DBConnector::cant_Jugadores(int* sizeTotalJugadores)
     return SQLITE_OK;
 }
 
-int DBConnector::leer_Preguntas(vector <Pregunta_respuestas> listaTodoasPreguntas)
+int DBConnector::leer_Preguntas(vector <Pregunta_respuestas>& listaTodoasPreguntas)
 {
 	int cont = 0;
 	sqlite3_stmt *stmt; 
