@@ -4,8 +4,8 @@
 #include <stdio.h>
 #include <string.h>
 #include "../LN/jugador.h"
-#include "../LP/utilidades.h"
 #include "../LN/preguntas_respuestas.h"
+#include "../LP/utilidades.h"
 
 using namespace std;
 
