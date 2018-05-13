@@ -8,20 +8,24 @@ using namespace std;
 	clase madre con una pregunta y una respuesta, la cual será heredada por sus clases hijas 
 	que tendrán más o menos preguntas según dificultad escogida
 */
-
+ 
 class preguntas_respuestas
 {
 	protected: //para que sean accesibles para las clases derivadas
 
-		string Pregunta;
-		string Respuesta1;
+		string pregunta;
+		string respuesta1;
 		string dificultad;
+		
+		//para tener siempre el último id y ponerle al sigueinte el siguiente id
+		static int cont;
+		int id;
 
 	public:
 
 		//constructores
 		preguntas_respuestas();
-		preguntas_respuestas(string pregunta, string Respuesta1, string dificultad);
+		preguntas_respuestas(string pregunta, string respuesta1, string dificultad);
 
 		//destructor
 		virtual ~preguntas_respuestas();
@@ -33,14 +37,22 @@ class preguntas_respuestas
 		void setPregunta(string pregunta);
 		void setRespuesta1(string RUno);
 		void setDificultad(string dificultad);
+		void setCont(int cont);
+		void setID(int ID);
 
 		string getPregunta() const;
 		string getRespuesta1() const;
 		string getDificultad() const;
+		int getCont () const;
+		int getID () const;
 
 		//metodos de clase madre
 		virtual void sumarPunto(jugador jugador);
 		virtual void prepararRespuestas();
+
+		//sobrecarga de operador =
+		bool operator=(const preguntas_respuestas& p_r);
+
 };
 
 #endif

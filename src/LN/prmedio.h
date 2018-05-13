@@ -7,20 +7,20 @@ class prmedio :  public preguntas_respuestas
 {
 	private:
 
-		string Respuesta2;
-		string Respuesta3;
+		string respuesta2;
+		string respuesta3;
 
 	public:
 
 		//constructores
 		prmedio(): preguntas_respuestas();
-		prmedio(string pregunta, string Respuesta1, string Respuesta2, string Respuesta3, string dificultad): preguntas_respuestas(pregunta, Respuesta1, dificultad){};
+		prmedio(string pregunta, string respuesta1, string respuesta2, string respuesta3, string dificultad): preguntas_respuestas(pregunta, respuesta1, dificultad);
 	
 		//destructor
-		~prmedio(): preguntas_respuestas();
+		virtual ~prmedio();
 
 		//constructor copia
-		prmedio(const prmedio &pm);
+		prmedio(const prmedio &pm): preguntas_respuestas(pm);
 
 		//getter y setter
 		void setRespuesta3(string RTres);
@@ -30,7 +30,7 @@ class prmedio :  public preguntas_respuestas
 		virtual void sumarPunto(jugador jugador);
 		virtual void prepararRespuestas();
 
-		friend ostream& operator<< (ostream& out, const t_pregunta_respuestas& Pregunta);
-		friend istream& operator>>(istream& in, t_pregunta_respuestas& Pregunta);
+		//sobrecarga de operador =
+		bool operator=(const prmedio& p_m);
 };
 

@@ -1,31 +1,45 @@
-#include "../INCLUDES/preguntas_respuestas.h"
-#include <stdlib.h>
-#include <string.h>
+#include "preguntas_respuestas.h"
 
 #define DEFAULT_PREGUNTA defaultQuestion
 #define DEFAULT_RESPUESTA defaultAnswer1
 #define DEFAULT_DIFICULTAD #
 
+//esto es para q haga una vez el inicio del contador
+int preguntas_respuestas::cont = 0;
+
 //constructores
 preguntas_respuestas:: preguntas_respuestas()
 {
   this -> pregunta = DEFAULT_PREGUNTA;
-  this -> Respuesta1 = DEFAULT_RESPUESTA;
+  this -> respuesta1 = DEFAULT_RESPUESTA;
   this -> dificultad = DEFAULT_DIFICULTAD;
+  // this -> cont=cont++;
+  this -> cont++;
+  this -> id = cont;
 }
 		
-preguntas_respuestas:: preguntas_respuestas(string pregunta, string Respuesta1,string dificultad)
+preguntas_respuestas:: preguntas_respuestas(string pregunta, string respuesta1,string dificultad, bool leerBD)
 {
   this -> pregunta = pregunta;
-  this -> Respuesta1 = Respuesta1;
+  this -> respuesta1 = respuesta1;
   this -> dificultad = dificultad;
+
+  if(leerBD)
+  {
+    //nada
+  }
+  else
+  {
+     this -> id = cont;
+     this -> cont ++;
+  }
 }
 
 //destructor
-virtual preguntas_respuestas::~preguntas_respuestas()
+ preguntas_respuestas::~preguntas_respuestas()
 {
   delete pregunta;
-  delete Respuesta1;
+  delete respuesta1;
   delete dificultad;
 }
 
@@ -33,8 +47,10 @@ virtual preguntas_respuestas::~preguntas_respuestas()
 preguntas_respuestas::preguntas_respuestas(const preguntas_respuestas &p_r)
 {
   this -> pregunta = p_r.pregunta;
-  this -> Respuesta1 = p_r.Respuesta1;
+  this -> respuesta1 = p_r.respuesta1;
   this -> dificultad = p_r.dificultad;
+  this -> cont++;
+  this -> id = cont;
 }
 
 //getters y setters
@@ -44,11 +60,21 @@ void preguntas_respuestas:: setPregunta(string pregunta)
 }
 void preguntas_respuestas:: setRespuesta1(string RUno)
 {
-  this -> Respuesta1 = RUno;
+  this -> respuesta1 = RUno;
 }
 void preguntas_respuestas:: setDificultad(string dificultad)
 {
   this -> dificultad = dificultad;
+}
+
+void preguntas_respuestas:: setCont (int cont)
+{
+  this -> cont = cont;
+}
+
+void preguntas_respuestas:: setID(int ID)
+{
+  this -> ID = ID;
 }
 
 string preguntas_respuestas:: getPregunta() const
@@ -57,14 +83,33 @@ string preguntas_respuestas:: getPregunta() const
 }
 string preguntas_respuestas:: getRespuesta1() const
 {
-  return Respuesta1;
+  return respuesta1;
 }
 string preguntas_respuestas:: getDificultad() const
 {
   return dificultad;
 }
+int preguntas_respuestas:: getCont () const
+{
+  return cont;
+}
 
-//metodos de clase madre sin implementación (métodos virtuales puros), pero sí la tendrán sus hijas
+int preguntas_respuestas:: getID () const
+{
+  return ID;
+}
+
+//metodos de clase madre sin implementación (métodos es puros), pero sí la tendrán sus hijas
 //es para hacer abstracta la clase madre
-virtual void sumarPunto(jugador jugador) = 0;
-virtual void prepararRespuestas() = 0;
+ void sumarPunto(jugador jugador) = 0;
+ void prepararRespuestas() = 0;
+
+//sobrecarga de operador =
+bool operator=(const preguntas_respuestas& p_r)
+{
+  this -> pregunta = p_r.pregunta;
+  this -> respuesta1 = p_r.respuesta1;
+  this -> dificultad = p_r.dificultad;
+  this -> cont++;
+  this -> id = cont;
+}
