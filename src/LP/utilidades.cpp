@@ -1,5 +1,11 @@
 #include "utilidades.h"
+#include "../LN/jugador.h"
 #include <iostream>
+#include <vector>
+#include "../LN/preguntas_respuestas.h"
+#include "../LN/prfacil.h"
+#include "../LN/prmedio.h"
+#include "../LN/prdificil.h"
 
 using namespace std;
 

@@ -1,4 +1,6 @@
 #include "prmedio.h"
+#include "preguntas_respuestas.h"
+#include <iostream>
 #include "jugador.h"
 
 // using namespace std;

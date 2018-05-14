@@ -1,7 +1,6 @@
 #include "preguntas_respuestas.h"
 #include <iostream>
 #include "jugador.h"
-#include <vector>
 
 using namespace std;
 

@@ -1,5 +1,4 @@
 #include "jugador.h"
-#include "../LD/DBConnector.h"
 
 #define DEFAULT_NICK "playerOne"
 #define DEFAULT_PUNTUACION 0
@@ -102,7 +101,7 @@ ostream& operator<< (ostream& out, const jugador& jug)
 
 istream& operator>>(istream& in, jugador& jug)
 {
-  mostrarMensaje( "Indica el nick del jugador: ");
+  cout << "Indica el nick del jugador: ";
 
   in >> jug.nick;
   

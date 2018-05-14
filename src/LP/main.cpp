@@ -2,6 +2,7 @@
 #include "../LN/jugador.h"
 #include "../LN/operaciones.h"
 #include "../LD/DBConnector.h"
+#include "../LN/preguntas_respuestas.h"
 #include "../LN/prfacil.h"
 #include "../LN/prmedio.h"
 #include "../LN/prdificil.h"

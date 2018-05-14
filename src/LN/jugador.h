@@ -2,8 +2,6 @@
 #define JUGADOR_H
 
 #include <iostream>
-#include "../LP/utilidades.h"
-#include <vector>
 
 using namespace std;
 

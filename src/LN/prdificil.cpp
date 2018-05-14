@@ -1,8 +1,9 @@
 #include "prdificil.h"
+#include "preguntas_respuestas.h"
+#include <iostream>
 #include "jugador.h"
 
-// #include <iostream>
-// using namespace std;
+using namespace std;
 
 #define DEFAULT_RESPUESTA2 defaultAnswer2
 #define DEFAULT_RESPUESTA3 defaultAnswer3
@@ -174,22 +175,22 @@ ostream& operator<<(ostream& out, const preguntas_respuestas& Pregunta)
 
 istream& operator>>(istream& in, preguntas_respuestas& Pregunta)
 {
-	mostrarMensaje("Introduce la pregunta a insertar: ");
+	cout << "Introduce la pregunta a insertar: ";
 	in >> Pregunta.Pregunta;
 
-	mostrarMensaje("*La respuesta no debe contener la letra de la opcion (a o b) ni signos de puntuacion al inicio (salvo que se trate de un guion, por ser la respuesta un numero negativo)");
-	mostrarMensaje("Introduce la respuesta correcta: ");
+	cout << "*La respuesta no debe contener la letra de la opcion (a o b) ni signos de puntuacion al inicio (salvo que se trate de un guion, por ser la respuesta un numero negativo)";
+	cout << "Introduce la respuesta correcta: ";
 	in >> Pregunta.Respuesta1;
 
 	Pregunta.Respuesta1 = '#' + Pregunta.Respuesta1;
 
-	mostrarMensaje("Introduce otra respuesta (una incorrecta): ");
+	cout << "Introduce otra respuesta (una incorrecta): ";
 	in >> Pregunta.Respuesta2;
 
-	mostrarMensaje("Introduce otra respuesta (una incorrecta): ");
+	cout << "Introduce otra respuesta (una incorrecta): ";
 	in >> Pregunta.Respuesta3;
 
-	mostrarMensaje("Introduce otra respuesta (una incorrecta): ");
+	cout << "Introduce otra respuesta (una incorrecta): ";
 	in >> Pregunta.Respuesta4;
 
 	return in;

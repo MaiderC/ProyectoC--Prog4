@@ -1,8 +1,6 @@
 #ifndef UTILIDADES_H
 #define UTILIDADES_H
 
-namespace utilidades
-{
 	#include "../LN/jugador.h"
 	#include <iostream>
 	#include <vector>
@@ -10,6 +8,9 @@ namespace utilidades
 	#include "../LN/prfacil.h"
 	#include "../LN/prmedio.h"
 	#include "../LN/prdificil.h"
+
+namespace utilidades
+{
 
 	void mostrarMensaje(const string& str);
 	void mostrarInt(const int& i);
