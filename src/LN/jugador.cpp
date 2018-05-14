@@ -1,4 +1,7 @@
 #include "jugador.h"
+#include <iostream>
+
+using namespace std;
 
 #define DEFAULT_NICK "playerOne"
 #define DEFAULT_PUNTUACION 0

@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include "jugador.h"
-#include <vector>
 
 using namespace std;
 

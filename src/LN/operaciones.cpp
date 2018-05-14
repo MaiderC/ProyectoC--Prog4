@@ -5,6 +5,9 @@
 #include "prdificil.h"
 #include "jugador.h"
 #include <vector>
+#include <iostream>
+
+using namespace std;
 
 void operaciones::siguienteID(const vector<preguntas_respuestas>& listaTodasRespuestas)
 {

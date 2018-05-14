@@ -3,7 +3,7 @@
 #include <iostream>
 #include "jugador.h"
 
-// using namespace std;
+using namespace std;
 
 
 #define DEFAULT_RESPUESTA2 defaultAnswer2

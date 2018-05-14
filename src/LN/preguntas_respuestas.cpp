@@ -1,5 +1,8 @@
 #include "preguntas_respuestas.h"
+#include <iostream>
 #include "jugador.h"
+
+using namespace std;
 
 #define DEFAULT_PREGUNTA defaultQuestion
 #define DEFAULT_RESPUESTA defaultAnswer1

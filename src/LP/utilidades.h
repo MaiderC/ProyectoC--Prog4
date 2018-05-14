@@ -9,6 +9,8 @@
 	#include "../LN/prmedio.h"
 	#include "../LN/prdificil.h"
 
+	using namespace std;
+
 namespace utilidades
 {
 
