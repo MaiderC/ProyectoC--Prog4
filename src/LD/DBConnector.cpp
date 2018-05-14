@@ -237,17 +237,19 @@ int DBConnector::insert_Pregunta (preguntas_respuestas PreguntaInsertar)
 	      return result;
 	    }
 
-	    if (PreguntaInsertar.getDificultad()=="###")
+	   preguntas_respuestas* preg_punt = &PreguntaInsertar;
+		
+	   if (PreguntaInsertar.getDificultad()=="###")
 	    {
-	    	prdificil* p = dynamic_cast<prdificil*>(PreguntaInsertar);
+	    	prdificil* p = dynamic_cast<prdificil*>(preg_punt);
 	    }
 	    else if(PreguntaInsertar.getDificultad()=="##")
 	    {
-	    	prmedio* p = dynamic_cast<prmedio*>(PreguntaInsertar);
+	    	prmedio* p = dynamic_cast<prmedio*>(preg_punt);
 	    }
 	    else
 	    {
-	    	prfacil* p = dynamic_cast<prfacil*>(PreguntaInsertar);
+	    	prfacil* p = dynamic_cast<prfacil*>(preg_punt);
 	    }
 
 
@@ -464,18 +466,19 @@ int DBConnector::update_Pregunta(preguntas_respuestas preguntaModificar)
 		sqlite3_stmt *stmt;
 		char sql[] = "update Preguntas set PREGUNTA = ?, R1 = ?, R2 = ?, R3 = ?, R4 = ?, DIFICULTAD = ? where ID = ?";
 	   
-
+		preguntas_respuestas* preg_punt = &preguntaModificar;
+		
 	   if (PreguntaInsertar.getDificultad()=="###")
 	    {
-	    	prdificil* p = dynamic_cast<prdificil*>(preguntaModificar);
+	    	prdificil* p = dynamic_cast<prdificil*>(preg_punt);
 	    }
 	    else if(PreguntaInsertar.getDificultad()=="##")
 	    {
-	    	prmedio* p = dynamic_cast<prmedio*>(preguntaModificar);
+	    	prmedio* p = dynamic_cast<prmedio*>(preg_punt);
 	    }
 	    else
 	    {
-	    	prfacil* p = dynamic_cast<prfacil*>(preguntaModificar);
+	    	prfacil* p = dynamic_cast<prfacil*>(preg_punt);
 	    }
 
 	     string pregunta = *p.getPregunta();
