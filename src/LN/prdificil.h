@@ -1,3 +1,6 @@
+#ifndef DIFICIL_H
+#define DIFICIL_H
+
 #include "preguntas_respuestas.h"
 #include <iostream>
 #include "jugador.h"
@@ -40,3 +43,4 @@ class prdificil :  public preguntas_respuestas
 
 };
 
+#endif

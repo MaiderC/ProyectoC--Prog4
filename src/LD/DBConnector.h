@@ -1,3 +1,5 @@
+#ifndef DBCONNECTOR_H
+#define DBCONNECTOR_H
 #include "sqlite3.h"
 #include <iostream>
 #include <vector>
@@ -44,6 +46,5 @@ class DBConnector
 	int Pregunta_existe(preguntas_respuestas p);
 
 	//---------------------------------------
-
-	
 };
+#endif

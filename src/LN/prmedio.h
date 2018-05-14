@@ -1,3 +1,5 @@
+#ifndef MEDIO_H
+#define MEDIO_H
 #include "preguntas_respuestas.h"
 #include <iostream>
 #include "jugador.h"
@@ -38,4 +40,4 @@ class prmedio :  public preguntas_respuestas
 		friend istream& operator>>(istream& in, preguntas_respuestas& Pregunta);
 
 	};
-
+#endif

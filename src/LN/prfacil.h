@@ -1,3 +1,5 @@
+#ifndef FACIL_H
+#define FACIL_H
 #include "preguntas_respuestas.h"
 #include <iostream>
 #include "jugador.h"
@@ -36,3 +38,4 @@ class prfacil :  public preguntas_respuestas
 		friend ostream& operator<< (ostream& out, const preguntas_respuestas& Pregunta);
 		friend istream& operator>> (istream& in, preguntas_respuestas& Pregunta);
 };
+#endif
