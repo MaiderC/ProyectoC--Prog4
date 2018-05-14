@@ -239,15 +239,15 @@ int DBConnector::insert_Pregunta (preguntas_respuestas PreguntaInsertar)
 
 	    if (PreguntaInsertar.getDificultad()=="###")
 	    {
-	    	prdificil p = (prdificil)PreguntaInsertar;
+	    	prdificil p = dynamic_cast<prdificil>(PreguntaInsertar);
 	    }
 	    else if(PreguntaInsertar.getDificultad()=="##")
 	    {
-	    	prmedio p = (prmedio)PreguntaInsertar;
+	    	prmedio p = dynamic_cast<prmedio>(PreguntaInsertar);
 	    }
 	    else
 	    {
-	    	prfacil p = (prfacil)PreguntaInsertar;
+	    	prfacil p = dynamic_cast<prfacil>(PreguntaInsertar);
 	    }
 
 
@@ -465,17 +465,17 @@ int DBConnector::update_Pregunta(preguntas_respuestas preguntaModificar)
 		char sql[] = "update Preguntas set PREGUNTA = ?, R1 = ?, R2 = ?, R3 = ?, R4 = ?, DIFICULTAD = ? where ID = ?";
 	   
 
-		if (preguntaModificar.getDificultad()=="###")
+	    if (PreguntaInsertar.getDificultad()=="###")
 	    {
-	    	prdificil p = (prdificil)preguntaModificar;
+	    	prdificil p = dynamic_cast<prdificil>(PreguntaInsertar);
 	    }
-	    else if(preguntaModificar.getDificultad()=="##")
+	    else if(PreguntaInsertar.getDificultad()=="##")
 	    {
-	    	prmedio p = (prmedio)preguntaModificar;
+	    	prmedio p = dynamic_cast<prmedio>(PreguntaInsertar);
 	    }
 	    else
 	    {
-	    	prfacil p = (prfacil)preguntaModificar;
+	    	prfacil p = dynamic_cast<prfacil>(PreguntaInsertar);
 	    }
 
 	     string pregunta = p.getPregunta();
