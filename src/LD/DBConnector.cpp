@@ -594,24 +594,38 @@ int DBConnector::update_Pregunta(preguntas_respuestas preguntaModificar)
 	   if (preguntaModificar.getDificultad()=="###")
 	    {
 	    	prdificil* p = dynamic_cast<prdificil*>(preg_punt);
+
+	    	 string pregunta = (*p).getPregunta();
+		     string r1 = (*p).getRespuesta1();
+		     string r2 = (*p).getRespuesta2();
+		     string r3 = (*p).getRespuesta3();
+		     string r4 = (*p).getRespuesta4();
+		     string dificultad = (*p).getDificultad();
+		     int ID = (*p).getID();
+
 	    }
 	    else if(preguntaModificar.getDificultad()=="##")
 	    {
 	    	prmedio* p = dynamic_cast<prmedio*>(preg_punt);
+	    	 string pregunta = (*p).getPregunta();
+		     string r1 = (*p).getRespuesta1();
+		     string r2 = (*p).getRespuesta2();
+		     string r3 = (*p).getRespuesta3();
+		     string dificultad = (*p).getDificultad();
+		     int ID = (*p).getID();
 	    }
 	    else
 	    {
 	    	prfacil* p = dynamic_cast<prfacil*>(preg_punt);
+
+	    	 string pregunta = (*p).getPregunta();
+		     string r1 = (*p).getRespuesta1();
+		     string r2 = (*p).getRespuesta2();
+		     string dificultad = (*p).getDificultad();
+	    	 int ID = (*p).getID();
 	    }
 
-	     string pregunta = (*p).getPregunta();
-	     string r1 = (*p).getRespuesta1();
-	     string r2 = (*p).getRespuesta2();
-	     string r3 = (*p).getRespuesta3();
-	     string r4 = (*p).getRespuesta4();
-	     string dificultad = (*p).getDificultad();
-	     int ID = (*p).getID();
-
+	    
 	    //Preparar el statement:
 	   	//ATRIBUTOS QUE TENDRÁN TODAS:
 
