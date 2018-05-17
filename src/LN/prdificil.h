@@ -28,6 +28,10 @@ class prdificil :  public preguntas_respuestas
 		prdificil(const prdificil &pd): preguntas_respuestas(pd){};
 
 		//getter y setter
+		void setRespuesta2(string RDos);
+		string getRespuesta2() const;
+		void setRespuesta3(string RTres);
+		string getRespuesta3() const;
 		void setRespuesta4(string RCuatro);
 		string getRespuesta4() const;
 

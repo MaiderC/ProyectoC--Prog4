@@ -26,6 +26,8 @@ class prmedio :  public preguntas_respuestas
 		prmedio(const prmedio &pm): preguntas_respuestas(pm){};
 
 		//getter y setter
+		void setRespuesta2(string RDos);
+		string getRespuesta2() const;
 		void setRespuesta3(string RTres);
 		string getRespuesta3() const;
 

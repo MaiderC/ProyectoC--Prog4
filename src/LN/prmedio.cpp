@@ -45,6 +45,17 @@ prmedio::prmedio(const prmedio &pm): preguntas_respuestas(pm)
 }
 
 //getter y setter
+
+void prfacil::setRespuesta2(string RDos)
+{
+	this -> respuesta2 = RDos;
+}
+
+string prfacil::getRespuesta2() const
+{
+	return respuesta2;
+}
+
 void prmedio::setRespuesta3(string RTres)
 {
 	this -> respuesta3 = RTres;

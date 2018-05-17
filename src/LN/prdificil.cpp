@@ -45,6 +45,26 @@ prdificil::prdificil(const prdificil &pd): preguntas_respuestas(pd)
 }
 
 //getter y setter
+void prfacil::setRespuesta2(string RDos)
+{
+	this -> respuesta2 = RDos;
+}
+
+string prfacil::getRespuesta2() const
+{
+	return respuesta2;
+}
+
+void prmedio::setRespuesta3(string RTres)
+{
+	this -> respuesta3 = RTres;
+}
+
+string prmedio::getRespuesta3() const
+{
+	return respuesta3;
+}
+
 void prdificil::setRespuesta4(string RCuatro)
 {
 	this -> respuesta4 = RCuatro;
