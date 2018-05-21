@@ -17,7 +17,7 @@ class prfacil :  public preguntas_respuestas
 
 		//constructores
 		prfacil(): preguntas_respuestas(){};
-		prfacil(string pregunta, string respuesta1, string respuesta2, string dificultad): preguntas_respuestas(pregunta, respuesta1, dificultad){};
+		prfacil(string pregunta, string respuesta1, string respuesta2, string dificultad, bool leerBD): preguntas_respuestas(pregunta, respuesta1, dificultad, leerBD){};
 		
 		//destructor
 		virtual ~prfacil();

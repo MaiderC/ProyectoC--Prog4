@@ -1155,7 +1155,7 @@ int DBConnector::leer_Preguntas(vector <preguntas_respuestas>& listaTodasPregunt
 
       	ID = sqlite3_column_int(stmt, 0);
 
-       	strcpy(preguta, (char*)sqlite3_column_text(stmt, 1));   
+       	strcpy(pregunta, (char*)sqlite3_column_text(stmt, 1));   
 
        	strcpy(r1, (char*)sqlite3_column_text(stmt, 2));
 

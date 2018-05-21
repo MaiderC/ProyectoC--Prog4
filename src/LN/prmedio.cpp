@@ -19,7 +19,7 @@ prmedio::preguntas_respuestas()
   this -> respuesta3 = DEFAULT_RESPUESTA3;
 }
 		
-prmedio::preguntas_respuestas(string pregunta, string respuesta1, string respuesta2, string respuesta3, string dificultad)
+prmedio::preguntas_respuestas(string pregunta, string respuesta1, string respuesta2, string respuesta3, string dificultad, bool leerBD): preguntas_respuestas(pregunta, respuesta1, dificultad, leerBD)
 {
   this -> respuesta2 = respuesta2;
   this -> respuesta3 = respuesta3;

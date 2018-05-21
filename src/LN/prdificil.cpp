@@ -19,7 +19,7 @@ prdificil::preguntas_respuestas()
   this -> respuesta4 = DEFAULT_RESPUESTA4;
 }
 		
-prdificil::preguntas_respuestas(string pregunta, string respuesta1, string respuesta2, string respuesta3, string respuesta4, string dificultad): preguntas_respuestas(pregunta, respuesta1, dificultad)
+prdificil::preguntas_respuestas(string pregunta, string respuesta1, string respuesta2, string respuesta3, string respuesta4, string dificultad, bool leerBD): preguntas_respuestas(pregunta, respuesta1, dificultad, leerBD)
 {
   // this -> pregunta = pregunta;
   // this -> respuesta1 = respuesta1;
