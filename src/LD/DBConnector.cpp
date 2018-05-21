@@ -223,7 +223,7 @@ using namespace std;
 }
 
 int DBConnector::insert_Pregunta (preguntas_respuestas PreguntaInsertar)
-  {
+{
   	if(Pregunta_existe(PreguntaInsertar) == 0)
   	{ 
 	  	sqlite3_stmt *stmt;
@@ -308,11 +308,12 @@ int DBConnector::insert_Pregunta (preguntas_respuestas PreguntaInsertar)
 		       cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
-
+		    }
 		     //DIFICULTAD
 		     string dificultad = (*p).getDificultad();
 	
-		    result = sqlite3_bind_text(stmt, 7, dificultad.c_str(), dificultad.length(), SQLITE_STATIC);
+		     result = sqlite3_bind_text(stmt, 7, dificultad.c_str(), dificultad.length(), SQLITE_STATIC);
+			
 		    if (result != SQLITE_OK)
 		    {
 		       cout << "Error binding parameters" <<  endl;
@@ -392,6 +393,7 @@ int DBConnector::insert_Pregunta (preguntas_respuestas PreguntaInsertar)
 		       cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
+		    }
 
 		    //DIFICULTAD
 		     string dificultad = (*p).getDificultad();
