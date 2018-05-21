@@ -17,8 +17,8 @@
 	int maxPreguntas(const int cantPreguntas, const int sizeTotalPreguntas);
 	void ordenarJugadores(vector<jugador>& jugadoresLeidos);
 	int maxPuntuacion(const vector<jugador>& jugadores);
-	vector<jugador> operaciones::actualizarPuntuacion(const vector<jugador>& listaTodosJugadores, vector<jugador>& listaJugadoresSesion);
-	vector<jugador> operaciones::actualizarPuntuacion(const vector<jugador>& listaTodosJugadores, jugador jugadorPrincipal);
+	vector<jugador> actualizarPuntuacion(const vector<jugador>& listaTodosJugadores, vector<jugador>& listaJugadoresSesion);
+	vector<jugador> actualizarPuntuacion(const vector<jugador>& listaTodosJugadores, jugador jugadorPrincipal);
 
 
 #endif
