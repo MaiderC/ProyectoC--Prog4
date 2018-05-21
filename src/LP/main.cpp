@@ -356,27 +356,38 @@ int main(int argc, char** argv)
 		 mostrarPregunta(pregunta);
 		 respValida = recogerOpcionRespuesta(respuesta, pregunta.getDificultad());
 
+		 if(pregunta.getDificultad() == "#")
+		 {
+		 	prfacil* preguntaAux = dynamic_cast<prfacil*> (pregunta);
+		 } else if(pregunta.getDificultad() == "##")
+		 {
+		 	prmedio* preguntaAux = dynamic_cast<prmedio*> (pregunta);
+		 } else if(pregunta.getDificultad() == "###")
+		 {
+		 	prdificil* preguntaAux = dynamic_cast<prdificil*> (pregunta);
+		 }
+
 		 while(respValida == -1)
 		 {
-		 	 respValida = recogerOpcionRespuesta(respuesta, pregunta.getDificultad());
+		 	 respValida = recogerOpcionRespuesta(respuesta, preguntaAux.getDificultad());
 		 }
 
 		switch (respuesta)
 		{
 			case 'a':
-				respCorrecta = operaciones::comprobarRespuesta(pregunta.getRespuesta1());
+				respCorrecta = operaciones::comprobarRespuesta(preguntaAux.getRespuesta1());
 				break;
 
 			case 'b':
-				respCorrecta = operaciones::comprobarRespuesta(pregunta.getRespuesta2());
+				respCorrecta = operaciones::comprobarRespuesta(preguntaAux.getRespuesta2());
 				break;
 
 			case 'c':
-				respCorrecta = operaciones::comprobarRespuesta(pregunta.getRespuesta3());
+				respCorrecta = operaciones::comprobarRespuesta(preguntaAux.getRespuesta3());
 				break;
 
 			case 'd':
-				respCorrecta = operaciones::comprobarRespuesta(pregunta.getRespuesta4());
+				respCorrecta = operaciones::comprobarRespuesta(preguntaAux.getRespuesta4());
 		}
 				
 		 if(respCorrecta == 1)
@@ -600,22 +611,33 @@ void multijugador()
 				respValida = recogerOpcionRespuesta(respuesta, pregunta.getDificultad());
 			}
 			
+			if(pregunta.getDificultad() == "#")
+			{
+				prfacil* preguntaAux = dynamic_cast<prfacil*> (pregunta);
+			} else if(pregunta.getDificultad() == "##")
+			{
+				prmedio* preguntaAux = dynamic_cast<prmedio*> (pregunta);
+			} else if(pregunta.getDificultad() == "###")
+			{
+				prdificil* preguntaAux = dynamic_cast<prdificil*> (pregunta);
+			}
+
 			switch (respuesta)
 			{
 			case 'a':
-				correcta = operaciones::comprobarRespuesta(pregunta.getRespuesta1());
+				correcta = operaciones::comprobarRespuesta(preguntaAux.getRespuesta1());
 				break;
 
 			case 'b':
-				correcta = operaciones::comprobarRespuesta(pregunta.getRespuesta2());
+				correcta = operaciones::comprobarRespuesta(preguntaAux.getRespuesta2());
 				break;
 
 			case 'c':
-				correcta = operaciones::comprobarRespuesta(pregunta.getRespuesta3());
+				correcta = operaciones::comprobarRespuesta(preguntaAux.getRespuesta3());
 				break;
 
 			case 'd':
-				correcta = operaciones::comprobarRespuesta(pregunta.getRespuesta4());
+				correcta = operaciones::comprobarRespuesta(preguntaAux.getRespuesta4());
 				break;
 			}
 
