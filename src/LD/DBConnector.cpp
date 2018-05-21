@@ -605,30 +605,7 @@ int DBConnector::update_Pregunta(preguntas_respuestas preguntaModificar)
 		     string dificultad = (*p).getDificultad();
 		     int ID = (*p).getID();
 
-	    }
-	    else if(preguntaModificar.getDificultad()=="##")
-	    {
-	    	prmedio* p = dynamic_cast<prmedio*>(preg_punt);
-	    	 string pregunta = (*p).getPregunta();
-		     string r1 = (*p).getRespuesta1();
-		     string r2 = (*p).getRespuesta2();
-		     string r3 = (*p).getRespuesta3();
-		     string dificultad = (*p).getDificultad();
-		     int ID = (*p).getID();
-	    }
-	    else
-	    {
-	    	prfacil* p = dynamic_cast<prfacil*>(preg_punt);
-
-	    	 string pregunta = (*p).getPregunta();
-		     string r1 = (*p).getRespuesta1();
-		     string r2 = (*p).getRespuesta2();
-		     string dificultad = (*p).getDificultad();
-	    	 int ID = (*p).getID();
-	    }
-
-	    
-	    //Preparar el statement:
+		     //Preparar el statement:
 	   	//ATRIBUTOS QUE TENDRÁN TODAS:
 
 	    	//ID
@@ -677,9 +654,7 @@ int DBConnector::update_Pregunta(preguntas_respuestas preguntaModificar)
 
 		    //SOLO EN MEDIA O DIFÍCIL
 		    //R3:
-		    if (dificultad != "#")
-		    {
-			    
+		    
 			    result = sqlite3_bind_text(stmt, 4, r3.c_str(), r3.length(), SQLITE_STATIC);
 			    if (result != SQLITE_OK)
 			    {
@@ -687,25 +662,11 @@ int DBConnector::update_Pregunta(preguntas_respuestas preguntaModificar)
 			       cout << sqlite3_errmsg(db) <<  endl;
 			      sqlite3_finalize(stmt);
 			      return result;
-			    }
-		    }
-		    else
-		    {
-		    	//NULL -> si es facil, le metemos NULL en r3
-		    	result = sqlite3_bind_text(stmt, 5, NULL, 0, SQLITE_STATIC);
-			    if (result != SQLITE_OK)
-			    {
-			       cout << "Error binding parameters" <<  endl;
-			       cout << sqlite3_errmsg(db) <<  endl;
-			      sqlite3_finalize(stmt);
-			      return result;
-			    }
-		    }
+			    }		   
 
 		    //SOLO EN DIFÍCIL
 		    //R4:
-		    if (dificultad == "###")
-		    {
+		   
 			    //Es dificil
 			    result = sqlite3_bind_text(stmt, 5, r4.c_str(), r4.length(), SQLITE_STATIC);
 			    if (result != SQLITE_OK)
@@ -715,20 +676,6 @@ int DBConnector::update_Pregunta(preguntas_respuestas preguntaModificar)
 			      sqlite3_finalize(stmt);
 			      return result;
 			    }
-		    }
-		    else
-		    {
-		    	// Es media o facil, no tiene R4
-		    	//NULL
-		    	result = sqlite3_bind_text(stmt, 5, NULL, 0, SQLITE_STATIC);
-			    if (result != SQLITE_OK)
-			    {
-			       cout << "Error binding parameters" <<  endl;
-			       cout << sqlite3_errmsg(db) <<  endl;
-			      sqlite3_finalize(stmt);
-			      return result;
-			    }
-		    }
 
 		    //DIFICULTAD
 	
@@ -752,6 +699,224 @@ int DBConnector::update_Pregunta(preguntas_respuestas preguntaModificar)
 		      return result;
 		    }
 
+	    }
+	    else if(preguntaModificar.getDificultad()=="##")
+	    {
+	    	 prmedio* p = dynamic_cast<prmedio*>(preg_punt);
+	    	 string pregunta = (*p).getPregunta();
+		     string r1 = (*p).getRespuesta1();
+		     string r2 = (*p).getRespuesta2();
+		     string r3 = (*p).getRespuesta3();
+		     string dificultad = (*p).getDificultad();
+		     int ID = (*p).getID();
+
+		     //Preparar el statement:
+	   	//ATRIBUTOS QUE TENDRÁN TODAS:
+
+	    	//ID
+
+	    	int result = sqlite3_bind_int(stmt, 7, ID);
+	    	if (result != SQLITE_OK)
+		    {
+		       cout << "Error binding parameters" <<  endl;
+		       cout << sqlite3_errmsg(db) <<  endl;
+		      sqlite3_finalize(stmt);
+		      return result;
+		    }
+
+		    //PREGUNTA
+	
+		    result = sqlite3_bind_text(stmt, 1, pregunta.c_str(), pregunta.length(), SQLITE_STATIC);
+		    if (result != SQLITE_OK)
+		    {
+		       cout << "Error binding parameters" <<  endl;
+		       cout << sqlite3_errmsg(db) <<  endl;
+		      sqlite3_finalize(stmt);
+		      return result;
+		    }
+
+		    //R1:
+	
+		    result = sqlite3_bind_text(stmt, 2, r1.c_str(), r1.length(), SQLITE_STATIC);
+		    if (result != SQLITE_OK)
+		    {
+		       cout << "Error binding parameters" <<  endl;
+		       cout << sqlite3_errmsg(db) <<  endl;
+		      sqlite3_finalize(stmt);
+		      return result;
+		    }
+
+		    //R2:
+
+		    result = sqlite3_bind_text(stmt, 3, r2.c_str(), r2.length(), SQLITE_STATIC);
+		    if (result != SQLITE_OK)
+		    {
+		       cout << "Error binding parameters" <<  endl;
+		       cout << sqlite3_errmsg(db) <<  endl;
+		      sqlite3_finalize(stmt);
+		      return result;
+		    }
+
+		    //SOLO EN MEDIA O DIFÍCIL
+		    //R3:
+			    result = sqlite3_bind_text(stmt, 4, r3.c_str(), r3.length(), SQLITE_STATIC);
+			    if (result != SQLITE_OK)
+			    {
+			       cout << "Error binding parameters" <<  endl;
+			       cout << sqlite3_errmsg(db) <<  endl;
+			      sqlite3_finalize(stmt);
+			      return result;
+			    }
+		   
+
+		    //SOLO EN DIFÍCIL
+		    //R4:
+		    	// Es media o facil, no tiene R4
+		    	//NULL
+		    	result = sqlite3_bind_text(stmt, 5, NULL, 0, SQLITE_STATIC);
+			    if (result != SQLITE_OK)
+			    {
+			       cout << "Error binding parameters" <<  endl;
+			       cout << sqlite3_errmsg(db) <<  endl;
+			      sqlite3_finalize(stmt);
+			      return result;
+			    }
+		    
+
+		    //DIFICULTAD
+	
+		    result = sqlite3_bind_text(stmt, 6, dificultad.c_str(), dificultad.length(), SQLITE_STATIC);
+		    if (result != SQLITE_OK)
+		    {
+		       cout << "Error binding parameters" <<  endl;
+		       cout << sqlite3_errmsg(db) <<  endl;
+		      sqlite3_finalize(stmt);
+		      return result;
+		    }
+
+		    //ID
+
+	    	result = sqlite3_bind_int(stmt, 7, ID);
+	    	if (result != SQLITE_OK)
+		    {
+		       cout << "Error binding parameters" <<  endl;
+		       cout << sqlite3_errmsg(db) <<  endl;
+		      sqlite3_finalize(stmt);
+		      return result;
+		    }
+
+	    }
+	    else
+	    {
+	    	prfacil* p = dynamic_cast<prfacil*>(preg_punt);
+
+	    	 string pregunta = (*p).getPregunta();
+		     string r1 = (*p).getRespuesta1();
+		     string r2 = (*p).getRespuesta2();
+		     string dificultad = (*p).getDificultad();
+	    	 int ID = (*p).getID();
+
+	    	 //Preparar el statement:
+	   	//ATRIBUTOS QUE TENDRÁN TODAS:
+
+	    	//ID
+
+	    	int result = sqlite3_bind_int(stmt, 7, ID);
+	    	if (result != SQLITE_OK)
+		    {
+		       cout << "Error binding parameters" <<  endl;
+		       cout << sqlite3_errmsg(db) <<  endl;
+		      sqlite3_finalize(stmt);
+		      return result;
+		    }
+
+		    //PREGUNTA
+	
+		    result = sqlite3_bind_text(stmt, 1, pregunta.c_str(), pregunta.length(), SQLITE_STATIC);
+		    if (result != SQLITE_OK)
+		    {
+		       cout << "Error binding parameters" <<  endl;
+		       cout << sqlite3_errmsg(db) <<  endl;
+		      sqlite3_finalize(stmt);
+		      return result;
+		    }
+
+		    //R1:
+	
+		    result = sqlite3_bind_text(stmt, 2, r1.c_str(), r1.length(), SQLITE_STATIC);
+		    if (result != SQLITE_OK)
+		    {
+		       cout << "Error binding parameters" <<  endl;
+		       cout << sqlite3_errmsg(db) <<  endl;
+		      sqlite3_finalize(stmt);
+		      return result;
+		    }
+
+		    //R2:
+
+		    result = sqlite3_bind_text(stmt, 3, r2.c_str(), r2.length(), SQLITE_STATIC);
+		    if (result != SQLITE_OK)
+		    {
+		       cout << "Error binding parameters" <<  endl;
+		       cout << sqlite3_errmsg(db) <<  endl;
+		      sqlite3_finalize(stmt);
+		      return result;
+		    }
+
+		    //SOLO EN MEDIA O DIFÍCIL
+		    //R3:
+		    
+		    	//NULL -> si es facil, le metemos NULL en r3
+		    	result = sqlite3_bind_text(stmt, 5, NULL, 0, SQLITE_STATIC);
+			    if (result != SQLITE_OK)
+			    {
+			       cout << "Error binding parameters" <<  endl;
+			       cout << sqlite3_errmsg(db) <<  endl;
+			      sqlite3_finalize(stmt);
+			      return result;
+			    }
+		    
+
+		    //SOLO EN DIFÍCIL
+		    //R4:
+		    	// Es media o facil, no tiene R4
+		    	//NULL
+		    	result = sqlite3_bind_text(stmt, 5, NULL, 0, SQLITE_STATIC);
+			    if (result != SQLITE_OK)
+			    {
+			       cout << "Error binding parameters" <<  endl;
+			       cout << sqlite3_errmsg(db) <<  endl;
+			      sqlite3_finalize(stmt);
+			      return result;
+			    }
+		    
+
+		    //DIFICULTAD
+	
+		    result = sqlite3_bind_text(stmt, 6, dificultad.c_str(), dificultad.length(), SQLITE_STATIC);
+		    if (result != SQLITE_OK)
+		    {
+		       cout << "Error binding parameters" <<  endl;
+		       cout << sqlite3_errmsg(db) <<  endl;
+		      sqlite3_finalize(stmt);
+		      return result;
+		    }
+
+		    //ID
+
+	    	result = sqlite3_bind_int(stmt, 7, ID);
+	    	if (result != SQLITE_OK)
+		    {
+		       cout << "Error binding parameters" <<  endl;
+		       cout << sqlite3_errmsg(db) <<  endl;
+		      sqlite3_finalize(stmt);
+		      return result;
+		    }
+
+	    }
+
+	    
+	    
 	     //Ejecutamos el UPDATE
 	    result = sqlite3_step(stmt);
 	    if (result != SQLITE_DONE) 
