@@ -590,7 +590,7 @@ int DBConnector::update_Pregunta(preguntas_respuestas preguntaModificar)
   	{ 
 		sqlite3_stmt *stmt;
 		char sql[] = "update Preguntas set PREGUNTA = ?, R1 = ?, R2 = ?, R3 = ?, R4 = ?, DIFICULTAD = ? where ID = ?";
-	   
+	  	int result;
 		preguntas_respuestas* preg_punt = &preguntaModificar;
 		
 	   if (preguntaModificar.getDificultad()=="###")
@@ -715,7 +715,7 @@ int DBConnector::update_Pregunta(preguntas_respuestas preguntaModificar)
 
 	    	//ID
 
-	    	int result = sqlite3_bind_int(stmt, 7, ID);
+	    	result = sqlite3_bind_int(stmt, 7, ID);
 	    	if (result != SQLITE_OK)
 		    {
 		       cout << "Error binding parameters" <<  endl;
@@ -821,7 +821,7 @@ int DBConnector::update_Pregunta(preguntas_respuestas preguntaModificar)
 
 	    	//ID
 
-	    	int result = sqlite3_bind_int(stmt, 7, ID);
+	    	result = sqlite3_bind_int(stmt, 7, ID);
 	    	if (result != SQLITE_OK)
 		    {
 		       cout << "Error binding parameters" <<  endl;
