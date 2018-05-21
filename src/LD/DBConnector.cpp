@@ -172,7 +172,7 @@ using namespace std;
   }
 
   //INSERT:
-  int DBConnector::insert_jugador (jugador jugadorInsertar)
+  int DBConnector::insert_Jugador (jugador jugadorInsertar)
   {
   	if(Jugador_existe(jugadorInsertar) == 0)
   	{ //el jugador no existe, lo podemos insertar
@@ -1073,7 +1073,7 @@ int DBConnector::leer_Jugadores(vector <jugador>& listaTodosJugadores)
       	puntuacion = sqlite3_column_int(stmt, 1);
   
       	//Crear un jugador con esos atributos
-      	jugador jug = new jugador( nick, puntuacion);
+      	jugador jug (nick, puntuacion);
     	
     	listaTodosJugadores.push_back (jug);
       	// listaTodosJugadores[cont] = jugador;
@@ -1151,49 +1151,48 @@ int DBConnector::leer_Preguntas(vector <preguntas_respuestas>& listaTodasPregunt
       result = sqlite3_step(stmt);
       if (result == SQLITE_ROW) 
       { 
+      	// preguntas_respuestas p;
 
       	ID = sqlite3_column_int(stmt, 0);
-      	p.setID (ID);
 
        	strcpy(preguta, (char*)sqlite3_column_text(stmt, 1));   
-       	p.setPregunta(pregunta);
 
        	strcpy(r1, (char*)sqlite3_column_text(stmt, 2));
-       	p.setRespuesta1 (r1);
 
        	strcpy(r2, (char*)sqlite3_column_text(stmt, 3));
-       	p.setRespuesta2 (r2);
       	//Leemos dificultad antes que R3 y R4 ya que depende de este atributo si tiene o no estos dos
       	strcpy(dificultad, (char*)sqlite3_column_text(stmt, 6));
-      	p.setDificultad(dificultad);
 
       	if(strcmp(dificultad, "###") == 0)
       	{
       		//Es dificil
       		strcpy(r3, (char*)sqlite3_column_text(stmt, 4));
-      		p.SetRespuesta3 ( r3 );
        		strcpy(r4, (char*)sqlite3_column_text(stmt, 5));
-       		p.setRespuesta4 (r4);
 
        		//Creamos una Pregunta_respuestas con estos atributos:
-      		preguntas_respuestas p = new (pregunta,r1, r2, r3, r4, dificultad, true);//el ultimo es true para no darle el ID
+      		prdificil p = new (pregunta,r1, r2, r3, r4, dificultad, true);//el ultimo es true para no darle el ID
       		p.setID (ID);
+      		listaTodasPreguntas.push_back(p);
+
       	}
       	else if(strcmp(dificultad, "##") == 0)
       	{
       		//Es media
-      		p.SetRespuesta3 ( r3 );
-      		preguntas_respuestas p = new (pregunta,r1, r2, r3, dificultad, true);//el ultimo es true para no darle el ID
-      		p.setID (ID);
+      		prmedio p = new (pregunta,r1, r2, r3, dificultad, true);//el ultimo es true para no darle el ID
+     		p.setID (ID);
+      	 	listaTodasPreguntas.push_back(p);
+
       	}
       	else
       	{
-      		preguntas_respuestas p = new (pregunta,r1, r2, dificultad, true);//el ultimo es true para no darle el ID
+      		prfacil p = new (pregunta,r1, r2, dificultad, true);//el ultimo es true para no darle el ID
       		p.setID (ID);
+           	listaTodasPreguntas.push_back(p);
+
       	}
       	// listaTodasPreguntas[cont] = p;
       	// cont++;  
-      	listaTodasPreguntas.push_back(p);
+      	// listaTodasPreguntas.push_back(p);
       }
     } while (result == SQLITE_ROW);
 
