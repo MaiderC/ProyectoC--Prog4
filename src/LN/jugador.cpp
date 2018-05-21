@@ -23,7 +23,7 @@ jugador::jugador (string nick, int puntuacion)
 //destructor
 jugador::~jugador ()
 {
-  delete nick;
+  
 }
 
 //constructor copia
