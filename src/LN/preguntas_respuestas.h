@@ -2,6 +2,7 @@
 #define PREGUNTAS_RESPUESTAS_H
 
 #include <iostream>
+#include <string.h>
 #include "jugador.h"
 
 using namespace std;

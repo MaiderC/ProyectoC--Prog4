@@ -8,6 +8,7 @@
 #include "../LN/prdificil.h"
 #include <iostream>
 #include <vector>
+#include <string.h>
 
 using namespace std;
 using namespace utilidades;

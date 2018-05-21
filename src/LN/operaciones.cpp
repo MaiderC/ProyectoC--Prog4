@@ -6,6 +6,7 @@
 #include "jugador.h"
 #include <vector>
 #include <iostream>
+#include <string.h>
 
 using namespace std;
 

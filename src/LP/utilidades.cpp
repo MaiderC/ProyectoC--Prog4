@@ -6,6 +6,7 @@
 #include "../LN/prfacil.h"
 #include "../LN/prmedio.h"
 #include "../LN/prdificil.h"
+#include <string.h>
 
 using namespace std;
 

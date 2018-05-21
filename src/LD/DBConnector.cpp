@@ -229,7 +229,7 @@ int DBConnector::insert_Pregunta (preguntas_respuestas PreguntaInsertar)
 	  	sqlite3_stmt *stmt;
 	  	char sql[] = "insert into Preguntas (ID, PREGUNTA, R1, R2, R3, R4, DIFICULTAD) values (?, ?, ?, ?, ?, ?, ?)";
 	    
-	    int result = sqlite3_prepare_v2(db, sql, strlen(sql) + 1, &stmt, NULL) ;
+	    int result = sqlite3_prepare_v2(db, sql, strlen(sql) + 1, &stmt, NULL);
 	    if (result != SQLITE_OK) 
 	    {
 	       cout << "Error preparing statement (INSERT)" <<  endl;

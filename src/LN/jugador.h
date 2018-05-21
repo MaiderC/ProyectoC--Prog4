@@ -2,6 +2,7 @@
 #define JUGADOR_H
 
 #include <iostream>
+#include <string.h>
 
 using namespace std;
 
