@@ -12,14 +12,14 @@ using namespace std;
 #define DEFAULT_DIFICULTAD ###
 
 //constructores
-prdificil::preguntas_respuestas()
+prdificil::prdificil()
 {
   this -> respuesta2 = DEFAULT_RESPUESTA2;
   this -> respuesta3 = DEFAULT_RESPUESTA3;
   this -> respuesta4 = DEFAULT_RESPUESTA4;
 }
 		
-prdificil::preguntas_respuestas(string pregunta, string respuesta1, string respuesta2, string respuesta3, string respuesta4, string dificultad, bool leerBD): preguntas_respuestas(pregunta, respuesta1, dificultad, leerBD)
+prdificil::prdificil(string pregunta, string respuesta1, string respuesta2, string respuesta3, string respuesta4, string dificultad, bool leerBD): preguntas_respuestas(pregunta, respuesta1, dificultad, leerBD)
 {
   // this -> pregunta = pregunta;
   // this -> respuesta1 = respuesta1;
@@ -30,7 +30,7 @@ prdificil::preguntas_respuestas(string pregunta, string respuesta1, string respu
 }
 
 //destructor
- prdificil::~preguntas_respuestas()
+ prdificil::~prdificil()
 {
   delete respuesta2;
   delete respuesta3;

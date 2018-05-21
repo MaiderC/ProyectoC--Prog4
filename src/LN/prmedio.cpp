@@ -13,20 +13,20 @@ using namespace std;
 
 
 //constructores
-prmedio::preguntas_respuestas()
+prmedio::prmedio()
 {
   this -> respuesta2 = DEFAULT_RESPUESTA2;
   this -> respuesta3 = DEFAULT_RESPUESTA3;
 }
 		
-prmedio::preguntas_respuestas(string pregunta, string respuesta1, string respuesta2, string respuesta3, string dificultad, bool leerBD): preguntas_respuestas(pregunta, respuesta1, dificultad, leerBD)
+prmedio::prmedio(string pregunta, string respuesta1, string respuesta2, string respuesta3, string dificultad, bool leerBD): preguntas_respuestas(pregunta, respuesta1, dificultad, leerBD)
 {
   this -> respuesta2 = respuesta2;
   this -> respuesta3 = respuesta3;
 }
 
 //destructor
- prmedio::~preguntas_respuestas()
+ prmedio::~prmedio()
 {
   // delete pregunta;
   // delete Respuesta1;
