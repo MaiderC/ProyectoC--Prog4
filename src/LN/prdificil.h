@@ -19,8 +19,8 @@ class prdificil :  public preguntas_respuestas
 	public:
 
 		//constructores
-		prdificil(): preguntas_respuestas(){};
-		prdificil(string pregunta, string respuesta1, string respuesta2, string respuesta3, string respuesta4, string dificultad, bool leerBD): preguntas_respuestas(pregunta, respuesta1, dificultad, leerBD){};
+		prdificil();
+		prdificil(string pregunta, string respuesta1, string respuesta2, string respuesta3, string respuesta4, string dificultad, bool leerBD);
 	
 		//destructor
 		virtual ~prdificil();
