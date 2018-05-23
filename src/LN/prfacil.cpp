@@ -47,7 +47,7 @@ string prfacil::getRespuesta2() const
 
  void prfacil::sumarPunto(jugador jugador)
 {
-	jugador.puntuacion =+ 1;
+	jugador.puntuacion += 1;
 }
 
  void prfacil::prepararRespuestas(preguntas_respuestas pregunta, string facil)

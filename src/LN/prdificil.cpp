@@ -77,7 +77,7 @@ string prdificil::getRespuesta4() const
 
  void prdificil::sumarPunto(jugador jugador)
 {
-	jugador.puntuacion =+ 3;
+	jugador.puntuacion += 3;
 }
 
  void prdificil::prepararRespuestas(pregunta_respuestas pregunta, string dificil)
