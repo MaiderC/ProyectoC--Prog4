@@ -5,9 +5,9 @@
 
 using namespace std;
 
-#define DEFAULT_PREGUNTA defaultQuestion
-#define DEFAULT_RESPUESTA defaultAnswer1
-#define DEFAULT_DIFICULTAD #
+#define DEFAULT_PREGUNTA "defaultQuestion"
+#define DEFAULT_RESPUESTA "defaultAnswer1"
+#define DEFAULT_DIFICULTAD "#"
 
 //esto es para q haga una vez el inicio del contador
 int preguntas_respuestas::cont = 0;

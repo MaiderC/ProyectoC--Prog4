@@ -7,9 +7,9 @@
 using namespace std;
 
 
-#define DEFAULT_RESPUESTA2 defaultAnswer2
-#define DEFAULT_RESPUESTA3 defaultAnswer3
-#define DEFAULT_DIFICULTAD ##
+#define DEFAULT_RESPUESTA2 "defaultAnswer2"
+#define DEFAULT_RESPUESTA3 "defaultAnswer3"
+#define DEFAULT_DIFICULTAD "##"
 
 
 //constructores
