@@ -160,9 +160,11 @@ vector<jugador> operaciones::actualizarPuntuacion(const vector<jugador>& listaTo
         {
           if(listaTodosJugadores[i].getNick() == listaJugadoresSesion[j].getNick())
           {
-          	int auxPuntuacion = (listaTodosJugadores[i].getPuntuacion() + listaJugadoresSesion[j].getPuntuacion());
+          	jugador auxJugador1 = listaTodosJugadores[i];
+          	jugador auxJugador2 = listaJugadoresSesion[j];
+          	int auxPuntuacion = (auxJugador1.getPuntuacion() + auxJugador2.getPuntuacion());
             listaTodosJugadores[i].setPuntuacion(auxPuntuacion);
-            listaJugadoresSesion.erase(j);
+            listaJugadoresSesion.erase(listaJugadoresSesion.begin()+j, listaJugadoresSesion.begin()+j);
           }
         }
       }
@@ -170,8 +172,9 @@ vector<jugador> operaciones::actualizarPuntuacion(const vector<jugador>& listaTo
 
     for(int i = 0; i < listaJugadoresSesion.size(); i++)
     {
-      listaTodosJugadores.push_back(listaJugadoresSesion[i]);
-      listaJugadoresSesion.erase(i);
+    	jugador auxJugador = listaJugadoresSesion[i];
+      	listaTodosJugadores.push_back(auxJugador);
+      	listaJugadoresSesion.erase(listaJugadoresSesion.begin()+i, listaJugadoresSesion.begin()+i);
     }
 
     return listaTodosJugadores;
