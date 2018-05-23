@@ -27,7 +27,7 @@ class jugador
 
 	//getters y setters
 	void setNick (string nick);
-	void setPuntuacion(int punt);
+	void setPuntuacion(int puntuacion);
 
 	string getNick() const;
 	int getPuntuacion() const;

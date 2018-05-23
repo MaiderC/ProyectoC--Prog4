@@ -17,7 +17,7 @@ class operaciones
 	void siguienteID(const vector<preguntas_respuestas>& listaTodasRespuestas);
 	preguntas_respuestas generarPregunta(const vector<preguntas_respuestas>& listaTodasPreguntas, vector<preguntas_respuestas>& preguntasSalidas);
 	int comprobarRespuesta(const string& respuesta);
-	int maxPreguntas(const int cantPreguntas, const int sizeTotalPreguntas);
+	int maxPreguntas(const int& cantPreguntas, const int& sizeTotalPreguntas);
 	void ordenarJugadores(vector<jugador>& jugadoresLeidos);
 	int maxPuntuacion(const vector<jugador>& jugadores);
 	vector<jugador> actualizarPuntuacion(const vector<jugador>& listaTodosJugadores, vector<jugador>& listaJugadoresSesion);

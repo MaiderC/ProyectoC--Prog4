@@ -39,8 +39,8 @@ preguntas_respuestas operaciones::generarPregunta(const vector<preguntas_respues
 	{
 		repetida = 0;
 
-		random = rand() % sizeTotalPreguntas; //genera un número aleatorio entre 0 y sizeTotalPreguntas-1
-		pregunta(listaTodasPreguntas[random]);
+		random = rand() % listaTodasPreguntas.size(); //genera un número aleatorio entre 0 y sizeTotalPreguntas-1
+		pregunta = listaTodasPreguntas[random];
 
 		preguntasSalidas.push_back(pregunta);
 	}
@@ -49,9 +49,9 @@ preguntas_respuestas operaciones::generarPregunta(const vector<preguntas_respues
 		 	do
 		 	{
 			 		repetida = 0;
-			 		random = rand() % sizeTotalPreguntas; //Genera un número aleatorio entre 0 y sizeTotalPreguntas-1
+			 		random = rand() % listaTodasPreguntas.size(); //Genera un número aleatorio entre 0 y sizeTotalPreguntas-1
 
-			 		pregunta(listaTodasPreguntas[random]);
+			 		pregunta = listaTodasPreguntas[random];
 			 		
 				 		for(int j = 0; j < preguntasSalidas.size(); j++)
 				 		{
