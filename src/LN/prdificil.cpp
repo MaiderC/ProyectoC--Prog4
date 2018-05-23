@@ -32,9 +32,6 @@ prdificil::prdificil(string pregunta, string respuesta1, string respuesta2, stri
 //destructor
  prdificil::~prdificil()
 {
-  delete respuesta2;
-  delete respuesta3;
-  delete respuesta4;
 }
 
 //constructor copia

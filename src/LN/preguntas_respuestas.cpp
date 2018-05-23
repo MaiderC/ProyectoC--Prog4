@@ -43,11 +43,7 @@ preguntas_respuestas:: preguntas_respuestas(string pregunta, string respuesta1,s
 //destructor
  preguntas_respuestas::~preguntas_respuestas()
 {
-  delete pregunta;
-  delete respuesta1;
-  delete dificultad;
 }
-
 //constructor copia
 preguntas_respuestas::preguntas_respuestas(const preguntas_respuestas &p_r)
 {

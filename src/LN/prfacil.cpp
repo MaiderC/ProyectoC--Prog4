@@ -24,7 +24,6 @@ prfacil::prfacil(string pregunta, string respuesta1, string respuesta2, string d
 //destructor
  prfacil::~prfacil()
 {
-   delete respuesta2;
 }
 
 //constructor copia

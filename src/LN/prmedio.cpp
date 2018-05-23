@@ -28,12 +28,6 @@ prmedio::prmedio(string pregunta, string respuesta1, string respuesta2, string r
 //destructor
  prmedio::~prmedio()
 {
-  // delete pregunta;
-  // delete Respuesta1;
-  delete respuesta2;
-  delete respuesta3;
-  // delete dificultad;
-  // preguntas_respuestas::~prmedio();
 }
 
 //constructor copia
