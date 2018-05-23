@@ -160,7 +160,8 @@ vector<jugador> operaciones::actualizarPuntuacion(const vector<jugador>& listaTo
         {
           if(listaTodosJugadores[i].getNick() == listaJugadoresSesion[j].getNick())
           {
-            listaTodosJugadores[i].setPuntuacion(listaTodosJugadores[i].getPuntuacion() + listaJugadoresSesion[j].getPuntuacion());
+          	int auxPuntuacion = (listaTodosJugadores[i].getPuntuacion() + listaJugadoresSesion[j].getPuntuacion());
+            listaTodosJugadores[i].setPuntuacion(auxPuntuacion);
             listaJugadoresSesion.erase(j);
           }
         }
