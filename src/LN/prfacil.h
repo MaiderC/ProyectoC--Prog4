@@ -23,7 +23,7 @@ class prfacil :  public preguntas_respuestas
 		virtual ~prfacil();
 
 		//constructor copia
-		prfacil(const prfacil &pf): preguntas_respuestas(pf){};
+		prfacil(const prfacil &pf);
 
 		//setter y getter
 		void setRespuesta2(string RDos);

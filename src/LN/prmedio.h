@@ -24,7 +24,7 @@ class prmedio :  public preguntas_respuestas
 		virtual ~prmedio();
 
 		//constructor copia
-		prmedio(const prmedio &pm): preguntas_respuestas(pm){};
+		prmedio(const prmedio &pm);
 
 		//getter y setter
 		void setRespuesta2(string RDos);

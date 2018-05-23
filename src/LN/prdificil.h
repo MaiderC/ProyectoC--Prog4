@@ -26,7 +26,7 @@ class prdificil :  public preguntas_respuestas
 		virtual ~prdificil();
 
 		//constructor copia
-		prdificil(const prdificil &pd): preguntas_respuestas(pd){};
+		prdificil(const prdificil &pd);
 
 		//getter y setter
 		void setRespuesta2(string RDos);
