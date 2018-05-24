@@ -34,7 +34,7 @@ class prmedio :  public preguntas_respuestas
 
 		//metodos de clase
 		virtual void sumarPunto(jugador jugador);
-		virtual void prepararRespuestas();
+		virtual void prepararRespuestas(preguntas_respuestas pregunta, string medio);
 
 		//sobrecarga de operador =
 		bool operator=(const prmedio& p_m);

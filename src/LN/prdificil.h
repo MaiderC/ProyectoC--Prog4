@@ -38,7 +38,7 @@ class prdificil :  public preguntas_respuestas
 
 		//metodos de clse
 		virtual void sumarPunto(jugador jugador);
-		virtual void prepararRespuestas();
+		virtual void prepararRespuestas(preguntas_respuestas pregunta, string dificil);
 
 		//sobrecarga de operador =
 		bool operator=(const prdificil& pd);

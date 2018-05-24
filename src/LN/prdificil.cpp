@@ -77,7 +77,7 @@ string prdificil::getRespuesta4() const
 
  void prdificil::sumarPunto(jugador jugador)
 {
-	jugador.getPuntuacion() += 3;
+	jugador.setPuntuacion(jugador.getPuntuacion() + 3);
 }
 
  void prdificil::prepararRespuestas(preguntas_respuestas pregunta, string dificil)
@@ -134,58 +134,58 @@ bool prdificil::operator=(const prdificil& pd)
 
 ostream& operator<<(ostream& out, const preguntas_respuestas& Pregunta)
 {
-	out << Pregunta.Pregunta << endl;
+	out << Pregunta.pregunta << endl;
 
 	out << "a) ";
-	if((Pregunta.Respuesta1.c_str())[0] == '#')
+	if((Pregunta.respuesta1.c_str())[0] == '#')
 	{
-		string aux = Pregunta.Respuesta1;
+		string aux = Pregunta.respuesta1;
 
 		aux.erase(0, 1);
 
 		out << aux << endl;
 	} else
 	{
-		out << Pregunta.Respuesta1 << endl;
+		out << Pregunta.respuesta1 << endl;
 	}
 
 	out << "b) ";
-	if((Pregunta.Respuesta2.c_str())[0] == '#')
+	if((Pregunta.respuesta2.c_str())[0] == '#')
 	{
-		string aux = Pregunta.Respuesta2;
+		string aux = Pregunta.respuesta2;
 
 		aux.erase(0, 1);
 
 		out << aux << endl;
 	} else
 	{
-		out << Pregunta.Respuesta2 << endl;
+		out << Pregunta.respuesta2 << endl;
 	}
 
 	out << "c) ";
-	if((Pregunta.Respuesta3.c_str())[0] == '#')
+	if((Pregunta.respuesta3.c_str())[0] == '#')
 	{
-		string aux = Pregunta.Respuesta3;
+		string aux = Pregunta.respuesta3;
 
 		aux.erase(0, 1);
 
 		out << aux << endl;
 	} else
 	{
-		out << Pregunta.Respuesta3 << endl;
+		out << Pregunta.respuesta3 << endl;
 	}
 
 	out << "d) ";
-	if((Pregunta.Respuesta4.c_str())[0] == '#')
+	if((Pregunta.respuesta4.c_str())[0] == '#')
 	{
-		string aux = Pregunta.Respuesta3;
+		string aux = Pregunta.respuesta3;
 
 		aux.erase(0, 1);
 
 		out << aux << endl;
 	} else
 	{
-		out << Pregunta.Respuesta3 << endl;
+		out << Pregunta.respuesta3 << endl;
 	}
 
 	return out;
@@ -194,22 +194,22 @@ ostream& operator<<(ostream& out, const preguntas_respuestas& Pregunta)
 istream& operator>>(istream& in, preguntas_respuestas& Pregunta)
 {
 	cout << "Introduce la pregunta a insertar: ";
-	in >> Pregunta.Pregunta;
+	in >> Pregunta.pregunta;
 
 	cout << "*La respuesta no debe contener la letra de la opcion (a o b) ni signos de puntuacion al inicio (salvo que se trate de un guion, por ser la respuesta un numero negativo)";
 	cout << "Introduce la respuesta correcta: ";
-	in >> Pregunta.Respuesta1;
+	in >> Pregunta.respuesta1;
 
-	Pregunta.Respuesta1 = '#' + Pregunta.Respuesta1;
-
-	cout << "Introduce otra respuesta (una incorrecta): ";
-	in >> Pregunta.Respuesta2;
+	Pregunta.respuesta1 = '#' + Pregunta.respuesta1;
 
 	cout << "Introduce otra respuesta (una incorrecta): ";
-	in >> Pregunta.Respuesta3;
+	in >> Pregunta.respuesta2;
 
 	cout << "Introduce otra respuesta (una incorrecta): ";
-	in >> Pregunta.Respuesta4;
+	in >> Pregunta.respuesta3;
+
+	cout << "Introduce otra respuesta (una incorrecta): ";
+	in >> Pregunta.respuesta4;
 
 	return in;
 }

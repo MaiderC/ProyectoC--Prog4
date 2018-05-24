@@ -47,7 +47,7 @@ string prfacil::getRespuesta2() const
 
  void prfacil::sumarPunto(jugador jugador)
 {
-	jugador.getPuntuacion() += 1;
+	jugador.setPuntuacion(jugador.getPuntuacion() + 1);
 }
 
  void prfacil::prepararRespuestas(preguntas_respuestas pregunta, string facil)
@@ -135,7 +135,7 @@ istream& operator>>(istream& in, preguntas_respuestas& Pregunta)
 
 	mostrarMensaje("*La respuesta no debe contener la letra de la opcion (a o b) ni signos de puntuacion al inicio (salvo que se trate de un guion, por ser la respuesta un numero negativo)");
 	mostrarMensaje("Introduce la respuesta correcta: ");
-	in >> Pregunta.Respuesta1;
+	in >> Pregunta.respuesta1;
 
 	Pregunta.respuesta1 = '#' + Pregunta.respuesta1;
 
