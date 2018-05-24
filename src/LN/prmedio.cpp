@@ -106,9 +106,7 @@ string prmedio::getRespuesta3() const
 	
 	this -> respuesta1 = respuestas[0];
 	this -> respuesta2 = respuestas[1];
-	this -> respuesta3 = respuestas[2];
-
-	
+	this -> respuesta3 = respuestas[2];	
 }
 
 bool prmedio::operator=(const prmedio& pm)
@@ -119,45 +117,47 @@ bool prmedio::operator=(const prmedio& pm)
 
 ostream& operator<<(ostream& out, const preguntas_respuestas& Pregunta)
 {
-	out << Pregunta.pregunta << endl;
+	prfacil* preguntamedio = dynamic_cast<*prfacil>(Pregunta);
+
+	out << preguntamedio.pregunta << endl;
 
 	out << "a) ";
-	if((Pregunta.respuesta1.c_str())[0] == '#')
+	if((preguntamedio->respuesta1.c_str())[0] == '#')
 	{
-		string aux = Pregunta.respuesta1;
+		string aux = preguntamedio->respuesta1;
 
 		aux.erase(0, 1);
 
 		out << aux << endl;
 	} else
 	{
-		out << Pregunta.respuesta1 << endl;
+		out << preguntamedio->respuesta1 << endl;
 	}
 
 	out << "b) ";
-	if((Pregunta.respuesta2.c_str())[0] == '#')
+	if((preguntamedio->respuesta2.c_str())[0] == '#')
 	{
-		string aux = Pregunta.respuesta2;
+		string aux = preguntamedio->respuesta2;
 
 		aux.erase(0, 1);
 
 		out << aux << endl;
 	} else
 	{
-		out << Pregunta.respuesta2 << endl;
+		out << preguntamedio->respuesta2 << endl;
 	}
 
 	out << "c) ";
-	if((Pregunta.respuesta3.c_str())[0] == '#')
+	if((preguntamedio->respuesta3.c_str())[0] == '#')
 	{
-		string aux = Pregunta.respuesta3;
+		string aux = preguntamedio->respuesta3;
 
 		aux.erase(0, 1);
 
 		out << aux << endl;
 	} else
 	{
-		out << Pregunta.respuesta3 << endl;
+		out << preguntamedio->respuesta3 << endl;
 	}
 
 	return out;
@@ -165,20 +165,22 @@ ostream& operator<<(ostream& out, const preguntas_respuestas& Pregunta)
 
 istream& operator>>(istream& in, preguntas_respuestas& Pregunta)
 {
+	prfacil* preguntamedio = dynamic_cast<*prfacil>(Pregunta);
+
 	mostrarMensaje("Introduce la pregunta a insertar: ");
-	in >> Pregunta.pregunta;
+	in >> preguntamedio->pregunta;
 
 	mostrarMensaje("*La respuesta no debe contener la letra de la opcion (a o b) ni signos de puntuacion al inicio (salvo que se trate de un guion, por ser la respuesta un numero negativo)");
 	mostrarMensaje("Introduce la respuesta correcta: ");
-	in >> Pregunta.respuesta1;
+	in >> preguntamedio->respuesta1;
 
-	Pregunta.respuesta1 = '#' + Pregunta.respuesta1;
-
-	mostrarMensaje("Introduce otra respuesta (una incorrecta): ");
-	in >> Pregunta.respuesta2;
+	preguntamedio->respuesta1 = '#' + preguntamedio->respuesta1;
 
 	mostrarMensaje("Introduce otra respuesta (una incorrecta): ");
-	in >> Pregunta.respuesta3;
+	in >> preguntamedio->respuesta2;
+
+	mostrarMensaje("Introduce otra respuesta (una incorrecta): ");
+	in >> preguntamedio->respuesta3;
 
 	return in;
 }
