@@ -99,32 +99,32 @@ ostream& operator<<(ostream& out, const preguntas_respuestas& Pregunta)
 {
 	prfacil* preguntafacil = dynamic_cast<prfacil*>(Pregunta);
 
-	out << preguntafacil.pregunta << endl;
+	out << (*preguntafacil).getPregunta() << endl;
 
 	out << "a) ";
-	if(preguntafacil.respuesta1[0] == '#')
+	if((*preguntafacil).getRespuesta1()[0] == '#')
 	{
-		string aux = preguntafacil.respuesta1;
+		string aux = (*preguntafacil).getRespuesta1();
 
 		aux.erase(0, 1);
 
 		out << aux << endl;
 	} else
 	{
-		out << preguntafacil.respuesta1 << endl;
+		out << (*preguntafacil).getRespuesta1() << endl;
 	}
 
 	out << "b) ";
-	if((preguntafacil.respuesta2)[0] == '#')
+	if(((*preguntafacil).respuesta2)[0] == '#')
 	{
-		string aux = preguntafacil.respuesta2;
+		string aux = (*preguntafacil).respuesta2;
 
 		aux.erase(0, 1);
 
 		out << aux << endl;
 	} else
 	{
-		out << preguntafacil.respuesta2 << endl;
+		out << (*preguntafacil).respuesta2 << endl;
 	}
 
 	return out;
@@ -135,16 +135,16 @@ istream& operator>>(istream& in, preguntas_respuestas& Pregunta)
 	prfacil* preguntafacil = dynamic_cast<prfacil*>(Pregunta);
 	
 	mostrarMensaje("Introduce la pregunta a insertar: ");
-	in >> preguntafacil.pregunta;
+	in >> (*preguntafacil).getPregunta();
 
 	mostrarMensaje("*La respuesta no debe contener la letra de la opcion (a o b) ni signos de puntuacion al inicio (salvo que se trate de un guion, por ser la respuesta un numero negativo)");
 	mostrarMensaje("Introduce la respuesta correcta: ");
-	in >> preguntafacil.respuesta1;
+	in >> (*preguntafacil).getPespuesta1();
 
-	preguntafacil.respuesta1 = '#' + preguntafacil.respuesta1;
+	(*preguntafacil).respuesta1 = '#' + (*preguntafacil).respuesta1;
 
 	mostrarMensaje("Introduce otra respuesta (una incorrecta): ");
-	in >> preguntafacil.respuesta2;
+	in >> (*preguntafacil).respuesta2;
 
 	return in;
 }

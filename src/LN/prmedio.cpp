@@ -119,45 +119,45 @@ ostream& operator<<(ostream& out, const preguntas_respuestas& Pregunta)
 {
 	prfacil* preguntamedio = dynamic_cast<*prfacil>(Pregunta);
 
-	out << preguntamedio.pregunta << endl;
+	out << (*preguntamedio).getPregunta() << endl;
 
 	out << "a) ";
-	if((preguntamedio->respuesta1.c_str())[0] == '#')
+	if((*preguntamedio).getRespuesta1()[0] == '#')
 	{
-		string aux = preguntamedio->respuesta1;
+		string aux = (*preguntamedio).getRespuesta1();
 
 		aux.erase(0, 1);
 
 		out << aux << endl;
 	} else
 	{
-		out << preguntamedio->respuesta1 << endl;
+		out << (*preguntamedio).getRespuesta1() << endl;
 	}
 
 	out << "b) ";
-	if((preguntamedio->respuesta2.c_str())[0] == '#')
+	if((*preguntamedio).respuesta2[0] == '#')
 	{
-		string aux = preguntamedio->respuesta2;
+		string aux = (*preguntamedio).respuesta2;
 
 		aux.erase(0, 1);
 
 		out << aux << endl;
 	} else
 	{
-		out << preguntamedio->respuesta2 << endl;
+		out << (*preguntamedio).respuesta2 << endl;
 	}
 
 	out << "c) ";
-	if((preguntamedio->respuesta3.c_str())[0] == '#')
+	if((*preguntamedio).respuesta3[0] == '#')
 	{
-		string aux = preguntamedio->respuesta3;
+		string aux = (*preguntamedio).respuesta3;
 
 		aux.erase(0, 1);
 
 		out << aux << endl;
 	} else
 	{
-		out << preguntamedio->respuesta3 << endl;
+		out << (*preguntamedio).respuesta3 << endl;
 	}
 
 	return out;
@@ -168,19 +168,19 @@ istream& operator>>(istream& in, preguntas_respuestas& Pregunta)
 	prfacil* preguntamedio = dynamic_cast<*prfacil>(Pregunta);
 
 	mostrarMensaje("Introduce la pregunta a insertar: ");
-	in >> preguntamedio->pregunta;
+	in >> (*preguntamedio).getPregunta();
 
 	mostrarMensaje("*La respuesta no debe contener la letra de la opcion (a o b) ni signos de puntuacion al inicio (salvo que se trate de un guion, por ser la respuesta un numero negativo)");
 	mostrarMensaje("Introduce la respuesta correcta: ");
-	in >> preguntamedio->respuesta1;
+	in >> (*preguntamedio).getRespuesta1();
 
-	preguntamedio->respuesta1 = '#' + preguntamedio->respuesta1;
-
-	mostrarMensaje("Introduce otra respuesta (una incorrecta): ");
-	in >> preguntamedio->respuesta2;
+	(*preguntamedio).getRespuesta1() = '#' + (*preguntamedio).getRespuesta1();
 
 	mostrarMensaje("Introduce otra respuesta (una incorrecta): ");
-	in >> preguntamedio->respuesta3;
+	in >> (*preguntamedio).respuesta2;
+
+	mostrarMensaje("Introduce otra respuesta (una incorrecta): ");
+	in >> (*preguntamedio).respuesta3;
 
 	return in;
 }
