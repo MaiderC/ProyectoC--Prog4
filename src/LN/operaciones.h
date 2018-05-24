@@ -23,6 +23,7 @@ class operaciones
 	int maxPuntuacion(const vector<jugador>& jugadores);
 	vector<jugador> actualizarPuntuacion(vector<jugador>& listaTodosJugadores, vector<jugador>& listaJugadoresSesion);
 	vector<jugador> actualizarPuntuacion(vector<jugador>& listaTodosJugadores, jugador jugadorPrincipal);
+	void guardarJugadores(const vector<jugador>& ListaTodosJugadores, DBConnector BD);
 };
 
 
