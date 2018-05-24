@@ -7,6 +7,7 @@
 #include <vector>
 #include <iostream>
 #include <string.h>
+#include "../LD/DBConnector.h"
 
 using namespace std;
 
@@ -182,7 +183,7 @@ vector<jugador> operaciones::actualizarPuntuacion(vector<jugador>& listaTodosJug
   {
     if(jugadorPrincipal.getNick() == listaTodosJugadores[i].getNick())
     {
-     listaTodosJugadores[i].setPuntuacion(listaTodosJugadores[i].getPuntuacion() + jugadorPrincipal[i].getPuntuacion());
+     listaTodosJugadores[i].setPuntuacion(listaTodosJugadores[i].getPuntuacion() + jugadorPrincipal.getPuntuacion());
     }
     else
     {

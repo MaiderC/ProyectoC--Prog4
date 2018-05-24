@@ -9,6 +9,7 @@
 	#include <vector>
 	#include <iostream>
 	#include <string.h>
+	#include "../LD/DBConnector.h"
 
 	using namespace std;
 
