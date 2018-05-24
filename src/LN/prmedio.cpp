@@ -65,10 +65,10 @@ string prmedio::getRespuesta3() const
 
  void prmedio::sumarPunto(jugador jugador)
 {
-	jugador.puntuacion += 2;
+	jugador.gePpuntuacion() += 2;
 }
 
- void prmedio::prepararRespuestas(pregunta_respuestas pregunta, string medio)
+ void prmedio::prepararRespuestas(preguntas_respuestas pregunta, string medio)
 {
 	int i = 2;
 	int igual = 0;
