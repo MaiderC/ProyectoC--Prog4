@@ -134,58 +134,60 @@ bool prdificil::operator=(const prdificil& pd)
 
 ostream& operator<<(ostream& out, const preguntas_respuestas& Pregunta)
 {
-	out << Pregunta.pregunta << endl;
+	prdificil* preguntadificil = dynamic_cast <prdificil*>(Pregunta)
+	
+	out << preguntadificil.pregunta << endl;
 
 	out << "a) ";
-	if((Pregunta.respuesta1.c_str())[0] == '#')
+	if((preguntadificil->respuesta1)[0] == '#')
 	{
-		string aux = Pregunta.respuesta1;
+		string aux = preguntadificil->respuesta1;
 
 		aux.erase(0, 1);
 
 		out << aux << endl;
 	} else
 	{
-		out << Pregunta.respuesta1 << endl;
+		out << preguntadificil->respuesta1 << endl;
 	}
 
 	out << "b) ";
-	if((Pregunta.respuesta2.c_str())[0] == '#')
+	if((preguntadificil->respuesta2)[0] == '#')
 	{
-		string aux = Pregunta.respuesta2;
+		string aux = preguntadificil->respuesta2;
 
 		aux.erase(0, 1);
 
 		out << aux << endl;
 	} else
 	{
-		out << Pregunta.respuesta2 << endl;
+		out << preguntadificil->respuesta2 << endl;
 	}
 
 	out << "c) ";
-	if((Pregunta.respuesta3.c_str())[0] == '#')
+	if((preguntadificil->respuesta3)[0] == '#')
 	{
-		string aux = Pregunta.respuesta3;
+		string aux = preguntadificil->respuesta3;
 
 		aux.erase(0, 1);
 
 		out << aux << endl;
 	} else
 	{
-		out << Pregunta.respuesta3 << endl;
+		out << preguntadificil->respuesta3 << endl;
 	}
 
 	out << "d) ";
-	if((Pregunta.respuesta4.c_str())[0] == '#')
+	if((preguntadificil->respuesta4)[0] == '#')
 	{
-		string aux = Pregunta.respuesta3;
+		string aux = preguntadificil->respuesta3;
 
 		aux.erase(0, 1);
 
 		out << aux << endl;
 	} else
 	{
-		out << Pregunta.respuesta3 << endl;
+		out << preguntadificil->respuesta3 << endl;
 	}
 
 	return out;
@@ -193,23 +195,25 @@ ostream& operator<<(ostream& out, const preguntas_respuestas& Pregunta)
 
 istream& operator>>(istream& in, preguntas_respuestas& Pregunta)
 {
+	prdificil* preguntadificil = dynamic_cast <prdificil*>(Pregunta)
+
 	cout << "Introduce la pregunta a insertar: ";
-	in >> Pregunta.pregunta;
+	in >> preguntadificil->pregunta;
 
 	cout << "*La respuesta no debe contener la letra de la opcion (a o b) ni signos de puntuacion al inicio (salvo que se trate de un guion, por ser la respuesta un numero negativo)";
 	cout << "Introduce la respuesta correcta: ";
-	in >> Pregunta.respuesta1;
+	in >> preguntadificil->respuesta1;
 
-	Pregunta.respuesta1 = '#' + Pregunta.respuesta1;
-
-	cout << "Introduce otra respuesta (una incorrecta): ";
-	in >> Pregunta.respuesta2;
+	preguntadificil->respuesta1 = '#' + preguntadificil->respuesta1;
 
 	cout << "Introduce otra respuesta (una incorrecta): ";
-	in >> Pregunta.respuesta3;
+	in >> preguntadificil->respuesta2;
 
 	cout << "Introduce otra respuesta (una incorrecta): ";
-	in >> Pregunta.respuesta4;
+	in >> preguntadificil->respuesta3;
+
+	cout << "Introduce otra respuesta (una incorrecta): ";
+	in >> preguntadificil->respuesta4;
 
 	return in;
 }
