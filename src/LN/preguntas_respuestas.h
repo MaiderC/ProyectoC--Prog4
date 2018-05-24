@@ -50,8 +50,8 @@ class preguntas_respuestas
 		int getID () const;
 
 		//metodos de clase madre
-		virtual void sumarPunto(jugador jug)=0;
-		virtual void prepararRespuestas()=0;
+		virtual void sumarPunto(jugador jug);
+		virtual void prepararRespuestas();
 
 		//sobrecarga de operador =
 		bool operator=(const preguntas_respuestas& p_r);
