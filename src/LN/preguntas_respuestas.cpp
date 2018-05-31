@@ -116,5 +116,5 @@ void sumarPunto(jugador jugador)
 
 void prepararRespuestas()
 {
-
+  cout << "hola";
 }
