@@ -33,6 +33,8 @@ jugador jugadorPrincipal; // Jugador que inicia la partida
 int main(int argc, char** argv)
 {
 	DBConnector BD("./Data/BD.sqlite");
+	BD.create_table_Jugadores();
+	BD.create_table_Preguntas();
 	BD.leer_Jugadores(listaTodosJugadores);
 
   	BD.leer_Preguntas(listaTodasPreguntas);
