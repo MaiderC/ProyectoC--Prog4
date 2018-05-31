@@ -14,7 +14,7 @@ using namespace std;
 namespace operaciones
 {
 
-	void operaciones::siguienteID(const vector<preguntas_respuestas>& listaTodasRespuestas)
+	void siguienteID(const vector<preguntas_respuestas>& listaTodasRespuestas)
 	{
 		int cont = 0;
 		preguntas_respuestas p_r;
