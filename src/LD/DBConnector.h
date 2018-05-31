@@ -37,13 +37,13 @@ class DBConnector
 
 	//----------Pregunta_respuestas----------
 	int create_table_Preguntas ();
-  	int insert_Pregunta (preguntas_respuestas PreguntaInsertar);
-	int update_Pregunta(preguntas_respuestas preguntaModificar);
-	int delete_Pregunta(preguntas_respuestas preguntaBorrar);
+  	int insert_Pregunta (preguntas_respuestas& PreguntaInsertar);
+	int update_Pregunta(preguntas_respuestas& preguntaModificar);
+	int delete_Pregunta(preguntas_respuestas& preguntaBorrar);
 	int leer_Preguntas(vector <preguntas_respuestas>& listaTodasPreguntas);
 	int cant_Preguntas(int* sizeTotalJugadores);
 	int drop_Preguntas ();
-	int Pregunta_existe(preguntas_respuestas p);
+	int Pregunta_existe(preguntas_respuestas& p);
 
 	//---------------------------------------
 };

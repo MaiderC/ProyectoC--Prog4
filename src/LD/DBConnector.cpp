@@ -222,7 +222,7 @@ using namespace std;
 	}
 }
 
-int DBConnector::insert_Pregunta (preguntas_respuestas PreguntaInsertar)
+int DBConnector::insert_Pregunta (preguntas_respuestas& PreguntaInsertar)
 {
   	if(Pregunta_existe(PreguntaInsertar) == 0)
   	{ 
@@ -584,7 +584,7 @@ int DBConnector::update_Jugador(jugador jugadorModificar)//Pasar el jugador comp
 	}
 }
 
-int DBConnector::update_Pregunta(preguntas_respuestas preguntaModificar)
+int DBConnector::update_Pregunta(preguntas_respuestas& preguntaModificar)
 {
 	if(Pregunta_existe(preguntaModificar) == 1) 
   	{ 
@@ -993,7 +993,7 @@ int DBConnector::delete_Jugador(jugador jugadorBorrar)
 	}
 }
 
-int DBConnector::delete_Pregunta(preguntas_respuestas preguntaBorrar)
+int DBConnector::delete_Pregunta(preguntas_respuestas& preguntaBorrar)
 {
 	if(Pregunta_existe(preguntaBorrar) == 1) 
   	{ 
