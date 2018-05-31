@@ -11,6 +11,8 @@
 #include <string.h>
 
 using namespace std;
+using namespace utilidades;
+using namespace operaciones;
 
 //Declaracion de MeTODOS
 void menuAdmin();

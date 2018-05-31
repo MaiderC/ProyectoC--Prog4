@@ -12,6 +12,8 @@
 
 	using namespace std;
 
+	namespace utilidades
+	{
 		void mostrarMensaje(const string& str);
 		void mostrarInt(const int& i);
 		void mostrarPregunta(const preguntas_respuestas& Pregunta);
@@ -23,5 +25,6 @@
 		void recogerInt(int& numero_recoger);
 		int recogerOpcionRespuesta(string& respuesta_recoger, string dificultad) ;
 		void recogerPregunta(preguntas_respuestas& Pregunta);
-
+	}
+	
 #endif
