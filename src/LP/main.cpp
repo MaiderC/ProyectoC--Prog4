@@ -148,7 +148,7 @@ int main(int argc, char** argv)
 				    for (int i = 0; i < cant_p; i++)
 				    {
 				    	recogerPregunta(preg_r);
-				    	DBConnector::insert_Pregunta(preg_r);
+				    	BD.insert_Pregunta(preg_r);
 				    }
 
 				    mostrarMensaje("¿Quieres seguir introduciendo preguntas?");
@@ -179,7 +179,7 @@ int main(int argc, char** argv)
 				    for (int i = 0; i < cant_p; i++)
 				    {
 				    	recogerPregunta(preg_r);
-				    	DBConnector::insert_Pregunta(preg_r);
+				    	BD.insert_Pregunta(preg_r);
 				    }
 
 				    mostrarMensaje("¿Quieres seguir introduciendo preguntas?");
