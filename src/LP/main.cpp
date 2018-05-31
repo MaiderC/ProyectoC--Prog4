@@ -15,12 +15,12 @@ using namespace utilidades;
 using namespace operaciones;
 
 //Declaracion de MeTODOS
-void menuAdmin();
+void menuAdmin(DBConnector BD);
 void menuJugador();
 void individual();
 void multijugador();
 void ranking();
-void acabar();
+void acabar(DBConnector BD);
 void RealizarPreguntasMultijugador(vector<jugador> multijugadores, int cantPreg);
 int elegirDificultad();
 
@@ -28,11 +28,11 @@ vector<preguntas_respuestas> preguntasSalidas; // Lista de las preguntas que ya 
 vector<preguntas_respuestas> listaTodasPreguntas; // Lista de todas las preguntas de la base de datos
 vector<jugador> listaTodosJugadores; // Lista de todos los jugadores de la base de datos
 jugador jugadorPrincipal; // Jugador que inicia la partida
-DBConnector BD;
+
 
 int main(int argc, char** argv)
 {
-	BD("./Data/BD.sqlite");
+	DBConnector BD("./Data/BD.sqlite");
 	BD.leer_Jugadores(listaTodosJugadores);
 
   	BD.leer_Preguntas(listaTodasPreguntas);
@@ -44,7 +44,7 @@ int main(int argc, char** argv)
 
 		if (admin == 0)
 		{
-			menuAdmin();
+			menuAdmin(BD);
 		}
   	}
   	else //es un jugador
@@ -69,7 +69,7 @@ int main(int argc, char** argv)
   	return 0;
 }
 
- void menuAdmin()
+ void menuAdmin(DBConnector BD)
  {
  	mostrarMensaje("Hola, administrador");
 
@@ -258,7 +258,7 @@ int main(int argc, char** argv)
 
   		case 4:
 	  		mostrarMensaje("Gracias por jugar ¡Vuelve pronto!"); 
-	  		acabar();
+	  		acabar(BD);
 	  		exit(0);
 	  		break;
 
@@ -673,7 +673,7 @@ void multijugador()
 	 menuJugador();
  }
 
- void acabar() //metodo para liberar recursos
+ void acabar(DBConnector BD) //metodo para liberar recursos
  {
  	delete preguntasSalidas;
  	delete listaTodasPreguntas;
