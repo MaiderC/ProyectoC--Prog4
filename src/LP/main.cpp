@@ -642,7 +642,7 @@ void multijugador(DBConnector BD)
  	int respValida = -1;
  	int random;//variable en la que guardaremos el numero aleatorio para elegir una pregunta aleatoria
  	int repetida = 0; //Variable para ver si en cada momento la pregunta elegida aleatoriamente es i no alguna que ya ha salido
- 	preguntas_respuestas pregunta;
+ 	preguntas_respuestas* pregunta;
  	char respuesta;
  	int correcta = 0;
 
@@ -657,17 +657,17 @@ void multijugador(DBConnector BD)
  			mostrarMensaje(msj1);
 
  			//Preparar la pregunta aleatoria para el jugador
- 			pregunta = generarPregunta(listaTodasPreguntas, preguntasSalidas);
+ 			(*pregunta) = generarPregunta(listaTodasPreguntas, preguntasSalidas);
 
-			mostrarPregunta(pregunta);
-			respValida = recogerOpcionRespuesta(respuesta, pregunta.getDificultad());
+			mostrarPregunta(*pregunta);
+			respValida = recogerOpcionRespuesta(respuesta, pregunta->getDificultad());
 
 			while(respValida == -1)
 			{
-				respValida = recogerOpcionRespuesta(respuesta, pregunta.getDificultad());
+				respValida = recogerOpcionRespuesta(respuesta, pregunta->getDificultad());
 			}
 			
-			 if((*pregunta).getDificultad() == "#")
+		 if((*pregunta).getDificultad() == "#")
 		 {
 		 	prfacil* preguntaAux = dynamic_cast<prfacil*> (pregunta);
 		 	
@@ -771,12 +771,5 @@ void multijugador(DBConnector BD)
 
  void acabar(DBConnector BD) //metodo para liberar recursos
  {
- 	delete preguntasSalidas;
- 	delete listaTodasPreguntas;
-
  	guardarJugadores(listaTodosJugadores);
-
- 	delete listaTodosJugadores;
-
- 	delete BD;
  }
