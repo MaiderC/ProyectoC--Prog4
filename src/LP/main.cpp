@@ -18,7 +18,7 @@ using namespace operaciones;
 void menuAdmin(DBConnector BD);
 void menuJugador(DBConnector BD);
 void individual(DBConnector BD);
-void multijugador();
+void multijugador(DBConnector BD);
 void ranking();
 void acabar(DBConnector BD);
 void RealizarPreguntasMultijugador(vector<jugador> multijugadores, int cantPreg);
@@ -255,7 +255,7 @@ int main(int argc, char** argv)
 
   		case 2:
 	  		mostrarMensaje("Has elegido la opcion numero 2: JUGAR PARTIDA MULTIJUGADOR");
-	  		multijugador();
+	  		multijugador(BD);
 	  		break;
 
   		case 3:
@@ -478,7 +478,7 @@ int main(int argc, char** argv)
 	 }
  }
 
-void multijugador()
+void multijugador(DBConnector BD)
  {
  	int opcionDificultad;
  	int cantJugadores;
@@ -593,7 +593,7 @@ void multijugador()
 		 		{
 		 			if(multijugadores[i].getNick() == empatados[c].getNick())
 		 			{
-		 				multijugadores[i].setPuntuacion(empatados[c].gePuntuacion());
+		 				multijugadores[i].setPuntuacion(empatados[c].getPuntuacion());
 		 				c++;
 		 			}
 		 		}
@@ -628,7 +628,7 @@ void multijugador()
 
 	 if(opcionRepetir == 1)
 	 {
-	 	multijugador();
+	 	multijugador(BD);
 	 }
 	 else
 	 {
@@ -651,7 +651,7 @@ void multijugador()
  		for(int j = 0; j < multijugadores.size(); j++)
  		{
  			string msj1 = "\nPregunta para el jugador #";
-			string msj2 (j+1);
+			string msj2 = to_string(j+1);
 			msj1 = msj1 + msj2 + "->" + multijugadores[j].getNick();
 
  			mostrarMensaje(msj1);
