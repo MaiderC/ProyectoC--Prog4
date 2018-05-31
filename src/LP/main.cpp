@@ -81,9 +81,9 @@ int main(int argc, char** argv)
  	{
 
 	 	 mostrarMensaje("Estas son las acciones que puedes realizar:");
-	 	 mostrarMensaje("\t1- Añadir preguntas fáciles");
-	 	 mostrarMensaje("\t2- Añadir preguntas de dificultad media");
-	 	 mostrarMensaje("\t3- Añadir preguntas dificiles");
+	 	 mostrarMensaje("\t1- Insertar preguntas faciles");
+	 	 mostrarMensaje("\t2- Insertar preguntas de dificultad media");
+	 	 mostrarMensaje("\t3- Insertar preguntas dificiles");
 	 	 mostrarMensaje("\t4- Borrar preguntas");
 	 	 mostrarMensaje("\t5- Salir");
 	 	 mostrarMensaje("Inserta el número de la acción que deseas realizar: ");
