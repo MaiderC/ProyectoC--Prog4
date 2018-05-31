@@ -19,7 +19,7 @@ void menuAdmin(DBConnector BD);
 void menuJugador(DBConnector BD);
 void individual(DBConnector BD);
 void multijugador(DBConnector BD);
-void ranking();
+void ranking(DBConnector BD);
 void acabar(DBConnector BD);
 void RealizarPreguntasMultijugador(vector<jugador> multijugadores, int cantPreg);
 int elegirDificultad();
@@ -644,6 +644,8 @@ void multijugador(DBConnector BD)
  	int repetida = 0; //Variable para ver si en cada momento la pregunta elegida aleatoriamente es i no alguna que ya ha salido
  	preguntas_respuestas* pregunta;
  	char respuesta;
+ 	int respCorrecta;
+
  	int correcta = 0;
 
  	for(int i = 0; i < cantPreg; i++)
@@ -755,7 +757,7 @@ void multijugador(DBConnector BD)
 
  }
 
-  void ranking()
+  void ranking(DBConnector BD)
  {
  	ordenarJugadores(listaTodosJugadores);
 
@@ -771,5 +773,5 @@ void multijugador(DBConnector BD)
 
  void acabar(DBConnector BD) //metodo para liberar recursos
  {
- 	guardarJugadores(listaTodosJugadores);
+ 	guardarJugadores(listaTodosJugadores, BD);
  }
