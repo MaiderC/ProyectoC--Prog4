@@ -53,9 +53,9 @@ using namespace std;
 	  	int result = sqlite3_prepare_v2(db, sql, -1, &stmt, NULL) ;
 	  	if (result != SQLITE_OK)//Para continuar, el resultado debe ser SQLITE_OK, cualquier otro resultado será un error por no haberse procesado la select
 	    {
-	       cout << "Error Creating table Jugadores" <<  endl;   
+	       // cout << "Error Creating table Jugadores" <<  endl;   
 	      sqlite3_finalize(stmt);   
-	       cout << sqlite3_errmsg(db) <<  endl; //Devuelve el error interno de la BBDD (db) como resultado de la última operación sobre ella.
+	       // cout << sqlite3_errmsg(db) <<  endl; //Devuelve el error interno de la BBDD (db) como resultado de la última operación sobre ella.
 	    }
 		
 		result = sqlite3_step(stmt);
@@ -64,8 +64,8 @@ using namespace std;
 	    result = sqlite3_finalize(stmt);
 	    if (result != SQLITE_OK) 
 	    {
-	       cout << "Error finalizing statement (CREATE)" <<  endl;
-	       cout << sqlite3_errmsg(db) <<  endl;
+	       // cout << "Error finalizing statement (CREATE)" <<  endl;
+	       // cout << sqlite3_errmsg(db) <<  endl;
 	    }
 	}
 	else
@@ -77,8 +77,8 @@ using namespace std;
   	result = sqlite3_finalize(stmt_ex);
     if (result != SQLITE_OK) 
     {
-       cout << "Error finalizing statement" <<  endl;
-       cout << sqlite3_errmsg(db) <<  endl;
+       // cout << "Error finalizing statement" <<  endl;
+       // cout << sqlite3_errmsg(db) <<  endl;
     }
     //---
 	return result;
@@ -107,9 +107,9 @@ using namespace std;
 	  	int result = sqlite3_prepare_v2(db, sql, -1, &stmt, NULL) ;
 	  	if (result != SQLITE_OK)//Para continuar, el resultado debe ser SQLITE_OK, cualquier otro resultado será un error por no haberse procesado la select
 	    {
-	       cout << "Error Creating table PREGUNTAS" <<  endl;   
+	       // cout << "Error Creating table PREGUNTAS" <<  endl;   
 	      sqlite3_finalize(stmt);   
-	       cout << sqlite3_errmsg(db) <<  endl; //Devuelve el error interno de la BBDD (db) como resultado de la última operación sobre ella.
+	       // cout << sqlite3_errmsg(db) <<  endl; //Devuelve el error interno de la BBDD (db) como resultado de la última operación sobre ella.
 	    }
 		
 		result = sqlite3_step(stmt);
@@ -118,8 +118,8 @@ using namespace std;
 	    result = sqlite3_finalize(stmt);
 	    if (result != SQLITE_OK) 
 	    {
-	       cout << "Error finalizing statement (CREATE)" <<  endl;
-	       cout << sqlite3_errmsg(db) <<  endl;
+	       // cout << "Error finalizing statement (CREATE)" <<  endl;
+	       // cout << sqlite3_errmsg(db) <<  endl;
 	    }
 	}
 	else
@@ -131,8 +131,8 @@ using namespace std;
   	result = sqlite3_finalize(stmt_ex);
     if (result != SQLITE_OK) 
     {
-       cout << "Error finalizing statement" <<  endl;
-       cout << sqlite3_errmsg(db) <<  endl;
+       // cout << "Error finalizing statement" <<  endl;
+       // cout << sqlite3_errmsg(db) <<  endl;
     }
     //---
 	return result;
@@ -182,8 +182,8 @@ using namespace std;
 	    int result = sqlite3_prepare_v2(db, sql, strlen(sql) + 1, &stmt, NULL) ;
 	    if (result != SQLITE_OK) 
 	    {
-	       cout << "Error preparing statement (INSERT)" <<  endl;
-	       cout << sqlite3_errmsg(db) <<  endl;
+	       // cout << "Error preparing statement (INSERT)" <<  endl;
+	       // cout << sqlite3_errmsg(db) <<  endl;
 	      return result;
 	    }
 	     string nick= jugadorInsertar.getNick();
@@ -192,8 +192,8 @@ using namespace std;
 
 	    if (result != SQLITE_OK)
 	    {
-	       cout << "Error binding parameters" <<  endl;
-	       cout << sqlite3_errmsg(db) <<  endl;
+	       // cout << "Error binding parameters" <<  endl;
+	       // cout << sqlite3_errmsg(db) <<  endl;
 	      sqlite3_finalize(stmt);
 	      return result;
 	    }
@@ -202,7 +202,7 @@ using namespace std;
 	    result = sqlite3_step(stmt);
 	    if (result != SQLITE_DONE) 
 	    {
-	       cout << "Error inserting new data into Jugadores table" <<  endl;
+	       // cout << "Error inserting new data into Jugadores table" <<  endl;
 	      sqlite3_finalize(stmt);
 	      return result;
 	    }
@@ -210,8 +210,8 @@ using namespace std;
 	    result = sqlite3_finalize(stmt);
 	    if (result != SQLITE_OK) 
 	    {
-	       cout << "Error finalizing statement (INSERT)" <<  endl;
-	       cout << sqlite3_errmsg(db) <<  endl;
+	       // cout << "Error finalizing statement (INSERT)" <<  endl;
+	       // cout << sqlite3_errmsg(db) <<  endl;
 	    }
 		return result;
 	}
@@ -232,8 +232,8 @@ int DBConnector::insert_Pregunta (preguntas_respuestas& PreguntaInsertar)
 	    int result = sqlite3_prepare_v2(db, sql, strlen(sql) + 1, &stmt, NULL);
 	    if (result != SQLITE_OK) 
 	    {
-	       cout << "Error preparing statement (INSERT)" <<  endl;
-	       cout << sqlite3_errmsg(db) <<  endl;
+	       // cout << "Error preparing statement (INSERT)" <<  endl;
+	       // cout << sqlite3_errmsg(db) <<  endl;
 	      return result;
 	    }
 
@@ -247,8 +247,8 @@ int DBConnector::insert_Pregunta (preguntas_respuestas& PreguntaInsertar)
 	    	result = sqlite3_bind_int(stmt, 1, ((*p)).getID());
 	    	if (result != SQLITE_OK)
 		    {
-		       cout << "Error binding parameters" <<  endl;
-		       cout << sqlite3_errmsg(db) <<  endl;
+		       // cout << "Error binding parameters" <<  endl;
+		       // cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
 		    }
@@ -259,8 +259,8 @@ int DBConnector::insert_Pregunta (preguntas_respuestas& PreguntaInsertar)
 		    result = sqlite3_bind_text(stmt, 2, pregunta.c_str(), pregunta.length(), SQLITE_STATIC);
 		    if (result != SQLITE_OK)
 		    {
-		       cout << "Error binding parameters" <<  endl;
-		       cout << sqlite3_errmsg(db) <<  endl;
+		       // cout << "Error binding parameters" <<  endl;
+		       // cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
 		    }
@@ -272,8 +272,8 @@ int DBConnector::insert_Pregunta (preguntas_respuestas& PreguntaInsertar)
 		    result = sqlite3_bind_text(stmt, 3, r1.c_str(), r1.length(), SQLITE_STATIC);
 		    if (result != SQLITE_OK)
 		    {
-		       cout << "Error binding parameters" <<  endl;
-		       cout << sqlite3_errmsg(db) <<  endl;
+		       // cout << "Error binding parameters" <<  endl;
+		       // cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
 		    }
@@ -284,8 +284,8 @@ int DBConnector::insert_Pregunta (preguntas_respuestas& PreguntaInsertar)
 		    result = sqlite3_bind_text(stmt, 4, r2.c_str(), r2.length(), SQLITE_STATIC);
 		    if (result != SQLITE_OK)
 		    {
-		       cout << "Error binding parameters" <<  endl;
-		       cout << sqlite3_errmsg(db) <<  endl;
+		       // cout << "Error binding parameters" <<  endl;
+		       // cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
 		    }
@@ -294,8 +294,8 @@ int DBConnector::insert_Pregunta (preguntas_respuestas& PreguntaInsertar)
 	    	result = sqlite3_bind_text(stmt, 5,  NULL, 0, SQLITE_STATIC);
 		    if (result != SQLITE_OK)
 		    {
-		       cout << "Error binding parameters" <<  endl;
-		       cout << sqlite3_errmsg(db) <<  endl;
+		       // cout << "Error binding parameters" <<  endl;
+		       // cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
 		    }
@@ -304,8 +304,8 @@ int DBConnector::insert_Pregunta (preguntas_respuestas& PreguntaInsertar)
 	    	result = sqlite3_bind_text(stmt, 5,  NULL, 0, SQLITE_STATIC);
 		    if (result != SQLITE_OK)
 		    {
-		       cout << "Error binding parameters" <<  endl;
-		       cout << sqlite3_errmsg(db) <<  endl;
+		       // cout << "Error binding parameters" <<  endl;
+		       // cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
 		    }
@@ -316,8 +316,8 @@ int DBConnector::insert_Pregunta (preguntas_respuestas& PreguntaInsertar)
 			
 		    if (result != SQLITE_OK)
 		    {
-		       cout << "Error binding parameters" <<  endl;
-		       cout << sqlite3_errmsg(db) <<  endl;
+		       // cout << "Error binding parameters" <<  endl;
+		       // cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
 		    }
@@ -331,8 +331,8 @@ int DBConnector::insert_Pregunta (preguntas_respuestas& PreguntaInsertar)
 	    	result = sqlite3_bind_int(stmt, 1, (*p).getID());
 	    	if (result != SQLITE_OK)
 		    {
-		       cout << "Error binding parameters" <<  endl;
-		       cout << sqlite3_errmsg(db) <<  endl;
+		       // cout << "Error binding parameters" <<  endl;
+		       // cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
 		    }
@@ -343,8 +343,8 @@ int DBConnector::insert_Pregunta (preguntas_respuestas& PreguntaInsertar)
 		    result = sqlite3_bind_text(stmt, 2, pregunta.c_str(), pregunta.length(), SQLITE_STATIC);
 		    if (result != SQLITE_OK)
 		    {
-		       cout << "Error binding parameters" <<  endl;
-		       cout << sqlite3_errmsg(db) <<  endl;
+		       // cout << "Error binding parameters" <<  endl;
+		       // cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
 		    }
@@ -355,8 +355,8 @@ int DBConnector::insert_Pregunta (preguntas_respuestas& PreguntaInsertar)
 		    result = sqlite3_bind_text(stmt, 3, r1.c_str(), r1.length(), SQLITE_STATIC);
 		    if (result != SQLITE_OK)
 		    {
-		       cout << "Error binding parameters" <<  endl;
-		       cout << sqlite3_errmsg(db) <<  endl;
+		       // cout << "Error binding parameters" <<  endl;
+		       // cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
 		    }
@@ -367,8 +367,8 @@ int DBConnector::insert_Pregunta (preguntas_respuestas& PreguntaInsertar)
 		    result = sqlite3_bind_text(stmt, 4, r2.c_str(), r2.length(), SQLITE_STATIC);
 		    if (result != SQLITE_OK)
 		    {
-		       cout << "Error binding parameters" <<  endl;
-		       cout << sqlite3_errmsg(db) <<  endl;
+		       // cout << "Error binding parameters" <<  endl;
+		       // cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
 		    }
@@ -379,8 +379,8 @@ int DBConnector::insert_Pregunta (preguntas_respuestas& PreguntaInsertar)
 		    result = sqlite3_bind_text(stmt, 5, r3.c_str(), r3.length(), SQLITE_STATIC);
 		    if (result != SQLITE_OK)
 		    {
-		       cout << "Error binding parameters" <<  endl;
-		       cout << sqlite3_errmsg(db) <<  endl;
+		       // cout << "Error binding parameters" <<  endl;
+		       // cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
 		    }
@@ -389,8 +389,8 @@ int DBConnector::insert_Pregunta (preguntas_respuestas& PreguntaInsertar)
 	    	result = sqlite3_bind_text(stmt, 5, NULL, 0, SQLITE_STATIC);
 		    if (result != SQLITE_OK)
 		    {
-		       cout << "Error binding parameters" <<  endl;
-		       cout << sqlite3_errmsg(db) <<  endl;
+		       // cout << "Error binding parameters" <<  endl;
+		       // cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
 		    }
@@ -401,8 +401,8 @@ int DBConnector::insert_Pregunta (preguntas_respuestas& PreguntaInsertar)
 		    result = sqlite3_bind_text(stmt, 7, dificultad.c_str(), dificultad.length(), SQLITE_STATIC);
 		    if (result != SQLITE_OK)
 		    {
-		       cout << "Error binding parameters" <<  endl;
-		       cout << sqlite3_errmsg(db) <<  endl;
+		       // cout << "Error binding parameters" <<  endl;
+		       // cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
 		    }
@@ -417,8 +417,8 @@ int DBConnector::insert_Pregunta (preguntas_respuestas& PreguntaInsertar)
 	    	result = sqlite3_bind_int(stmt, 1, (*p).getID());
 	    	if (result != SQLITE_OK)
 		    {
-		       cout << "Error binding parameters" <<  endl;
-		       cout << sqlite3_errmsg(db) <<  endl;
+		       // cout << "Error binding parameters" <<  endl;
+		       // cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
 		    }
@@ -429,8 +429,8 @@ int DBConnector::insert_Pregunta (preguntas_respuestas& PreguntaInsertar)
 		    result = sqlite3_bind_text(stmt, 2, pregunta.c_str(), pregunta.length(), SQLITE_STATIC);
 		    if (result != SQLITE_OK)
 		    {
-		       cout << "Error binding parameters" <<  endl;
-		       cout << sqlite3_errmsg(db) <<  endl;
+		       // cout << "Error binding parameters" <<  endl;
+		       // cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
 		    }
@@ -441,8 +441,8 @@ int DBConnector::insert_Pregunta (preguntas_respuestas& PreguntaInsertar)
 		    result = sqlite3_bind_text(stmt, 3, r1.c_str(), r1.length(), SQLITE_STATIC);
 		    if (result != SQLITE_OK)
 		    {
-		       cout << "Error binding parameters" <<  endl;
-		       cout << sqlite3_errmsg(db) <<  endl;
+		       // cout << "Error binding parameters" <<  endl;
+		       // cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
 		    }
@@ -453,8 +453,8 @@ int DBConnector::insert_Pregunta (preguntas_respuestas& PreguntaInsertar)
 		    result = sqlite3_bind_text(stmt, 4, r2.c_str(), r2.length(), SQLITE_STATIC);
 		    if (result != SQLITE_OK)
 		    {
-		       cout << "Error binding parameters" <<  endl;
-		       cout << sqlite3_errmsg(db) <<  endl;
+		       // cout << "Error binding parameters" <<  endl;
+		       // cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
 		    }
@@ -465,8 +465,8 @@ int DBConnector::insert_Pregunta (preguntas_respuestas& PreguntaInsertar)
 		    result = sqlite3_bind_text(stmt, 5, r3.c_str(), r3.length(), SQLITE_STATIC);
 		    if (result != SQLITE_OK)
 		    {
-		       cout << "Error binding parameters" <<  endl;
-		       cout << sqlite3_errmsg(db) <<  endl;
+		       // cout << "Error binding parameters" <<  endl;
+		       // cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
 		    }
@@ -477,8 +477,8 @@ int DBConnector::insert_Pregunta (preguntas_respuestas& PreguntaInsertar)
 		    result = sqlite3_bind_text(stmt, 6, r4.c_str(), r4.length(), SQLITE_STATIC);
 		    if (result != SQLITE_OK)
 		    {
-		       cout << "Error binding parameters" <<  endl;
-		       cout << sqlite3_errmsg(db) <<  endl;
+		       // cout << "Error binding parameters" <<  endl;
+		       // cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
 		    }
@@ -489,8 +489,8 @@ int DBConnector::insert_Pregunta (preguntas_respuestas& PreguntaInsertar)
 		    result = sqlite3_bind_text(stmt, 7, dificultad.c_str(), dificultad.length(), SQLITE_STATIC);
 		    if (result != SQLITE_OK)
 		    {
-		       cout << "Error binding parameters" <<  endl;
-		       cout << sqlite3_errmsg(db) <<  endl;
+		       // cout << "Error binding parameters" <<  endl;
+		       // cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
 		    }
@@ -500,7 +500,7 @@ int DBConnector::insert_Pregunta (preguntas_respuestas& PreguntaInsertar)
 	    result = sqlite3_step(stmt);
 	    if (result != SQLITE_DONE) 
 	    {
-	       cout << "Error inserting new data into preguntas table" <<  endl;
+	       // cout << "Error inserting new data into preguntas table" <<  endl;
 	      sqlite3_finalize(stmt);
 	      return result;
 	    }
@@ -508,8 +508,8 @@ int DBConnector::insert_Pregunta (preguntas_respuestas& PreguntaInsertar)
 	    result = sqlite3_finalize(stmt);
 	    if (result != SQLITE_OK) 
 	    {
-	       cout << "Error finalizing statement (INSERT)" <<  endl;
-	       cout << sqlite3_errmsg(db) <<  endl;
+	       // cout << "Error finalizing statement (INSERT)" <<  endl;
+	       // cout << sqlite3_errmsg(db) <<  endl;
 	    }
 		return result;
 	}
@@ -535,8 +535,8 @@ int DBConnector::update_Jugador(jugador jugadorModificar)//Pasar el jugador comp
 	    int result = sqlite3_prepare_v2(db, sql, strlen(sql) + 1, &stmt, NULL) ;
 	    if (result != SQLITE_OK) 
 	    {
-	       cout << "Error preparing statement (INSERT)" <<  endl;
-	       cout << sqlite3_errmsg(db) <<  endl;
+	       // cout << "Error preparing statement (INSERT)" <<  endl;
+	       // cout << sqlite3_errmsg(db) <<  endl;
 	      return result;
 	    }
 
@@ -545,9 +545,9 @@ int DBConnector::update_Jugador(jugador jugadorModificar)//Pasar el jugador comp
 	    result = sqlite3_bind_int(stmt, 1, puntuacion);
 	    if (result != SQLITE_OK)
 	    {
-	       cout << "Error binding parameters" <<  endl;
+	       // cout << "Error binding parameters" <<  endl;
 	      sqlite3_finalize(stmt);
-	       cout << sqlite3_errmsg(db) <<  endl;
+	       // cout << sqlite3_errmsg(db) <<  endl;
 	      return result;
 	    }
 	     //Le pasamos el nick al statement
@@ -555,9 +555,9 @@ int DBConnector::update_Jugador(jugador jugadorModificar)//Pasar el jugador comp
 
 	    if (result != SQLITE_OK)
 	    {
-	       cout << "Error binding parameters" <<  endl;
+	       // cout << "Error binding parameters" <<  endl;
 	      sqlite3_finalize(stmt);
-	       cout << sqlite3_errmsg(db) <<  endl;
+	       // cout << sqlite3_errmsg(db) <<  endl;
 	      return result;
 	    }
 
@@ -565,7 +565,7 @@ int DBConnector::update_Jugador(jugador jugadorModificar)//Pasar el jugador comp
 	    result = sqlite3_step(stmt);
 	    if (result != SQLITE_DONE) 
 	    {
-	       cout << "Error inserting new data into Jufgadores table" <<  endl;
+	       // cout << "Error inserting new data into Jufgadores table" <<  endl;
 	      sqlite3_finalize(stmt);
 	      return result;
 	    }
@@ -573,8 +573,8 @@ int DBConnector::update_Jugador(jugador jugadorModificar)//Pasar el jugador comp
 	    result = sqlite3_finalize(stmt);
 	    if (result != SQLITE_OK) 
 	    {
-	       cout << "Error finalizing statement (UPDATE)" <<  endl;
-	       cout << sqlite3_errmsg(db) <<  endl;
+	       // cout << "Error finalizing statement (UPDATE)" <<  endl;
+	       // cout << sqlite3_errmsg(db) <<  endl;
 	    }
 		return result;
 	}
@@ -613,8 +613,8 @@ int DBConnector::update_Pregunta(preguntas_respuestas& preguntaModificar)
 	    	int result = sqlite3_bind_int(stmt, 7, ID);
 	    	if (result != SQLITE_OK)
 		    {
-		       cout << "Error binding parameters" <<  endl;
-		       cout << sqlite3_errmsg(db) <<  endl;
+		       // cout << "Error binding parameters" <<  endl;
+		       // cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
 		    }
@@ -624,8 +624,8 @@ int DBConnector::update_Pregunta(preguntas_respuestas& preguntaModificar)
 		    result = sqlite3_bind_text(stmt, 1, pregunta.c_str(), pregunta.length(), SQLITE_STATIC);
 		    if (result != SQLITE_OK)
 		    {
-		       cout << "Error binding parameters" <<  endl;
-		       cout << sqlite3_errmsg(db) <<  endl;
+		       // cout << "Error binding parameters" <<  endl;
+		       // cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
 		    }
@@ -635,8 +635,8 @@ int DBConnector::update_Pregunta(preguntas_respuestas& preguntaModificar)
 		    result = sqlite3_bind_text(stmt, 2, r1.c_str(), r1.length(), SQLITE_STATIC);
 		    if (result != SQLITE_OK)
 		    {
-		       cout << "Error binding parameters" <<  endl;
-		       cout << sqlite3_errmsg(db) <<  endl;
+		       // cout << "Error binding parameters" <<  endl;
+		       // cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
 		    }
@@ -646,8 +646,8 @@ int DBConnector::update_Pregunta(preguntas_respuestas& preguntaModificar)
 		    result = sqlite3_bind_text(stmt, 3, r2.c_str(), r2.length(), SQLITE_STATIC);
 		    if (result != SQLITE_OK)
 		    {
-		       cout << "Error binding parameters" <<  endl;
-		       cout << sqlite3_errmsg(db) <<  endl;
+		       // cout << "Error binding parameters" <<  endl;
+		       // cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
 		    }
@@ -658,8 +658,8 @@ int DBConnector::update_Pregunta(preguntas_respuestas& preguntaModificar)
 			    result = sqlite3_bind_text(stmt, 4, r3.c_str(), r3.length(), SQLITE_STATIC);
 			    if (result != SQLITE_OK)
 			    {
-			       cout << "Error binding parameters" <<  endl;
-			       cout << sqlite3_errmsg(db) <<  endl;
+			       // cout << "Error binding parameters" <<  endl;
+			       // cout << sqlite3_errmsg(db) <<  endl;
 			      sqlite3_finalize(stmt);
 			      return result;
 			    }		   
@@ -671,8 +671,8 @@ int DBConnector::update_Pregunta(preguntas_respuestas& preguntaModificar)
 			    result = sqlite3_bind_text(stmt, 5, r4.c_str(), r4.length(), SQLITE_STATIC);
 			    if (result != SQLITE_OK)
 			    {
-			       cout << "Error binding parameters" <<  endl;
-			       cout << sqlite3_errmsg(db) <<  endl;
+			       // cout << "Error binding parameters" <<  endl;
+			       // cout << sqlite3_errmsg(db) <<  endl;
 			      sqlite3_finalize(stmt);
 			      return result;
 			    }
@@ -682,8 +682,8 @@ int DBConnector::update_Pregunta(preguntas_respuestas& preguntaModificar)
 		    result = sqlite3_bind_text(stmt, 6, dificultad.c_str(), dificultad.length(), SQLITE_STATIC);
 		    if (result != SQLITE_OK)
 		    {
-		       cout << "Error binding parameters" <<  endl;
-		       cout << sqlite3_errmsg(db) <<  endl;
+		       // cout << "Error binding parameters" <<  endl;
+		       // cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
 		    }
@@ -693,8 +693,8 @@ int DBConnector::update_Pregunta(preguntas_respuestas& preguntaModificar)
 	    	result = sqlite3_bind_int(stmt, 7, ID);
 	    	if (result != SQLITE_OK)
 		    {
-		       cout << "Error binding parameters" <<  endl;
-		       cout << sqlite3_errmsg(db) <<  endl;
+		       // cout << "Error binding parameters" <<  endl;
+		       // cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
 		    }
@@ -718,8 +718,8 @@ int DBConnector::update_Pregunta(preguntas_respuestas& preguntaModificar)
 	    	result = sqlite3_bind_int(stmt, 7, ID);
 	    	if (result != SQLITE_OK)
 		    {
-		       cout << "Error binding parameters" <<  endl;
-		       cout << sqlite3_errmsg(db) <<  endl;
+		       // cout << "Error binding parameters" <<  endl;
+		       // cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
 		    }
@@ -729,8 +729,8 @@ int DBConnector::update_Pregunta(preguntas_respuestas& preguntaModificar)
 		    result = sqlite3_bind_text(stmt, 1, pregunta.c_str(), pregunta.length(), SQLITE_STATIC);
 		    if (result != SQLITE_OK)
 		    {
-		       cout << "Error binding parameters" <<  endl;
-		       cout << sqlite3_errmsg(db) <<  endl;
+		       // cout << "Error binding parameters" <<  endl;
+		       // cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
 		    }
@@ -740,8 +740,8 @@ int DBConnector::update_Pregunta(preguntas_respuestas& preguntaModificar)
 		    result = sqlite3_bind_text(stmt, 2, r1.c_str(), r1.length(), SQLITE_STATIC);
 		    if (result != SQLITE_OK)
 		    {
-		       cout << "Error binding parameters" <<  endl;
-		       cout << sqlite3_errmsg(db) <<  endl;
+		       // cout << "Error binding parameters" <<  endl;
+		       // cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
 		    }
@@ -751,8 +751,8 @@ int DBConnector::update_Pregunta(preguntas_respuestas& preguntaModificar)
 		    result = sqlite3_bind_text(stmt, 3, r2.c_str(), r2.length(), SQLITE_STATIC);
 		    if (result != SQLITE_OK)
 		    {
-		       cout << "Error binding parameters" <<  endl;
-		       cout << sqlite3_errmsg(db) <<  endl;
+		       // cout << "Error binding parameters" <<  endl;
+		       // cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
 		    }
@@ -762,8 +762,8 @@ int DBConnector::update_Pregunta(preguntas_respuestas& preguntaModificar)
 			    result = sqlite3_bind_text(stmt, 4, r3.c_str(), r3.length(), SQLITE_STATIC);
 			    if (result != SQLITE_OK)
 			    {
-			       cout << "Error binding parameters" <<  endl;
-			       cout << sqlite3_errmsg(db) <<  endl;
+			       // cout << "Error binding parameters" <<  endl;
+			       // cout << sqlite3_errmsg(db) <<  endl;
 			      sqlite3_finalize(stmt);
 			      return result;
 			    }
@@ -776,8 +776,8 @@ int DBConnector::update_Pregunta(preguntas_respuestas& preguntaModificar)
 		    	result = sqlite3_bind_text(stmt, 5, NULL, 0, SQLITE_STATIC);
 			    if (result != SQLITE_OK)
 			    {
-			       cout << "Error binding parameters" <<  endl;
-			       cout << sqlite3_errmsg(db) <<  endl;
+			       // cout << "Error binding parameters" <<  endl;
+			       // cout << sqlite3_errmsg(db) <<  endl;
 			      sqlite3_finalize(stmt);
 			      return result;
 			    }
@@ -788,8 +788,8 @@ int DBConnector::update_Pregunta(preguntas_respuestas& preguntaModificar)
 		    result = sqlite3_bind_text(stmt, 6, dificultad.c_str(), dificultad.length(), SQLITE_STATIC);
 		    if (result != SQLITE_OK)
 		    {
-		       cout << "Error binding parameters" <<  endl;
-		       cout << sqlite3_errmsg(db) <<  endl;
+		       // cout << "Error binding parameters" <<  endl;
+		       // cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
 		    }
@@ -799,8 +799,8 @@ int DBConnector::update_Pregunta(preguntas_respuestas& preguntaModificar)
 	    	result = sqlite3_bind_int(stmt, 7, ID);
 	    	if (result != SQLITE_OK)
 		    {
-		       cout << "Error binding parameters" <<  endl;
-		       cout << sqlite3_errmsg(db) <<  endl;
+		       // cout << "Error binding parameters" <<  endl;
+		       // cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
 		    }
@@ -824,8 +824,8 @@ int DBConnector::update_Pregunta(preguntas_respuestas& preguntaModificar)
 	    	result = sqlite3_bind_int(stmt, 7, ID);
 	    	if (result != SQLITE_OK)
 		    {
-		       cout << "Error binding parameters" <<  endl;
-		       cout << sqlite3_errmsg(db) <<  endl;
+		       // cout << "Error binding parameters" <<  endl;
+		       // cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
 		    }
@@ -835,8 +835,8 @@ int DBConnector::update_Pregunta(preguntas_respuestas& preguntaModificar)
 		    result = sqlite3_bind_text(stmt, 1, pregunta.c_str(), pregunta.length(), SQLITE_STATIC);
 		    if (result != SQLITE_OK)
 		    {
-		       cout << "Error binding parameters" <<  endl;
-		       cout << sqlite3_errmsg(db) <<  endl;
+		       // cout << "Error binding parameters" <<  endl;
+		       // cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
 		    }
@@ -846,8 +846,8 @@ int DBConnector::update_Pregunta(preguntas_respuestas& preguntaModificar)
 		    result = sqlite3_bind_text(stmt, 2, r1.c_str(), r1.length(), SQLITE_STATIC);
 		    if (result != SQLITE_OK)
 		    {
-		       cout << "Error binding parameters" <<  endl;
-		       cout << sqlite3_errmsg(db) <<  endl;
+		       // cout << "Error binding parameters" <<  endl;
+		       // cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
 		    }
@@ -857,8 +857,8 @@ int DBConnector::update_Pregunta(preguntas_respuestas& preguntaModificar)
 		    result = sqlite3_bind_text(stmt, 3, r2.c_str(), r2.length(), SQLITE_STATIC);
 		    if (result != SQLITE_OK)
 		    {
-		       cout << "Error binding parameters" <<  endl;
-		       cout << sqlite3_errmsg(db) <<  endl;
+		       // cout << "Error binding parameters" <<  endl;
+		       // cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
 		    }
@@ -870,8 +870,8 @@ int DBConnector::update_Pregunta(preguntas_respuestas& preguntaModificar)
 		    	result = sqlite3_bind_text(stmt, 5, NULL, 0, SQLITE_STATIC);
 			    if (result != SQLITE_OK)
 			    {
-			       cout << "Error binding parameters" <<  endl;
-			       cout << sqlite3_errmsg(db) <<  endl;
+			       // cout << "Error binding parameters" <<  endl;
+			       // cout << sqlite3_errmsg(db) <<  endl;
 			      sqlite3_finalize(stmt);
 			      return result;
 			    }
@@ -884,8 +884,8 @@ int DBConnector::update_Pregunta(preguntas_respuestas& preguntaModificar)
 		    	result = sqlite3_bind_text(stmt, 5, NULL, 0, SQLITE_STATIC);
 			    if (result != SQLITE_OK)
 			    {
-			       cout << "Error binding parameters" <<  endl;
-			       cout << sqlite3_errmsg(db) <<  endl;
+			       // cout << "Error binding parameters" <<  endl;
+			       // cout << sqlite3_errmsg(db) <<  endl;
 			      sqlite3_finalize(stmt);
 			      return result;
 			    }
@@ -896,8 +896,8 @@ int DBConnector::update_Pregunta(preguntas_respuestas& preguntaModificar)
 		    result = sqlite3_bind_text(stmt, 6, dificultad.c_str(), dificultad.length(), SQLITE_STATIC);
 		    if (result != SQLITE_OK)
 		    {
-		       cout << "Error binding parameters" <<  endl;
-		       cout << sqlite3_errmsg(db) <<  endl;
+		       // cout << "Error binding parameters" <<  endl;
+		       // cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
 		    }
@@ -907,21 +907,18 @@ int DBConnector::update_Pregunta(preguntas_respuestas& preguntaModificar)
 	    	result = sqlite3_bind_int(stmt, 7, ID);
 	    	if (result != SQLITE_OK)
 		    {
-		       cout << "Error binding parameters" <<  endl;
-		       cout << sqlite3_errmsg(db) <<  endl;
+		       // cout << "Error binding parameters" <<  endl;
+		       // cout << sqlite3_errmsg(db) <<  endl;
 		      sqlite3_finalize(stmt);
 		      return result;
 		    }
 
 	    }
-
-	    
-	    
 	     //Ejecutamos el UPDATE
 	    result = sqlite3_step(stmt);
 	    if (result != SQLITE_DONE) 
 	    {
-	       cout << "Error inserting new data into Preguntas table" <<  endl;
+	      //  cout << "Error inserting new data into Preguntas table" <<  endl;
 	      sqlite3_finalize(stmt);
 	      return result;
 	    }
@@ -929,8 +926,8 @@ int DBConnector::update_Pregunta(preguntas_respuestas& preguntaModificar)
 	    result = sqlite3_finalize(stmt);
 	    if (result != SQLITE_OK) 
 	    {
-	       cout << "Error finalizing statement (DELETE)" <<  endl;
-	       cout << sqlite3_errmsg(db) <<  endl;
+	       // cout << "Error finalizing statement (DELETE)" <<  endl;
+	       // cout << sqlite3_errmsg(db) <<  endl;
 	    }
 		return result;
 	}
@@ -954,8 +951,8 @@ int DBConnector::delete_Jugador(jugador jugadorBorrar)
 	    int result = sqlite3_prepare_v2(db, sql, strlen(sql) + 1, &stmt, NULL) ;
 	    if (result != SQLITE_OK) 
 	    {
-	       cout << "Error preparing statement (INSERT)" <<  endl;
-	       cout << sqlite3_errmsg(db) <<  endl;
+	       // cout << "Error preparing statement (INSERT)" <<  endl;
+	       // cout << sqlite3_errmsg(db) <<  endl;
 	      return result;
 	    }
 
@@ -964,9 +961,9 @@ int DBConnector::delete_Jugador(jugador jugadorBorrar)
 	    result = sqlite3_bind_text(stmt, 1, nick.c_str(), nick.length(), SQLITE_STATIC);
 	    if (result != SQLITE_OK)
 	    {
-	       cout << "Error binding parameters" <<  endl;
+	      //  cout << "Error binding parameters" <<  endl;
 	      sqlite3_finalize(stmt);
-	       cout << sqlite3_errmsg(db) <<  endl;
+	      //  cout << sqlite3_errmsg(db) <<  endl;
 	      return result;
 	    }
 
@@ -974,7 +971,7 @@ int DBConnector::delete_Jugador(jugador jugadorBorrar)
 	    result = sqlite3_step(stmt);
 	    if (result != SQLITE_DONE) 
 	    {
-	       cout << "Error DELETING the player with nick " << nick <<  endl;
+	      //  cout << "Error DELETING the player with nick " << nick <<  endl;
 	      sqlite3_finalize(stmt);
 	      return result;
 	    }
@@ -982,8 +979,8 @@ int DBConnector::delete_Jugador(jugador jugadorBorrar)
 	    result = sqlite3_finalize(stmt);
 	    if (result != SQLITE_OK) 
 	    {
-	       cout << "Error finalizing statement (UPDATE)" <<  endl;
-	       cout << sqlite3_errmsg(db) <<  endl;
+	       // cout << "Error finalizing statement (UPDATE)" <<  endl;
+	       // cout << sqlite3_errmsg(db) <<  endl;
 	    }
 		return result;
 	}
@@ -1006,8 +1003,8 @@ int DBConnector::delete_Pregunta(preguntas_respuestas& preguntaBorrar)
 	    int result = sqlite3_prepare_v2(db, sql, strlen(sql) + 1, &stmt, NULL) ;
 	    if (result != SQLITE_OK) 
 	    {
-	       cout << "Error preparing statement (DELETE)" <<  endl;
-	       cout << sqlite3_errmsg(db) <<  endl;
+	       // cout << "Error preparing statement (DELETE)" <<  endl;
+	       // cout << sqlite3_errmsg(db) <<  endl;
 	      return result;
 	    }
 
@@ -1015,9 +1012,9 @@ int DBConnector::delete_Pregunta(preguntas_respuestas& preguntaBorrar)
 	    result = sqlite3_bind_int(stmt, 1, ID);
 	    if (result != SQLITE_OK)
 	    {
-	       cout << "Error binding parameters" <<  endl;
+	      //  cout << "Error binding parameters" <<  endl;
 	      sqlite3_finalize(stmt);
-	       cout << sqlite3_errmsg(db) <<  endl;
+	       // cout << sqlite3_errmsg(db) <<  endl;
 	      return result;
 	    }
 
@@ -1025,7 +1022,7 @@ int DBConnector::delete_Pregunta(preguntas_respuestas& preguntaBorrar)
 	    result = sqlite3_step(stmt);
 	    if (result != SQLITE_DONE) 
 	    {
-	       cout << "Error DELETING the question with ID " << ID <<  endl;
+	      //  cout << "Error DELETING the question with ID " << ID <<  endl;
 	      sqlite3_finalize(stmt);
 	      return result;
 	    }
@@ -1033,8 +1030,8 @@ int DBConnector::delete_Pregunta(preguntas_respuestas& preguntaBorrar)
 	    result = sqlite3_finalize(stmt);
 	    if (result != SQLITE_OK) 
 	    {
-	       cout << "Error finalizing statement (DELETE)" <<  endl;
-	       cout << sqlite3_errmsg(db) <<  endl;
+	       // cout << "Error finalizing statement (DELETE)" <<  endl;
+	       // cout << sqlite3_errmsg(db) <<  endl;
 	    }
 		return result;
 	}
@@ -1054,8 +1051,6 @@ int DBConnector::leer_Jugadores(vector <jugador>& listaTodosJugadores)
     int result = sqlite3_prepare_v2(db, sql, -1, &stmt, NULL) ;
     if (result != SQLITE_OK)
     {
-       cout << "Error preparing statement (SELECT)" <<  endl;      
-       cout << sqlite3_errmsg(db) <<  endl;
       return result;
     }
 
@@ -1084,8 +1079,6 @@ int DBConnector::leer_Jugadores(vector <jugador>& listaTodosJugadores)
     result = sqlite3_finalize(stmt);
     if (result != SQLITE_OK) 
     {
-       cout << "Error finalizing statement (SELECT)" <<  endl;
-       cout << sqlite3_errmsg(db) <<  endl;
       return result;
     }
     return SQLITE_OK;
@@ -1101,8 +1094,8 @@ int DBConnector::cant_Jugadores(int* sizeTotalJugadores)
     int result = sqlite3_prepare_v2(db, sql, -1, &stmt, NULL) ;
     if (result != SQLITE_OK)
     {
-       cout << "Error preparing statement (SELECT)" <<  endl;      
-       cout << sqlite3_errmsg(db) <<  endl;
+       // cout << "Error preparing statement (SELECT)" <<  endl;      
+       // cout << sqlite3_errmsg(db) <<  endl;
       return result;
     }
   
@@ -1118,8 +1111,8 @@ int DBConnector::cant_Jugadores(int* sizeTotalJugadores)
     result = sqlite3_finalize(stmt);
     if (result != SQLITE_OK) 
     {
-       cout << "Error finalizing statement (SELECT)" <<  endl;
-       cout << sqlite3_errmsg(db) <<  endl;
+       // cout << "Error finalizing statement (SELECT)" <<  endl;
+       // cout << sqlite3_errmsg(db) <<  endl;
       return result;
     }
     return SQLITE_OK;
@@ -1134,8 +1127,8 @@ int DBConnector::leer_Preguntas(vector <preguntas_respuestas>& listaTodasPregunt
     int result = sqlite3_prepare_v2(db, sql, -1, &stmt, NULL) ;
     if (result != SQLITE_OK)
     {
-       cout << "Error preparing statement (SELECT)" <<  endl;      
-       cout << sqlite3_errmsg(db) <<  endl;
+       // cout << "Error preparing statement (SELECT)" <<  endl;      
+       // cout << sqlite3_errmsg(db) <<  endl;
       return result;
     }
  	//Variables a recoger
@@ -1199,8 +1192,8 @@ int DBConnector::leer_Preguntas(vector <preguntas_respuestas>& listaTodasPregunt
     result = sqlite3_finalize(stmt);
     if (result != SQLITE_OK) 
     {
-       cout << "Error finalizing statement (SELECT)" <<  endl;
-       cout << sqlite3_errmsg(db) <<  endl;
+       // cout << "Error finalizing statement (SELECT)" <<  endl;
+       // cout << sqlite3_errmsg(db) <<  endl;
       return result;
     }
     return SQLITE_OK;
@@ -1216,8 +1209,8 @@ int DBConnector::cant_Preguntas(int* sizeTotalPreguntas)
     int result = sqlite3_prepare_v2(db, sql, -1, &stmt, NULL) ;
     if (result != SQLITE_OK)
     {
-       cout << "Error preparing statement (SELECT)" <<  endl;      
-       cout << sqlite3_errmsg(db) <<  endl;
+       // cout << "Error preparing statement (SELECT)" <<  endl;      
+       // cout << sqlite3_errmsg(db) <<  endl;
       return result;
     }
   
@@ -1233,8 +1226,8 @@ int DBConnector::cant_Preguntas(int* sizeTotalPreguntas)
     result = sqlite3_finalize(stmt);
     if (result != SQLITE_OK) 
     {
-       cout << "Error finalizing statement (SELECT)" <<  endl;
-       cout << sqlite3_errmsg(db) <<  endl;
+       // cout << "Error finalizing statement (SELECT)" <<  endl;
+       // cout << sqlite3_errmsg(db) <<  endl;
       return result;
     }
     return SQLITE_OK;
@@ -1259,7 +1252,7 @@ int DBConnector::drop_Jugadores ()
     int result = sqlite3_exec(db, sql, NULL, NULL, NULL);
     if (result != SQLITE_DONE) 
     {
-       cout << "Error DROPING Jugadores"<<  endl;
+      //  cout << "Error DROPING Jugadores"<<  endl;
       sqlite3_finalize(stmt);
       return result;
     }
@@ -1290,7 +1283,7 @@ int DBConnector::drop_Preguntas ()
     int result = sqlite3_exec(db, sql, NULL, NULL, NULL);
     if (result != SQLITE_DONE) 
     {
-       cout << "Error DROPING Preguntas"<<  endl;
+      //  cout << "Error DROPING Preguntas"<<  endl;
       sqlite3_finalize(stmt);
       return result;
     }
