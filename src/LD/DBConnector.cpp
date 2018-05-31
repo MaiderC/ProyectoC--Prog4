@@ -156,7 +156,7 @@ using namespace std;
   	return 0;
   }
 
-  int DBConnector::Pregunta_existe(preguntas_respuestas p)
+  int DBConnector::Pregunta_existe(preguntas_respuestas& p)
   {
   	int sizeTotalPreguntas;
   	cant_Preguntas(&sizeTotalPreguntas);
