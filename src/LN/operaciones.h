@@ -13,8 +13,6 @@
 
 	using namespace std;
 
-class operaciones
-{
 	void siguienteID(const vector<preguntas_respuestas>& listaTodasRespuestas);
 	preguntas_respuestas generarPregunta(const vector<preguntas_respuestas>& listaTodasPreguntas, vector<preguntas_respuestas>& preguntasSalidas);
 	int comprobarRespuesta(const string& respuesta);
@@ -24,7 +22,5 @@ class operaciones
 	vector<jugador> actualizarPuntuacion(vector<jugador>& listaTodosJugadores, vector<jugador>& listaJugadoresSesion);
 	vector<jugador> actualizarPuntuacion(vector<jugador>& listaTodosJugadores, jugador jugadorPrincipal);
 	void guardarJugadores(const vector<jugador>& ListaTodosJugadores, DBConnector BD);
-};
-
 
 #endif
