@@ -111,6 +111,7 @@ int main(int argc, char** argv)
 				    }
 
 				    prfacil preg_r ();
+				    
 
 				    for (int i = 0; i < cant_p; i++)
 				    {
