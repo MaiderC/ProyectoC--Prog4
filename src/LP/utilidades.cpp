@@ -10,8 +10,6 @@
 
 using namespace std;
 
-namespace utilidades
-{
 	void utilidades::mostrarMensaje(const string& str)
 	{
 		cout << str << endl;
@@ -122,4 +120,3 @@ namespace utilidades
 	{
 		cin >> Pregunta;
 	}
-}

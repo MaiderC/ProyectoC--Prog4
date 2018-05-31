@@ -12,8 +12,6 @@
 
 	using namespace std;
 
-namespace utilidades
-{
 	class utilidades
 	{
 
@@ -25,11 +23,9 @@ namespace utilidades
 		void mensajeGanador(const jugador& ganador);
 		int mensajeEmpate(const vector<jugador>& empatados);
 		void recogerString(string& string_recoger);
-		void recogerNick(string& nick_recoger);
 		void recogerInt(int& numero_recoger);
 		int recogerOpcionRespuesta(string& respuesta_recoger, string dificultad) ;
 		void recogerPregunta(preguntas_respuestas& Pregunta);
 	};
-}
 
 #endif
