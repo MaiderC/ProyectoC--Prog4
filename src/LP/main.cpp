@@ -16,7 +16,7 @@ using namespace operaciones;
 
 //Declaracion de MeTODOS
 void menuAdmin(DBConnector BD);
-void menuJugador();
+void menuJugador(DBConnector BD);
 void individual();
 void multijugador();
 void ranking();
@@ -62,7 +62,7 @@ int main(int argc, char** argv)
 	 		jugador jugadorPrincipal (nick, 0);
 
 	 		mostrarMensaje("Hola "); mostrarMensaje(nick); mostrarMensaje("!");
-	    	menuJugador();
+	    	menuJugador(BD);
 		}
   	}
 
@@ -72,10 +72,11 @@ int main(int argc, char** argv)
  void menuAdmin(DBConnector BD)
  {
  	mostrarMensaje("Hola, administrador");
+	
+	int opcionMenu = 0;
 
  	do
  	{
-	 	int opcionMenu = 0;
 	 	int opcionSeguir;
 
 	 	 mostrarMensaje("Estas son las acciones que puedes realizar:");
@@ -125,7 +126,8 @@ int main(int argc, char** argv)
 			 		mostrarMensaje("2.- No");
 			 		recogerInt(opcionSeguir);
 
-				}while(opcionSeguir != 2);
+				}
+				while(opcionSeguir != 2);
 				break;
 
 			case 2:
@@ -191,21 +193,23 @@ int main(int argc, char** argv)
 				break;
 
 			case 4:
+
+					int opcionEliminar = 0;
 				do
 				{
-					int opcionEliminar = 0;
 					mostrarTodasPreguntas(listaTodasPreguntas);
 					mostrarMensaje("¿Que pregunta quieres eliminar?");
 					recogerInt(opcionEliminar);
 
 					BD.delete_Pregunta(listaTodasPreguntas[opcionEliminar-1]);
-					listaTodasPreguntas.erase(opcionEliminar-1);
+					listaTodasPreguntas.erase(listaTodasPreguntas.begin() + opcionEliminar-1);
 
 					mostrarMensaje("¿Quieres seguir eliminando preguntas?");
 			 		mostrarMensaje("1.- Si");
 			 		mostrarMensaje("2.- No");
 			 		recogerInt(opcionEliminar);
-				}while(opcionEliminar != 2);
+				}
+				while(opcionEliminar != 2);
 				break;
 
 			case 5:
@@ -216,10 +220,11 @@ int main(int argc, char** argv)
 			default:
 				break;
 	  	}
-	}while(opcionMenu != 5)
+	}
+	while(opcionMenu != 5);
  }
 
- void menuJugador()
+ void menuJugador(DBConnector BD)
  {
  	int opcionMenu;
 	
@@ -271,7 +276,7 @@ int main(int argc, char** argv)
  {
  	int opcionDificultad;
 
- 	mostrarMensaje("El juego permite jugar con diferentes niveles de dificultad:")
+ 	mostrarMensaje("El juego permite jugar con diferentes niveles de dificultad:");
  	mostrarMensaje("\t1.- Facil");
  	mostrarMensaje("\t2.- Medio");
  	mostrarMensaje("\t3.- Dificil");
@@ -279,9 +284,10 @@ int main(int argc, char** argv)
 
  	do
  	{
- 		mostrarMensaje("Elije con qué nivel de dificultad quieres jugar (opciones validas: 1, 2, 3 o 4): ")
+ 		mostrarMensaje("Elije con qué nivel de dificultad quieres jugar (opciones validas: 1, 2, 3 o 4): ");
  		recogerInt(opcionDificultad);
- 	}while(opcionDificultad < 1 || opcionDificultad > 4);
+ 	}
+ 	while(opcionDificultad < 1 || opcionDificultad > 4);
 
  	return opcionDificultad;
  }
