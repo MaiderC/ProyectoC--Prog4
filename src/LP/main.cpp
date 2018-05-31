@@ -74,10 +74,10 @@ int main(int argc, char** argv)
  	mostrarMensaje("Hola, administrador");
 	
 	int opcionMenu = 0;
+	int opcionSeguir;
 
  	do
  	{
-	 	int opcionSeguir;
 
 	 	 mostrarMensaje("Estas son las acciones que puedes realizar:");
 	 	 mostrarMensaje("\t1- Añadir preguntas fáciles");
@@ -213,11 +213,10 @@ int main(int argc, char** argv)
 				break;
 
 			case 5:
-				{
+				
 					mostrarMensaje("Modo administrador cerrado finalizado.");
 					acaba();
 					break;
-				}
 
 			default:
 				break;
