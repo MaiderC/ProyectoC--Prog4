@@ -58,7 +58,7 @@ int main(int argc, char** argv)
 	  		string nick;
 	  		utilidades::recogerString(nick);
 
-	 		jugadorPrincipal = new jugador(nick, 0);
+	 		jugadorPrincipal jugador(nick, 0);
 
 	 		utilidades::mostrarMensaje("Hola "); utilidades::mostrarMensaje(nick); utilidades::mostrarMensaje("!");
 	    	menuJugador();
@@ -110,7 +110,7 @@ int main(int argc, char** argv)
 				    	utilidades::recogerInt(cant_p);
 				    }
 
-				    prfacil preg_r = new prfacil();
+				    prfacil preg_r prfacil();
 
 				    for (int i = 0; i < cant_p; i++)
 				    {
@@ -141,7 +141,7 @@ int main(int argc, char** argv)
 				    	utilidades::recogerInt(cant_p);
 				    }
 
-				    prmedio preg_r = new prmedio();
+				    prmedio preg_r prmedio();
 
 				    for (int i = 0; i < cant_p; i++)
 				    {
@@ -172,7 +172,7 @@ int main(int argc, char** argv)
 				    	utilidades::recogerInt(cant_p);
 				    }
 
-				    prdificil preg_r = new prdificil();
+				    prdificil preg_r prdificil();
 
 				    for (int i = 0; i < cant_p; i++)
 				    {
@@ -498,7 +498,8 @@ void multijugador()
  	{
  		utilidades::mostrarMensaje("J");utilidades::mostrarInt(i);utilidades::mostrarMensaje(": "); //Para que aparezca como JX: 
  		utilidades::recogerString(NickAux);
- 		multijugadores.push_back(new jugador(NickAux));
+ 		jugador aux (NickAux);
+ 		multijugadores.push_back(aux);
  		multijugadores[i].setPuntuacion(0);
  	}
 
