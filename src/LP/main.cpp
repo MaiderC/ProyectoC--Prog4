@@ -58,7 +58,7 @@ int main(int argc, char** argv)
 	  		string nick;
 	  		utilidades::recogerString(nick);
 
-	 		jugadorPrincipal jugador(nick, 0);
+	 		jugador jugadorPrincipal (nick, 0);
 
 	 		utilidades::mostrarMensaje("Hola "); utilidades::mostrarMensaje(nick); utilidades::mostrarMensaje("!");
 	    	menuJugador();
@@ -110,7 +110,7 @@ int main(int argc, char** argv)
 				    	utilidades::recogerInt(cant_p);
 				    }
 
-				    prfacil preg_r prfacil();
+				    prfacil preg_r ();
 
 				    for (int i = 0; i < cant_p; i++)
 				    {
@@ -141,7 +141,7 @@ int main(int argc, char** argv)
 				    	utilidades::recogerInt(cant_p);
 				    }
 
-				    prmedio preg_r prmedio();
+				    prmedio preg_r ();
 
 				    for (int i = 0; i < cant_p; i++)
 				    {
@@ -172,7 +172,7 @@ int main(int argc, char** argv)
 				    	utilidades::recogerInt(cant_p);
 				    }
 
-				    prdificil preg_r prdificil();
+				    prdificil preg_r ();
 
 				    for (int i = 0; i < cant_p; i++)
 				    {
