@@ -202,7 +202,8 @@ istream& operator>>(istream& in, prdificil& preguntadificil)
 	in >> temporal;
 	(preguntadificil).setPregunta(temporal);
 
-	cout << "*La respuesta no debe contener la letra de la opcion (a o b) ni signos de puntuacion al inicio (salvo que se trate de un guion, por ser la respuesta un numero negativo)";
+	cout << "*La respuesta no debe contener la letra de la opcion (a o b) ni signos de puntuacion 
+	al inicio (salvo que se trate de un guion, por ser la respuesta un numero negativo)";
 	cout << "Introduce la respuesta correcta: ";
 	in >> temporal;
 	(preguntadificil).setRespuesta1(temporal);

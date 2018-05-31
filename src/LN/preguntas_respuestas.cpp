@@ -75,7 +75,7 @@ void preguntas_respuestas:: setCont (int cont)
 
 void preguntas_respuestas:: setID(int ID)
 {
-  this -> ID = ID;
+  this -> id = ID;
 }
 
 string preguntas_respuestas:: getPregunta() const
@@ -97,7 +97,7 @@ int preguntas_respuestas:: getCont () const
 
 int preguntas_respuestas:: getID () const
 {
-  return ID;
+  return id;
 }
 
 //sobrecarga de operador =

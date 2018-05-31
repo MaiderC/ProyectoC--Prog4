@@ -99,7 +99,7 @@ ostream& operator<<(ostream& out, const prfacil& preguntafacil)
 {
 	// prfacil* preguntafacil = dynamic_cast<prfacil*>(Pregunta);
 
-	out << (*preguntafacil).getPregunta() << endl;
+	out << (preguntafacil).getPregunta() << endl;
 
 	out << "a) ";
 	if((preguntafacil).getRespuesta1()[0] == '#')
@@ -135,18 +135,19 @@ istream& operator>>(istream& in, prfacil& preguntafacil)
 	// prfacil* preguntafacil = dynamic_cast<prfacil*>(Pregunta);
 	
 	string temporal;
-	mostrarMensaje("Introduce la pregunta a insertar: ");
+	cout << "Introduce la pregunta a insertar: ";
 	in >> temporal;
-	(preguntafacil).getPregunta(temporal);
+	(preguntafacil).setPregunta(temporal);
 
-	mostrarMensaje("*La respuesta no debe contener la letra de la opcion (a o b) ni signos de puntuacion al inicio (salvo que se trate de un guion, por ser la respuesta un numero negativo)");
-	mostrarMensaje("Introduce la respuesta correcta: ");
+	cout << "*La respuesta no debe contener la letra de la opcion (a o b) ni signos de puntuacion al inicio 
+	(salvo que se trate de un guion, por ser la respuesta un numero negativo)";
+	cout << "Introduce la respuesta correcta: ";
 	in >> temporal;
-	(preguntafacil).getPespuesta1(temporal);
+	(preguntafacil).setRespuesta1(temporal);
 
 	(preguntafacil).respuesta1 = '#' + (preguntafacil).respuesta1;
 
-	mostrarMensaje("Introduce otra respuesta (una incorrecta): ");
+	cout << "Introduce otra respuesta (una incorrecta): ";
 	in >> (preguntafacil).respuesta2;
 
 	return in;
