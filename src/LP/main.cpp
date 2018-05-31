@@ -59,6 +59,7 @@ int main(int argc, char** argv)
   		{
 	  		//Antes de mostrar el menu, como es la primera vez, hacemos que se identifique
 	  		string nick;
+	  		mostrarMensaje("Introduce tu NICK:");
 	  		recogerString(nick);
 
 	 		jugador jugadorPrincipal (nick, 0);
