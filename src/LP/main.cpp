@@ -216,7 +216,7 @@ int main(int argc, char** argv)
 			case 5:
 				
 					mostrarMensaje("Modo administrador cerrado finalizado.");
-					acaba(BD);
+					acabar(BD);
 					break;
 
 			default:
@@ -370,36 +370,76 @@ int main(int argc, char** argv)
 		 if((*pregunta).getDificultad() == "#")
 		 {
 		 	prfacil* preguntaAux = dynamic_cast<prfacil*> (pregunta);
-		 } else if((*pregunta).getDificultad() == "##")
+		 	
+		 	while(respValida == -1)
+			{
+		 		respValida = recogerOpcionRespuesta(respuesta, preguntaAux.getDificultad());
+		 	}
+
+			switch (respuesta)
+			{
+				case 'a':
+					respCorrecta = comprobarRespuesta(preguntaAux.getRespuesta1());
+					break;
+
+				case 'b':
+					respCorrecta = comprobarRespuesta(preguntaAux.getRespuesta2());
+					break;
+			}
+		 } 
+
+		 else if((*pregunta).getDificultad() == "##")
 		 {
 		 	prmedio* preguntaAux = dynamic_cast<prmedio*> (pregunta);
-		 } else if((*pregunta).getDificultad() == "###")
+
+		 	while(respValida == -1)
+			{
+		 		respValida = recogerOpcionRespuesta(respuesta, preguntaAux.getDificultad());
+		 	}
+
+			switch (respuesta)
+			{
+				case 'a':
+					respCorrecta = comprobarRespuesta(preguntaAux.getRespuesta1());
+					break;
+
+				case 'b':
+					respCorrecta = comprobarRespuesta(preguntaAux.getRespuesta2());
+					break;
+
+				case 'c':
+					respCorrecta = comprobarRespuesta(preguntaAux.getRespuesta3());
+					break;
+			}
+		 } 
+
+		 else if((*pregunta).getDificultad() == "###")
 		 {
 		 	prdificil* preguntaAux = dynamic_cast<prdificil*> (pregunta);
+
+		 	while(respValida == -1)
+			{
+		 		respValida = recogerOpcionRespuesta(respuesta, preguntaAux.getDificultad());
+		 	}
+
+			switch (respuesta)
+			{
+				case 'a':
+					respCorrecta = comprobarRespuesta(preguntaAux.getRespuesta1());
+					break;
+
+				case 'b':
+					respCorrecta = comprobarRespuesta(preguntaAux.getRespuesta2());
+					break;
+
+				case 'c':
+					respCorrecta = comprobarRespuesta(preguntaAux.getRespuesta3());
+					break;
+
+				case 'd':
+					respCorrecta = comprobarRespuesta(preguntaAux.getRespuesta4());
+			}
 		 }
-
-		 while(respValida == -1)
-		 {
-		 	 respValida = recogerOpcionRespuesta(respuesta, preguntaAux.getDificultad());
-		 }
-
-		switch (respuesta)
-		{
-			case 'a':
-				respCorrecta = comprobarRespuesta(preguntaAux.getRespuesta1());
-				break;
-
-			case 'b':
-				respCorrecta = comprobarRespuesta(preguntaAux.getRespuesta2());
-				break;
-
-			case 'c':
-				respCorrecta = comprobarRespuesta(preguntaAux.getRespuesta3());
-				break;
-
-			case 'd':
-				respCorrecta = comprobarRespuesta(preguntaAux.getRespuesta4());
-		}
 				
 		 if(respCorrecta == 1)
 		 {
@@ -434,13 +474,13 @@ int main(int argc, char** argv)
 	 }
 	 else
 	 {
-	 	menuJugador();
+	 	menuJugador(BD);
 	 }
  }
 
 void multijugador()
  {
- 	int opcionDificultad
+ 	int opcionDificultad;
  	int cantJugadores;
  	int cantPreg;
  	vector<preguntas_respuestas> PreguntasSeleccionadas;
@@ -473,7 +513,7 @@ void multijugador()
  		}
  	}
 
- 	if(dificopcionDificultadultad == 3)
+ 	if(opcionDificultad == 3)
  	{
  		for(int i = 0; i < listaTodasPreguntas.size(); i++)
  		{
@@ -508,7 +548,7 @@ void multijugador()
  	{
  		mostrarMensaje("J");mostrarInt(i);mostrarMensaje(": "); //Para que aparezca como JX: 
  		recogerString(NickAux);
- 		jugador aux (NickAux);
+ 		jugador aux (NickAux,0);
  		multijugadores.push_back(aux);
  		multijugadores[i].setPuntuacion(0);
  	}
@@ -592,7 +632,7 @@ void multijugador()
 	 }
 	 else
 	 {
-	 	menuJugador();
+	 	menuJugador(BD);
 	 }
  }
 
@@ -610,7 +650,7 @@ void multijugador()
  	{
  		for(int j = 0; j < multijugadores.size(); j++)
  		{
- 			mostrarMensaje("\nPregunta para el jugador #" + (j+1) + "->" + multijugadores[j].nick);
+ 			mostrarMensaje(("\nPregunta para el jugador #" + (j+1) + "->" + multijugadores[j].getNick()));
 
  			//Preparar la pregunta aleatoria para el jugador
  			pregunta = generarPregunta(listaTodasPreguntas, preguntasSalidas);
@@ -678,7 +718,7 @@ void multijugador()
  		mostrarPuntuacion(listaTodosJugadores[i]);
  	}
  		mostrarMensaje("\n");
-	 menuJugador();
+	 menuJugador(BD);
  }
 
  void acabar(DBConnector BD) //metodo para liberar recursos
