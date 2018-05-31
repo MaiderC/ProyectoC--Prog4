@@ -50,7 +50,7 @@ string prfacil::getRespuesta2() const
 	jugador.setPuntuacion(jugador.getPuntuacion() + 1);
 }
 
- void prfacil::prepararRespuestas(preguntas_respuestas pregunta, string facil)
+ void prfacil::prepararRespuestas(preguntas_respuestas& pregunta, string facil)
 {
 	int i = 1;
 	int igual = 0;
