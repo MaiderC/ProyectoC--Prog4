@@ -68,7 +68,7 @@ string prmedio::getRespuesta3() const
 	jugador.setPuntuacion(jugador.getPuntuacion() + 2);
 }
 
- void prmedio::prepararRespuestas(preguntas_respuestas& pregunta)
+ void prmedio::prepararRespuestas()
 {
 	int i = 2;
 	int igual = 0;

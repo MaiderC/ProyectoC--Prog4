@@ -51,7 +51,7 @@ class preguntas_respuestas
 
 		//metodos de clase madre
 		virtual void sumarPunto(jugador jugador);
-		virtual void prepararRespuestas(preguntas_respuestas& pregunta);
+		virtual void prepararRespuestas();
 
 		//sobrecarga de operador =
 		bool operator=(const preguntas_respuestas& p_r);

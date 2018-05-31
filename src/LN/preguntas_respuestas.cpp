@@ -114,7 +114,7 @@ void sumarPunto(jugador jugador)
 {
 }
 
-void prepararRespuestas(preguntas_respuestas& pregunta)
+void prepararRespuestas()
 {
-  
+
 }
