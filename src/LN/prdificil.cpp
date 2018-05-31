@@ -134,7 +134,9 @@ bool prdificil::operator=(const prdificil& pd)
 
 ostream& operator<<(ostream& out, const preguntas_respuestas& Pregunta)
 {
-	prdificil* preguntadificil = dynamic_cast <prdificil*>(Pregunta);
+	preguntas_respuestas *punt_preg = &Pregunta;
+
+	prdificil* preguntadificil = dynamic_cast <prdificil*>(punt_preg);
 	
 	out << (*preguntadificil).getPregunta() << endl;
 
@@ -208,7 +210,7 @@ istream& operator>>(istream& in, preguntas_respuestas& Pregunta)
 	(*preguntadificil).setRespuesta1(temporal);
 
 	(*preguntadificil).respuesta1 = '#' + (*preguntadificil).respuesta1;
-	
+
 	cout << "Introduce otra respuesta (una incorrecta): ";
 	in >> (*preguntadificil).respuesta2;
 
