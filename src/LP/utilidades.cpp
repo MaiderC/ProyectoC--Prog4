@@ -118,7 +118,17 @@ namespace utilidades
 		}
 	}
 
-	void recogerPregunta(preguntas_respuestas& Pregunta)
+	void recogerPregunta(prfacil& Pregunta)
+	{
+		cin >> Pregunta;
+	}
+
+	void recogerPregunta(prmedio& Pregunta)
+	{
+		cin >> Pregunta;
+	}
+
+	void recogerPregunta(prdificil& Pregunta)
 	{
 		cin >> Pregunta;
 	}
