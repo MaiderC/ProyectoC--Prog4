@@ -39,8 +39,8 @@ class prmedio :  public preguntas_respuestas
 		//sobrecarga de operador =
 		bool operator=(const prmedio& p_m);
 
-		friend ostream& operator<<(ostream& out, const preguntas_respuestas& Pregunta);
-		friend istream& operator>>(istream& in, preguntas_respuestas& Pregunta);
+		friend ostream& operator<<(ostream& out, const prmedio& preguntamedio);
+		friend istream& operator>>(istream& in, prmedio& preguntamedio);
 
 	};
 #endif
