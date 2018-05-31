@@ -260,7 +260,7 @@ int main(int argc, char** argv)
 
   		case 3:
 	  		mostrarMensaje("Has elegido la opcion numero 3: VER RANKING"); 
-	  		ranking();
+	  		ranking(BD);
 	  		break;
 
   		case 4:
@@ -746,7 +746,7 @@ void multijugador(DBConnector BD)
 			if(correcta == 1)
 			{
 			 	mostrarMensaje("Respuesta correcta");
-			 	pregunta.sumarPunto(multijugadores[j]);
+			 	(*pregunta).sumarPunto(multijugadores[j]);
 			}
 			else
 			{
