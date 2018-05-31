@@ -28,10 +28,11 @@ vector<preguntas_respuestas> preguntasSalidas; // Lista de las preguntas que ya 
 vector<preguntas_respuestas> listaTodasPreguntas; // Lista de todas las preguntas de la base de datos
 vector<jugador> listaTodosJugadores; // Lista de todos los jugadores de la base de datos
 jugador jugadorPrincipal; // Jugador que inicia la partida
+DBConnector BD;
 
 int main(int argc, char** argv)
 {
-	DBConnector BD ("./Data/BD.sqlite");
+	BD("./Data/BD.sqlite");
 	BD.leer_Jugadores(listaTodosJugadores);
 
   	BD.leer_Preguntas(listaTodasPreguntas);
