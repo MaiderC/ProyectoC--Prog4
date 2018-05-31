@@ -216,7 +216,7 @@ int main(int argc, char** argv)
 			case 5:
 				
 					mostrarMensaje("Modo administrador cerrado finalizado.");
-					acaba();
+					acaba(BD);
 					break;
 
 			default:
@@ -300,7 +300,7 @@ int main(int argc, char** argv)
  	int cant_preguntas;
  	int max_preguntas; //Leer las preguntas, meterlas en un array y contar la cantidad de posiciones de ese array
  	vector<preguntas_respuestas> PreguntasSeleccionadas;
- 	preguntas_respuestas pregunta;
+ 	preguntas_respuestas* pregunta;
  	int random; //variable en la que guardaremos el numero aleatorio para elegir una pregunta aleatoria
  	int repetida = 0; //Variable para ver si en cada momento la pregunta elegida aleatoriamente es i no alguna que ya ha salido
  	int cantidadPreguntasValida = 0; //Variable para ver si se ha pasado o no con la cantidad de preguntas
@@ -317,7 +317,7 @@ int main(int argc, char** argv)
  	{
  		for(int i = 0; i < listaTodasPreguntas.size(); i++)
  		{
- 			if(listaTodasPreguntas[i].getDificultad == "#")
+ 			if(listaTodasPreguntas[i].getDificultad() == "#")
  				PreguntasSeleccionadas.push_back(listaTodasPreguntas[i]);
  		}
  	}
@@ -326,16 +326,16 @@ int main(int argc, char** argv)
  	{
  		for(int i = 0; i < listaTodasPreguntas.size(); i++)
  		{
- 			if(listaTodasPreguntas[i].getDificultad == "##")
+ 			if(listaTodasPreguntas[i].getDificultad() == "##")
  				PreguntasSeleccionadas.push_back(listaTodasPreguntas[i]);
  		}
  	}
 
- 	if(dificopcionDificultadultad == 3)
+ 	if(opcionDificultad == 3)
  	{
  		for(int i = 0; i < listaTodasPreguntas.size(); i++)
  		{
- 			if(listaTodasPreguntas[i].getDificultad == "###")
+ 			if(listaTodasPreguntas[i].getDificultad() == "###")
  				PreguntasSeleccionadas.push_back(listaTodasPreguntas[i]);
  		}
  	}
@@ -363,17 +363,17 @@ int main(int argc, char** argv)
 
  	for(int i = 0; i < cant_preguntas; i++)
  	{
- 		 pregunta = generarPregunta(PreguntasSeleccionadas, preguntasSalidas);
-		 mostrarPregunta(pregunta);
-		 respValida = recogerOpcionRespuesta(respuesta, pregunta.getDificultad());
+ 		 (*pregunta) = generarPregunta(PreguntasSeleccionadas, preguntasSalidas);
+		 mostrarPregunta(*pregunta);
+		 respValida = recogerOpcionRespuesta(respuesta, (*pregunta).getDificultad());
 
-		 if(pregunta.getDificultad() == "#")
+		 if((*pregunta).getDificultad() == "#")
 		 {
 		 	prfacil* preguntaAux = dynamic_cast<prfacil*> (pregunta);
-		 } else if(pregunta.getDificultad() == "##")
+		 } else if((*pregunta).getDificultad() == "##")
 		 {
 		 	prmedio* preguntaAux = dynamic_cast<prmedio*> (pregunta);
-		 } else if(pregunta.getDificultad() == "###")
+		 } else if((*pregunta).getDificultad() == "###")
 		 {
 		 	prdificil* preguntaAux = dynamic_cast<prdificil*> (pregunta);
 		 }
@@ -404,7 +404,7 @@ int main(int argc, char** argv)
 		 if(respCorrecta == 1)
 		 {
 		 	mostrarMensaje("Respuesta correcta");
-		 	pregunta.sumarPunto(jugadorPrincipal);
+		 	(*pregunta).sumarPunto(jugadorPrincipal);
 		 }
 		 else
 		 {
@@ -459,7 +459,7 @@ void multijugador()
  	{
  		for(int i = 0; i < listaTodasPreguntas.size(); i++)
  		{
- 			if(listaTodasPreguntas[i].getDificultad == "#")
+ 			if(listaTodasPreguntas[i].getDificultad() == "#")
  				PreguntasSeleccionadas.push_back(listaTodasPreguntas[i]);
  		}
  	}
@@ -468,7 +468,7 @@ void multijugador()
  	{
  		for(int i = 0; i < listaTodasPreguntas.size(); i++)
  		{
- 			if(listaTodasPreguntas[i].getDificultad == "##")
+ 			if(listaTodasPreguntas[i].getDificultad() == "##")
  				PreguntasSeleccionadas.push_back(listaTodasPreguntas[i]);
  		}
  	}
@@ -477,7 +477,7 @@ void multijugador()
  	{
  		for(int i = 0; i < listaTodasPreguntas.size(); i++)
  		{
- 			if(listaTodasPreguntas[i].getDificultad == "###")
+ 			if(listaTodasPreguntas[i].getDificultad() == "###")
  				PreguntasSeleccionadas.push_back(listaTodasPreguntas[i]);
  		}
  	}

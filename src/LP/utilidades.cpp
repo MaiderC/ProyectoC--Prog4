@@ -78,7 +78,7 @@ namespace utilidades
 		cin >> numero_recoger;
 	}
 
-	int recogerOpcionRespuesta(string& respuesta_recoger, string dificultad) 
+	int recogerOpcionRespuesta(char& respuesta_recoger, string dificultad) 
 	{
 		int Dificultad = dificultad.size();
 		int error = 0;
