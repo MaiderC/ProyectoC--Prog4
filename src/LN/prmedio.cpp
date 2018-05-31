@@ -167,12 +167,15 @@ istream& operator>>(istream& in, preguntas_respuestas& Pregunta)
 {
 	prfacil* preguntamedio = dynamic_cast<*prfacil>(Pregunta);
 
+	string temporal;
 	mostrarMensaje("Introduce la pregunta a insertar: ");
-	in >> (*preguntamedio).getPregunta();
+	in >> temporal;
+	(*preguntamedio).getPregunta(temporal);
 
 	mostrarMensaje("*La respuesta no debe contener la letra de la opcion (a o b) ni signos de puntuacion al inicio (salvo que se trate de un guion, por ser la respuesta un numero negativo)");
 	mostrarMensaje("Introduce la respuesta correcta: ");
-	in >> (*preguntamedio).getRespuesta1();
+	in >> temporal;
+	(*preguntamedio).getRespuesta1(temporal);
 
 	(*preguntamedio).getRespuesta1() = '#' + (*preguntamedio).getRespuesta1();
 
