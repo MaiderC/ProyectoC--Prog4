@@ -39,22 +39,26 @@ namespace utilidades
 
 	void mostrarTodasPreguntas(const vector<preguntas_respuestas> TodasPreguntas)
 	{
+		preguntas_respuestas* p;
+
 		for(int i = 0; i < TodasPreguntas.size(); i++)
 		{
 			cout << (i+1) << ".-";
+			(*p) = TodasPreguntas[i];
+
 			if (TodasPreguntas[i].getDificultad() == "#")
 			{
-				prfacil* preguntaAux = dynamic_cast<prfacil*> (&TodasPreguntas[i]);
+				prfacil* preguntaAux = dynamic_cast<prfacil*> (p);
 				mostrarPregunta(preguntaAux);
 			}
 			else if (TodasPreguntas[i].getDificultad() == "##")
 			{
-				prmedio* preguntaAux = dynamic_cast<prmedio*> (&TodasPreguntas[i]);
+				prmedio* preguntaAux = dynamic_cast<prmedio*> (p);
 				mostrarPregunta(preguntaAux);
 			}
 			else
 			{
-				prdificil* preguntaAux = dynamic_cast<prdificil*> (&TodasPreguntas[i]);
+				prdificil* preguntaAux = dynamic_cast<prdificil*> (p);
 				mostrarPregunta(preguntaAux);
 			}
 			cout << endl << endl;
