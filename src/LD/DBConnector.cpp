@@ -19,7 +19,7 @@ using namespace std;
     //Si la BD no se ha podido abrir, muestra un mensaje
     if (result != SQLITE_OK)
     {
-      cout << "Error opening database" << endl;
+      // cout << "Error opening database" << endl;
     }
   }
 
@@ -28,8 +28,8 @@ using namespace std;
     int result = sqlite3_close(db);
     if (result != SQLITE_OK)
     {
-       cout << "Error closing database" <<  endl;
-       cout << sqlite3_errmsg(db) <<  endl;
+       // cout << "Error closing database" <<  endl;
+       // cout << sqlite3_errmsg(db) <<  endl;
     }	
   }
 
@@ -44,7 +44,6 @@ using namespace std;
   	
   	if(creada != 100)//Da 100 cuando la tabla existe y 101 cuando no (en realidad no sé por qué, pero funciona)
   	{
-  		  cout << "LA TABLA NO EXISTE, creada = " << creada <<  endl;
 	  	 sqlite3_stmt *stmt; 
 	  	 char sql[] = "CREATE TABLE Jugadores("
 	  	 				"NICK text primary key not null,"
@@ -59,7 +58,6 @@ using namespace std;
 	    }
 		
 		result = sqlite3_step(stmt);
-	     cout << "-----------" <<  endl;
 	    
 	    result = sqlite3_finalize(stmt);
 	    if (result != SQLITE_OK) 
@@ -70,7 +68,7 @@ using namespace std;
 	}
 	else
 	{
-		 cout << "LA TABLA EXISTE, creada = " << creada <<  endl;
+		 // cout << "LA TABLA EXISTE, creada = " << creada <<  endl;
 		result = SQLITE_OK;
 	}
 	//--Finalizar el statement stmt_ex
@@ -113,7 +111,6 @@ using namespace std;
 	    }
 		
 		result = sqlite3_step(stmt);
-	     cout << "-----------" <<  endl;
 	    
 	    result = sqlite3_finalize(stmt);
 	    if (result != SQLITE_OK) 
@@ -124,7 +121,7 @@ using namespace std;
 	}
 	else
 	{
-		 cout << "LA TABLA EXISTE, creada = " << creada <<  endl;
+		 // cout << "LA TABLA EXISTE, creada = " << creada <<  endl;
 		result = SQLITE_OK;
 	}
 	//--Finalizar el statement stmt_ex
@@ -217,7 +214,7 @@ using namespace std;
 	}
 	else
 	{
-		 cout << "El jugador ya existe - si quieres cambiar algo, UPDATE" <<  endl;	
+		 // cout << "El jugador ya existe - si quieres cambiar algo, UPDATE" <<  endl;	
 		return 0;	
 	}
 }
@@ -515,7 +512,7 @@ int DBConnector::insert_Pregunta (preguntas_respuestas& PreguntaInsertar)
 	}
 	else
 	{
-		 cout << "La pregunta ya existe - si quieres cambiar algo, UPDATE" <<  endl;	
+		 // cout << "La pregunta ya existe - si quieres cambiar algo, UPDATE" <<  endl;	
 		return 0;	
 	}
 }
