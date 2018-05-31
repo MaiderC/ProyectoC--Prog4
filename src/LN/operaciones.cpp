@@ -31,7 +31,7 @@ namespace operaciones
 		p_r.setCont(cont);
 	}
 
-	preguntas_respuestas operaciones::generarPregunta(const vector<preguntas_respuestas>& listaTodasPreguntas, vector<preguntas_respuestas>& preguntasSalidas)
+	preguntas_respuestas generarPregunta(const vector<preguntas_respuestas>& listaTodasPreguntas, vector<preguntas_respuestas>& preguntasSalidas)
 	{
 		int random = 0;
 		preguntas_respuestas pregunta;
@@ -79,7 +79,7 @@ namespace operaciones
 
 	//Verificar si la respuesta elegida es la correcta
 	//(ver si la respuesta a la que se le ha asignado el valor de la letra que se ha elegido empieza por punto)
-	int operaciones::comprobarRespuesta(const string& respuesta)
+	int comprobarRespuesta(const string& respuesta)
 	{
 		int correcto;
 
@@ -97,7 +97,7 @@ namespace operaciones
 		return correcto;
 	}
 
-	int operaciones::maxPreguntas(const int& cantPreguntas, const int& sizeTotalPreguntas)
+	int maxPreguntas(const int& cantPreguntas, const int& sizeTotalPreguntas)
 	{	
 		int valido;	//si es 1 es válido, si es 0 no lo es.
 
@@ -113,7 +113,7 @@ namespace operaciones
 		return valido;
 	}
 
-	 void operaciones::ordenarJugadores(vector<jugador>& jugadoresLeidos)
+	 void ordenarJugadores(vector<jugador>& jugadoresLeidos)
 	 {
 	 	jugador temp; //variable auxiliar
 
@@ -133,7 +133,7 @@ namespace operaciones
 	 	}
 	}
 
-	int operaciones::maxPuntuacion(const vector<jugador>& jugadores)
+	int maxPuntuacion(const vector<jugador>& jugadores)
 	{
 		int max = jugadores[0].getPuntuacion();
 
@@ -148,7 +148,7 @@ namespace operaciones
 		return max;
 	}
 
-	vector<jugador> operaciones::actualizarPuntuacion(vector<jugador>& listaTodosJugadores, vector<jugador>& listaJugadoresSesion)
+	vector<jugador> actualizarPuntuacion(vector<jugador>& listaTodosJugadores, vector<jugador>& listaJugadoresSesion)
 	{
 	    int coincidencias = 0;
 	   
@@ -180,7 +180,7 @@ namespace operaciones
 	    return listaTodosJugadores;
 	}
 
-	vector<jugador> operaciones::actualizarPuntuacion(vector<jugador>& listaTodosJugadores, jugador jugadorPrincipal)
+	vector<jugador> actualizarPuntuacion(vector<jugador>& listaTodosJugadores, jugador jugadorPrincipal)
 	{
 	  for(int i = 0; i < listaTodosJugadores.size(); i++)
 	  {
@@ -197,7 +197,7 @@ namespace operaciones
 	  return listaTodosJugadores;
 	}
 
-	void operaciones::guardarJugadores(const vector<jugador>& ListaTodosJugadores, DBConnector BD)
+	void guardarJugadores(const vector<jugador>& ListaTodosJugadores, DBConnector BD)
 	{
 		int result;
 		for (int i = 0; i < ListaTodosJugadores.size(); ++i)

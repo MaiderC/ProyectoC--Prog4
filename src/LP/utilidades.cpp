@@ -12,22 +12,22 @@ using namespace std;
 
 namespace utilidades
 {
-	void utilidades::mostrarMensaje(const string& str)
+	void mostrarMensaje(const string& str)
 	{
 		cout << str << endl;
 	}
 
-	void utilidades::mostrarInt(const int& i)
+	void mostrarInt(const int& i)
 	{
 		cout << i << endl;
 	}
 
-	void utilidades::mostrarPregunta(const preguntas_respuestas& Pregunta)
+	void mostrarPregunta(const preguntas_respuestas& Pregunta)
 	{
 		cout << Pregunta;
 	}
 
-	void utilidades::mostrarTodasPreguntas(const vector<preguntas_respuestas> TodasPreguntas)
+	void mostrarTodasPreguntas(const vector<preguntas_respuestas> TodasPreguntas)
 	{
 		for(int i = 0; i < TodasPreguntas.size(); i++)
 		{
@@ -39,17 +39,17 @@ namespace utilidades
 
 		cout << "Indica la repuesta que consideras correcta (a, b o c):  "; //Ponerlo donde tenga que ir
 
-	void utilidades::mostrarPuntuacion(const jugador& jugador)
+	void mostrarPuntuacion(const jugador& jugador)
 	{
 		cout << jugador.getNick() << ": " << jugador.getPuntuacion() << " puntos" << endl;
 	}
 
-	void utilidades::mensajeGanador(const jugador& ganador) //A este metodo se le llamara antes de actualizar las puntuaciones, con lo que la puntuación sera la acumulada en esa partida
+	void mensajeGanador(const jugador& ganador) //A este metodo se le llamara antes de actualizar las puntuaciones, con lo que la puntuación sera la acumulada en esa partida
 	{
 		cout << "El jugador ganador de esta partida ha sido " << ganador.getNick() << " con " << ganador.getPuntuacion() << " puntos. ¡Enhorabuena!" << endl;
 	}
 
-	int utilidades::mensajeEmpate(const vector<jugador>& empatados) //Recibe una lista con los jugadores que han empatado
+	int mensajeEmpate(const vector<jugador>& empatados) //Recibe una lista con los jugadores que han empatado
 	{
 		int opcion;
 
@@ -68,17 +68,17 @@ namespace utilidades
 	}
 
 	//-----------------------------------------------------------------
-	void utilidades::recogerString(string& string_recoger)
+	void recogerString(string& string_recoger)
 	{
 		cin >> string_recoger;
 	}
 
-	void utilidades::recogerInt(int& numero_recoger)
+	void recogerInt(int& numero_recoger)
 	{
 		cin >> numero_recoger;
 	}
 
-	int utilidades::recogerOpcionRespuesta(string& respuesta_recoger, string dificultad) 
+	int recogerOpcionRespuesta(string& respuesta_recoger, string dificultad) 
 	{
 		int Dificultad = dificultad.size();
 		int error = 0;
@@ -118,7 +118,7 @@ namespace utilidades
 		}
 	}
 
-	void utilidades::recogerPregunta(preguntas_respuestas& Pregunta)
+	void recogerPregunta(preguntas_respuestas& Pregunta)
 	{
 		cin >> Pregunta;
 	}
