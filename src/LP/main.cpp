@@ -41,10 +41,7 @@ int main(int argc, char** argv)
 
   	if(argc == 2)
   	{
-		int admin;
-		admin = (argv[1] == "admin");
-
-		if (admin == 0)
+		if (strcmp(argv[1],"admin")==0)
 		{
 			menuAdmin(BD);
 		}
