@@ -75,6 +75,7 @@ int main(int argc, char** argv)
 	
 	int opcionMenu = 0;
 	int opcionSeguir;
+	int opcionEliminar;
 
  	do
  	{
@@ -194,7 +195,7 @@ int main(int argc, char** argv)
 
 			case 4:
 
-					int opcionEliminar = 0;
+					opcionEliminar = 0;
 				do
 				{
 					mostrarTodasPreguntas(listaTodasPreguntas);
