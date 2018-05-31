@@ -42,7 +42,21 @@ namespace utilidades
 		for(int i = 0; i < TodasPreguntas.size(); i++)
 		{
 			cout << (i+1) << ".-";
-			mostrarPregunta(TodasPreguntas[i]);
+			if (TodasPreguntas[i].getDificultad() == "#")
+			{
+				prfacil* preguntaAux = dynamic_cast<prfacil*> (&TodasPreguntas[i]);
+				mostrarPregunta(preguntaAux);
+			}
+			else if (TodasPreguntas[i].getDificultad() == "##")
+			{
+				prmedio* preguntaAux = dynamic_cast<prmedio*> (&TodasPreguntas[i]);
+				mostrarPregunta(preguntaAux);
+			}
+			else
+			{
+				prdificil* preguntaAux = dynamic_cast<prdificil*> (&TodasPreguntas[i]);
+				mostrarPregunta(preguntaAux);
+			}
 			cout << endl << endl;
 		}
 	}
@@ -69,12 +83,14 @@ namespace utilidades
 		{
 			cout << empatados[i].getNick() << endl;
 		}
+
 		do
 		{
 			cout << "Si deseas desempatar pulsa 1" << endl;
 			cout << "Si deseas finalizar la partida con empate, pulsa 2" << endl;
 			recogerInt(opcion);
-		}while(opcion < 1 || opcion > 2)
+		}
+		while(opcion < 1 || opcion > 2);
 	}
 
 	//-----------------------------------------------------------------
@@ -93,7 +109,7 @@ namespace utilidades
 		int Dificultad = dificultad.size();
 		int error = 0;
 		
-		recogerString(respuesta_recoger);
+		cin >> respuesta_recoger;
 
 		switch(Dificultad)
 		{

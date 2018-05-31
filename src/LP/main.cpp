@@ -364,13 +364,14 @@ int main(int argc, char** argv)
  	for(int i = 0; i < cant_preguntas; i++)
  	{
  		 (*pregunta) = generarPregunta(PreguntasSeleccionadas, preguntasSalidas);
-		 mostrarPregunta(*pregunta);
-		 respValida = recogerOpcionRespuesta(respuesta, (*pregunta).getDificultad());
+		 
 
 		 if((*pregunta).getDificultad() == "#")
 		 {
 		 	prfacil* preguntaAux = dynamic_cast<prfacil*> (pregunta);
-		 	
+		 	mostrarPregunta(*preguntaAux);
+			respValida = recogerOpcionRespuesta(respuesta, (*pregunta).getDificultad());
+
 		 	while(respValida == -1)
 			{
 		 		respValida = recogerOpcionRespuesta(respuesta, preguntaAux->getDificultad());
@@ -391,6 +392,9 @@ int main(int argc, char** argv)
 		 else if((*pregunta).getDificultad() == "##")
 		 {
 		 	prmedio* preguntaAux = dynamic_cast<prmedio*> (pregunta);
+
+			mostrarPregunta(*preguntaAux);
+			respValida = recogerOpcionRespuesta(respuesta, (*pregunta).getDificultad());
 
 		 	while(respValida == -1)
 			{
@@ -416,6 +420,9 @@ int main(int argc, char** argv)
 		 else if((*pregunta).getDificultad() == "###")
 		 {
 		 	prdificil* preguntaAux = dynamic_cast<prdificil*> (pregunta);
+
+		 	mostrarPregunta(*preguntaAux);
+			respValida = recogerOpcionRespuesta(respuesta, (*pregunta).getDificultad());
 
 		 	while(respValida == -1)
 			{
@@ -661,9 +668,6 @@ void multijugador(DBConnector BD)
  			//Preparar la pregunta aleatoria para el jugador
  			(*pregunta) = generarPregunta(listaTodasPreguntas, preguntasSalidas);
 
-			mostrarPregunta(*pregunta);
-			respValida = recogerOpcionRespuesta(respuesta, pregunta->getDificultad());
-
 			while(respValida == -1)
 			{
 				respValida = recogerOpcionRespuesta(respuesta, pregunta->getDificultad());
@@ -672,6 +676,9 @@ void multijugador(DBConnector BD)
 		 if((*pregunta).getDificultad() == "#")
 		 {
 		 	prfacil* preguntaAux = dynamic_cast<prfacil*> (pregunta);
+
+		 	mostrarPregunta(*preguntaAux);
+			respValida = recogerOpcionRespuesta(respuesta, (*pregunta).getDificultad());
 		 	
 		 	while(respValida == -1)
 			{
@@ -693,6 +700,9 @@ void multijugador(DBConnector BD)
 		 else if((*pregunta).getDificultad() == "##")
 		 {
 		 	prmedio* preguntaAux = dynamic_cast<prmedio*> (pregunta);
+
+		 	mostrarPregunta(*preguntaAux);
+			respValida = recogerOpcionRespuesta(respuesta, (*pregunta).getDificultad());
 
 		 	while(respValida == -1)
 			{
@@ -718,6 +728,9 @@ void multijugador(DBConnector BD)
 		 else if((*pregunta).getDificultad() == "###")
 		 {
 		 	prdificil* preguntaAux = dynamic_cast<prdificil*> (pregunta);
+
+		 	mostrarPregunta(*preguntaAux);
+			respValida = recogerOpcionRespuesta(respuesta, (*pregunta).getDificultad());
 
 		 	while(respValida == -1)
 			{
