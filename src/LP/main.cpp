@@ -17,7 +17,7 @@ using namespace operaciones;
 //Declaracion de MeTODOS
 void menuAdmin(DBConnector BD);
 void menuJugador(DBConnector BD);
-void individual();
+void individual(DBConnector BD);
 void multijugador();
 void ranking();
 void acabar(DBConnector BD);
@@ -250,7 +250,7 @@ int main(int argc, char** argv)
   	{
   		case 1: 
 	  		mostrarMensaje("Has elegido la opcion numero 1: JUGAR PARTIDA INDIVIDUAL");
-	  		individual();
+	  		individual(BD);
 	  		break;
 
   		case 2:
@@ -294,7 +294,7 @@ int main(int argc, char** argv)
  	return opcionDificultad;
  }
 
- void individual()
+ void individual(DBConnector BD)
  {
  	int opcionDificultad;
  	int cant_preguntas;
@@ -373,17 +373,17 @@ int main(int argc, char** argv)
 		 	
 		 	while(respValida == -1)
 			{
-		 		respValida = recogerOpcionRespuesta(respuesta, preguntaAux.getDificultad());
+		 		respValida = recogerOpcionRespuesta(respuesta, preguntaAux->getDificultad());
 		 	}
 
 			switch (respuesta)
 			{
 				case 'a':
-					respCorrecta = comprobarRespuesta(preguntaAux.getRespuesta1());
+					respCorrecta = comprobarRespuesta(preguntaAux->getRespuesta1());
 					break;
 
 				case 'b':
-					respCorrecta = comprobarRespuesta(preguntaAux.getRespuesta2());
+					respCorrecta = comprobarRespuesta(preguntaAux->getRespuesta2());
 					break;
 			}
 		 } 
@@ -394,21 +394,21 @@ int main(int argc, char** argv)
 
 		 	while(respValida == -1)
 			{
-		 		respValida = recogerOpcionRespuesta(respuesta, preguntaAux.getDificultad());
+		 		respValida = recogerOpcionRespuesta(respuesta, preguntaAux->getDificultad());
 		 	}
 
 			switch (respuesta)
 			{
 				case 'a':
-					respCorrecta = comprobarRespuesta(preguntaAux.getRespuesta1());
+					respCorrecta = comprobarRespuesta(preguntaAux->getRespuesta1());
 					break;
 
 				case 'b':
-					respCorrecta = comprobarRespuesta(preguntaAux.getRespuesta2());
+					respCorrecta = comprobarRespuesta(preguntaAux->getRespuesta2());
 					break;
 
 				case 'c':
-					respCorrecta = comprobarRespuesta(preguntaAux.getRespuesta3());
+					respCorrecta = comprobarRespuesta(preguntaAux->getRespuesta3());
 					break;
 			}
 		 } 
@@ -419,25 +419,25 @@ int main(int argc, char** argv)
 
 		 	while(respValida == -1)
 			{
-		 		respValida = recogerOpcionRespuesta(respuesta, preguntaAux.getDificultad());
+		 		respValida = recogerOpcionRespuesta(respuesta, preguntaAux->getDificultad());
 		 	}
 
 			switch (respuesta)
 			{
 				case 'a':
-					respCorrecta = comprobarRespuesta(preguntaAux.getRespuesta1());
+					respCorrecta = comprobarRespuesta(preguntaAux->getRespuesta1());
 					break;
 
 				case 'b':
-					respCorrecta = comprobarRespuesta(preguntaAux.getRespuesta2());
+					respCorrecta = comprobarRespuesta(preguntaAux->getRespuesta2());
 					break;
 
 				case 'c':
-					respCorrecta = comprobarRespuesta(preguntaAux.getRespuesta3());
+					respCorrecta = comprobarRespuesta(preguntaAux->getRespuesta3());
 					break;
 
 				case 'd':
-					respCorrecta = comprobarRespuesta(preguntaAux.getRespuesta4());
+					respCorrecta = comprobarRespuesta(preguntaAux->getRespuesta4());
 			}
 		 }
 				
@@ -470,7 +470,7 @@ int main(int argc, char** argv)
 
 	 if(opcionRepetir == 1)
 	 {
-	 	individual();
+	 	individual(BD);
 	 }
 	 else
 	 {
@@ -588,7 +588,7 @@ void multijugador()
 	 		{
 	 			//Realizamos una sola pregunta entre los jugadores que han empatado para ver si asi deshacen el empate
 		 		RealizarPreguntasMultijugador(empatados, 1);
-		 		c = 0;
+		 		int c = 0;
 		 		for (int i = 0; i < multijugadores.size(); ++i)
 		 		{
 		 			if(multijugadores[i].getNick() == empatados[c].getNick())
@@ -650,7 +650,11 @@ void multijugador()
  	{
  		for(int j = 0; j < multijugadores.size(); j++)
  		{
- 			mostrarMensaje(("\nPregunta para el jugador #" + (j+1) + "->" + multijugadores[j].getNick()));
+ 			string msj1 = "\nPregunta para el jugador #";
+			string msj2 (j+1);
+			msj1 = msj1 + msj2 + "->" + multijugadores[j].getNick();
+
+ 			mostrarMensaje(msj1);
 
  			//Preparar la pregunta aleatoria para el jugador
  			pregunta = generarPregunta(listaTodasPreguntas, preguntasSalidas);
@@ -663,35 +667,79 @@ void multijugador()
 				respValida = recogerOpcionRespuesta(respuesta, pregunta.getDificultad());
 			}
 			
-			if(pregunta.getDificultad() == "#")
+			 if((*pregunta).getDificultad() == "#")
+		 {
+		 	prfacil* preguntaAux = dynamic_cast<prfacil*> (pregunta);
+		 	
+		 	while(respValida == -1)
 			{
-				prfacil* preguntaAux = dynamic_cast<prfacil*> (pregunta);
-			} else if(pregunta.getDificultad() == "##")
-			{
-				prmedio* preguntaAux = dynamic_cast<prmedio*> (pregunta);
-			} else if(pregunta.getDificultad() == "###")
-			{
-				prdificil* preguntaAux = dynamic_cast<prdificil*> (pregunta);
-			}
+		 		respValida = recogerOpcionRespuesta(respuesta, preguntaAux->getDificultad());
+		 	}
 
 			switch (respuesta)
 			{
-			case 'a':
-				correcta = comprobarRespuesta(preguntaAux.getRespuesta1());
-				break;
+				case 'a':
+					respCorrecta = comprobarRespuesta(preguntaAux->getRespuesta1());
+					break;
 
-			case 'b':
-				correcta = comprobarRespuesta(preguntaAux.getRespuesta2());
-				break;
-
-			case 'c':
-				correcta = comprobarRespuesta(preguntaAux.getRespuesta3());
-				break;
-
-			case 'd':
-				correcta = comprobarRespuesta(preguntaAux.getRespuesta4());
-				break;
+				case 'b':
+					respCorrecta = comprobarRespuesta(preguntaAux->getRespuesta2());
+					break;
 			}
+		 } 
+
+		 else if((*pregunta).getDificultad() == "##")
+		 {
+		 	prmedio* preguntaAux = dynamic_cast<prmedio*> (pregunta);
+
+		 	while(respValida == -1)
+			{
+		 		respValida = recogerOpcionRespuesta(respuesta, preguntaAux->getDificultad());
+		 	}
+
+			switch (respuesta)
+			{
+				case 'a':
+					respCorrecta = comprobarRespuesta(preguntaAux->getRespuesta1());
+					break;
+
+				case 'b':
+					respCorrecta = comprobarRespuesta(preguntaAux->getRespuesta2());
+					break;
+
+				case 'c':
+					respCorrecta = comprobarRespuesta(preguntaAux->getRespuesta3());
+					break;
+			}
+		 } 
+
+		 else if((*pregunta).getDificultad() == "###")
+		 {
+		 	prdificil* preguntaAux = dynamic_cast<prdificil*> (pregunta);
+
+		 	while(respValida == -1)
+			{
+		 		respValida = recogerOpcionRespuesta(respuesta, preguntaAux->getDificultad());
+		 	}
+
+			switch (respuesta)
+			{
+				case 'a':
+					respCorrecta = comprobarRespuesta(preguntaAux->getRespuesta1());
+					break;
+
+				case 'b':
+					respCorrecta = comprobarRespuesta(preguntaAux->getRespuesta2());
+					break;
+
+				case 'c':
+					respCorrecta = comprobarRespuesta(preguntaAux->getRespuesta3());
+					break;
+
+				case 'd':
+					respCorrecta = comprobarRespuesta(preguntaAux->getRespuesta4());
+			}
+		 }
 
 			if(correcta == 1)
 			{
