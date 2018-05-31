@@ -50,17 +50,17 @@ int main(int argc, char** argv)
   	{
   		if(listaTodasPreguntas.size() == 0)
   		{
-  			utilidades::mostrarMensaje("No hay preguntas en el sistema :(");
+  			mostrarMensaje("No hay preguntas en el sistema :(");
   		}
   		else
   		{
 	  		//Antes de mostrar el menu, como es la primera vez, hacemos que se identifique
 	  		string nick;
-	  		utilidades::recogerString(nick);
+	  		recogerString(nick);
 
 	 		jugador jugadorPrincipal (nick, 0);
 
-	 		utilidades::mostrarMensaje("Hola "); utilidades::mostrarMensaje(nick); utilidades::mostrarMensaje("!");
+	 		mostrarMensaje("Hola "); mostrarMensaje(nick); mostrarMensaje("!");
 	    	menuJugador();
 		}
   	}
@@ -70,27 +70,27 @@ int main(int argc, char** argv)
 
  void menuAdmin()
  {
- 	utilidades::mostrarMensaje("Hola, administrador");
+ 	mostrarMensaje("Hola, administrador");
 
  	do
  	{
 	 	int opcionMenu = 0;
 	 	int opcionSeguir;
 
-	 	 utilidades::mostrarMensaje("Estas son las acciones que puedes realizar:");
-	 	 utilidades::mostrarMensaje("\t1- Añadir preguntas fáciles");
-	 	 utilidades::mostrarMensaje("\t2- Añadir preguntas de dificultad media")
-	 	 utilidades::mostrarMensaje("\t3- Añadir preguntas dificiles");
-	 	 utilidades::mostrarMensaje("\t4- Borrar preguntas");
-	 	 utilidades::mostrarMensaje("\t5- Salir")
-	 	 utilidades::mostrarMensaje("Inserta el número de la acción que deseas realizar: ");
+	 	 mostrarMensaje("Estas son las acciones que puedes realizar:");
+	 	 mostrarMensaje("\t1- Añadir preguntas fáciles");
+	 	 mostrarMensaje("\t2- Añadir preguntas de dificultad media")
+	 	 mostrarMensaje("\t3- Añadir preguntas dificiles");
+	 	 mostrarMensaje("\t4- Borrar preguntas");
+	 	 mostrarMensaje("\t5- Salir")
+	 	 mostrarMensaje("Inserta el número de la acción que deseas realizar: ");
 
-	  	utilidades::recogerInt(opcionMenu);
+	  	recogerInt(opcionMenu);
 
 	  	while(opcionMenu < 1 || opcionMenu > 5)
 	 	{
-	 	 	utilidades::mostrarMensaje("\nLa opcion introducida no es valida. Por favor, intentalo de nuevo:  ");
-	 	 	utilidades::recogerInt(opcionMenu);
+	 	 	mostrarMensaje("\nLa opcion introducida no es valida. Por favor, intentalo de nuevo:  ");
+	 	 	recogerInt(opcionMenu);
 	 	}
 
 	  	switch(opcionMenu)
@@ -101,27 +101,27 @@ int main(int argc, char** argv)
 	  				opcionSeguir = 0;
 		  			int cant_p = 0; //cantidad de preguntas que va a insertar el administrador
 
-					utilidades::mostrarMensaje("Indica la cantidad de preguntas que deseas introducir: ");
-		    		utilidades::recogerInt(cant_p); //en recoger int, añadir mensajes de error si no es un int
+					mostrarMensaje("Indica la cantidad de preguntas que deseas introducir: ");
+		    		recogerInt(cant_p); //en recoger int, añadir mensajes de error si no es un int
 		   
 				    while(cant_p <= 0)
 				    {
-				    	utilidades::mostrarMensaje("El numero de preguntas debe ser superior a 0. Por favor, indica de nuevo la cantidad: ");
-				    	utilidades::recogerInt(cant_p);
+				    	mostrarMensaje("El numero de preguntas debe ser superior a 0. Por favor, indica de nuevo la cantidad: ");
+				    	recogerInt(cant_p);
 				    }
 
 				    prfacil preg_r ();
 
 				    for (int i = 0; i < cant_p; i++)
 				    {
-				    	utilidades::recogerPregunta(preg_r);
+				    	recogerPregunta(preg_r);
 				    	BD.insert_Pregunta(preg_r);
 				    }
 
-				    utilidades::mostrarMensaje("¿Quieres seguir introduciendo preguntas?");
-			 		utilidades::mostrarMensaje("1.- Si");
-			 		utilidades::mostrarMensaje("2.- No");
-			 		utilidades::recogerInt(opcionSeguir);
+				    mostrarMensaje("¿Quieres seguir introduciendo preguntas?");
+			 		mostrarMensaje("1.- Si");
+			 		mostrarMensaje("2.- No");
+			 		recogerInt(opcionSeguir);
 
 				}while(opcionSeguir != 2);
 				break;
@@ -132,27 +132,27 @@ int main(int argc, char** argv)
 	  				opcionSeguir = 0;
 		  			int cant_p = 0; //cantidad de preguntas que va a insertar el administrador
 
-					utilidades::mostrarMensaje("Indica la cantidad de preguntas que deseas introducir: ");
-		    		utilidades::recogerInt(cant_p); //en recoger int, añadir mensajes de error si no es un int
+					mostrarMensaje("Indica la cantidad de preguntas que deseas introducir: ");
+		    		recogerInt(cant_p); //en recoger int, añadir mensajes de error si no es un int
 		   
 				    while(cant_p <= 0)
 				    {
-				    	utilidades::mostrarMensaje("El numero de preguntas debe ser superior a 0. Por favor, indica de nuevo la cantidad: ");
-				    	utilidades::recogerInt(cant_p);
+				    	mostrarMensaje("El numero de preguntas debe ser superior a 0. Por favor, indica de nuevo la cantidad: ");
+				    	recogerInt(cant_p);
 				    }
 
 				    prmedio preg_r ();
 
 				    for (int i = 0; i < cant_p; i++)
 				    {
-				    	utilidades::recogerPregunta(preg_r);
+				    	recogerPregunta(preg_r);
 				    	DBConnector::insert_Pregunta(preg_r);
 				    }
 
-				    utilidades::mostrarMensaje("¿Quieres seguir introduciendo preguntas?");
-			 		utilidades::mostrarMensaje("1.- Si");
-			 		utilidades::mostrarMensaje("2.- No");
-			 		utilidades::recogerInt(opcionSeguir);
+				    mostrarMensaje("¿Quieres seguir introduciendo preguntas?");
+			 		mostrarMensaje("1.- Si");
+			 		mostrarMensaje("2.- No");
+			 		recogerInt(opcionSeguir);
 
 				}while(opcionSeguir != 2);
 				break;
@@ -163,27 +163,27 @@ int main(int argc, char** argv)
 	  				opcionSeguir = 0;
 		  			int cant_p = 0; //cantidad de preguntas que va a insertar el administrador
 
-					utilidades::mostrarMensaje("Indica la cantidad de preguntas que deseas introducir: ");
-		    		utilidades::recogerInt(cant_p); //en recoger int, añadir mensajes de error si no es un int
+					mostrarMensaje("Indica la cantidad de preguntas que deseas introducir: ");
+		    		recogerInt(cant_p); //en recoger int, añadir mensajes de error si no es un int
 		   
 				    while(cant_p <= 0)
 				    {
-				    	utilidades::mostrarMensaje("El numero de preguntas debe ser superior a 0. Por favor, indica de nuevo la cantidad: ");
-				    	utilidades::recogerInt(cant_p);
+				    	mostrarMensaje("El numero de preguntas debe ser superior a 0. Por favor, indica de nuevo la cantidad: ");
+				    	recogerInt(cant_p);
 				    }
 
 				    prdificil preg_r ();
 
 				    for (int i = 0; i < cant_p; i++)
 				    {
-				    	utilidades::recogerPregunta(preg_r);
+				    	recogerPregunta(preg_r);
 				    	DBConnector::insert_Pregunta(preg_r);
 				    }
 
-				    utilidades::mostrarMensaje("¿Quieres seguir introduciendo preguntas?");
-			 		utilidades::mostrarMensaje("1.- Si");
-			 		utilidades::mostrarMensaje("2.- No");
-			 		utilidades::recogerInt(opcionSeguir);
+				    mostrarMensaje("¿Quieres seguir introduciendo preguntas?");
+			 		mostrarMensaje("1.- Si");
+			 		mostrarMensaje("2.- No");
+			 		recogerInt(opcionSeguir);
 
 				}while(opcionSeguir != 2);
 				break;
@@ -192,22 +192,22 @@ int main(int argc, char** argv)
 				do
 				{
 					int opcionEliminar = 0;
-					utilidades::mostrarTodasPreguntas(listaTodasPreguntas);
-					utilidades::mostrarMensaje("¿Que pregunta quieres eliminar?");
-					utilidades::recogerInt(opcionEliminar);
+					mostrarTodasPreguntas(listaTodasPreguntas);
+					mostrarMensaje("¿Que pregunta quieres eliminar?");
+					recogerInt(opcionEliminar);
 
 					BD.delete_Pregunta(listaTodasPreguntas[opcionEliminar-1]);
 					listaTodasPreguntas.erase(opcionEliminar-1);
 
-					utilidades::mostrarMensaje("¿Quieres seguir eliminando preguntas?");
-			 		utilidades::mostrarMensaje("1.- Si");
-			 		utilidades::mostrarMensaje("2.- No");
-			 		utilidades::recogerInt(opcionEliminar);
+					mostrarMensaje("¿Quieres seguir eliminando preguntas?");
+			 		mostrarMensaje("1.- Si");
+			 		mostrarMensaje("2.- No");
+			 		recogerInt(opcionEliminar);
 				}while(opcionEliminar != 2);
 				break;
 
 			case 5:
-				utilidades::mostrarMensaje("Modo administrador cerrado finalizado.");
+				mostrarMensaje("Modo administrador cerrado finalizado.");
 				acaba();
 				break;
 
@@ -221,41 +221,41 @@ int main(int argc, char** argv)
  {
  	int opcionMenu;
 	
- 	 utilidades::mostrarMensaje("\n\n----MENU----\n"); 
- 	 utilidades::mostrarMensaje("Por favor, elije una de las siguientes opciones:");
- 	 utilidades::mostrarMensaje("\t 1.- Jugar partida individual");
- 	 utilidades::mostrarMensaje("\t 2.- Jugar partida multijugador");
- 	 utilidades::mostrarMensaje("\t 3.- Ver ranking");
- 	 utilidades::mostrarMensaje("\t 4.- Salir");
- 	 utilidades::mostrarMensaje("Indica el numero de la opcion que quieres elegir: ");
+ 	 mostrarMensaje("\n\n----MENU----\n"); 
+ 	 mostrarMensaje("Por favor, elije una de las siguientes opciones:");
+ 	 mostrarMensaje("\t 1.- Jugar partida individual");
+ 	 mostrarMensaje("\t 2.- Jugar partida multijugador");
+ 	 mostrarMensaje("\t 3.- Ver ranking");
+ 	 mostrarMensaje("\t 4.- Salir");
+ 	 mostrarMensaje("Indica el numero de la opcion que quieres elegir: ");
 
-  	utilidades::recogerInt(opcionMenu);
+  	recogerInt(opcionMenu);
 
 	while(!(opcionMenu>0 && opcionMenu<5))
   	{
-  		utilidades::mostrarMensaje("Opcion no valida. Por favor, indica el numero de la opcion que quieres elegir: "); 
-  		utilidades::recogerInt(opcionMenu);
+  		mostrarMensaje("Opcion no valida. Por favor, indica el numero de la opcion que quieres elegir: "); 
+  		recogerInt(opcionMenu);
   	}
 
   	switch(opcionMenu)
   	{
   		case 1: 
-	  		utilidades::mostrarMensaje("Has elegido la opcion numero 1: JUGAR PARTIDA INDIVIDUAL");
+	  		mostrarMensaje("Has elegido la opcion numero 1: JUGAR PARTIDA INDIVIDUAL");
 	  		individual();
 	  		break;
 
   		case 2:
-	  		utilidades::mostrarMensaje("Has elegido la opcion numero 2: JUGAR PARTIDA MULTIJUGADOR");
+	  		mostrarMensaje("Has elegido la opcion numero 2: JUGAR PARTIDA MULTIJUGADOR");
 	  		multijugador();
 	  		break;
 
   		case 3:
-	  		utilidades::mostrarMensaje("Has elegido la opcion numero 3: VER RANKING"); 
+	  		mostrarMensaje("Has elegido la opcion numero 3: VER RANKING"); 
 	  		ranking();
 	  		break;
 
   		case 4:
-	  		utilidades::mostrarMensaje("Gracias por jugar ¡Vuelve pronto!"); 
+	  		mostrarMensaje("Gracias por jugar ¡Vuelve pronto!"); 
 	  		acabar();
 	  		exit(0);
 	  		break;
@@ -269,16 +269,16 @@ int main(int argc, char** argv)
  {
  	int opcionDificultad;
 
- 	utilidades::mostrarMensaje("El juego permite jugar con diferentes niveles de dificultad:")
- 	utilidades::mostrarMensaje("\t1.- Facil");
- 	utilidades::mostrarMensaje("\t2.- Medio");
- 	utilidades::mostrarMensaje("\t3.- Dificil");
- 	utilidades::mostrarMensaje("\t4.- Mixto");
+ 	mostrarMensaje("El juego permite jugar con diferentes niveles de dificultad:")
+ 	mostrarMensaje("\t1.- Facil");
+ 	mostrarMensaje("\t2.- Medio");
+ 	mostrarMensaje("\t3.- Dificil");
+ 	mostrarMensaje("\t4.- Mixto");
 
  	do
  	{
- 		utilidades::mostrarMensaje("Elije con qué nivel de dificultad quieres jugar (opciones validas: 1, 2, 3 o 4): ")
- 		utilidades::recogerInt(opcionDificultad);
+ 		mostrarMensaje("Elije con qué nivel de dificultad quieres jugar (opciones validas: 1, 2, 3 o 4): ")
+ 		recogerInt(opcionDificultad);
  	}while(opcionDificultad < 1 || opcionDificultad > 4);
 
  	return opcionDificultad;
@@ -335,27 +335,27 @@ int main(int argc, char** argv)
  		PreguntasSeleccionadas = listaTodasPreguntas;
  	}
 
- 	utilidades::mostrarMensaje("¿Cuantas preguntas deseas que se te realicen?");
- 	utilidades::recogerInt(cant_preguntas);
+ 	mostrarMensaje("¿Cuantas preguntas deseas que se te realicen?");
+ 	recogerInt(cant_preguntas);
 
- 	cantidadPreguntasValida = operaciones::maxPreguntas(cant_preguntas, PreguntasSeleccionadas.size());
+ 	cantidadPreguntasValida = maxPreguntas(cant_preguntas, PreguntasSeleccionadas.size());
  	
  	while(cant_preguntas<0 || cantidadPreguntasValida == 0)
  	{
-		utilidades::mostrarMensaje("El numero de preguntas no es valido, debe ser mayor que 0 y menor o igual al total de preguntas disponibles.");
-		utilidades::mostrarMensaje("Numero de preguntas disponibles:");
-		utilidades::mostrarInt(PreguntasSeleccionadas.size());
+		mostrarMensaje("El numero de preguntas no es valido, debe ser mayor que 0 y menor o igual al total de preguntas disponibles.");
+		mostrarMensaje("Numero de preguntas disponibles:");
+		mostrarInt(PreguntasSeleccionadas.size());
 
-		utilidades::mostrarMensaje("Por favor, introduce otro numero:");
- 		utilidades::recogerInt(cant_preguntas);
- 		cantidadPreguntasValida = operaciones::maxPreguntas(cant_preguntas, PreguntasSeleccionadas.size());
+		mostrarMensaje("Por favor, introduce otro numero:");
+ 		recogerInt(cant_preguntas);
+ 		cantidadPreguntasValida = maxPreguntas(cant_preguntas, PreguntasSeleccionadas.size());
  	}
 
  	for(int i = 0; i < cant_preguntas; i++)
  	{
- 		 pregunta = operaciones::generarPregunta(PreguntasSeleccionadas, preguntasSalidas);
-		 utilidades::mostrarPregunta(pregunta);
-		 respValida = utilidades::recogerOpcionRespuesta(respuesta, pregunta.getDificultad());
+ 		 pregunta = generarPregunta(PreguntasSeleccionadas, preguntasSalidas);
+		 mostrarPregunta(pregunta);
+		 respValida = recogerOpcionRespuesta(respuesta, pregunta.getDificultad());
 
 		 if(pregunta.getDificultad() == "#")
 		 {
@@ -370,52 +370,52 @@ int main(int argc, char** argv)
 
 		 while(respValida == -1)
 		 {
-		 	 respValida = utilidades::recogerOpcionRespuesta(respuesta, preguntaAux.getDificultad());
+		 	 respValida = recogerOpcionRespuesta(respuesta, preguntaAux.getDificultad());
 		 }
 
 		switch (respuesta)
 		{
 			case 'a':
-				respCorrecta = operaciones::comprobarRespuesta(preguntaAux.getRespuesta1());
+				respCorrecta = comprobarRespuesta(preguntaAux.getRespuesta1());
 				break;
 
 			case 'b':
-				respCorrecta = operaciones::comprobarRespuesta(preguntaAux.getRespuesta2());
+				respCorrecta = comprobarRespuesta(preguntaAux.getRespuesta2());
 				break;
 
 			case 'c':
-				respCorrecta = operaciones::comprobarRespuesta(preguntaAux.getRespuesta3());
+				respCorrecta = comprobarRespuesta(preguntaAux.getRespuesta3());
 				break;
 
 			case 'd':
-				respCorrecta = operaciones::comprobarRespuesta(preguntaAux.getRespuesta4());
+				respCorrecta = comprobarRespuesta(preguntaAux.getRespuesta4());
 		}
 				
 		 if(respCorrecta == 1)
 		 {
-		 	utilidades::mostrarMensaje("Respuesta correcta");
+		 	mostrarMensaje("Respuesta correcta");
 		 	pregunta.sumarPunto(jugadorPrincipal);
 		 }
 		 else
 		 {
-		 	utilidades::mostrarMensaje("Respuesta incorrecta");
+		 	mostrarMensaje("Respuesta incorrecta");
 		 }
 	 }
 
-	 utilidades::mostrarMensaje("---Fin de la partida---");
-	 utilidades::mostrarMensaje("Deseas volver a jugar o regresar al menu?");
-	 utilidades::mostrarMensaje("1.- Volver a jugar");
-	 utilidades::mostrarMensaje("2.- Volver al menu");
-	 utilidades::mostrarMensaje("Introduce la opcion deseada:");
-	 utilidades::recogerInt(opcionRepetir);
+	 mostrarMensaje("---Fin de la partida---");
+	 mostrarMensaje("Deseas volver a jugar o regresar al menu?");
+	 mostrarMensaje("1.- Volver a jugar");
+	 mostrarMensaje("2.- Volver al menu");
+	 mostrarMensaje("Introduce la opcion deseada:");
+	 recogerInt(opcionRepetir);
 
 	 listaTodosJugadores = actualizarPuntuacion(listaTodosJugadores, jugadorPrincipal);
 	 jugadorPrincipal.setPuntuacion(0);
 
 	 while(opcionRepetir != 1 && opcionRepetir != 2)
 	 {
-	 	 utilidades::mostrarMensaje("\nLa opcion introducida no es valida. Por favor, intentalo de nuevo:  ");
-	 	 utilidades::recogerInt(opcionRepetir);
+	 	 mostrarMensaje("\nLa opcion introducida no es valida. Por favor, intentalo de nuevo:  ");
+	 	 recogerInt(opcionRepetir);
 	 }
 
 	 if(opcionRepetir == 1)
@@ -477,42 +477,42 @@ void multijugador()
  		PreguntasSeleccionadas = listaTodasPreguntas;
  	}
 
-	utilidades::mostrarMensaje("¿Cuantos jugadores van a jugar?");
- 	utilidades::recogerInt(cantJugadores);
+	mostrarMensaje("¿Cuantos jugadores van a jugar?");
+ 	recogerInt(cantJugadores);
 
- 	cantidadPreguntasValida = operaciones::maxPreguntas(cantJugadores, PreguntasSeleccionadas.size());
+ 	cantidadPreguntasValida = maxPreguntas(cantJugadores, PreguntasSeleccionadas.size());
  	while(cantJugadores<2 ||  cantidadPreguntasValida == 0)
  	{
- 		utilidades::mostrarMensaje("El numero introducido es incorrecto (o por ser inferior a 2 o por exceder la cantidad de preguntas disponibles. \n");
- 		utilidades::mostrarMensaje("\nPor favor, intoduce cuantos jugadores van a jugar: \t");
- 		utilidades::recogerInt(cantJugadores);
- 		cantidadPreguntasValida = operaciones::maxPreguntas(cantJugadores, PreguntasSeleccionadas.size());
+ 		mostrarMensaje("El numero introducido es incorrecto (o por ser inferior a 2 o por exceder la cantidad de preguntas disponibles. \n");
+ 		mostrarMensaje("\nPor favor, intoduce cuantos jugadores van a jugar: \t");
+ 		recogerInt(cantJugadores);
+ 		cantidadPreguntasValida = maxPreguntas(cantJugadores, PreguntasSeleccionadas.size());
  	}
 
  	//El primer jugador es el actual 
  	multijugadores.push_back(jugadorPrincipal);
  	multijugadores[0].setPuntuacion(0);
 
- 	utilidades::mostrarMensaje("Introduce los nombres de los jugadores contra los que vas a jugar:");
+ 	mostrarMensaje("Introduce los nombres de los jugadores contra los que vas a jugar:");
  	for (int i = 1; i < multijugadores.size(); i++)
  	{
- 		utilidades::mostrarMensaje("J");utilidades::mostrarInt(i);utilidades::mostrarMensaje(": "); //Para que aparezca como JX: 
- 		utilidades::recogerString(NickAux);
+ 		mostrarMensaje("J");mostrarInt(i);mostrarMensaje(": "); //Para que aparezca como JX: 
+ 		recogerString(NickAux);
  		jugador aux (NickAux);
  		multijugadores.push_back(aux);
  		multijugadores[i].setPuntuacion(0);
  	}
 
- 	utilidades::mostrarMensaje("¿Cuantas preguntas deseas que se le realicen a cada jugador?\t");
- 	utilidades::recogerInt(cantPreg);
- 	cantidadPreguntasValida = operaciones::maxPreguntas(multijugadores.size()*cantPreg, PreguntasSeleccionadas.size());
+ 	mostrarMensaje("¿Cuantas preguntas deseas que se le realicen a cada jugador?\t");
+ 	recogerInt(cantPreg);
+ 	cantidadPreguntasValida = maxPreguntas(multijugadores.size()*cantPreg, PreguntasSeleccionadas.size());
 
 	while(cantPreg<1 || cantidadPreguntasValida == 0)
  	{
- 		utilidades::mostrarMensaje("El numero introducido es incorrecto (o por ser inferior a 1 o por exceder la cantidad de preguntas disponibles para la cantidad de jugadores elegida.");
- 		utilidades::mostrarMensaje("Por favor, intoduce cuantas preguntas deseas que se le realicen a cada jugador:");
- 		utilidades::recogerInt(cantPreg);
- 		cantidadPreguntasValida = operaciones::maxPreguntas(multijugadores.size()*cantPreg, PreguntasSeleccionadas.size());
+ 		mostrarMensaje("El numero introducido es incorrecto (o por ser inferior a 1 o por exceder la cantidad de preguntas disponibles para la cantidad de jugadores elegida.");
+ 		mostrarMensaje("Por favor, intoduce cuantas preguntas deseas que se le realicen a cada jugador:");
+ 		recogerInt(cantPreg);
+ 		cantidadPreguntasValida = maxPreguntas(multijugadores.size()*cantPreg, PreguntasSeleccionadas.size());
  	}
 
  	RealizarPreguntasMultijugador(multijugadores, cantPreg);
@@ -532,7 +532,7 @@ void multijugador()
 
 	 	if(empatados.size() > 1)
 	 	{
-	 		opcionDesempatar = utilidades::mensajeEmpate(empatados);
+	 		opcionDesempatar = mensajeEmpate(empatados);
 	 		
 	 		if(opcionDesempatar == 1)
 	 		{
@@ -557,23 +557,23 @@ void multijugador()
 	 	{
 	 		if(multijugadores[i].getPuntuacion() == puntMaxima)
 	 		{
-	 			utilidades::mensajeGanador(multijugadores[i]);
+	 			mensajeGanador(multijugadores[i]);
 	 		}
 	 		listaTodosJugadores = actualizarPuntuacion(listaTodosJugadores, multijugadores);
 	 	}
 
 	 //Volver al menu o volver a jugar
-	 utilidades::mostrarMensaje("Fin de la partida.");
-	 utilidades::mostrarMensaje("¿Deseas volver a jugar o regresar al menu?");
-	 utilidades::mostrarMensaje("1.- Volver a jugar");
-	 utilidades::mostrarMensaje("2.- Volver al menu");
-	 utilidades::mostrarMensaje("Introduce la opcion deseada:  ");
-	 utilidades::recogerInt(opcionRepetir);
+	 mostrarMensaje("Fin de la partida.");
+	 mostrarMensaje("¿Deseas volver a jugar o regresar al menu?");
+	 mostrarMensaje("1.- Volver a jugar");
+	 mostrarMensaje("2.- Volver al menu");
+	 mostrarMensaje("Introduce la opcion deseada:  ");
+	 recogerInt(opcionRepetir);
 
 	 while(opcionRepetir != 1 && opcionRepetir != 2)
 	 {
-	 	 utilidades::mostrarMensaje("\nLa opcion introducida no es valida. Por favor, intentalo de nuevo:  ");
-	 	 utilidades::recogerInt(opcionRepetir);
+	 	 mostrarMensaje("\nLa opcion introducida no es valida. Por favor, intentalo de nuevo:  ");
+	 	 recogerInt(opcionRepetir);
 	 }
 
 	 if(opcionRepetir == 1)
@@ -600,17 +600,17 @@ void multijugador()
  	{
  		for(int j = 0; j < multijugadores.size(); j++)
  		{
- 			utilidades::mostrarMensaje("\nPregunta para el jugador #" + (j+1) + "->" + multijugadores[j].nick);
+ 			mostrarMensaje("\nPregunta para el jugador #" + (j+1) + "->" + multijugadores[j].nick);
 
  			//Preparar la pregunta aleatoria para el jugador
- 			pregunta = operaciones::generarPregunta(listaTodasPreguntas, preguntasSalidas);
+ 			pregunta = generarPregunta(listaTodasPreguntas, preguntasSalidas);
 
-			utilidades::mostrarPregunta(pregunta);
-			respValida = utilidades::recogerOpcionRespuesta(respuesta, pregunta.getDificultad());
+			mostrarPregunta(pregunta);
+			respValida = recogerOpcionRespuesta(respuesta, pregunta.getDificultad());
 
 			while(respValida == -1)
 			{
-				respValida = utilidades::recogerOpcionRespuesta(respuesta, pregunta.getDificultad());
+				respValida = recogerOpcionRespuesta(respuesta, pregunta.getDificultad());
 			}
 			
 			if(pregunta.getDificultad() == "#")
@@ -627,30 +627,30 @@ void multijugador()
 			switch (respuesta)
 			{
 			case 'a':
-				correcta = operaciones::comprobarRespuesta(preguntaAux.getRespuesta1());
+				correcta = comprobarRespuesta(preguntaAux.getRespuesta1());
 				break;
 
 			case 'b':
-				correcta = operaciones::comprobarRespuesta(preguntaAux.getRespuesta2());
+				correcta = comprobarRespuesta(preguntaAux.getRespuesta2());
 				break;
 
 			case 'c':
-				correcta = operaciones::comprobarRespuesta(preguntaAux.getRespuesta3());
+				correcta = comprobarRespuesta(preguntaAux.getRespuesta3());
 				break;
 
 			case 'd':
-				correcta = operaciones::comprobarRespuesta(preguntaAux.getRespuesta4());
+				correcta = comprobarRespuesta(preguntaAux.getRespuesta4());
 				break;
 			}
 
 			if(correcta == 1)
 			{
-			 	utilidades::mostrarMensaje("Respuesta correcta");
+			 	mostrarMensaje("Respuesta correcta");
 			 	pregunta.sumarPunto(multijugadores[j]);
 			}
 			else
 			{
-			 	utilidades::mostrarMensaje("Respuesta incorrecta");
+			 	mostrarMensaje("Respuesta incorrecta");
 			}
  		}
  	}
@@ -659,15 +659,15 @@ void multijugador()
 
   void ranking()
  {
- 	operaciones::ordenarJugadores(listaTodosJugadores);
+ 	ordenarJugadores(listaTodosJugadores);
 
- 	utilidades::mostrarMensaje("\nRANKING DE JUGADORES");
+ 	mostrarMensaje("\nRANKING DE JUGADORES");
  	for(int i = 0; i < listaTodosJugadores.size(); i++)
  	{
- 		utilidades::mostrarMensaje((i+1) + ".-");
- 		utilidades::mostrarPuntuacion(listaTodosJugadores[i]);
+ 		mostrarMensaje((i+1) + ".-");
+ 		mostrarPuntuacion(listaTodosJugadores[i]);
  	}
- 		utilidades::mostrarMensaje("\n");
+ 		mostrarMensaje("\n");
 	 menuJugador();
  }
 
@@ -676,7 +676,7 @@ void multijugador()
  	delete preguntasSalidas;
  	delete listaTodasPreguntas;
 
- 	operaciones::guardarJugadores(listaTodosJugadores);
+ 	guardarJugadores(listaTodosJugadores);
 
  	delete listaTodosJugadores;
 
