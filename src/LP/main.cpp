@@ -213,9 +213,11 @@ int main(int argc, char** argv)
 				break;
 
 			case 5:
-				mostrarMensaje("Modo administrador cerrado finalizado.");
-				acaba();
-				break;
+				{
+					mostrarMensaje("Modo administrador cerrado finalizado.");
+					acaba();
+					break;
+				}
 
 			default:
 				break;
