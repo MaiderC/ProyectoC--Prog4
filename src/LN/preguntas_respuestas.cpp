@@ -109,3 +109,12 @@ bool preguntas_respuestas::operator=(const preguntas_respuestas& p_r)
   this -> cont++;
   this -> id = cont;
 }
+
+void sumarPunto(jugador jugador)
+{
+}
+
+void prepararRespuestas(preguntas_respuestas& pregunta)
+{
+  
+}

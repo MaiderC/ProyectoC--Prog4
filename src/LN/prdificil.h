@@ -36,7 +36,7 @@ class prdificil :  public preguntas_respuestas
 		void setRespuesta4(string RCuatro);
 		string getRespuesta4() const;
 
-		//metodos de clse
+		//metodos de clase
 		virtual void sumarPunto(jugador jugador);
 		virtual void prepararRespuestas(preguntas_respuestas& pregunta);
 
