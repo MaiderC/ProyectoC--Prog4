@@ -49,17 +49,17 @@ namespace utilidades
 			if (TodasPreguntas[i].getDificultad() == "#")
 			{
 				prfacil* preguntaAux = dynamic_cast<prfacil*> (p);
-				mostrarPregunta(preguntaAux);
+				mostrarPregunta(*preguntaAux);
 			}
 			else if (TodasPreguntas[i].getDificultad() == "##")
 			{
 				prmedio* preguntaAux = dynamic_cast<prmedio*> (p);
-				mostrarPregunta(preguntaAux);
+				mostrarPregunta(*preguntaAux);
 			}
 			else
 			{
 				prdificil* preguntaAux = dynamic_cast<prdificil*> (p);
-				mostrarPregunta(preguntaAux);
+				mostrarPregunta(*preguntaAux);
 			}
 			cout << endl << endl;
 		}
