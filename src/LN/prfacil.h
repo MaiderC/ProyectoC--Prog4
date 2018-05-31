@@ -31,7 +31,7 @@ class prfacil :  public preguntas_respuestas
 
 		//métodos de clase
 		virtual void sumarPunto(jugador jugador);
-		virtual void prepararRespuestas(preguntas_respuestas& pregunta, string facil); 
+		virtual void prepararRespuestas(preguntas_respuestas& pregunta); 
 
 		//sobrecarga de operador =
 		bool operator=(const prfacil& pf);

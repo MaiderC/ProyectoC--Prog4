@@ -80,7 +80,7 @@ string prdificil::getRespuesta4() const
 	jugador.setPuntuacion(jugador.getPuntuacion() + 3);
 }
 
- void prdificil::prepararRespuestas(preguntas_respuestas pregunta, string dificil)
+ void prdificil::prepararRespuestas(preguntas_respuestas& pregunta)
 {
 	int i = 3;
 	int igual = 0;
