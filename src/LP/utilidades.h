@@ -16,7 +16,9 @@
 	{
 		void mostrarMensaje(const string& str);
 		void mostrarInt(const int& i);
-		void mostrarPregunta(const preguntas_respuestas& Pregunta);
+		void mostrarPregunta(const prfacil& Pregunta);
+		void mostrarPregunta(const prmedio& Pregunta);
+		void mostrarPregunta(const prdificil& Pregunta);
 		void mostrarTodasPreguntas(const vector<preguntas_respuestas> TodasPreguntas);
 		void mostrarPuntuacion(const jugador& jugador);
 		void mensajeGanador(const jugador& ganador);

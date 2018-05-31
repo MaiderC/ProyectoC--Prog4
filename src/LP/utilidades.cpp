@@ -22,7 +22,17 @@ namespace utilidades
 		cout << i << endl;
 	}
 
-	void mostrarPregunta(const preguntas_respuestas& Pregunta)
+	void mostrarPregunta(const prfacil& Pregunta)
+	{
+		cout << Pregunta;
+	}
+
+	void mostrarPregunta(const prmedio& Pregunta)
+	{
+		cout << Pregunta;
+	}
+
+	void mostrarPregunta(const prdificil& Pregunta)
 	{
 		cout << Pregunta;
 	}
