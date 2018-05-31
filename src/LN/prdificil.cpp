@@ -132,93 +132,91 @@ bool prdificil::operator=(const prdificil& pd)
 	this -> respuesta4 = pd.respuesta4;
 }
 
-ostream& operator<<(ostream& out, const preguntas_respuestas& Pregunta)
+ostream& operator<<(ostream& out, const prdificil& preguntadificil)
 {
-	preguntas_respuestas *punt_preg = &Pregunta;
-
-	prdificil* preguntadificil = dynamic_cast <prdificil*>(punt_preg);
+	// prdificil* preguntadificil = dynamic_cast <prdificil*>(Pregunta);
 	
-	out << (*preguntadificil).getPregunta() << endl;
+	out << (preguntadificil).getPregunta() << endl;
 
 	out << "a) ";
-	if((*preguntadificil).getRespuesta1()[0] == '#')
+	if((preguntadificil).getRespuesta1()[0] == '#')
 	{
-		string aux = (*preguntadificil).getRespuesta1();
+		string aux = (preguntadificil).getRespuesta1();
 
 		aux.erase(0, 1);
 
 		out << aux << endl;
 	} else
 	{
-		out << (*preguntadificil).getRespuesta1() << endl;
+		out << (preguntadificil).getRespuesta1() << endl;
 	}
 
 	out << "b) ";
-	if((*preguntadificil).respuesta2[0] == '#')
+	if((preguntadificil).respuesta2[0] == '#')
 	{
-		string aux = (*preguntadificil).respuesta2;
+		string aux = (preguntadificil).respuesta2;
 
 		aux.erase(0, 1);
 
 		out << aux << endl;
 	} else
 	{
-		out << (*preguntadificil).respuesta2 << endl;
+		out << (preguntadificil).respuesta2 << endl;
 	}
 
 	out << "c) ";
-	if((*preguntadificil).respuesta3[0] == '#')
+	if((preguntadificil).respuesta3[0] == '#')
 	{
-		string aux = (*preguntadificil).respuesta3;
+		string aux = (preguntadificil).respuesta3;
 
 		aux.erase(0, 1);
 
 		out << aux << endl;
 	} else
 	{
-		out << (*preguntadificil).respuesta3 << endl;
+		out << (preguntadificil).respuesta3 << endl;
 	}
 
 	out << "d) ";
-	if((*preguntadificil).respuesta4[0] == '#')
+	if((preguntadificil).respuesta4[0] == '#')
 	{
-		string aux = (*preguntadificil).respuesta3;
+		string aux = (preguntadificil).respuesta3;
 
 		aux.erase(0, 1);
 
 		out << aux << endl;
 	} else
 	{
-		out << (*preguntadificil).respuesta3 << endl;
+		out << (preguntadificil).respuesta3 << endl;
 	}
 
 	return out;
 }
 
-istream& operator>>(istream& in, preguntas_respuestas& Pregunta)
+istream& operator>>(istream& in, prdificil& preguntadificil)
 {
-	prdificil* preguntadificil = dynamic_cast <prdificil*>(Pregunta);
+	// prdificil* preguntadificil = dynamic_cast <prdificil*>(Pregunta);
 
 	string temporal;
 	cout << "Introduce la pregunta a insertar: ";
 	in >> temporal;
-	(*preguntadificil).setPregunta(temporal);
+	(preguntadificil).setPregunta(temporal);
 
 	cout << "*La respuesta no debe contener la letra de la opcion (a o b) ni signos de puntuacion al inicio (salvo que se trate de un guion, por ser la respuesta un numero negativo)";
 	cout << "Introduce la respuesta correcta: ";
 	in >> temporal;
-	(*preguntadificil).setRespuesta1(temporal);
+	(preguntadificil).setRespuesta1(temporal);
 
-	(*preguntadificil).respuesta1 = '#' + (*preguntadificil).respuesta1;
-
-	cout << "Introduce otra respuesta (una incorrecta): ";
-	in >> (*preguntadificil).respuesta2;
+	(preguntadificil).respuesta1 = '#' + (preguntadificil).respuesta1;
 
 	cout << "Introduce otra respuesta (una incorrecta): ";
-	in >> (*preguntadificil).respuesta3;
+	in >> (preguntadificil).respuesta2;
 
 	cout << "Introduce otra respuesta (una incorrecta): ";
-	in >> (*preguntadificil).respuesta4;
+	in >> (preguntadificil).respuesta3;
+
+	cout << "Introduce otra respuesta (una incorrecta): ";
+	in >> (preguntadificil).respuesta4;
 
 	return in;
 }

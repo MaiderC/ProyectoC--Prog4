@@ -130,11 +130,9 @@ ostream& operator<<(ostream& out, const preguntas_respuestas& Pregunta)
 	return out;
 }
 
-istream& operator>>(istream& in, preguntas_respuestas& Pregunta)
+istream& operator>>(istream& in, prfacil& Pregunta)
 {
-	preguntas_respuestas *punt_preg = &Pregunta;
-
-	prfacil* preguntafacil = dynamic_cast<prfacil*>(punt_preg);
+	prfacil* preguntafacil = dynamic_cast<prfacil*>(Pregunta);
 	
 	string temporal;
 	mostrarMensaje("Introduce la pregunta a insertar: ");
