@@ -65,8 +65,6 @@ namespace utilidades
 		}
 	}
 
-		cout << "Indica la repuesta que consideras correcta (a, b o c):  "; //Ponerlo donde tenga que ir
-
 	void mostrarPuntuacion(const jugador& jugador)
 	{
 		cout << jugador.getNick() << ": " << jugador.getPuntuacion() << " puntos" << endl;
