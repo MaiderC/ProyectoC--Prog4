@@ -138,13 +138,11 @@ using namespace std;
   //Para INSERT, UPDATE y DELETE, ver si el jugador existe:
   int DBConnector::Jugador_existe(jugador jug)
   {
-  	int sizeTotalJugadores;
-  	cant_Jugadores(&sizeTotalJugadores);
   	vector<jugador> Jugadores;
 
   	leer_Jugadores(Jugadores);
 
-  	for(int i=0; i<sizeTotalJugadores; i++)
+  	for(int i=0; i<Jugadores.size(); i++)
   	{
   		if(jug.getNick() == Jugadores[i].getNick())
   			return 1;
@@ -155,12 +153,10 @@ using namespace std;
 
   int DBConnector::Pregunta_existe(preguntas_respuestas& p)
   {
-  	int sizeTotalPreguntas;
-  	cant_Preguntas(&sizeTotalPreguntas);
   	vector<preguntas_respuestas> Preguntas;
   	leer_Preguntas(Preguntas);
 
-  	for(int i=0; i<sizeTotalPreguntas; i++)
+  	for(int i=0; i<Preguntas.size(); i++)
   	{
   		if(p.getID() == Preguntas[i].getID())
   			return 1;
@@ -1081,40 +1077,6 @@ int DBConnector::leer_Jugadores(vector <jugador>& listaTodosJugadores)
     return SQLITE_OK;
 }
 
-int DBConnector::cant_Jugadores(int* sizeTotalJugadores)
-{
-	* sizeTotalJugadores = 0;
-	int cont = 0;
-	sqlite3_stmt *stmt; 
-	char sql[] = "select NICK, PUNTUACION from Jugadores";
-   
-    int result = sqlite3_prepare_v2(db, sql, -1, &stmt, NULL) ;
-    if (result != SQLITE_OK)
-    {
-       // cout << "Error preparing statement (SELECT)" <<  endl;      
-       // cout << sqlite3_errmsg(db) <<  endl;
-      return result;
-    }
-  
-    do
-    {
-      result = sqlite3_step(stmt);
-      if (result == SQLITE_ROW) 
-      {
-		*sizeTotalJugadores = *sizeTotalJugadores + 1;  
-      }
-    } while (result == SQLITE_ROW);
-
-    result = sqlite3_finalize(stmt);
-    if (result != SQLITE_OK) 
-    {
-       // cout << "Error finalizing statement (SELECT)" <<  endl;
-       // cout << sqlite3_errmsg(db) <<  endl;
-      return result;
-    }
-    return SQLITE_OK;
-}
-
 int DBConnector::leer_Preguntas(vector <preguntas_respuestas>& listaTodasPreguntas)
 {
 	int cont = 0;
@@ -1196,39 +1158,6 @@ int DBConnector::leer_Preguntas(vector <preguntas_respuestas>& listaTodasPregunt
     return SQLITE_OK;
 }
 
-int DBConnector::cant_Preguntas(int* sizeTotalPreguntas)
-{
-	* sizeTotalPreguntas = 0;
-	int cont = 0;
-	sqlite3_stmt *stmt; 
-	char sql[] = "select ID, PREGUNTA, R1, R2, R3, R4, DIFICULTAD from Preguntas";
-   
-    int result = sqlite3_prepare_v2(db, sql, -1, &stmt, NULL) ;
-    if (result != SQLITE_OK)
-    {
-       // cout << "Error preparing statement (SELECT)" <<  endl;      
-       // cout << sqlite3_errmsg(db) <<  endl;
-      return result;
-    }
-  
-    do
-    {
-      result = sqlite3_step(stmt);
-      if (result == SQLITE_ROW) 
-      {
-		*sizeTotalPreguntas = *sizeTotalPreguntas + 1;  
-      }
-    } while (result == SQLITE_ROW);
-
-    result = sqlite3_finalize(stmt);
-    if (result != SQLITE_OK) 
-    {
-       // cout << "Error finalizing statement (SELECT)" <<  endl;
-       // cout << sqlite3_errmsg(db) <<  endl;
-      return result;
-    }
-    return SQLITE_OK;
-}
 
 //DROP TABLE:
 int DBConnector::drop_Jugadores ()

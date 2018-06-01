@@ -29,7 +29,6 @@ class DBConnector
 	int update_Jugador(jugador jugadorModificar);
 	int delete_Jugador(jugador jugadorBorrar);
 	int leer_Jugadores(vector <jugador>& listaTodosJugadores);
-	int cant_Jugadores(int* sizeTotalJugadores);
 	int drop_Jugadores ();
 	int Jugador_existe(jugador jugador);
 
@@ -41,7 +40,6 @@ class DBConnector
 	int update_Pregunta(preguntas_respuestas& preguntaModificar);
 	int delete_Pregunta(preguntas_respuestas& preguntaBorrar);
 	int leer_Preguntas(vector <preguntas_respuestas>& listaTodasPreguntas);
-	int cant_Preguntas(int* sizeTotalJugadores);
 	int drop_Preguntas ();
 	int Pregunta_existe(preguntas_respuestas& p);
 
