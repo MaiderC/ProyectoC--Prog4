@@ -120,6 +120,7 @@ int main(int argc, char** argv)
 				    {
 				    	recogerPregunta(preg_r);
 				    	BD.insert_Pregunta(&preg_r);
+				    	listaTodasPreguntas.push_back(&preg_r);
 				    }
 
 				    mostrarMensaje("¿Quieres seguir introduciendo preguntas?");
@@ -152,6 +153,7 @@ int main(int argc, char** argv)
 				    {
 				    	recogerPregunta(preg_r);
 				    	BD.insert_Pregunta(&preg_r);
+				    	listaTodasPreguntas.push_back(&preg_r);
 				    }
 
 				    mostrarMensaje("¿Quieres seguir introduciendo preguntas?");
@@ -183,6 +185,7 @@ int main(int argc, char** argv)
 				    {
 				    	recogerPregunta(preg_r);
 				    	BD.insert_Pregunta(&preg_r);
+				    	listaTodasPreguntas.push_back(&preg_r);
 				    }
 
 				    mostrarMensaje("¿Quieres seguir introduciendo preguntas?");
