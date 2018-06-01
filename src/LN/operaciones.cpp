@@ -27,7 +27,6 @@ namespace operaciones
 			}
 		}
 
-		cont++;
 		p_r.setCont(cont);
 	}
 

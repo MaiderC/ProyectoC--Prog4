@@ -18,8 +18,6 @@ preguntas_respuestas:: preguntas_respuestas()
   this -> pregunta = DEFAULT_PREGUNTA;
   this -> respuesta1 = DEFAULT_RESPUESTA;
   this -> dificultad = DEFAULT_DIFICULTAD;
-  // this -> cont=cont++;
-  this -> cont++;
   this -> id = cont;
 }
 		
@@ -46,11 +44,10 @@ preguntas_respuestas:: preguntas_respuestas(string pregunta, string respuesta1, 
 //constructor copia
 preguntas_respuestas::preguntas_respuestas(const preguntas_respuestas &p_r)
 {
+  this -> id = p_r.id;
+  this -> dificultad = p_r.dificultad;
   this -> pregunta = p_r.pregunta;
   this -> respuesta1 = p_r.respuesta1;
-  this -> dificultad = p_r.dificultad;
-  this -> cont++;
-  this -> id = cont;
 }
 
 //getters y setters
@@ -100,13 +97,12 @@ int preguntas_respuestas:: getID () const
 }
 
 //sobrecarga de operador =
-bool preguntas_respuestas::operator=(const preguntas_respuestas& p_r)
+preguntas_respuestas& preguntas_respuestas::operator=(const preguntas_respuestas& p_r)
 {
+  this -> id = p_r.id;
+  this -> dificultad = p_r.dificultad;
   this -> pregunta = p_r.pregunta;
   this -> respuesta1 = p_r.respuesta1;
-  this -> dificultad = p_r.dificultad;
-  this -> cont++;
-  this -> id = cont;
 }
 
 void preguntas_respuestas::sumarPunto(jugador jugador)

@@ -54,7 +54,7 @@ class preguntas_respuestas
 		void prepararRespuestas();
 
 		//sobrecarga de operador =
-		bool operator=(const preguntas_respuestas& p_r);
+		preguntas_respuestas& operator=(const preguntas_respuestas& p_r);
 
 };
 
