@@ -44,7 +44,7 @@ string prfacil::getRespuesta2() const
 	return respuesta2;
 }
 
-//métodos
+//metodos
 
  void prfacil::sumarPunto(jugador jugador)
 {
@@ -65,7 +65,7 @@ string prfacil::getRespuesta2() const
 	random[1] = -1;
 	// random[2] = -1;
  	
-	// Este while llena el array random con números aleatorios de 0 a 2, pero que no se repitan.
+	// Este while llena el array random con numeros aleatorios de 0 a 2, pero que no se repitan.
 	while(i>=0)
 	{
 		igual = 0;

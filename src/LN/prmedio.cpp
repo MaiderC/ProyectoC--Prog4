@@ -36,7 +36,7 @@ prmedio::prmedio(const prmedio &pm): preguntas_respuestas(pm)
 {
 	this -> respuesta2 = pm.respuesta2;
 	this -> respuesta3 = pm.respuesta3;
-	//para los atributos que están en la madre
+	//para los atributos que estan en la madre
 	// preguntas_respuestas :: prmedio();
 }
 
@@ -82,7 +82,7 @@ string prmedio::getRespuesta3() const
 	random[1] = -1;
 	random[2] = -1;
  	
-	// Este while llena el array random con números aleatorios de 0 a 2, pero que no se repitan.
+	// Este while llena el array random con numeros aleatorios de 0 a 2, pero que no se repitan.
 	while(i>=0)
 	{
 		igual = 0;

@@ -24,7 +24,7 @@ void acabar(DBConnector BD);
 void RealizarPreguntasMultijugador(vector<jugador> multijugadores, int cantPreg);
 int elegirDificultad();
 
-vector<preguntas_respuestas> preguntasSalidas; // Lista de las preguntas que ya han salido en la ejecución del juego
+vector<preguntas_respuestas> preguntasSalidas; // Lista de las preguntas que ya han salido en la ejecucion del juego
 vector<preguntas_respuestas> listaTodasPreguntas; // Lista de todas las preguntas de la base de datos
 vector<jugador> listaTodosJugadores; // Lista de todos los jugadores de la base de datos
 jugador jugadorPrincipal; // Jugador que inicia la partida
@@ -86,7 +86,7 @@ int main(int argc, char** argv)
 	 	 mostrarMensaje("\t3- Insertar preguntas dificiles");
 	 	 mostrarMensaje("\t4- Borrar preguntas");
 	 	 mostrarMensaje("\t5- Salir");
-	 	 mostrarMensaje("Inserta el número de la acción que deseas realizar: ");
+	 	 mostrarMensaje("Inserta el numero de la accion que deseas realizar: ");
 
 	  	recogerInt(opcionMenu);
 
@@ -195,22 +195,28 @@ int main(int argc, char** argv)
 
 			case 4:
 
-					opcionEliminar = 0;
-				do
-				{
-					mostrarTodasPreguntas(listaTodasPreguntas);
-					mostrarMensaje("¿Que pregunta quieres eliminar?");
-					recogerInt(opcionEliminar);
+				if(listaTodasPreguntas.size() == 0)
+		  		{
+		  			mostrarMensaje("No hay preguntas en el sistema :(");
+		  		} else
+		  		{
+						opcionEliminar = 0;
+					do
+					{
+						mostrarTodasPreguntas(listaTodasPreguntas);
+						mostrarMensaje("¿Que pregunta quieres eliminar?");
+						recogerInt(opcionEliminar);
 
-					BD.delete_Pregunta(listaTodasPreguntas[opcionEliminar-1]);
-					listaTodasPreguntas.erase(listaTodasPreguntas.begin() + opcionEliminar-1);
+						BD.delete_Pregunta(listaTodasPreguntas[opcionEliminar-1]);
+						listaTodasPreguntas.erase(listaTodasPreguntas.begin() + opcionEliminar-1);
 
-					mostrarMensaje("¿Quieres seguir eliminando preguntas?");
-			 		mostrarMensaje("1.- Si");
-			 		mostrarMensaje("2.- No");
-			 		recogerInt(opcionEliminar);
+						mostrarMensaje("¿Quieres seguir eliminando preguntas?");
+				 		mostrarMensaje("1.- Si");
+				 		mostrarMensaje("Inserta 1 para Si, cualquier otro caracter para No.");
+				 		recogerInt(opcionEliminar);
+					}
+					while(opcionEliminar = 1 );
 				}
-				while(opcionEliminar != 2);
 				break;
 
 			case 5:
@@ -286,7 +292,7 @@ int main(int argc, char** argv)
 
  	do
  	{
- 		mostrarMensaje("Elije con qué nivel de dificultad quieres jugar (opciones validas: 1, 2, 3 o 4): ");
+ 		mostrarMensaje("Elije con que nivel de dificultad quieres jugar (opciones validas: 1, 2, 3 o 4): ");
  		recogerInt(opcionDificultad);
  	}
  	while(opcionDificultad < 1 || opcionDificultad > 4);

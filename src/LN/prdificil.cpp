@@ -94,7 +94,7 @@ string prdificil::getRespuesta4() const
 	random[3] = -1;
 
  	
-	// Este while llena el array random con números aleatorios de 0 a 2, pero que no se repitan.
+	// Este while llena el array random con numeros aleatorios de 0 a 2, pero que no se repitan.
 	while(i>=0)
 	{
 		igual = 0;

@@ -76,7 +76,7 @@ namespace utilidades
 		cout << jugador.getNick() << ": " << jugador.getPuntuacion() << " puntos" << endl;
 	}
 
-	void mensajeGanador(const jugador& ganador) //A este metodo se le llamara antes de actualizar las puntuaciones, con lo que la puntuación sera la acumulada en esa partida
+	void mensajeGanador(const jugador& ganador) //A este metodo se le llamara antes de actualizar las puntuaciones, con lo que la puntuacion sera la acumulada en esa partida
 	{
 		cout << "El jugador ganador de esta partida ha sido " << ganador.getNick() << " con " << ganador.getPuntuacion() << " puntos. ¡Enhorabuena!" << endl;
 	}
@@ -131,9 +131,9 @@ namespace utilidades
 			switch(Dificultad)
 			{
 				case 1:
-					if(respuesta_recoger != 'a' && respuesta_recoger != 'b') 
+					if(respuesta_recoger != 'a' && respuesta_recoger != 'b')
 					{
-						cout << "La respuesta no es valida. Por favor, introduce una opción valida (a o b)" << endl;
+						cout << "La respuesta no es valida. Por favor, introduce una opcion valida (a o b)" << endl;
 
 						respValida = -1;
 					}
@@ -142,7 +142,7 @@ namespace utilidades
 				case 2:
 					if(respuesta_recoger != 'a' && respuesta_recoger != 'b' && respuesta_recoger != 'c') 
 					{
-						cout << "La respuesta no es valida. Por favor, introduce una opción valida (a, b o c)" << endl;
+						cout << "La respuesta no es valida. Por favor, introduce una opcion valida (a, b o c)" << endl;
 
 						respValida = -1;
 					}
@@ -151,7 +151,7 @@ namespace utilidades
 				case 3:
 					if(respuesta_recoger != 'a' && respuesta_recoger != 'b' && respuesta_recoger != 'c' && respuesta_recoger != 'd') 
 					{
-						cout << "La respuesta no es valida. Por favor, introduce una opción valida (a, b, c o d)" << endl;
+						cout << "La respuesta no es valida. Por favor, introduce una opcion valida (a, b, c o d)" << endl;
 
 						respValida = -1;
 					}
