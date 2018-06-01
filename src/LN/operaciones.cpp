@@ -21,9 +21,9 @@ namespace operaciones
 
 		for (int i = 0; i < listaTodasRespuestas.size(); i++)
 		{
-			if(cont<p_r.getID())
+			if(cont < listaTodasRespuestas[i].getID())
 			{
-				cont = p_r.getID();
+				cont = listaTodasRespuestas[i].getID();
 			}
 		}
 
