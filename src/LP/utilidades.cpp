@@ -41,7 +41,7 @@ namespace utilidades
 	{
 		preguntas_respuestas* p;
 
-		p = new preguntas_respuestas(TodasPreguntas.size());
+		p = new preguntas_respuestas[TodasPreguntas.size()];
 
 		for(int k = 0; k < TodasPreguntas.size(); k++)
 		{
