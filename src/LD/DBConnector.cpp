@@ -379,7 +379,7 @@ int DBConnector::insert_Pregunta (preguntas_respuestas& PreguntaInsertar)
 		    }
 
 		    //R4 NULL
-	    	result = sqlite3_bind_text(stmt, 5, NULL, 0, SQLITE_STATIC);
+	    	result = sqlite3_bind_text(stmt, 6, NULL, 0, SQLITE_STATIC);
 		    if (result != SQLITE_OK)
 		    {
 		       // cout << "Error binding parameters" <<  endl;
