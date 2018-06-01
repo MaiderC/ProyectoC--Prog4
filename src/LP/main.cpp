@@ -198,14 +198,15 @@ int main(int argc, char** argv)
 
 			case 4:
 
-				if(listaTodasPreguntas.size() == 0)
-		  		{
-		  			mostrarMensaje("No hay preguntas en el sistema :(");
-		  		} else
-		  		{
-						opcionEliminar = 0;
-					do
-					{
+				
+					opcionEliminar = 0;
+				do
+				{
+					if(listaTodasPreguntas.size() == 0)
+			  		{
+			  			mostrarMensaje("No hay preguntas en el sistema :(");
+			  		} else
+			  		{
 						mostrarTodasPreguntas(listaTodasPreguntas);
 						mostrarMensaje("¿Que pregunta quieres eliminar?");
 						recogerInt(opcionEliminar);
@@ -214,17 +215,18 @@ int main(int argc, char** argv)
 						listaTodasPreguntas.erase(listaTodasPreguntas.begin() + opcionEliminar-1);
 
 						mostrarMensaje("¿Quieres seguir eliminando preguntas?");
-				 		mostrarMensaje("1.- Si");
-				 		mostrarMensaje("Inserta 1 para Si, cualquier otro caracter para No.");
-				 		recogerInt(opcionEliminar);
+						mostrarMensaje("1.- Si");
+						mostrarMensaje("Inserta 1 para Si, cualquier otro caracter para No.");
+						recogerInt(opcionEliminar);
 					}
+				}
 					while(opcionEliminar == 1 );
 				}
 				break;
 
 			case 5:
 				
-					mostrarMensaje("Modo administrador cerrado finalizado.");
+					mostrarMensaje("Modo administrador finalizado.");
 					acabar(BD);
 					break;
 
