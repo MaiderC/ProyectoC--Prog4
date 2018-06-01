@@ -17,7 +17,7 @@ namespace operaciones
 	void siguienteID(const vector<preguntas_respuestas*>& listaTodasRespuestas)
 	{
 		int cont = 0;
-		preguntas_respuestas p_r;
+		preguntas_respuestas* p_r;
 
 		for (int i = 0; i < listaTodasRespuestas.size(); i++)
 		{
@@ -27,7 +27,7 @@ namespace operaciones
 			}
 		}
 
-		p_r.setCont(cont);
+		p_r->setCont(cont);
 	}
 
 	preguntas_respuestas* generarPregunta(const vector<preguntas_respuestas*>& listaTodasPreguntas, vector<preguntas_respuestas*>& preguntasSalidas)
