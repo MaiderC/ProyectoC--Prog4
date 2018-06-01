@@ -104,11 +104,3 @@ preguntas_respuestas& preguntas_respuestas::operator=(const preguntas_respuestas
   this -> pregunta = p_r.pregunta;
   this -> respuesta1 = p_r.respuesta1;
 }
-
-void preguntas_respuestas::sumarPunto(jugador jugador)
-{
-}
-
-void preguntas_respuestas::prepararRespuestas()
-{
-}
