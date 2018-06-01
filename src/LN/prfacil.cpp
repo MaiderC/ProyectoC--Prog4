@@ -16,9 +16,10 @@ prfacil::prfacil()
   this -> respuesta2 = DEFAULT_RESPUESTA2;
 }
 		
-prfacil::prfacil(string pregunta, string respuesta1, string respuesta2, string dificultad,  bool leerBD): preguntas_respuestas(pregunta, respuesta1, dificultad, leerBD)
+prfacil::prfacil(string pregunta, string respuesta1, string respuesta2, bool leerBD): preguntas_respuestas(pregunta, respuesta1, leerBD)
 {
   this -> respuesta2 = respuesta2;
+  this -> dificultad = "#";
 }
 
 //destructor

@@ -18,7 +18,7 @@ class prmedio :  public preguntas_respuestas
 
 		//constructores
 		prmedio();
-		prmedio(string pregunta, string respuesta1, string respuesta2, string respuesta3, string dificultad, bool leerBD);
+		prmedio(string pregunta, string respuesta1, string respuesta2, string respuesta3, bool leerBD);
 	
 		//destructor
 		virtual ~prmedio();

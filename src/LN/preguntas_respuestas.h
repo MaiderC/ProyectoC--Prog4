@@ -28,7 +28,7 @@ class preguntas_respuestas
 
 		//constructores
 		preguntas_respuestas();
-		preguntas_respuestas(string pregunta, string respuesta1, string dificultad,  bool leerBD);
+		preguntas_respuestas(string pregunta, string respuesta1, bool leerBD);
 
 		//destructor
 		virtual ~preguntas_respuestas();
