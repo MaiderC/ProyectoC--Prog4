@@ -102,8 +102,20 @@ namespace utilidades
 	void recogerInt(int& numero_recoger)
 	{
 		string aux;
+		int intAux;
+		int intTemp;
+
 		getline(cin, aux);
-		numero_recoger = stoi(aux, NULL);
+		intAux = sscanf(aux.c_str(), "%d", &intTemp);
+
+		while(intAux == 0)
+		{
+			mostrarMensaje("No has insertado un numero, vuelve a intentarlo: ");
+			getline(cin, aux);
+			intAux = sscanf(aux.c_str(), "%d", &intTemp);
+		}
+
+		numero_recoger = intTemp;
 	}
 
 	char recogerOpcionRespuesta(int& respValida, string dificultad)
