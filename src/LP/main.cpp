@@ -119,7 +119,7 @@ int main(int argc, char** argv)
 				    for (int i = 0; i < cant_p; i++)
 				    {
 				    	recogerPregunta(preg_r);
-				    	BD.insert_Pregunta(preg_r);
+				    	BD.insert_Pregunta(&preg_r);
 				    }
 
 				    mostrarMensaje("¿Quieres seguir introduciendo preguntas?");
@@ -151,7 +151,7 @@ int main(int argc, char** argv)
 				    for (int i = 0; i < cant_p; i++)
 				    {
 				    	recogerPregunta(preg_r);
-				    	BD.insert_Pregunta(preg_r);
+				    	BD.insert_Pregunta(&preg_r);
 				    }
 
 				    mostrarMensaje("¿Quieres seguir introduciendo preguntas?");
@@ -182,7 +182,7 @@ int main(int argc, char** argv)
 				    for (int i = 0; i < cant_p; i++)
 				    {
 				    	recogerPregunta(preg_r);
-				    	BD.insert_Pregunta(preg_r);
+				    	BD.insert_Pregunta(&preg_r);
 				    }
 
 				    mostrarMensaje("¿Quieres seguir introduciendo preguntas?");
@@ -389,7 +389,7 @@ int main(int argc, char** argv)
 
  	for(int i = 0; i < cant_preguntas; i++)
  	{
- 		 (*pregunta) = generarPregunta(PreguntasSeleccionadas, preguntasSalidas);
+ 		 pregunta = generarPregunta(PreguntasSeleccionadas, preguntasSalidas);
 		 
 
 		 if((*pregunta).getDificultad() == "#")
@@ -712,7 +712,7 @@ void multijugador(DBConnector BD)
  			mostrarMensaje(msj1);
 
  			//Preparar la pregunta aleatoria para el jugador
- 			(*pregunta) = generarPregunta(listaTodasPreguntas, preguntasSalidas);
+ 			pregunta = generarPregunta(listaTodasPreguntas, preguntasSalidas);
 
 			while(respValida == -1)
 			{
