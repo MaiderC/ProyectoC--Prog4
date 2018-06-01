@@ -19,7 +19,7 @@ prmedio::prmedio()
   this -> respuesta3 = DEFAULT_RESPUESTA3;
 }
 		
-prmedio::prmedio(string pregunta, string respuesta1, string respuesta2, string respuesta3, bool leerBD): preguntas_respuestas(pregunta, respuesta1, leerBD)
+prmedio::prmedio(string pregunta, string respuesta1, string respuesta2, string respuesta3, int ID, bool leerBD): preguntas_respuestas(pregunta, respuesta1, ID, leerBD)
 {
   this -> respuesta2 = respuesta2;
   this -> respuesta3 = respuesta3;
@@ -193,7 +193,7 @@ istream& operator>>(istream& in, prmedio& preguntamedio)
 	cout << "Introduce otra respuesta (una incorrecta): "<< endl;
 	getline(in, r3);
 
-	prmedio aux(pregunta, r1, r2, r3, false);
+	prmedio aux(pregunta, r1, r2, r3, 0, false);
 	preguntamedio = aux;
 	return in;
 }

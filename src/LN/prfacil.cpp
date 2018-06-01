@@ -16,7 +16,7 @@ prfacil::prfacil()
   this -> respuesta2 = DEFAULT_RESPUESTA2;
 }
 		
-prfacil::prfacil(string pregunta, string respuesta1, string respuesta2, bool leerBD): preguntas_respuestas(pregunta, respuesta1, leerBD)
+prfacil::prfacil(string pregunta, string respuesta1, string respuesta2, int ID, bool leerBD): preguntas_respuestas(pregunta, respuesta1, ID, leerBD)
 {
   this -> respuesta2 = respuesta2;
   this -> dificultad = "#";
@@ -154,7 +154,7 @@ istream& operator>>(istream& in, prfacil& preguntafacil)
 	cout << "Introduce otra respuesta (una incorrecta): "<< endl;
 	getline(in, r2);
 
-	prfacil aux(pregunta, r1, r2, false);
+	prfacil aux(pregunta, r1, r2, 0, false);
 	preguntafacil = aux;
 	return in;
 }

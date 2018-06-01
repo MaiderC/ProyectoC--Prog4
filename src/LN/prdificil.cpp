@@ -19,7 +19,7 @@ prdificil::prdificil()
   this -> respuesta4 = DEFAULT_RESPUESTA4;
 }
 		
-prdificil::prdificil(string pregunta, string respuesta1, string respuesta2, string respuesta3, string respuesta4, bool leerBD): preguntas_respuestas(pregunta, respuesta1, leerBD)
+prdificil::prdificil(string pregunta, string respuesta1, string respuesta2, string respuesta3, string respuesta4, int ID, bool leerBD): preguntas_respuestas(pregunta, respuesta1, ID, leerBD)
 {
   // this -> pregunta = pregunta;
   // this -> respuesta1 = respuesta1;
@@ -225,7 +225,7 @@ istream& operator>>(istream& in, prdificil& preguntadificil)
 	cout << "Introduce otra respuesta (una incorrecta): "<< endl;
 	getline(in, r4);
 
-	prdificil aux(pregunta, r1, r2, r3, r4, false);
+	prdificil aux(pregunta, r1, r2, r3, r4, 0, false);
 	preguntadificil = aux;
 
 	return in;

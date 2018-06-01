@@ -23,14 +23,14 @@ preguntas_respuestas:: preguntas_respuestas()
   this -> id = cont;
 }
 		
-preguntas_respuestas:: preguntas_respuestas(string pregunta, string respuesta1, bool leerBD)
+preguntas_respuestas:: preguntas_respuestas(string pregunta, string respuesta1, int ID, bool leerBD)
 {
   this -> pregunta = pregunta;
   this -> respuesta1 = respuesta1;
 
   if(leerBD)
   {
-    //nada
+    this->id = ID;
   }
   else
   {
