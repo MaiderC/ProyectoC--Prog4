@@ -104,52 +104,66 @@ namespace utilidades
 	//-----------------------------------------------------------------
 	void recogerString(string& string_recoger)
 	{
-		cin >> string_recoger;
+		getline(cin, string_recoger);
 	}
 
 	void recogerInt(int& numero_recoger)
 	{
-		cin >> numero_recoger;
+		string aux;
+		getline(cin, aux);
+		numero_recoger = stoi(aux, NULL);
 	}
 
-	int recogerOpcionRespuesta(char& respuesta_recoger, string dificultad) 
+	char recogerOpcionRespuesta(int& respValida, string dificultad)
 	{
-		int Dificultad = dificultad.size();
-		int error = 0;
+		int Dificultad = dificultad.length();
+		string aux;
+		char respuestaRecogida;
 		
-		cin >> respuesta_recoger;
+		getline(cin, aux);
 
-		switch(Dificultad)
+		if(aux.length() == 1)
 		{
-			case 1:
-				if(respuesta_recoger != 'a' && respuesta_recoger != 'b') 
-				{
-					cout << "La respuesta no es valida. Por favor, introduce una opción valida (a o b)" << endl;
+			respValida = 0;
 
-					error = -1;
-				}
-				break;
+			sscanf(aux.c_str(), "%c", &respuesta_recoger);
 
-			case 2:
-				if(respuesta_recoger != 'a' && respuesta_recoger != 'b' && respuesta_recoger != 'c') 
-				{
-					cout << "La respuesta no es valida. Por favor, introduce una opción valida (a, b o c)" << endl;
+			switch(Dificultad)
+			{
+				case 1:
+					if(respuesta_recoger != 'a' && respuesta_recoger != 'b') 
+					{
+						cout << "La respuesta no es valida. Por favor, introduce una opción valida (a o b)" << endl;
 
-					error = -1;
-				}
-				break;
+						respValida = -1;
+					}
+					break;
 
-			case 3:
-				if(respuesta_recoger != 'a' && respuesta_recoger != 'b' && respuesta_recoger != 'c' && respuesta_recoger != 'd') 
-				{
-					cout << "La respuesta no es valida. Por favor, introduce una opción valida (a, b, c o d)" << endl;
+				case 2:
+					if(respuesta_recoger != 'a' && respuesta_recoger != 'b' && respuesta_recoger != 'c') 
+					{
+						cout << "La respuesta no es valida. Por favor, introduce una opción valida (a, b o c)" << endl;
 
-					error = -1;
-				}
-				break;
+						respValida = -1;
+					}
+					break;
 
-			return error;
+				case 3:
+					if(respuesta_recoger != 'a' && respuesta_recoger != 'b' && respuesta_recoger != 'c' && respuesta_recoger != 'd') 
+					{
+						cout << "La respuesta no es valida. Por favor, introduce una opción valida (a, b, c o d)" << endl;
+
+						respValida = -1;
+					}
+					break;
+			}
+		} else
+		{
+			cout << "La respuesta no es valida, tiene que ser un caracter." << endl;
+			respValida = -1;
 		}
+
+		return respuestaRecogida;
 	}
 
 	void recogerPregunta(prfacil& Pregunta)

@@ -370,11 +370,11 @@ int main(int argc, char** argv)
 		 {
 		 	prfacil* preguntaAux = dynamic_cast<prfacil*> (pregunta);
 		 	mostrarPregunta(*preguntaAux);
-			respValida = recogerOpcionRespuesta(respuesta, (*pregunta).getDificultad());
+			respuesta = recogerOpcionRespuesta(respValida, (*pregunta).getDificultad());
 
 		 	while(respValida == -1)
 			{
-		 		respValida = recogerOpcionRespuesta(respuesta, preguntaAux->getDificultad());
+		 		respuesta = recogerOpcionRespuesta(respValida, preguntaAux->getDificultad());
 		 	}
 
 			switch (respuesta)
@@ -394,11 +394,11 @@ int main(int argc, char** argv)
 		 	prmedio* preguntaAux = dynamic_cast<prmedio*> (pregunta);
 
 			mostrarPregunta(*preguntaAux);
-			respValida = recogerOpcionRespuesta(respuesta, (*pregunta).getDificultad());
+			respuesta = recogerOpcionRespuesta(respValida, (*pregunta).getDificultad());
 
 		 	while(respValida == -1)
 			{
-		 		respValida = recogerOpcionRespuesta(respuesta, preguntaAux->getDificultad());
+		 		respuesta = recogerOpcionRespuesta(respValida, preguntaAux->getDificultad());
 		 	}
 
 			switch (respuesta)
@@ -422,11 +422,11 @@ int main(int argc, char** argv)
 		 	prdificil* preguntaAux = dynamic_cast<prdificil*> (pregunta);
 
 		 	mostrarPregunta(*preguntaAux);
-			respValida = recogerOpcionRespuesta(respuesta, (*pregunta).getDificultad());
+			respuesta = recogerOpcionRespuesta(respValida, (*pregunta).getDificultad());
 
 		 	while(respValida == -1)
 			{
-		 		respValida = recogerOpcionRespuesta(respuesta, preguntaAux->getDificultad());
+		 		respuesta = recogerOpcionRespuesta(respValida, preguntaAux->getDificultad());
 		 	}
 
 			switch (respuesta)
@@ -670,7 +670,7 @@ void multijugador(DBConnector BD)
 
 			while(respValida == -1)
 			{
-				respValida = recogerOpcionRespuesta(respuesta, pregunta->getDificultad());
+				respuesta = recogerOpcionRespuesta(respValida, pregunta->getDificultad());
 			}
 			
 		 if((*pregunta).getDificultad() == "#")
@@ -678,11 +678,11 @@ void multijugador(DBConnector BD)
 		 	prfacil* preguntaAux = dynamic_cast<prfacil*> (pregunta);
 
 		 	mostrarPregunta(*preguntaAux);
-			respValida = recogerOpcionRespuesta(respuesta, (*pregunta).getDificultad());
+			respuesta = recogerOpcionRespuesta(respValida, (*pregunta).getDificultad());
 		 	
 		 	while(respValida == -1)
 			{
-		 		respValida = recogerOpcionRespuesta(respuesta, preguntaAux->getDificultad());
+		 		respuesta = recogerOpcionRespuesta(respValida, preguntaAux->getDificultad());
 		 	}
 
 			switch (respuesta)
@@ -702,11 +702,11 @@ void multijugador(DBConnector BD)
 		 	prmedio* preguntaAux = dynamic_cast<prmedio*> (pregunta);
 
 		 	mostrarPregunta(*preguntaAux);
-			respValida = recogerOpcionRespuesta(respuesta, (*pregunta).getDificultad());
+			respuesta = recogerOpcionRespuesta(respValida, (*pregunta).getDificultad());
 
 		 	while(respValida == -1)
 			{
-		 		respValida = recogerOpcionRespuesta(respuesta, preguntaAux->getDificultad());
+		 		respuesta = recogerOpcionRespuesta(respValida, preguntaAux->getDificultad());
 		 	}
 
 			switch (respuesta)
@@ -730,11 +730,11 @@ void multijugador(DBConnector BD)
 		 	prdificil* preguntaAux = dynamic_cast<prdificil*> (pregunta);
 
 		 	mostrarPregunta(*preguntaAux);
-			respValida = recogerOpcionRespuesta(respuesta, (*pregunta).getDificultad());
+			respuesta = recogerOpcionRespuesta(respValida, (*pregunta).getDificultad());
 
 		 	while(respValida == -1)
 			{
-		 		respValida = recogerOpcionRespuesta(respuesta, preguntaAux->getDificultad());
+		 		respuesta = recogerOpcionRespuesta(respValida, preguntaAux->getDificultad());
 		 	}
 
 			switch (respuesta)

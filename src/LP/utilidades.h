@@ -25,7 +25,7 @@
 		int mensajeEmpate(const vector<jugador>& empatados);
 		void recogerString(string& string_recoger);
 		void recogerInt(int& numero_recoger);
-		int recogerOpcionRespuesta(char& respuesta_recoger, string dificultad) ;
+		char recogerOpcionRespuesta(int& respValida, string dificultad);
 		void recogerPregunta(prfacil& Pregunta);
 		void recogerPregunta(prmedio& Pregunta);
 		void recogerPregunta(prdificil& Pregunta);
