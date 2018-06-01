@@ -37,34 +37,26 @@ namespace utilidades
 		cout << Pregunta;
 	}
 
-	void mostrarTodasPreguntas(const vector<preguntas_respuestas> TodasPreguntas)
+	void mostrarTodasPreguntas(const vector<preguntas_respuestas*> TodasPreguntas)
 	{
-		preguntas_respuestas* p;
-
-		p = new preguntas_respuestas[TodasPreguntas.size()];
-
-		for(int k = 0; k < TodasPreguntas.size(); k++)
-		{
-			p[k] = TodasPreguntas[k]; 
-		}
-
+		
 		for(int i = 0; i < TodasPreguntas.size(); i++)
 		{
 			cout << (i+1) << ".-";
 
-			if (p[i].getDificultad() == "#")
+			if (TodasPreguntas[i]->getDificultad() == "#")
 			{
-				prfacil* preguntaAux = dynamic_cast<prfacil*> (p);
+				prfacil* preguntaAux = dynamic_cast<prfacil*> (TodasPreguntas[i]);
 				mostrarPregunta(*preguntaAux);
 			}
-			else if (p[i].getDificultad() == "##")
+			else if (TodasPreguntas[i]->getDificultad() == "##")
 			{
-				prmedio* preguntaAux = dynamic_cast<prmedio*> (p);
+				prmedio* preguntaAux = dynamic_cast<prmedio*> (TodasPreguntas[i]);
 				mostrarPregunta(*preguntaAux);
 			}
-			else if(p[i].getDificultad() == "###")
+			else if(TodasPreguntas[i]->getDificultad() == "###")
 			{
-				prdificil* preguntaAux = dynamic_cast<prdificil*> (p);
+				prdificil* preguntaAux = dynamic_cast<prdificil*> (TodasPreguntas[i]);
 				mostrarPregunta(*preguntaAux);
 			}
 			cout << endl << endl;

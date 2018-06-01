@@ -14,23 +14,23 @@ using namespace std;
 namespace operaciones
 {
 
-	void siguienteID(const vector<preguntas_respuestas>& listaTodasRespuestas)
+	void siguienteID(const vector<preguntas_respuestas*>& listaTodasRespuestas)
 	{
 		int cont = 0;
 		preguntas_respuestas p_r;
 
 		for (int i = 0; i < listaTodasRespuestas.size(); i++)
 		{
-			if(cont < listaTodasRespuestas[i].getID())
+			if(cont < listaTodasRespuestas[i]->getID())
 			{
-				cont = listaTodasRespuestas[i].getID();
+				cont = listaTodasRespuestas[i]->getID();
 			}
 		}
 
 		p_r.setCont(cont);
 	}
 
-	preguntas_respuestas generarPregunta(const vector<preguntas_respuestas>& listaTodasPreguntas, vector<preguntas_respuestas>& preguntasSalidas)
+	preguntas_respuestas generarPregunta(const vector<preguntas_respuestas*>& listaTodasPreguntas, vector<preguntas_respuestas*>& preguntasSalidas)
 	{
 		int random = 0;
 		preguntas_respuestas pregunta;
@@ -59,7 +59,7 @@ namespace operaciones
 					 		for(int j = 0; j < preguntasSalidas.size(); j++)
 					 		{
 					 			//si son iguales, será 0
-					 			if(pregunta.getID() == preguntasSalidas[j].getID())
+					 			if(pregunta->getID() == preguntasSalidas[j]->getID())
 					 			{
 					 				repetida = 1; //si son iguales, será 1
 					 			}
@@ -71,7 +71,7 @@ namespace operaciones
 			 	preguntasSalidas.push_back(pregunta);
 		}
 
-		 pregunta.prepararRespuestas();
+		 pregunta->prepararRespuestas();
 
 		 return pregunta;
 	}

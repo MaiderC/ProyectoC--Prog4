@@ -151,14 +151,14 @@ using namespace std;
   	return 0;
   }
 
-  int DBConnector::Pregunta_existe(preguntas_respuestas& p)
+  int DBConnector::Pregunta_existe(preguntas_respuestas* p)
   {
-  	vector<preguntas_respuestas> Preguntas;
+  	vector<preguntas_respuestas*> Preguntas;
   	leer_Preguntas(Preguntas);
 
   	for(int i=0; i<Preguntas.size(); i++)
   	{
-  		if(p.getID() == Preguntas[i].getID())
+  		if(p->getID() == Preguntas[i]->getID())
   			return 1;
   	}
   	return 0;
@@ -215,7 +215,7 @@ using namespace std;
 	}
 }
 
-int DBConnector::insert_Pregunta (preguntas_respuestas& PreguntaInsertar)
+int DBConnector::insert_Pregunta (preguntas_respuestas* PreguntaInsertar)
 {
   	if(Pregunta_existe(PreguntaInsertar) == 0)
   	{ 
@@ -229,12 +229,10 @@ int DBConnector::insert_Pregunta (preguntas_respuestas& PreguntaInsertar)
 	       // cout << sqlite3_errmsg(db) <<  endl;
 	      return result;
 	    }
-
-	   preguntas_respuestas* preg_punt = &PreguntaInsertar;
 		
-	   if (PreguntaInsertar.getDificultad()=="#")
+	   if (PreguntaInsertar->getDificultad()=="#")
 	    {
-	    	prfacil* p = dynamic_cast<prfacil*>(preg_punt);
+	    	prfacil* p = dynamic_cast<prfacil*>(PreguntaInsertar);
 
 	    	//ID
 	    	result = sqlite3_bind_int(stmt, 1, ((*p)).getID());
@@ -316,9 +314,9 @@ int DBConnector::insert_Pregunta (preguntas_respuestas& PreguntaInsertar)
 		    }
 
 	    }
-	    else if(PreguntaInsertar.getDificultad()=="##")
+	    else if(PreguntaInsertar->getDificultad()=="##")
 	    {
-	    	prmedio* p = dynamic_cast<prmedio*>(preg_punt);
+	    	prmedio* p = dynamic_cast<prmedio*>(PreguntaInsertar);
 
 	    	//ID
 	    	result = sqlite3_bind_int(stmt, 1, (*p).getID());
@@ -404,7 +402,7 @@ int DBConnector::insert_Pregunta (preguntas_respuestas& PreguntaInsertar)
 	    else
 	    {
 	    	
-	    	prdificil* p = dynamic_cast<prdificil*>(preg_punt);
+	    	prdificil* p = dynamic_cast<prdificil*>(PreguntaInsertar);
 
 	    	//ID
 	    	result = sqlite3_bind_int(stmt, 1, (*p).getID());
@@ -577,18 +575,17 @@ int DBConnector::update_Jugador(jugador jugadorModificar)//Pasar el jugador comp
 	}
 }
 
-int DBConnector::update_Pregunta(preguntas_respuestas& preguntaModificar)
+int DBConnector::update_Pregunta(preguntas_respuestas* preguntaModificar)
 {
 	if(Pregunta_existe(preguntaModificar) == 1) 
   	{ 
 		sqlite3_stmt *stmt;
 		char sql[] = "update Preguntas set PREGUNTA = ?, R1 = ?, R2 = ?, R3 = ?, R4 = ?, DIFICULTAD = ? where ID = ?";
 	  	int result;
-		preguntas_respuestas* preg_punt = &preguntaModificar;
 		
-	   if (preguntaModificar.getDificultad()=="###")
+	   if (preguntaModificar->getDificultad()=="###")
 	    {
-	    	prdificil* p = dynamic_cast<prdificil*>(preg_punt);
+	    	prdificil* p = dynamic_cast<prdificil*>(preguntaModificar);
 
 	    	 string pregunta = (*p).getPregunta();
 		     string r1 = (*p).getRespuesta1();
@@ -693,9 +690,9 @@ int DBConnector::update_Pregunta(preguntas_respuestas& preguntaModificar)
 		    }
 
 	    }
-	    else if(preguntaModificar.getDificultad()=="##")
+	    else if(preguntaModificar->getDificultad()=="##")
 	    {
-	    	 prmedio* p = dynamic_cast<prmedio*>(preg_punt);
+	    	 prmedio* p = dynamic_cast<prmedio*>(preguntaModificar);
 	    	 string pregunta = (*p).getPregunta();
 		     string r1 = (*p).getRespuesta1();
 		     string r2 = (*p).getRespuesta2();
@@ -801,7 +798,7 @@ int DBConnector::update_Pregunta(preguntas_respuestas& preguntaModificar)
 	    }
 	    else
 	    {
-	    	prfacil* p = dynamic_cast<prfacil*>(preg_punt);
+	    	prfacil* p = dynamic_cast<prfacil*>(preguntaModificar);
 
 	    	 string pregunta = (*p).getPregunta();
 		     string r1 = (*p).getRespuesta1();
@@ -983,14 +980,14 @@ int DBConnector::delete_Jugador(jugador jugadorBorrar)
 	}
 }
 
-int DBConnector::delete_Pregunta(preguntas_respuestas& preguntaBorrar)
+int DBConnector::delete_Pregunta(preguntas_respuestas* preguntaBorrar)
 {
 	if(Pregunta_existe(preguntaBorrar) == 1) 
   	{ 
 		sqlite3_stmt *stmt;
 		char sql[] = "DELETE from Preguntas where ID = ?";
 
-		int ID = preguntaBorrar.getID();
+		int ID = preguntaBorrar->getID();
 	    
 	    //Preparar el statement:
 	    int result = sqlite3_prepare_v2(db, sql, strlen(sql) + 1, &stmt, NULL) ;
@@ -1077,7 +1074,7 @@ int DBConnector::leer_Jugadores(vector <jugador>& listaTodosJugadores)
     return SQLITE_OK;
 }
 
-int DBConnector::leer_Preguntas(vector <preguntas_respuestas>& listaTodasPreguntas)
+int DBConnector::leer_Preguntas(vector <preguntas_respuestas*>& listaTodasPreguntas)
 {
 	int cont = 0;
 	sqlite3_stmt *stmt; 
@@ -1122,23 +1119,23 @@ int DBConnector::leer_Preguntas(vector <preguntas_respuestas>& listaTodasPregunt
        		strcpy(r4, (char*)sqlite3_column_text(stmt, 5));
 
        		//Creamos una Pregunta_respuestas con estos atributos:
-      		prdificil p (pregunta,r1, r2, r3, r4, ID, true);//el ultimo es true para no darle el ID
-      		p.setID (ID);
+      		prdificil* p = new prdificil(pregunta,r1, r2, r3, r4, ID, true);//el ultimo es true para no darle el ID
+      		p->setID (ID);
       		listaTodasPreguntas.push_back(p);
 
       	}
       	else if(strcmp(dificultad, "##") == 0)
       	{
       		//Es media
-      		prmedio p (pregunta,r1, r2, r3, ID, true);//el ultimo es true para no darle el ID
-     		p.setID (ID);
+      		prmedio* p = new prmedio (pregunta,r1, r2, r3, ID, true);//el ultimo es true para no darle el ID
+     		p->setID (ID);
       	 	listaTodasPreguntas.push_back(p);
 
       	}
       	else
       	{
-      		prfacil p (pregunta,r1, r2, ID, true);//el ultimo es true para no darle el ID
-      		p.setID (ID);
+      		prfacil* p = new prfacil(pregunta,r1, r2, ID, true);//el ultimo es true para no darle el ID
+      		p->setID (ID);
            	listaTodasPreguntas.push_back(p);
 
       	}

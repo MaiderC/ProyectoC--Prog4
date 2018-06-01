@@ -14,8 +14,8 @@
 	using namespace std;
 	namespace operaciones
 	{
-		void siguienteID(const vector<preguntas_respuestas>& listaTodasRespuestas);
-		preguntas_respuestas generarPregunta(const vector<preguntas_respuestas>& listaTodasPreguntas, vector<preguntas_respuestas>& preguntasSalidas);
+		void siguienteID(const vector<preguntas_respuestas*>& listaTodasRespuestas);
+		preguntas_respuestas generarPregunta(const vector<preguntas_respuestas*>& listaTodasPreguntas, vector<preguntas_respuestas*>& preguntasSalidas);
 		int comprobarRespuesta(const string& respuesta);
 		int maxPreguntas(const int& cantPreguntas, const int& sizeTotalPreguntas);
 		void ordenarJugadores(vector<jugador>& jugadoresLeidos);

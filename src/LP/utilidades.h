@@ -19,7 +19,7 @@
 		void mostrarPregunta(const prfacil& Pregunta);
 		void mostrarPregunta(const prmedio& Pregunta);
 		void mostrarPregunta(const prdificil& Pregunta);
-		void mostrarTodasPreguntas(const vector<preguntas_respuestas> TodasPreguntas);
+		void mostrarTodasPreguntas(const vector<preguntas_respuestas*> TodasPreguntas);
 		void mostrarPuntuacion(const jugador& jugador);
 		void mensajeGanador(const jugador& ganador);
 		int mensajeEmpate(const vector<jugador>& empatados);
