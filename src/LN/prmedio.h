@@ -37,7 +37,7 @@ class prmedio :  public preguntas_respuestas
 		virtual void prepararRespuestas();
 
 		//sobrecarga de operador =
-		bool operator=(const prmedio& p_m);
+		prmedio& operator=(const prmedio& pm);
 
 		friend ostream& operator<<(ostream& out, const prmedio& preguntamedio);
 		friend istream& operator>>(istream& in, prmedio& preguntamedio);

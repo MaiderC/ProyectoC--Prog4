@@ -110,10 +110,14 @@ string prmedio::getRespuesta3() const
 	this -> respuesta3 = respuestas[2];	
 }
 
-bool prmedio::operator=(const prmedio& pm)
+prmedio& prmedio::operator=(const prmedio& pm)
 {
+	this -> pregunta = pm.pregunta;
+	this -> respuesta1 = pm.respuesta1;
 	this -> respuesta2 = pm.respuesta2;
 	this -> respuesta3 = pm.respuesta3;
+
+	return *this;
 }
 
 ostream& operator<<(ostream& out, const prmedio& preguntamedio)

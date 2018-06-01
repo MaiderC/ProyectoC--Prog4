@@ -41,7 +41,7 @@ class prdificil :  public preguntas_respuestas
 		virtual void prepararRespuestas();
 
 		//sobrecarga de operador =
-		bool operator=(const prdificil& pd);
+		prdificil& operator=(const prdificil& pd);
 
 		friend ostream& operator<<(ostream& out, const prdificil& preguntadificil);
 		friend istream& operator>>(istream& in, prdificil& preguntadificil);

@@ -34,7 +34,7 @@ class prfacil :  public preguntas_respuestas
 		virtual void prepararRespuestas(); 
 
 		//sobrecarga de operador =
-		bool operator=(const prfacil& pf);
+		prfacil& operator=(const prfacil& pf);
 
 		friend ostream& operator<< (ostream& out, const prfacil& preguntafacil);
 		friend istream& operator>> (istream& in, prfacil& preguntafacil);

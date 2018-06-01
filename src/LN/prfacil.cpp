@@ -91,9 +91,13 @@ string prfacil::getRespuesta2() const
 	this -> respuesta2 = respuestas[1];
 }
 
-bool prfacil::operator=(const prfacil& pf)
+prfacil& prfacil::operator=(const prfacil& pf)
 {
+	this -> pregunta = pf.pregunta;
+	this -> respuesta1 = pf.respuesta1;
 	this -> respuesta2 = pf.respuesta2;
+
+	return *this;
 }
 
 ostream& operator<<(ostream& out, const prfacil& preguntafacil)

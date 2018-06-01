@@ -125,11 +125,15 @@ string prdificil::getRespuesta4() const
 }
 
 //sobrecarga de operador =
-bool prdificil::operator=(const prdificil& pd)
+prdificil& prdificil::operator=(const prdificil& pd)
 {
+	this -> pregunta = pd.pregunta;
+	this -> respuesta1 = pd. respuesta1;
 	this -> respuesta2 = pd.respuesta2;
 	this -> respuesta3 = pd.respuesta3;
 	this -> respuesta4 = pd.respuesta4;
+
+	return *this;
 }
 
 ostream& operator<<(ostream& out, const prdificil& preguntadificil)
