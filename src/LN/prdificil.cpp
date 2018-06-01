@@ -199,24 +199,24 @@ istream& operator>>(istream& in, prdificil& preguntadificil)
 
 	string temporal;
 	cout << "Introduce la pregunta a insertar: "<< endl;
-	in >> temporal;
+	getline(in, temporal);
 	(preguntadificil).setPregunta(temporal);
 
 	cout << "*La respuesta no debe contener la letra de la opcion (a o b) ni signos de puntuacion al inicio (salvo que se trate de un guion, por ser la respuesta un numero negativo)"<< endl;
 	cout << "Introduce la respuesta correcta: "<< endl;
-	in >> temporal;
+	getline(in, temporal);
 	(preguntadificil).setRespuesta1(temporal);
 
 	(preguntadificil).respuesta1 = '#' + (preguntadificil).respuesta1;
 
 	cout << "Introduce otra respuesta (una incorrecta): "<< endl;
-	in >> (preguntadificil).respuesta2;
+	getline(in, (preguntadificil).respuesta2);
 
 	cout << "Introduce otra respuesta (una incorrecta): "<< endl;
-	in >> (preguntadificil).respuesta3;
+	getline(in, (preguntadificil).respuesta3);
 
 	cout << "Introduce otra respuesta (una incorrecta): "<< endl;
-	in >> (preguntadificil).respuesta4;
+	getline(in, (preguntadificil).respuesta4);
 
 	return in;
 }
