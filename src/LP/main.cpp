@@ -24,8 +24,8 @@ void acabar(DBConnector BD);
 void RealizarPreguntasMultijugador(vector<jugador> multijugadores, int cantPreg);
 int elegirDificultad();
 
-vector<preguntas_respuestas> preguntasSalidas; // Lista de las preguntas que ya han salido en la ejecucion del juego
-vector<preguntas_respuestas> listaTodasPreguntas; // Lista de todas las preguntas de la base de datos
+vector<preguntas_respuestas*> preguntasSalidas; // Lista de las preguntas que ya han salido en la ejecucion del juego
+vector<preguntas_respuestas*> listaTodasPreguntas; // Lista de todas las preguntas de la base de datos
 vector<jugador> listaTodosJugadores; // Lista de todos los jugadores de la base de datos
 jugador jugadorPrincipal; // Jugador que inicia la partida
 
@@ -305,7 +305,7 @@ int main(int argc, char** argv)
  	int opcionDificultad;
  	int cant_preguntas;
  	int max_preguntas; //Leer las preguntas, meterlas en un array y contar la cantidad de posiciones de ese array
- 	vector<preguntas_respuestas> PreguntasSeleccionadas;
+ 	vector<preguntas_respuestas*> PreguntasSeleccionadas;
  	preguntas_respuestas* pregunta;
  	int random; //variable en la que guardaremos el numero aleatorio para elegir una pregunta aleatoria
  	int repetida = 0; //Variable para ver si en cada momento la pregunta elegida aleatoriamente es i no alguna que ya ha salido
@@ -323,7 +323,7 @@ int main(int argc, char** argv)
  	{
  		for(int i = 0; i < listaTodasPreguntas.size(); i++)
  		{
- 			if(listaTodasPreguntas[i].getDificultad() == "#")
+ 			if(listaTodasPreguntas[i]->getDificultad() == "#")
  				PreguntasSeleccionadas.push_back(listaTodasPreguntas[i]);
  		}
  	}
@@ -332,7 +332,7 @@ int main(int argc, char** argv)
  	{
  		for(int i = 0; i < listaTodasPreguntas.size(); i++)
  		{
- 			if(listaTodasPreguntas[i].getDificultad() == "##")
+ 			if(listaTodasPreguntas[i]->getDificultad() == "##")
  				PreguntasSeleccionadas.push_back(listaTodasPreguntas[i]);
  		}
  	}
@@ -341,14 +341,34 @@ int main(int argc, char** argv)
  	{
  		for(int i = 0; i < listaTodasPreguntas.size(); i++)
  		{
- 			if(listaTodasPreguntas[i].getDificultad() == "###")
+ 			if(listaTodasPreguntas[i]->getDificultad() == "###")
  				PreguntasSeleccionadas.push_back(listaTodasPreguntas[i]);
  		}
  	}
 
  	if(opcionDificultad == 4)
  	{
- 		PreguntasSeleccionadas = listaTodasPreguntas;
+ 		for (int i = 0; i < listaTodasPreguntas.size(); i++)
+ 		{
+ 			if(listaTodasPreguntas[i]->getDificultad() = "#")
+ 			{
+ 				prfacil* preguntaAux = dynamic_cast<prfacil*> (listaTodasPreguntas[i]);
+ 				prfacil* preguntaCopiar = new prfacil(preguntaAux->getPregunta(), preguntaAux->getRespuesta1(), preguntaAux->getRespuesta2(), preguntaAux->getID(), true);
+ 				PreguntasSeleccionadas.push_back(preguntaCopiar);
+
+ 			} else if(listaTodasPreguntas[i]->getDificultad() = "##")
+ 			{
+ 				prmedio* preguntaAux = dynamic_cast<prmedio*> (listaTodasPreguntas[i]);
+ 				prmedio* preguntaCopiar = new prmedio(preguntaAux->getPregunta(), preguntaAux->getRespuesta1(), preguntaAux->getRespuesta2(), preguntaAux->getRespuesta3(), preguntaAux->getID(), true);
+ 				PreguntasSeleccionadas.push_back(preguntaCopiar);
+
+ 			} else if(listaTodasPreguntas[i]->getDificultad() = "###")
+ 			{
+ 				prdificil* preguntaAux = dynamic_cast<prdificil*> (listaTodasPreguntas[i]);
+ 				prdificil* preguntaCopiar = new prdificil(preguntaAux->getPregunta(), preguntaAux->getRespuesta1(), preguntaAux->getRespuesta2(), preguntaAux->getRespuesta3(), preguntaAux->getRespuesta4(),preguntaAux->getID(), true);
+ 				PreguntasSeleccionadas.push_back(preguntaCopiar);
+ 			}
+ 		}
  	}
 
  	mostrarMensaje("¿Cuantas preguntas deseas que se te realicen?");
@@ -496,7 +516,7 @@ void multijugador(DBConnector BD)
  	int opcionDificultad;
  	int cantJugadores;
  	int cantPreg;
- 	vector<preguntas_respuestas> PreguntasSeleccionadas;
+ 	vector<preguntas_respuestas*> PreguntasSeleccionadas;
  	vector<jugador> multijugadores;
  	vector<jugador> empatados;
  	int cantidadPreguntasValida;
@@ -512,7 +532,7 @@ void multijugador(DBConnector BD)
  	{
  		for(int i = 0; i < listaTodasPreguntas.size(); i++)
  		{
- 			if(listaTodasPreguntas[i].getDificultad() == "#")
+ 			if(listaTodasPreguntas[i]->getDificultad() == "#")
  				PreguntasSeleccionadas.push_back(listaTodasPreguntas[i]);
  		}
  	}
@@ -521,7 +541,7 @@ void multijugador(DBConnector BD)
  	{
  		for(int i = 0; i < listaTodasPreguntas.size(); i++)
  		{
- 			if(listaTodasPreguntas[i].getDificultad() == "##")
+ 			if(listaTodasPreguntas[i]->getDificultad() == "##")
  				PreguntasSeleccionadas.push_back(listaTodasPreguntas[i]);
  		}
  	}
@@ -530,14 +550,34 @@ void multijugador(DBConnector BD)
  	{
  		for(int i = 0; i < listaTodasPreguntas.size(); i++)
  		{
- 			if(listaTodasPreguntas[i].getDificultad() == "###")
+ 			if(listaTodasPreguntas[i]->getDificultad() == "###")
  				PreguntasSeleccionadas.push_back(listaTodasPreguntas[i]);
  		}
  	}
 
  	if(opcionDificultad == 4)
  	{
- 		PreguntasSeleccionadas = listaTodasPreguntas;
+ 		for (int i = 0; i < listaTodasPreguntas.size(); i++)
+ 		{
+ 			if(listaTodasPreguntas[i]->getDificultad() = "#")
+ 			{
+ 				prfacil* preguntaAux = dynamic_cast<prfacil*> (listaTodasPreguntas[i]);
+ 				prfacil* preguntaCopiar = new prfacil(preguntaAux->getPregunta(), preguntaAux->getRespuesta1(), preguntaAux->getRespuesta2(), preguntaAux->getID(), true);
+ 				PreguntasSeleccionadas.push_back(preguntaCopiar);
+
+ 			} else if(listaTodasPreguntas[i]->getDificultad() = "##")
+ 			{
+ 				prmedio* preguntaAux = dynamic_cast<prmedio*> (listaTodasPreguntas[i]);
+ 				prmedio* preguntaCopiar = new prmedio(preguntaAux->getPregunta(), preguntaAux->getRespuesta1(), preguntaAux->getRespuesta2(), preguntaAux->getRespuesta3(), preguntaAux->getID(), true);
+ 				PreguntasSeleccionadas.push_back(preguntaCopiar);
+
+ 			} else if(listaTodasPreguntas[i]->getDificultad() = "###")
+ 			{
+ 				prdificil* preguntaAux = dynamic_cast<prdificil*> (listaTodasPreguntas[i]);
+ 				prdificil* preguntaCopiar = new prdificil(preguntaAux->getPregunta(), preguntaAux->getRespuesta1(), preguntaAux->getRespuesta2(), preguntaAux->getRespuesta3(), preguntaAux->getRespuesta4(),preguntaAux->getID(), true);
+ 				PreguntasSeleccionadas.push_back(preguntaCopiar);
+ 			}
+ 		}
  	}
 
 	mostrarMensaje("¿Cuantos jugadores van a jugar?");
