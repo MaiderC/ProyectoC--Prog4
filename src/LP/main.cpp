@@ -350,19 +350,19 @@ int main(int argc, char** argv)
  	{
  		for (int i = 0; i < listaTodasPreguntas.size(); i++)
  		{
- 			if(listaTodasPreguntas[i]->getDificultad() = "#")
+ 			if(listaTodasPreguntas[i]->getDificultad() == "#")
  			{
  				prfacil* preguntaAux = dynamic_cast<prfacil*> (listaTodasPreguntas[i]);
  				prfacil* preguntaCopiar = new prfacil(preguntaAux->getPregunta(), preguntaAux->getRespuesta1(), preguntaAux->getRespuesta2(), preguntaAux->getID(), true);
  				PreguntasSeleccionadas.push_back(preguntaCopiar);
 
- 			} else if(listaTodasPreguntas[i]->getDificultad() = "##")
+ 			} else if(listaTodasPreguntas[i]->getDificultad() == "##")
  			{
  				prmedio* preguntaAux = dynamic_cast<prmedio*> (listaTodasPreguntas[i]);
  				prmedio* preguntaCopiar = new prmedio(preguntaAux->getPregunta(), preguntaAux->getRespuesta1(), preguntaAux->getRespuesta2(), preguntaAux->getRespuesta3(), preguntaAux->getID(), true);
  				PreguntasSeleccionadas.push_back(preguntaCopiar);
 
- 			} else if(listaTodasPreguntas[i]->getDificultad() = "###")
+ 			} else if(listaTodasPreguntas[i]->getDificultad() == "###")
  			{
  				prdificil* preguntaAux = dynamic_cast<prdificil*> (listaTodasPreguntas[i]);
  				prdificil* preguntaCopiar = new prdificil(preguntaAux->getPregunta(), preguntaAux->getRespuesta1(), preguntaAux->getRespuesta2(), preguntaAux->getRespuesta3(), preguntaAux->getRespuesta4(),preguntaAux->getID(), true);
@@ -559,19 +559,19 @@ void multijugador(DBConnector BD)
  	{
  		for (int i = 0; i < listaTodasPreguntas.size(); i++)
  		{
- 			if(listaTodasPreguntas[i]->getDificultad() = "#")
+ 			if(listaTodasPreguntas[i]->getDificultad() == "#")
  			{
  				prfacil* preguntaAux = dynamic_cast<prfacil*> (listaTodasPreguntas[i]);
  				prfacil* preguntaCopiar = new prfacil(preguntaAux->getPregunta(), preguntaAux->getRespuesta1(), preguntaAux->getRespuesta2(), preguntaAux->getID(), true);
  				PreguntasSeleccionadas.push_back(preguntaCopiar);
 
- 			} else if(listaTodasPreguntas[i]->getDificultad() = "##")
+ 			} else if(listaTodasPreguntas[i]->getDificultad() == "##")
  			{
  				prmedio* preguntaAux = dynamic_cast<prmedio*> (listaTodasPreguntas[i]);
  				prmedio* preguntaCopiar = new prmedio(preguntaAux->getPregunta(), preguntaAux->getRespuesta1(), preguntaAux->getRespuesta2(), preguntaAux->getRespuesta3(), preguntaAux->getID(), true);
  				PreguntasSeleccionadas.push_back(preguntaCopiar);
 
- 			} else if(listaTodasPreguntas[i]->getDificultad() = "###")
+ 			} else if(listaTodasPreguntas[i]->getDificultad() == "###")
  			{
  				prdificil* preguntaAux = dynamic_cast<prdificil*> (listaTodasPreguntas[i]);
  				prdificil* preguntaCopiar = new prdificil(preguntaAux->getPregunta(), preguntaAux->getRespuesta1(), preguntaAux->getRespuesta2(), preguntaAux->getRespuesta3(), preguntaAux->getRespuesta4(),preguntaAux->getID(), true);
