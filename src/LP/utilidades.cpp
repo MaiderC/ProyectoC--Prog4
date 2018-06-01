@@ -41,22 +41,28 @@ namespace utilidades
 	{
 		preguntas_respuestas* p;
 
+		p = new preguntas_respuestas(TodasPreguntas.size());
+
+		for(int k = 0; k < TodasPreguntas.size(); k++)
+		{
+			p[k] = TodasPreguntas[k]; 
+		}
+
 		for(int i = 0; i < TodasPreguntas.size(); i++)
 		{
 			cout << (i+1) << ".-";
-			(*p) = TodasPreguntas[i];
 
-			if (TodasPreguntas[i].getDificultad() == "#")
+			if (p[i].getDificultad() == "#")
 			{
 				prfacil* preguntaAux = dynamic_cast<prfacil*> (p);
 				mostrarPregunta(*preguntaAux);
 			}
-			else if (TodasPreguntas[i].getDificultad() == "##")
+			else if (p[i].getDificultad() == "##")
 			{
 				prmedio* preguntaAux = dynamic_cast<prmedio*> (p);
 				mostrarPregunta(*preguntaAux);
 			}
-			else
+			else if(p[i].getDificultad() == "###")
 			{
 				prdificil* preguntaAux = dynamic_cast<prdificil*> (p);
 				mostrarPregunta(*preguntaAux);
