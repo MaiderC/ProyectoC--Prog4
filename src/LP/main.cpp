@@ -38,6 +38,7 @@ int main(int argc, char** argv)
 	BD.leer_Jugadores(listaTodosJugadores);
 
   	BD.leer_Preguntas(listaTodasPreguntas);
+  	siguienteID(listaTodasPreguntas);
 
   	if(argc == 2)
   	{

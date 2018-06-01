@@ -10,7 +10,7 @@ using namespace std;
 #define DEFAULT_DIFICULTAD "#"
 
 //esto es para q haga una vez el inicio del contador
-int preguntas_respuestas::cont = 1;
+int preguntas_respuestas::cont = 0;
 
 //constructores
 preguntas_respuestas:: preguntas_respuestas()
