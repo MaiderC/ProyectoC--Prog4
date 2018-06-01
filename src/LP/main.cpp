@@ -219,9 +219,7 @@ int main(int argc, char** argv)
 						mostrarMensaje("Inserta 1 para Si, cualquier otro caracter para No.");
 						recogerInt(opcionEliminar);
 					}
-				}
-					while(opcionEliminar == 1 );
-				}
+				}while(opcionEliminar == 1 );
 				break;
 
 			case 5:
