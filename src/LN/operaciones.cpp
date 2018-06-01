@@ -33,7 +33,7 @@ namespace operaciones
 	preguntas_respuestas generarPregunta(const vector<preguntas_respuestas*>& listaTodasPreguntas, vector<preguntas_respuestas*>& preguntasSalidas)
 	{
 		int random = 0;
-		preguntas_respuestas pregunta;
+		preguntas_respuestas* pregunta;
 		int repetida = 0;
 		int cont = 0;
 		int MAX_INTENTOS = 20;
