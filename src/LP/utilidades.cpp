@@ -118,7 +118,7 @@ namespace utilidades
 	{
 		int Dificultad = dificultad.length();
 		string aux;
-		char respuestaRecogida;
+		char respuesta_recoger;
 		
 		getline(cin, aux);
 
@@ -163,7 +163,7 @@ namespace utilidades
 			respValida = -1;
 		}
 
-		return respuestaRecogida;
+		return respuesta_recoger;
 	}
 
 	void recogerPregunta(prfacil& Pregunta)
