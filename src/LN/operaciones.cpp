@@ -30,7 +30,7 @@ namespace operaciones
 		p_r.setCont(cont);
 	}
 
-	preguntas_respuestas generarPregunta(const vector<preguntas_respuestas*>& listaTodasPreguntas, vector<preguntas_respuestas*>& preguntasSalidas)
+	preguntas_respuestas* generarPregunta(const vector<preguntas_respuestas*>& listaTodasPreguntas, vector<preguntas_respuestas*>& preguntasSalidas)
 	{
 		int random = 0;
 		preguntas_respuestas* pregunta;
