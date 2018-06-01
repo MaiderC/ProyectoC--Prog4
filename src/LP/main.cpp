@@ -113,14 +113,14 @@ int main(int argc, char** argv)
 				    	recogerInt(cant_p);
 				    }
 
-				    prfacil preg_r;
+				    prfacil* preg_r;
 				    
 
 				    for (int i = 0; i < cant_p; i++)
 				    {
 				    	recogerPregunta(preg_r);
-				    	BD.insert_Pregunta(&preg_r);
-				    	listaTodasPreguntas.push_back(&preg_r);
+				    	BD.insert_Pregunta(preg_r);
+				    	listaTodasPreguntas.push_back(preg_r);
 				    }
 
 				    mostrarMensaje("¿Quieres seguir introduciendo preguntas?");
@@ -147,13 +147,13 @@ int main(int argc, char** argv)
 				    	recogerInt(cant_p);
 				    }
 
-				    prmedio preg_r;
+				    prmedio* preg_r;
 
 				    for (int i = 0; i < cant_p; i++)
 				    {
 				    	recogerPregunta(preg_r);
-				    	BD.insert_Pregunta(&preg_r);
-				    	listaTodasPreguntas.push_back(&preg_r);
+				    	BD.insert_Pregunta(preg_r);
+				    	listaTodasPreguntas.push_back(preg_r);
 				    }
 
 				    mostrarMensaje("¿Quieres seguir introduciendo preguntas?");
@@ -179,13 +179,13 @@ int main(int argc, char** argv)
 				    	recogerInt(cant_p);
 				    }
 
-				    prdificil preg_r;
+				    prdificil* preg_r;
 
 				    for (int i = 0; i < cant_p; i++)
 				    {
 				    	recogerPregunta(preg_r);
-				    	BD.insert_Pregunta(&preg_r);
-				    	listaTodasPreguntas.push_back(&preg_r);
+				    	BD.insert_Pregunta(preg_r);
+				    	listaTodasPreguntas.push_back(preg_r);
 				    }
 
 				    mostrarMensaje("¿Quieres seguir introduciendo preguntas?");

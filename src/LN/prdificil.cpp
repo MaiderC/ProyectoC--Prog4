@@ -227,8 +227,8 @@ istream& operator>>(istream& in, prdificil& preguntadificil)
 	cout << "Introduce otra respuesta (una incorrecta): "<< endl;
 	getline(in, r4);
 
-	prdificil aux(pregunta, r1, r2, r3, r4, 0, false);
-	preguntadificil = aux;
+	prdificil* aux = new prdificil(pregunta, r1, r2, r3, r4, 0, false);
+	preguntadificil = (*aux);
 
 	return in;
 }

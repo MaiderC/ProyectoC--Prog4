@@ -170,18 +170,18 @@ namespace utilidades
 		return respuesta_recoger;
 	}
 
-	void recogerPregunta(prfacil& Pregunta)
+	void recogerPregunta(prfacil* Pregunta)
 	{
-		cin >> Pregunta;
+		cin >> (*Pregunta);
 	}
 
-	void recogerPregunta(prmedio& Pregunta)
+	void recogerPregunta(prmedio* Pregunta)
 	{
-		cin >> Pregunta;
+		cin >> (*Pregunta);
 	}
 
-	void recogerPregunta(prdificil& Pregunta)
+	void recogerPregunta(prdificil* Pregunta)
 	{
-		cin >> Pregunta;
+		cin >> (*Pregunta);
 	}
 }

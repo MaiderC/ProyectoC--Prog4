@@ -26,9 +26,9 @@
 		void recogerString(string& string_recoger);
 		void recogerInt(int& numero_recoger);
 		char recogerOpcionRespuesta(int& respValida, string dificultad);
-		void recogerPregunta(prfacil& Pregunta);
-		void recogerPregunta(prmedio& Pregunta);
-		void recogerPregunta(prdificil& Pregunta);
+		void recogerPregunta(prfacil* Pregunta);
+		void recogerPregunta(prmedio* Pregunta);
+		void recogerPregunta(prdificil* Pregunta);
 	}
 	
 #endif
