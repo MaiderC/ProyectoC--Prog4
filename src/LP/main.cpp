@@ -114,7 +114,7 @@ int main(int argc, char** argv)
 				    }
 
 				    prfacil* preg_r;
-				    
+				    preg_r = new prfacil();
 
 				    for (int i = 0; i < cant_p; i++)
 				    {
@@ -148,6 +148,7 @@ int main(int argc, char** argv)
 				    }
 
 				    prmedio* preg_r;
+				    preg_r = new prmedio();
 
 				    for (int i = 0; i < cant_p; i++)
 				    {
@@ -180,6 +181,7 @@ int main(int argc, char** argv)
 				    }
 
 				    prdificil* preg_r;
+				    preg_r = new prdificil();
 
 				    for (int i = 0; i < cant_p; i++)
 				    {

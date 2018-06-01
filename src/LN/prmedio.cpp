@@ -172,8 +172,6 @@ ostream& operator<<(ostream& out, const prmedio& preguntamedio)
 
 istream& operator>>(istream& in, prmedio& preguntamedio)
 {
-	// prfacil* preguntamedio = dynamic_cast<*prfacil>(Pregunta);
-
 	string pregunta;
 	string r1;
 	string r2;
@@ -182,20 +180,26 @@ istream& operator>>(istream& in, prmedio& preguntamedio)
 	string temporal;
 	cout << "Introduce la pregunta a insertar: "<< endl;
 	getline(in, pregunta);
+	preguntamedio.setPregunta(pregunta);
 
 	cout << "*La respuesta no debe contener la letra de la opcion (a o b) ni signos de puntuacion al inicio (salvo que se trate de un guion, por ser la respuesta un numero negativo)"<< endl;
 	cout <<"Introduce la respuesta correcta: "<< endl;
 	getline(in, r1);
-
 	r1 = '#' + r1;
+	preguntamedio.setRespuesta1(r1);
 
 	cout << "Introduce otra respuesta (una incorrecta): "<< endl;
 	getline(in, r2);
+	preguntamedio.respuesta2 = r2;
 
 	cout << "Introduce otra respuesta (una incorrecta): "<< endl;
 	getline(in, r3);
+	preguntamedio.respuesta3 = r3;
 
-	prmedio* aux = new prmedio(pregunta, r1, r2, r3, 0, false);
-	preguntamedio = (*aux);
+	preguntamedio.setID((preguntamedio.getID()+1));
+	preguntamedio.setCont(preguntamedio.getID());
+
+	preguntamedio.setDificultad("##");
+
 	return in;
 }

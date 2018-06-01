@@ -201,8 +201,6 @@ ostream& operator<<(ostream& out, const prdificil& preguntadificil)
 
 istream& operator>>(istream& in, prdificil& preguntadificil)
 {
-	// prdificil* preguntadificil = dynamic_cast <prdificil*>(Pregunta);
-
 	string pregunta;
 	string r1;
 	string r2;
@@ -211,24 +209,30 @@ istream& operator>>(istream& in, prdificil& preguntadificil)
 
 	cout << "Introduce la pregunta a insertar: "<< endl;
 	getline(in, pregunta);
+	preguntadificil.setPregunta(pregunta);
 
 	cout << "*La respuesta no debe contener la letra de la opcion (a o b) ni signos de puntuacion al inicio (salvo que se trate de un guion, por ser la respuesta un numero negativo)"<< endl;
 	cout << "Introduce la respuesta correcta: "<< endl;
 	getline(in, r1);
-
 	r1 = '#' + r1;
+	preguntadificil.setRespuesta1(r1);
 
 	cout << "Introduce otra respuesta (una incorrecta): "<< endl;
 	getline(in, r2);
+	preguntadificil.setRespuesta2(r2);
 
 	cout << "Introduce otra respuesta (una incorrecta): "<< endl;
 	getline(in, r3);
+	preguntadificil.setRespuesta3(r3);
 
 	cout << "Introduce otra respuesta (una incorrecta): "<< endl;
 	getline(in, r4);
+	preguntadificil.setRespuesta4(r4);
 
-	prdificil* aux = new prdificil(pregunta, r1, r2, r3, r4, 0, false);
-	preguntadificil = (*aux);
+	preguntadificil.setID((preguntadificil.getID()+1));
+	preguntadificil.setCont(preguntadificil.getID());
+
+	preguntadificil.setDificultad("###");
 
 	return in;
 }
