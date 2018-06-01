@@ -93,6 +93,8 @@ string prfacil::getRespuesta2() const
 
 prfacil& prfacil::operator=(const prfacil& pf)
 {
+	this -> id = pf.id;
+	this -> dificultad = pf.dificultad;
 	this -> pregunta = pf.pregunta;
 	this -> respuesta1 = pf.respuesta1;
 	this -> respuesta2 = pf.respuesta2;

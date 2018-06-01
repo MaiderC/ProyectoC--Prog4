@@ -112,6 +112,8 @@ string prmedio::getRespuesta3() const
 
 prmedio& prmedio::operator=(const prmedio& pm)
 {
+	this -> id = pm.id;
+	this -> dificultad = pm.dificultad;
 	this -> pregunta = pm.pregunta;
 	this -> respuesta1 = pm.respuesta1;
 	this -> respuesta2 = pm.respuesta2;

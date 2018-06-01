@@ -127,6 +127,8 @@ string prdificil::getRespuesta4() const
 //sobrecarga de operador =
 prdificil& prdificil::operator=(const prdificil& pd)
 {
+	this -> id = pd.id;
+	this -> dificultad = pd.dificultad;
 	this -> pregunta = pd.pregunta;
 	this -> respuesta1 = pd. respuesta1;
 	this -> respuesta2 = pd.respuesta2;
