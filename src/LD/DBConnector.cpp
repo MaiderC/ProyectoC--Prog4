@@ -1105,9 +1105,7 @@ int DBConnector::leer_Preguntas(vector <preguntas_respuestas*>& listaTodasPregun
       	ID = sqlite3_column_int(stmt, 0);
 
        	strcpy(pregunta, (char*)sqlite3_column_text(stmt, 1));   
-
        	strcpy(r1, (char*)sqlite3_column_text(stmt, 2));
-
        	strcpy(r2, (char*)sqlite3_column_text(stmt, 3));
       	//Leemos dificultad antes que R3 y R4 ya que depende de este atributo si tiene o no estos dos
       	strcpy(dificultad, (char*)sqlite3_column_text(stmt, 6));
@@ -1120,15 +1118,14 @@ int DBConnector::leer_Preguntas(vector <preguntas_respuestas*>& listaTodasPregun
 
        		//Creamos una Pregunta_respuestas con estos atributos:
       		prdificil* p = new prdificil(pregunta,r1, r2, r3, r4, ID, true);//el ultimo es true para no darle el ID
-      		p->setID (ID);
       		listaTodasPreguntas.push_back(p);
 
       	}
       	else if(strcmp(dificultad, "##") == 0)
       	{
       		//Es media
+      		strcpy(r3, (char*)sqlite3_column_text(stmt, 4));
       		prmedio* p = new prmedio (pregunta,r1, r2, r3, ID, true);//el ultimo es true para no darle el ID
-     		p->setID (ID);
       	 	listaTodasPreguntas.push_back(p);
 
       	}
