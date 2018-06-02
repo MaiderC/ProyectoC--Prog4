@@ -536,7 +536,7 @@ void multijugador(DBConnector BD, jugador jugadorPrincipal)
  	vector<jugador> empatados;
  	int cantidadPreguntasValida;
  	int puntMaxima;
- 	int opcionDesempatar;
+ 	int opcionDesempatar = 1;
  	int opcionRepetir;
 
  	string NickAux;
