@@ -731,7 +731,7 @@ void multijugador(DBConnector BD, jugador jugadorPrincipal)
 		 	prfacil* preguntaAux = dynamic_cast<prfacil*> (pregunta);
 
 		 	mostrarPregunta(*preguntaAux);
-			respuesta = recogerOpcionRespuesta(respValida, (*pregunta).getDificultad());
+			respuesta = recogerOpcionRespuesta(respValida, pregunta->getDificultad());
 		 	
 		 	while(respValida == -1)
 			{
@@ -755,7 +755,7 @@ void multijugador(DBConnector BD, jugador jugadorPrincipal)
 		 	prmedio* preguntaAux = dynamic_cast<prmedio*> (pregunta);
 
 		 	mostrarPregunta(*preguntaAux);
-			respuesta = recogerOpcionRespuesta(respValida, (*pregunta).getDificultad());
+			respuesta = recogerOpcionRespuesta(respValida, pregunta->getDificultad());
 
 		 	while(respValida == -1)
 			{
@@ -783,7 +783,7 @@ void multijugador(DBConnector BD, jugador jugadorPrincipal)
 		 	prdificil* preguntaAux = dynamic_cast<prdificil*> (pregunta);
 
 		 	mostrarPregunta(*preguntaAux);
-			respuesta = recogerOpcionRespuesta(respValida, (*pregunta).getDificultad());
+			respuesta = recogerOpcionRespuesta(respValida, pregunta->getDificultad());
 
 		 	while(respValida == -1)
 			{
@@ -809,7 +809,7 @@ void multijugador(DBConnector BD, jugador jugadorPrincipal)
 			}
 		 }
 
-			if(correcta == 1)
+			if(respCorrecta == 1)
 			{
 			 	mostrarMensaje("Respuesta correcta");
 			 	(*pregunta).sumarPunto(multijugadores[j]);
