@@ -29,7 +29,6 @@ jugador::~jugador ()
 //constructor copia
 jugador::jugador(const jugador &j)
 {
-  // this -> nick = new string;
   this -> nick = j.nick;
   this -> puntuacion = j.puntuacion;
 }

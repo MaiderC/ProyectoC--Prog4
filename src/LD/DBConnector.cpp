@@ -1119,7 +1119,7 @@ int DBConnector::leer_Preguntas(vector <preguntas_respuestas*>& listaTodasPregun
        		//Creamos una Pregunta_respuestas con estos atributos:
       		prdificil* p = new prdificil(pregunta,r1, r2, r3, r4, ID, true);//el ultimo es true para no darle el ID
       		listaTodasPreguntas.push_back(p);
-
+      		
       	}
       	else if(strcmp(dificultad, "##") == 0)
       	{
