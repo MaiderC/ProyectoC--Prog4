@@ -593,8 +593,8 @@ void multijugador(DBConnector BD, jugador jugadorPrincipal)
  	cantidadPreguntasValida = maxPreguntas(cantJugadores, PreguntasSeleccionadas.size());
  	while(cantJugadores<2 ||  cantidadPreguntasValida == 0)
  	{
- 		mostrarMensaje("El numero introducido es incorrecto (o por ser inferior a 2 o por exceder la cantidad de preguntas disponibles. \n");
- 		mostrarMensaje("\nPor favor, intoduce cuantos jugadores van a jugar: \t");
+ 		mostrarMensaje("El numero introducido es incorrecto (o por ser inferior a 2 o por exceder la cantidad total de preguntas disponibles: " + to_string(PreguntasSeleccionadas.size()) + ")");
+ 		mostrarMensaje("Por favor, intoduce cuantos jugadores van a jugar: ");
  		recogerInt(cantJugadores);
  		cantidadPreguntasValida = maxPreguntas(cantJugadores, PreguntasSeleccionadas.size());
  	}
@@ -624,7 +624,7 @@ void multijugador(DBConnector BD, jugador jugadorPrincipal)
 
 	while(cantPreg<1 || cantidadPreguntasValida == 0)
  	{
- 		mostrarMensaje("El numero introducido es incorrecto (o por ser inferior a 1 o por exceder la cantidad de preguntas disponibles para la cantidad de jugadores elegida.");
+ 		mostrarMensaje("El numero introducido es incorrecto (o por ser inferior a 1 o por exceder la cantidad maxima de preguntas disponibles para cada jugador: " + to_string(PreguntasSeleccionadas.size()/cantJugadores) + ")");
  		mostrarMensaje("Por favor, intoduce cuantas preguntas deseas que se le realicen a cada jugador:");
  		recogerInt(cantPreg);
  		cantidadPreguntasValida = maxPreguntas(multijugadores.size()*cantPreg, PreguntasSeleccionadas.size());
