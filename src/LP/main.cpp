@@ -61,7 +61,8 @@ int main(int argc, char** argv)
 	  		recogerString(nick);
 
 	 		jugador jugadorPrincipal (nick, 0);
-
+	 		listaTodosJugadores.push_back(jugadorPrincipal);
+	 		
 	 		mostrarMensaje("Hola "); mostrarMensaje(nick); mostrarMensaje("!");
 	    	menuJugador(BD, jugadorPrincipal);
 		}
