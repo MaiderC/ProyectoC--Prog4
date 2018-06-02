@@ -556,6 +556,7 @@ int main(int argc, char** argv)
 
 void multijugador(DBConnector BD, jugador jugadorPrincipal)
  {
+ 	int noHayPreguntas = 0;
  	int opcionDificultad;
  	int cantJugadores;
  	int cantPreg;
@@ -578,6 +579,12 @@ void multijugador(DBConnector BD, jugador jugadorPrincipal)
  			if(listaTodasPreguntas[i]->getDificultad() == "#")
  				PreguntasSeleccionadas.push_back(listaTodasPreguntas[i]);
  		}
+
+ 		if(PreguntasSeleccionadas.size() == 0)
+ 		{
+ 			mostrarMensaje("No hay preguntas faciles.");
+ 			noHayPreguntas = 1;
+ 		}
  	}
 
  	if(opcionDificultad == 2)
@@ -587,6 +594,12 @@ void multijugador(DBConnector BD, jugador jugadorPrincipal)
  			if(listaTodasPreguntas[i]->getDificultad() == "##")
  				PreguntasSeleccionadas.push_back(listaTodasPreguntas[i]);
  		}
+
+ 		if(PreguntasSeleccionadas.size() == 0)
+ 		{
+ 			mostrarMensaje("No hay preguntas de dificultad media.");
+ 			noHayPreguntas = 1;
+ 		}
  	}
 
  	if(opcionDificultad == 3)
@@ -595,6 +608,12 @@ void multijugador(DBConnector BD, jugador jugadorPrincipal)
  		{
  			if(listaTodasPreguntas[i]->getDificultad() == "###")
  				PreguntasSeleccionadas.push_back(listaTodasPreguntas[i]);
+ 		}
+
+ 		if(PreguntasSeleccionadas.size() == 0)
+ 		{
+ 			mostrarMensaje("No hay preguntas dificiles.");
+ 			noHayPreguntas = 1;
  		}
  	}
 
@@ -623,116 +642,122 @@ void multijugador(DBConnector BD, jugador jugadorPrincipal)
  		}
  	}
 
-	mostrarMensaje("Cuantos jugadores van a jugar?");
- 	recogerInt(cantJugadores);
-
- 	cantidadPreguntasValida = maxPreguntas(cantJugadores, PreguntasSeleccionadas.size());
- 	while(cantJugadores<2 ||  cantidadPreguntasValida == 0)
+ 	if(noHayPreguntas == 0)
  	{
- 		mostrarMensaje("El numero introducido es incorrecto (o por ser inferior a 2 o por exceder la cantidad total de preguntas disponibles: " + to_string(PreguntasSeleccionadas.size()) + ")");
- 		mostrarMensaje("Por favor, intoduce cuantos jugadores van a jugar: ");
- 		recogerInt(cantJugadores);
- 		cantidadPreguntasValida = maxPreguntas(cantJugadores, PreguntasSeleccionadas.size());
- 	}
+		mostrarMensaje("Cuantos jugadores van a jugar?");
+	 	recogerInt(cantJugadores);
 
- 	//El primer jugador es el actual 
- 	multijugadores.push_back(jugadorPrincipal);
- 	multijugadores[0].setPuntuacion(0);
-
- 	mostrarMensaje("Introduce los nombres de los jugadores contra los que vas a jugar:");
- 	for (int i = 1; i < cantJugadores; i++)
- 	{
- 		string a;
- 		a = "J";
- 		a += to_string(i) + ": ";
- 		mostrarMensaje(a); //Para que aparezca como JX: 
- 		mostrarMensaje("Introduce el NICK:");
- 		recogerString(NickAux);
- 		jugador aux(NickAux,0);
- 		multijugadores.push_back(aux);
- 	}
-
- 	mostrarMensaje("Cuantas preguntas deseas que se le realicen a cada jugador?\t");
- 	recogerInt(cantPreg);
- 	cantidadPreguntasValida = maxPreguntas(multijugadores.size()*cantPreg, PreguntasSeleccionadas.size());
-
-	while(cantPreg<1 || cantidadPreguntasValida == 0)
- 	{
- 		mostrarMensaje("El numero introducido es incorrecto (o por ser inferior a 1 o por exceder la cantidad maxima de preguntas disponibles para cada jugador: " + to_string(PreguntasSeleccionadas.size()/cantJugadores) + ")");
- 		mostrarMensaje("Por favor, intoduce cuantas preguntas deseas que se le realicen a cada jugador:");
- 		recogerInt(cantPreg);
- 		cantidadPreguntasValida = maxPreguntas(multijugadores.size()*cantPreg, PreguntasSeleccionadas.size());
- 	}
-
- 	RealizarPreguntasMultijugador(multijugadores, cantPreg, PreguntasSeleccionadas);
- 	
-	 do
-	 {
-	 	empatados.clear();
-	 	puntMaxima = maxPuntuacion(multijugadores);
-
-	 	for(int i = 0; i < multijugadores.size(); i++)
+	 	cantidadPreguntasValida = maxPreguntas(cantJugadores, PreguntasSeleccionadas.size());
+	 	while(cantJugadores<2 ||  cantidadPreguntasValida == 0)
 	 	{
-	 		if(multijugadores[i].getPuntuacion() == puntMaxima)
-	 		{
-	 			empatados.push_back(multijugadores[i]);
-	 		}
+	 		mostrarMensaje("El numero introducido es incorrecto (o por ser inferior a 2 o por exceder la cantidad total de preguntas disponibles: " + to_string(PreguntasSeleccionadas.size()) + ")");
+	 		mostrarMensaje("Por favor, intoduce cuantos jugadores van a jugar: ");
+	 		recogerInt(cantJugadores);
+	 		cantidadPreguntasValida = maxPreguntas(cantJugadores, PreguntasSeleccionadas.size());
 	 	}
 
-	 	if(empatados.size() > 1)
+	 	//El primer jugador es el actual 
+	 	multijugadores.push_back(jugadorPrincipal);
+	 	multijugadores[0].setPuntuacion(0);
+
+	 	mostrarMensaje("Introduce los nombres de los jugadores contra los que vas a jugar:");
+	 	for (int i = 1; i < cantJugadores; i++)
 	 	{
-	 		opcionDesempatar = mensajeEmpate(empatados);
-	 		
-	 		if(opcionDesempatar == 1)
-	 		{
-	 			//Realizamos una sola pregunta entre los jugadores que han empatado para ver si asi deshacen el empate
-		 		RealizarPreguntasMultijugador(empatados, 1, PreguntasSeleccionadas);
-		 		int c = 0;
-		 		for (int i = 0; i < multijugadores.size(); ++i)
+	 		string a;
+	 		a = "J";
+	 		a += to_string(i) + ": ";
+	 		mostrarMensaje(a); //Para que aparezca como JX: 
+	 		mostrarMensaje("Introduce el NICK:");
+	 		recogerString(NickAux);
+	 		jugador aux(NickAux,0);
+	 		multijugadores.push_back(aux);
+	 	}
+
+	 	mostrarMensaje("Cuantas preguntas deseas que se le realicen a cada jugador?\t");
+	 	recogerInt(cantPreg);
+	 	cantidadPreguntasValida = maxPreguntas(multijugadores.size()*cantPreg, PreguntasSeleccionadas.size());
+
+		while(cantPreg<1 || cantidadPreguntasValida == 0)
+	 	{
+	 		mostrarMensaje("El numero introducido es incorrecto (o por ser inferior a 1 o por exceder la cantidad maxima de preguntas disponibles para cada jugador: " + to_string(PreguntasSeleccionadas.size()/cantJugadores) + ")");
+	 		mostrarMensaje("Por favor, intoduce cuantas preguntas deseas que se le realicen a cada jugador:");
+	 		recogerInt(cantPreg);
+	 		cantidadPreguntasValida = maxPreguntas(multijugadores.size()*cantPreg, PreguntasSeleccionadas.size());
+	 	}
+
+	 	RealizarPreguntasMultijugador(multijugadores, cantPreg, PreguntasSeleccionadas);
+	 	
+		 do
+		 {
+		 	empatados.clear();
+		 	puntMaxima = maxPuntuacion(multijugadores);
+
+		 	for(int i = 0; i < multijugadores.size(); i++)
+		 	{
+		 		if(multijugadores[i].getPuntuacion() == puntMaxima)
 		 		{
-		 			if(multijugadores[i].getNick() == empatados[c].getNick())
-		 			{
-		 				multijugadores[i].setPuntuacion(empatados[c].getPuntuacion());
-		 				c++;
-		 			}
+		 			empatados.push_back(multijugadores[i]);
 		 		}
-	 		}
-	 	}	 	
-	 }
-	 while(empatados.size() != 1 && opcionDesempatar == 1);//No hay empate
-	 //Si habia empate, ya se ha resuelto si asi se ha querido. 
-	 //Si no se resolvio, se mostrara un mensaje de ganador por cada uno. Por lo tanto, lo hacemos en un for:
-	 	for(int i = 0; i < multijugadores.size(); i++)
-	 	{
-	 		if(multijugadores[i].getPuntuacion() == puntMaxima)
-	 		{
-	 			mensajeGanador(multijugadores[i]);
-	 		}
-	 		actualizarPuntuacion(listaTodosJugadores, multijugadores);
-	 	}
+		 	}
 
-	 //Volver al menu o volver a jugar
-	 mostrarMensaje("Fin de la partida.");
-	 mostrarMensaje("Deseas volver a jugar o regresar al menu?");
-	 mostrarMensaje("1.- Volver a jugar");
-	 mostrarMensaje("2.- Volver al menu");
-	 mostrarMensaje("Introduce la opcion deseada:  ");
-	 recogerInt(opcionRepetir);
+		 	if(empatados.size() > 1)
+		 	{
+		 		opcionDesempatar = mensajeEmpate(empatados);
+		 		
+		 		if(opcionDesempatar == 1)
+		 		{
+		 			//Realizamos una sola pregunta entre los jugadores que han empatado para ver si asi deshacen el empate
+			 		RealizarPreguntasMultijugador(empatados, 1, PreguntasSeleccionadas);
+			 		int c = 0;
+			 		for (int i = 0; i < multijugadores.size(); ++i)
+			 		{
+			 			if(multijugadores[i].getNick() == empatados[c].getNick())
+			 			{
+			 				multijugadores[i].setPuntuacion(empatados[c].getPuntuacion());
+			 				c++;
+			 			}
+			 		}
+		 		}
+		 	}	 	
+		 }
+		 while(empatados.size() != 1 && opcionDesempatar == 1);//No hay empate
+		 //Si habia empate, ya se ha resuelto si asi se ha querido. 
+		 //Si no se resolvio, se mostrara un mensaje de ganador por cada uno. Por lo tanto, lo hacemos en un for:
+		 	for(int i = 0; i < multijugadores.size(); i++)
+		 	{
+		 		if(multijugadores[i].getPuntuacion() == puntMaxima)
+		 		{
+		 			mensajeGanador(multijugadores[i]);
+		 		}
+		 		actualizarPuntuacion(listaTodosJugadores, multijugadores);
+		 	}
 
-	 while(opcionRepetir != 1 && opcionRepetir != 2)
-	 {
-	 	 mostrarMensaje("\nLa opcion introducida no es valida. Por favor, intentalo de nuevo:  ");
-	 	 recogerInt(opcionRepetir);
-	 }
+		 //Volver al menu o volver a jugar
+		 mostrarMensaje("Fin de la partida.");
+		 mostrarMensaje("Deseas volver a jugar o regresar al menu?");
+		 mostrarMensaje("1.- Volver a jugar");
+		 mostrarMensaje("2.- Volver al menu");
+		 mostrarMensaje("Introduce la opcion deseada:  ");
+		 recogerInt(opcionRepetir);
 
-	 if(opcionRepetir == 1)
-	 {
-	 	multijugador(BD, jugadorPrincipal);
-	 }
-	 else
-	 {
-	 	menuJugador(BD, jugadorPrincipal);
-	 }
+		 while(opcionRepetir != 1 && opcionRepetir != 2)
+		 {
+		 	 mostrarMensaje("\nLa opcion introducida no es valida. Por favor, intentalo de nuevo:  ");
+		 	 recogerInt(opcionRepetir);
+		 }
+
+		 if(opcionRepetir == 1)
+		 {
+		 	multijugador(BD, jugadorPrincipal);
+		 }
+		 else
+		 {
+		 	menuJugador(BD, jugadorPrincipal);
+		 }
+	} else
+	{
+		menuJugador(BD, jugadorPrincipal);
+	}
  }
 
  void RealizarPreguntasMultijugador(vector<jugador>& multijugadores, int cantPreg, vector <preguntas_respuestas*> PreguntasSeleccionadas)
