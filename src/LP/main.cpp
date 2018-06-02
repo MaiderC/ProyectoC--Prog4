@@ -16,9 +16,9 @@ using namespace operaciones;
 
 //Declaracion de MeTODOS
 void menuAdmin(DBConnector BD);
-void menuJugador(DBConnector BD);
-void individual(DBConnector BD);
-void multijugador(DBConnector BD);
+void menuJugador(DBConnector BD, jugador jugadorPrincipal);
+void individual(DBConnector BD, jugador jugadorPrincipal);
+void multijugador(DBConnector BD, jugador jugadorPrincipal);
 void ranking(DBConnector BD);
 void acabar(DBConnector BD);
 void RealizarPreguntasMultijugador(vector<jugador> multijugadores, int cantPreg);
@@ -63,7 +63,7 @@ int main(int argc, char** argv)
 	 		jugador jugadorPrincipal (nick, 0);
 
 	 		mostrarMensaje("Hola "); mostrarMensaje(nick); mostrarMensaje("!");
-	    	menuJugador(BD);
+	    	menuJugador(BD, jugadorPrincipal);
 		}
   	}
 
@@ -239,7 +239,7 @@ int main(int argc, char** argv)
 	while(opcionMenu != 5);
  }
 
- void menuJugador(DBConnector BD)
+ void menuJugador(DBConnector BD, jugador jugadorPrincipal)
  {
  	int opcionMenu;
 	
@@ -263,12 +263,12 @@ int main(int argc, char** argv)
   	{
   		case 1: 
 	  		mostrarMensaje("Has elegido la opcion numero 1: JUGAR PARTIDA INDIVIDUAL");
-	  		individual(BD);
+	  		individual(BD, jugadorPrincipal);
 	  		break;
 
   		case 2:
 	  		mostrarMensaje("Has elegido la opcion numero 2: JUGAR PARTIDA MULTIJUGADOR");
-	  		multijugador(BD);
+	  		multijugador(BD, jugadorPrincipal);
 	  		break;
 
   		case 3:
@@ -307,7 +307,7 @@ int main(int argc, char** argv)
  	return opcionDificultad;
  }
 
- void individual(DBConnector BD)
+ void individual(DBConnector BD, jugador jugadorPrincipal)
  {
  	int opcionDificultad;
  	int cant_preguntas;
@@ -510,15 +510,15 @@ int main(int argc, char** argv)
 
 	 if(opcionRepetir == 1)
 	 {
-	 	individual(BD);
+	 	individual(BD, jugadorPrincipal);
 	 }
 	 else
 	 {
-	 	menuJugador(BD);
+	 	menuJugador(BD, jugadorPrincipal);
 	 }
  }
 
-void multijugador(DBConnector BD)
+void multijugador(DBConnector BD, jugador jugadorPrincipal)
  {
  	int opcionDificultad;
  	int cantJugadores;
@@ -604,7 +604,7 @@ void multijugador(DBConnector BD)
  	multijugadores[0].setPuntuacion(0);
 
  	mostrarMensaje("Introduce los nombres de los jugadores contra los que vas a jugar:");
- 	for (int i = 1; i < multijugadores.size(); i++)
+ 	for (int i = 1; i < cantJugadores; i++)
  	{
  		string a;
  		a = "J";
@@ -691,11 +691,11 @@ void multijugador(DBConnector BD)
 
 	 if(opcionRepetir == 1)
 	 {
-	 	multijugador(BD);
+	 	multijugador(BD, jugadorPrincipal);
 	 }
 	 else
 	 {
-	 	menuJugador(BD);
+	 	menuJugador(BD, jugadorPrincipal);
 	 }
  }
 
@@ -723,11 +723,6 @@ void multijugador(DBConnector BD)
 
  			//Preparar la pregunta aleatoria para el jugador
  			pregunta = generarPregunta(listaTodasPreguntas, preguntasSalidas);
-
-			while(respValida == -1)
-			{
-				respuesta = recogerOpcionRespuesta(respValida, pregunta->getDificultad());
-			}
 			
 		 if((*pregunta).getDificultad() == "#")
 		 {
@@ -837,7 +832,7 @@ void multijugador(DBConnector BD)
  		mostrarPuntuacion(listaTodosJugadores[i]);
  	}
  		mostrarMensaje("\n");
-	 menuJugador(BD);
+	 menuJugador(BD, jugadorPrincipal);
  }
 
  void acabar(DBConnector BD) //metodo para liberar recursos
