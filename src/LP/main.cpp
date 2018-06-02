@@ -61,7 +61,14 @@ int main(int argc, char** argv)
 	  		recogerString(nick);
 
 	 		jugador jugadorPrincipal (nick, 0);
-	 		listaTodosJugadores.push_back(jugadorPrincipal);
+	 		int aux = 0;
+	 		for(int i = 0; i < listaTodosJugadores.size(); i++)
+	 		{
+	 			if(jugadorPrincipal.getNick() == listaTodosJugadores[i].getNick())
+	 				aux = 1;
+	 		}
+	 		if(aux == 0)
+	 			listaTodosJugadores.push_back(jugadorPrincipal);
 	 		
 	 		mostrarMensaje("Hola "); mostrarMensaje(nick); mostrarMensaje("!");
 	    	menuJugador(BD, jugadorPrincipal);
@@ -500,7 +507,7 @@ int main(int argc, char** argv)
 	 mostrarMensaje("Introduce la opcion deseada:");
 	 recogerInt(opcionRepetir);
 
-	 listaTodosJugadores = actualizarPuntuacion(listaTodosJugadores, jugadorPrincipal);
+	 actualizarPuntuacion(listaTodosJugadores, jugadorPrincipal);
 	 jugadorPrincipal.setPuntuacion(0);
 
 	 while(opcionRepetir != 1 && opcionRepetir != 2)
@@ -675,7 +682,7 @@ void multijugador(DBConnector BD, jugador jugadorPrincipal)
 	 		{
 	 			mensajeGanador(multijugadores[i]);
 	 		}
-	 		listaTodosJugadores = actualizarPuntuacion(listaTodosJugadores, multijugadores);
+	 		actualizarPuntuacion(listaTodosJugadores, multijugadores);
 	 	}
 
 	 //Volver al menu o volver a jugar

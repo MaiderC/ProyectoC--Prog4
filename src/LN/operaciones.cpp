@@ -242,13 +242,19 @@ namespace operaciones
 		return max;
 	}
 
-	vector<jugador> actualizarPuntuacion(vector<jugador>& listaTodosJugadores, vector<jugador>& listaJugadoresSesion)
+	void actualizarPuntuacion(vector<jugador>& listaTodosJugadores, vector<jugador>& listaJugadoresSesion)
 	{
 	    int coincidencias = 0;
 	   
 	    if(listaTodosJugadores.size() == 0)
 	    {
-	        return listaJugadoresSesion;
+	    	jugador j;
+
+	    	for (int i = 0; i < listaJugadoresSesion.size(); ++i)
+	    	{
+	    		j = listaJugadoresSesion[i];
+	    		listaTodosJugadores.push_back(j);
+	    	}
 	    }
 	    else
 	    {
@@ -259,22 +265,22 @@ namespace operaciones
 	          if(listaTodosJugadores[i].getNick() == listaJugadoresSesion[j].getNick())
 	          {
 	            listaTodosJugadores[i].setPuntuacion(listaJugadoresSesion[j].getPuntuacion() + listaTodosJugadores[i].getPuntuacion());
-	            listaJugadoresSesion.erase(listaJugadoresSesion.begin()+j, listaJugadoresSesion.begin()+j);
+	            listaJugadoresSesion.erase(listaJugadoresSesion.begin()+j);
 	          }
 	        }
 	      }
 	    }
 
+	    jugador j;
 	    for(int i = 0; i < listaJugadoresSesion.size(); i++)
 	    {
-	      	listaTodosJugadores.push_back(listaJugadoresSesion[i]);
-	      	listaJugadoresSesion.erase(listaJugadoresSesion.begin()+i, listaJugadoresSesion.begin()+i);
+	    	j = listaJugadoresSesion[i];
+	      	listaTodosJugadores.push_back(j);
+	      	listaJugadoresSesion.erase(listaJugadoresSesion.begin()+i);
 	    }
-
-	    return listaTodosJugadores;
 	}
 
-	vector<jugador> actualizarPuntuacion(vector<jugador>& listaTodosJugadores, jugador jugadorPrincipal)
+	void actualizarPuntuacion(vector<jugador>& listaTodosJugadores, jugador jugadorPrincipal)
 	{
 	  for(int i = 0; i < listaTodosJugadores.size(); i++)
 	  {
@@ -287,8 +293,6 @@ namespace operaciones
 	      listaTodosJugadores.push_back(jugadorPrincipal);
 	    }
 	  }
-
-	  return listaTodosJugadores;
 	}
 
 	void guardarJugadores(const vector<jugador>& ListaTodosJugadores, DBConnector BD)
