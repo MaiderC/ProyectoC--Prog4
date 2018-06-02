@@ -276,8 +276,8 @@ namespace operaciones
 	    {
 	    	j = listaJugadoresSesion[i];
 	      	listaTodosJugadores.push_back(j);
-	      	listaJugadoresSesion.erase(listaJugadoresSesion.begin()+i);
 	    }
+	    listaJugadoresSesion.clear();
 	}
 
 	void actualizarPuntuacion(vector<jugador>& listaTodosJugadores, jugador jugadorPrincipal)
