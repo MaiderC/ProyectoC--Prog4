@@ -611,7 +611,7 @@ void multijugador(DBConnector BD)
  		mostrarMensaje(a); //Para que aparezca como JX: 
  		mostrarMensaje("Introduce el NICK:");
  		recogerString(NickAux);
- 		jugador* aux = new jugador(NickAux,0);
+ 		jugador aux(NickAux,0);
  		multijugadores.push_back(aux);
  	}
 
