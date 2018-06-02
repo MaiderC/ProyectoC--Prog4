@@ -18,7 +18,6 @@ class DBConnector
 {
 	private:
  	 sqlite3 *db = NULL;
- 	 ofstream* ofs;
 
 	public:
 		DBConnector(std::string dbFile);

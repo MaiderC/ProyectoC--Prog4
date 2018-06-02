@@ -905,12 +905,7 @@ void multijugador(DBConnector BD, jugador jugadorPrincipal)
  void acabar(DBConnector BD) //metodo para liberar recursos
  {
  	guardarJugadores(listaTodosJugadores, BD);
-
-	for (int i = 0; i < preguntasSalidas.size(); ++i)
-	{
-		delete preguntasSalidas[i];
-	}
-
+ 	
 	for (int i = 0; i < listaTodasPreguntas.size(); ++i)
 	{
 		delete listaTodasPreguntas[i];
