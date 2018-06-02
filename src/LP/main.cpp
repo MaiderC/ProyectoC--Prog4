@@ -21,7 +21,7 @@ void individual(DBConnector BD, jugador jugadorPrincipal);
 void multijugador(DBConnector BD, jugador jugadorPrincipal);
 void ranking(DBConnector BD);
 void acabar(DBConnector BD);
-void RealizarPreguntasMultijugador(vector<jugador> multijugadores, int cantPreg, vector<preguntas_respuestas*> PreguntasSeleccionadas);
+void RealizarPreguntasMultijugador(vector<jugador>& multijugadores, int cantPreg, vector<preguntas_respuestas*> PreguntasSeleccionadas);
 int elegirDificultad();
 
 vector<preguntas_respuestas*> preguntasSalidas; // Lista de las preguntas que ya han salido en la ejecucion del juego
@@ -701,7 +701,7 @@ void multijugador(DBConnector BD, jugador jugadorPrincipal)
 	 }
  }
 
- void RealizarPreguntasMultijugador(vector<jugador> multijugadores, int cantPreg, vector <preguntas_respuestas*> PreguntasSeleccionadas)
+ void RealizarPreguntasMultijugador(vector<jugador>& multijugadores, int cantPreg, vector <preguntas_respuestas*> PreguntasSeleccionadas)
  {
  	int cont = 0;
  	int respValida = -1;
