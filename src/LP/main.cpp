@@ -208,6 +208,7 @@ int main(int argc, char** argv)
 					if(listaTodasPreguntas.size() == 0)
 			  		{
 			  			mostrarMensaje("No hay preguntas en el sistema :(");
+			  			opcionEliminar = 1;
 			  		} else
 			  		{
 						mostrarTodasPreguntas(listaTodasPreguntas);
