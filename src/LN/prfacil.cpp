@@ -9,8 +9,6 @@ using namespace std;
 #define DEFAULT_RESPUESTA2 "defaultAnswer2"
 #define DEFAULT_DIFICULTAD "#"
 
-
-//constructores
 prfacil::prfacil()
 {
   this -> respuesta2 = DEFAULT_RESPUESTA2;
@@ -22,18 +20,16 @@ prfacil::prfacil(string pregunta, string respuesta1, string respuesta2, int ID, 
   this -> dificultad = "#";
 }
 
-//destructor
- prfacil::~prfacil()
+prfacil::~prfacil()
 {
+
 }
 
-//constructor copia
 prfacil::prfacil(const prfacil &pf): preguntas_respuestas(pf)
 {
 	this -> respuesta2 = pf.respuesta2;
 }
 
-//getter y setter
 void prfacil::setRespuesta2(string RDos)
 {
 	this -> respuesta2 = RDos;
@@ -44,28 +40,23 @@ string prfacil::getRespuesta2() const
 	return respuesta2;
 }
 
-//metodos
-
- void prfacil::sumarPunto(jugador& jugador)
+void prfacil::sumarPunto(jugador& jugador)
 {
 	jugador.setPuntuacion(jugador.getPuntuacion() + 1);
 }
 
- void prfacil::prepararRespuestas()
+void prfacil::prepararRespuestas()
 {
 	int i = 1;
 	int igual = 0;
 	int r;
 	int random[2];
 
-	//array de respuestas auxiliares 
 	string respuestas[2];
 
 	random[0] = -1;
 	random[1] = -1;
-	// random[2] = -1;
  	
-	// Este while llena el array random con numeros aleatorios de 0 a 2, pero que no se repitan.
 	while(i>=0)
 	{
 		igual = 0;
@@ -104,11 +95,9 @@ prfacil& prfacil::operator=(const prfacil& pf)
 
 ostream& operator<<(ostream& out, const prfacil& preguntafacil)
 {
-	// prfacil* preguntafacil = dynamic_cast<prfacil*>(Pregunta);
-
 	out << (preguntafacil).getPregunta() << endl;
-
 	out << "a) ";
+	
 	if((preguntafacil).getRespuesta1()[0] == '#')
 	{
 		string aux = (preguntafacil).getRespuesta1();
@@ -116,7 +105,8 @@ ostream& operator<<(ostream& out, const prfacil& preguntafacil)
 		aux.erase(0, 1);
 
 		out << aux << endl;
-	} else
+	} 
+	else
 	{
 		out << (preguntafacil).getRespuesta1() << endl;
 	}
@@ -129,7 +119,8 @@ ostream& operator<<(ostream& out, const prfacil& preguntafacil)
 		aux.erase(0, 1);
 
 		out << aux << endl;
-	} else
+	} 
+	else
 	{
 		out << (preguntafacil).respuesta2 << endl;
 	}

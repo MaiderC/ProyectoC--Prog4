@@ -15,25 +15,19 @@ class prfacil :  public preguntas_respuestas
 
 	public:
 
-		//constructores
 		prfacil();
 		prfacil(string pregunta, string respuesta1, string respuesta2, int ID, bool leerBD);
 		
-		//destructor
 		virtual ~prfacil();
 
-		//constructor copia
 		prfacil(const prfacil &pf);
 
-		//setter y getter
 		void setRespuesta2(string RDos);
 		string getRespuesta2() const;
 
-		//métodos de clase
 		virtual void sumarPunto(jugador& jugador);
 		virtual void prepararRespuestas(); 
 
-		//sobrecarga de operador =
 		prfacil& operator=(const prfacil& pf);
 
 		friend ostream& operator<< (ostream& out, const prfacil& preguntafacil);
