@@ -7,7 +7,6 @@ using namespace std;
 #define DEFAULT_NICK "playerOne"
 #define DEFAULT_PUNTUACION 0
 
-//contrsuctores
 jugador::jugador ()
 {
   this -> nick = DEFAULT_NICK;
@@ -20,20 +19,17 @@ jugador::jugador (string nick, int puntuacion)
   this -> puntuacion = puntuacion;
 }
 
-//destructor
 jugador::~jugador ()
 {
   
 }
 
-//constructor copia
 jugador::jugador(const jugador &j)
 {
   this -> nick = j.nick;
   this -> puntuacion = j.puntuacion;
 }
 
-//getters y setters
 void jugador:: setNick(string nick)
 {
   this -> nick = nick;
@@ -52,7 +48,6 @@ int jugador:: getPuntuacion() const
   return puntuacion;
 }
 
-//sobrecarga de operadores
 bool jugador:: operator==(const jugador& jug)
 {
   bool retorno;
