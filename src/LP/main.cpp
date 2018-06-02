@@ -222,6 +222,12 @@ int main(int argc, char** argv)
 						mostrarMensaje("¿Que pregunta quieres eliminar?");
 						recogerInt(opcionEliminar);
 
+						while(opcionEliminar <= 0 || opcionEliminar > listaTodasPreguntas.size())
+						{
+							mostrarMensaje("La pregunta elegida no es valida, no entra en el rango de preguntas");
+							recogerInt(opcionEliminar);
+						}
+
 						BD.delete_Pregunta(listaTodasPreguntas[opcionEliminar-1]);
 						listaTodasPreguntas.erase(listaTodasPreguntas.begin() + opcionEliminar-1);
 
