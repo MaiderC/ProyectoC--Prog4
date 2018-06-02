@@ -605,7 +605,11 @@ void multijugador(DBConnector BD)
  	mostrarMensaje("Introduce los nombres de los jugadores contra los que vas a jugar:");
  	for (int i = 1; i < multijugadores.size(); i++)
  	{
- 		mostrarMensaje("J");mostrarInt(i);mostrarMensaje(": "); //Para que aparezca como JX: 
+ 		string a;
+ 		a = "J";
+ 		a += to_string(i) + ": ";
+ 		mostrarMensaje(a); //Para que aparezca como JX: 
+ 		mostrarMensaje("Introduce el NICK:");
  		recogerString(NickAux);
  		jugador aux (NickAux,0);
  		multijugadores.push_back(aux);
