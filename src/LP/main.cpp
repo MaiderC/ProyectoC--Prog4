@@ -663,7 +663,7 @@ void multijugador(DBConnector BD, jugador jugadorPrincipal)
 	 		}
 	 	}	 	
 	 }
-	 while(empatados.size() != 1);//No hay empate
+	 while(empatados.size() != 1 && opcionDesempatar == 1);//No hay empate
 	 //Si habia empate, ya se ha resuelto si asi se ha querido. 
 	 //Si no se resolvio, se mostrara un mensaje de ganador por cada uno. Por lo tanto, lo hacemos en un for:
 	 	for(int i = 0; i < multijugadores.size(); i++)
