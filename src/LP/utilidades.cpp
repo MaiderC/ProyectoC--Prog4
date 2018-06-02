@@ -62,12 +62,7 @@ namespace utilidades
 			cout << endl << endl;
 		}
 	}
-
-	void mostrarPuntuacion(const jugador& jugador)
-	{
-		cout << jugador.getNick() << ": " << jugador.getPuntuacion() << " puntos" << endl;
-	}
-
+	
 	void mensajeGanador(const jugador& ganador) //A este metodo se le llamara antes de actualizar las puntuaciones, con lo que la puntuacion sera la acumulada en esa partida
 	{
 		cout << "El jugador ganador de esta partida ha sido " << ganador.getNick() << " con " << ganador.getPuntuacion() << " puntos. ¡Enhorabuena!" << endl;

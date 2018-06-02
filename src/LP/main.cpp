@@ -838,8 +838,9 @@ void multijugador(DBConnector BD, jugador jugadorPrincipal)
  	mostrarMensaje("\nRANKING DE JUGADORES");
  	for(int i = 0; i < listaTodosJugadores.size(); i++)
  	{
- 		mostrarMensaje((i+1) + ".-");
- 		mostrarPuntuacion(listaTodosJugadores[i]);
+ 		string a;
+ 		a = to_string(i+1) + ".-" + listaTodosJugadores[i].getNick() + ": " + to_string(listaTodosJugadores[i].getPuntuacion()) + " puntos";
+ 		mostrarMensaje(a);
  	}
  		mostrarMensaje("\n");
 	 menuJugador(BD, jugadorPrincipal);
