@@ -286,12 +286,11 @@ namespace operaciones
 	  {
 	    if(jugadorPrincipal.getNick() == listaTodosJugadores[i].getNick())
 	    {
-	     listaTodosJugadores[i].setPuntuacion(listaTodosJugadores[i].getPuntuacion() + jugadorPrincipal.getPuntuacion());
+	    	listaTodosJugadores[i].setPuntuacion(listaTodosJugadores[i].getPuntuacion() + jugadorPrincipal.getPuntuacion());
+	    	return;
 	    }
-	    else
-	    {
-	      listaTodosJugadores.push_back(jugadorPrincipal);
-	    }
+	    
+	     	listaTodosJugadores.push_back(jugadorPrincipal);
 	  }
 	}
 
@@ -304,7 +303,8 @@ namespace operaciones
 			if (result == 0)
 			{
 				//No ha podido hacer update porque no existe el jugador; hacemos insert:
-				result = BD.insert_Jugador(ListaTodosJugadores[i]);
+				BD.insert_Jugador(ListaTodosJugadores[i]);
+				BD.update_Jugador(ListaTodosJugadores[i]);
 			}
 		}
 	}
