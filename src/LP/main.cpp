@@ -722,7 +722,7 @@ void multijugador(DBConnector BD, jugador jugadorPrincipal)
  			mostrarMensaje(msj1);
 
  			//Preparar la pregunta aleatoria para el jugador
- 			pregunta = generarPregunta(listaTodasPreguntas, preguntasSalidas);
+ 			pregunta = generarPregunta(PreguntasSeleccionadas, preguntasSalidas);
 			
 		 if((*pregunta).getDificultad() == "#")
 		 {
