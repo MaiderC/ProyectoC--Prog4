@@ -211,20 +211,23 @@ namespace operaciones
 	 {
 	 	jugador temp; //variable auxiliar
 
-	 	// recorrer todos los elementos del array
-	   for(int i = 0; i < jugadoresLeidos.size(); i++) 
-	   { 
-	      //comparar cada elemento con todos los demás
-	      for(int j = 0; j < jugadoresLeidos.size()-i; j++)
-	      {
-	        if(jugadoresLeidos[j] < jugadoresLeidos[j+1])
-	         {
-	            temp = jugadoresLeidos[j];
-	            jugadoresLeidos[j] = jugadoresLeidos[j+1];
-	            jugadoresLeidos[j+1] = temp;
-	         }
-	      }
-	 	}
+	 	if(jugadoresLeidos.size() > 1)
+	 	{
+		 	// recorrer todos los elementos del array
+		   for(int i = 0; i < jugadoresLeidos.size(); i++) 
+		   { 
+		    //comparar cada elemento con todos los demás
+		    for(int j = 0; j < jugadoresLeidos.size()-i; j++)
+		    {
+		        if(jugadoresLeidos[j] < jugadoresLeidos[j+1])
+		        {
+		            temp = jugadoresLeidos[j];
+		            jugadoresLeidos[j] = jugadoresLeidos[j+1];
+		            jugadoresLeidos[j+1] = temp;
+		        }
+		    }
+		 	}
+		}
 	}
 
 	int maxPuntuacion(const vector<jugador>& jugadores)
