@@ -5,6 +5,7 @@
 #include <vector>
 #include <stdio.h>
 #include <string.h>
+#include <fstream>
 #include "../LN/jugador.h"
 #include "../LN/preguntas_respuestas.h"
 #include "../LN/prfacil.h"
@@ -17,6 +18,7 @@ class DBConnector
 {
 	private:
  	 sqlite3 *db = NULL;
+ 	 ofstream* ofs;
 
 	public:
 		DBConnector(std::string dbFile);
