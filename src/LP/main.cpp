@@ -115,10 +115,10 @@ int main(int argc, char** argv)
 				    }
 
 				    prfacil* preg_r;
-				    preg_r = new prfacil();
 
 				    for (int i = 0; i < cant_p; i++)
 				    {
+				    	preg_r = new prfacil();
 				    	recogerPregunta(preg_r);
 				    	BD.insert_Pregunta(preg_r);
 				    	listaTodasPreguntas.push_back(preg_r);
@@ -149,10 +149,10 @@ int main(int argc, char** argv)
 				    }
 
 				    prmedio* preg_r;
-				    preg_r = new prmedio();
 
 				    for (int i = 0; i < cant_p; i++)
 				    {
+				    	preg_r = new prmedio();
 				    	recogerPregunta(preg_r);
 				    	BD.insert_Pregunta(preg_r);
 				    	listaTodasPreguntas.push_back(preg_r);
@@ -182,10 +182,10 @@ int main(int argc, char** argv)
 				    }
 
 				    prdificil* preg_r;
-				    preg_r = new prdificil();
 
 				    for (int i = 0; i < cant_p; i++)
 				    {
+				    	preg_r = new prdificil();
 				    	recogerPregunta(preg_r);
 				    	BD.insert_Pregunta(preg_r);
 				    	listaTodasPreguntas.push_back(preg_r);
