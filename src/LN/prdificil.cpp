@@ -11,7 +11,6 @@ using namespace std;
 #define DEFAULT_RESPUESTA4 "defaultAnswer4"
 #define DEFAULT_DIFICULTAD "###"
 
-//constructores
 prdificil::prdificil()
 {
   this -> respuesta2 = DEFAULT_RESPUESTA2;
@@ -21,20 +20,17 @@ prdificil::prdificil()
 		
 prdificil::prdificil(string pregunta, string respuesta1, string respuesta2, string respuesta3, string respuesta4, int ID, bool leerBD): preguntas_respuestas(pregunta, respuesta1, ID, leerBD)
 {
-  // this -> pregunta = pregunta;
-  // this -> respuesta1 = respuesta1;
   this -> respuesta2 = respuesta2;
   this -> respuesta3 = respuesta3;
   this -> respuesta4 = respuesta4;
   this -> dificultad = "###";
 }
 
-//destructor
- prdificil::~prdificil()
+prdificil::~prdificil()
 {
+
 }
 
-//constructor copia
 prdificil::prdificil(const prdificil &pd): preguntas_respuestas(pd)
 {
 	this -> respuesta2 = pd.respuesta2;
@@ -42,7 +38,6 @@ prdificil::prdificil(const prdificil &pd): preguntas_respuestas(pd)
 	this -> respuesta4 = pd.respuesta4;
 }
 
-//getter y setter
 void prdificil::setRespuesta2(string RDos)
 {
 	this -> respuesta2 = RDos;
@@ -73,14 +68,12 @@ string prdificil::getRespuesta4() const
 	return respuesta4;
 }
 
-//metodos 
-
- void prdificil::sumarPunto(jugador& jugador)
+void prdificil::sumarPunto(jugador& jugador)
 {
 	jugador.setPuntuacion(jugador.getPuntuacion() + 3);
 }
 
- void prdificil::prepararRespuestas()
+void prdificil::prepararRespuestas()
 {
 	int i = 3;
 	int igual = 0;
@@ -93,9 +86,7 @@ string prdificil::getRespuesta4() const
 	random[2] = -1;
 	random[3] = -1;
 
- 	
-	// Este while llena el array random con numeros aleatorios de 0 a 2, pero que no se repitan.
-	while(i>=0)
+ 	while(i>=0)
 	{
 		igual = 0;
 		r = rand() % 4;
@@ -124,7 +115,6 @@ string prdificil::getRespuesta4() const
 	this->respuesta4 = respuestas[3];
 }
 
-//sobrecarga de operador =
 prdificil& prdificil::operator=(const prdificil& pd)
 {
 	this -> id = pd.id;
@@ -140,8 +130,6 @@ prdificil& prdificil::operator=(const prdificil& pd)
 
 ostream& operator<<(ostream& out, const prdificil& preguntadificil)
 {
-	// prdificil* preguntadificil = dynamic_cast <prdificil*>(Pregunta);
-	
 	out << (preguntadificil).getPregunta() << endl;
 
 	out << "a) ";
@@ -152,7 +140,8 @@ ostream& operator<<(ostream& out, const prdificil& preguntadificil)
 		aux.erase(0, 1);
 
 		out << aux << endl;
-	} else
+	} 
+	else
 	{
 		out << (preguntadificil).getRespuesta1() << endl;
 	}
@@ -165,7 +154,8 @@ ostream& operator<<(ostream& out, const prdificil& preguntadificil)
 		aux.erase(0, 1);
 
 		out << aux << endl;
-	} else
+	} 
+	else
 	{
 		out << (preguntadificil).respuesta2 << endl;
 	}
@@ -178,7 +168,8 @@ ostream& operator<<(ostream& out, const prdificil& preguntadificil)
 		aux.erase(0, 1);
 
 		out << aux << endl;
-	} else
+	} 
+	else
 	{
 		out << (preguntadificil).respuesta3 << endl;
 	}
@@ -191,7 +182,8 @@ ostream& operator<<(ostream& out, const prdificil& preguntadificil)
 		aux.erase(0, 1);
 
 		out << aux << endl;
-	} else
+	} 
+	else
 	{
 		out << (preguntadificil).respuesta4 << endl;
 	}
