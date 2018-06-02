@@ -186,14 +186,14 @@ ostream& operator<<(ostream& out, const prdificil& preguntadificil)
 	out << "d) ";
 	if((preguntadificil).respuesta4[0] == '#')
 	{
-		string aux = (preguntadificil).respuesta3;
+		string aux = (preguntadificil).respuesta4;
 
 		aux.erase(0, 1);
 
 		out << aux << endl;
 	} else
 	{
-		out << (preguntadificil).respuesta3 << endl;
+		out << (preguntadificil).respuesta4 << endl;
 	}
 
 	return out;
