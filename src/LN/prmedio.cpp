@@ -64,7 +64,7 @@ string prmedio::getRespuesta3() const
 
 //metodos
 
- void prmedio::sumarPunto(jugador jugador)
+ void prmedio::sumarPunto(jugador& jugador)
 {
 	jugador.setPuntuacion(jugador.getPuntuacion() + 2);
 }

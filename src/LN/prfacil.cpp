@@ -46,7 +46,7 @@ string prfacil::getRespuesta2() const
 
 //metodos
 
- void prfacil::sumarPunto(jugador jugador)
+ void prfacil::sumarPunto(jugador& jugador)
 {
 	jugador.setPuntuacion(jugador.getPuntuacion() + 1);
 }

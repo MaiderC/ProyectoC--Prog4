@@ -37,7 +37,7 @@ class prdificil :  public preguntas_respuestas
 		string getRespuesta4() const;
 
 		//metodos de clase
-		virtual void sumarPunto(jugador jugador);
+		virtual void sumarPunto(jugador& jugador);
 		virtual void prepararRespuestas();
 
 		//sobrecarga de operador =

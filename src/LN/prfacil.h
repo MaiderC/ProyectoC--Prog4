@@ -30,7 +30,7 @@ class prfacil :  public preguntas_respuestas
 		string getRespuesta2() const;
 
 		//métodos de clase
-		virtual void sumarPunto(jugador jugador);
+		virtual void sumarPunto(jugador& jugador);
 		virtual void prepararRespuestas(); 
 
 		//sobrecarga de operador =

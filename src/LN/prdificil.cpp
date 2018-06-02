@@ -75,7 +75,7 @@ string prdificil::getRespuesta4() const
 
 //metodos 
 
- void prdificil::sumarPunto(jugador jugador)
+ void prdificil::sumarPunto(jugador& jugador)
 {
 	jugador.setPuntuacion(jugador.getPuntuacion() + 3);
 }
