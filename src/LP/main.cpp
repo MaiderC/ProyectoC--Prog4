@@ -70,7 +70,8 @@ int main(int argc, char** argv)
 	 		if(aux == 0)
 	 			listaTodosJugadores.push_back(jugadorPrincipal);
 	 		
-	 		mostrarMensaje("Hola "); mostrarMensaje(nick); mostrarMensaje("!");
+	 		string msj = "Hola " + nick + "!";
+	 		mostrarMensaje(msj); 
 	    	menuJugador(BD, jugadorPrincipal);
 		}
   	}
@@ -88,7 +89,6 @@ int main(int argc, char** argv)
 
  	do
  	{
-
 	 	 mostrarMensaje("Estas son las acciones que puedes realizar:");
 	 	 mostrarMensaje("\t1- Insertar preguntas faciles");
 	 	 mostrarMensaje("\t2- Insertar preguntas de dificultad media");
@@ -132,7 +132,7 @@ int main(int argc, char** argv)
 				    	listaTodasPreguntas.push_back(preg_r);
 				    }
 
-				    mostrarMensaje("¿Quieres seguir introduciendo preguntas?");
+				    mostrarMensaje("Quieres seguir introduciendo preguntas?");
 			 		mostrarMensaje("1.- Si");
 			 		mostrarMensaje("2.- No");
 			 		recogerInt(opcionSeguir);
@@ -209,7 +209,6 @@ int main(int argc, char** argv)
 
 			case 4:
 
-				
 					opcionEliminar = 0;
 				do
 				{
@@ -595,7 +594,7 @@ void multijugador(DBConnector BD, jugador jugadorPrincipal)
  		}
  	}
 
-	mostrarMensaje("¿Cuantos jugadores van a jugar?");
+	mostrarMensaje("Cuantos jugadores van a jugar?");
  	recogerInt(cantJugadores);
 
  	cantidadPreguntasValida = maxPreguntas(cantJugadores, PreguntasSeleccionadas.size());
@@ -608,10 +607,8 @@ void multijugador(DBConnector BD, jugador jugadorPrincipal)
  	}
 
  	//El primer jugador es el actual 
- 	cout << "Fuera del vector" << jugadorPrincipal.getNick() << endl;
  	multijugadores.push_back(jugadorPrincipal);
  	multijugadores[0].setPuntuacion(0);
-	cout << "Dentro del vector" << multijugadores[0].getNick() << endl;
 
  	mostrarMensaje("Introduce los nombres de los jugadores contra los que vas a jugar:");
  	for (int i = 1; i < cantJugadores; i++)
@@ -626,7 +623,7 @@ void multijugador(DBConnector BD, jugador jugadorPrincipal)
  		multijugadores.push_back(aux);
  	}
 
- 	mostrarMensaje("¿Cuantas preguntas deseas que se le realicen a cada jugador?\t");
+ 	mostrarMensaje("Cuantas preguntas deseas que se le realicen a cada jugador?\t");
  	recogerInt(cantPreg);
  	cantidadPreguntasValida = maxPreguntas(multijugadores.size()*cantPreg, PreguntasSeleccionadas.size());
 
@@ -687,7 +684,7 @@ void multijugador(DBConnector BD, jugador jugadorPrincipal)
 
 	 //Volver al menu o volver a jugar
 	 mostrarMensaje("Fin de la partida.");
-	 mostrarMensaje("¿Deseas volver a jugar o regresar al menu?");
+	 mostrarMensaje("Deseas volver a jugar o regresar al menu?");
 	 mostrarMensaje("1.- Volver a jugar");
 	 mostrarMensaje("2.- Volver al menu");
 	 mostrarMensaje("Introduce la opcion deseada:  ");
@@ -829,6 +826,11 @@ void multijugador(DBConnector BD, jugador jugadorPrincipal)
  		}
  	}
 
+ 	for (int i = 0; i < PreguntasSeleccionadas.size(); ++i)
+ 	{
+ 		delete PreguntasSeleccionadas[i];
+ 	}
+ 	
  }
 
   void ranking(DBConnector BD)
@@ -842,11 +844,21 @@ void multijugador(DBConnector BD, jugador jugadorPrincipal)
  		a = to_string(i+1) + ".-" + listaTodosJugadores[i].getNick() + ": " + to_string(listaTodosJugadores[i].getPuntuacion()) + " puntos";
  		mostrarMensaje(a);
  	}
- 		mostrarMensaje("\n");
-	 menuJugador(BD, jugadorPrincipal);
+ 	mostrarMensaje("\n");
+	menuJugador(BD, jugadorPrincipal);
  }
 
  void acabar(DBConnector BD) //metodo para liberar recursos
  {
  	guardarJugadores(listaTodosJugadores, BD);
+
+	for (int i = 0; i < preguntasSalidas.size(); ++i)
+	{
+		delete preguntasSalidas[i];
+	}
+
+	for (int i = 0; i < listaTodasPreguntas.size(); ++i)
+	{
+		delete listaTodasPreguntas[i];
+	}
  }
