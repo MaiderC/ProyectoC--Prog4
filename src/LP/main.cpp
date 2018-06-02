@@ -21,7 +21,7 @@ void individual(DBConnector BD, jugador jugadorPrincipal);
 void multijugador(DBConnector BD, jugador jugadorPrincipal);
 void ranking(DBConnector BD);
 void acabar(DBConnector BD);
-void RealizarPreguntasMultijugador(vector<jugador> multijugadores, int cantPreg);
+void RealizarPreguntasMultijugador(vector<jugador> multijugadores, int cantPreg, vector<preguntas_respuestas*> PreguntasSeleccionadas);
 int elegirDificultad();
 
 vector<preguntas_respuestas*> preguntasSalidas; // Lista de las preguntas que ya han salido en la ejecucion del juego
@@ -628,7 +628,7 @@ void multijugador(DBConnector BD, jugador jugadorPrincipal)
  		cantidadPreguntasValida = maxPreguntas(multijugadores.size()*cantPreg, PreguntasSeleccionadas.size());
  	}
 
- 	RealizarPreguntasMultijugador(multijugadores, cantPreg);
+ 	RealizarPreguntasMultijugador(multijugadores, cantPreg, PreguntasSeleccionadas);
  	
 	 do
 	 {
@@ -650,7 +650,7 @@ void multijugador(DBConnector BD, jugador jugadorPrincipal)
 	 		if(opcionDesempatar == 1)
 	 		{
 	 			//Realizamos una sola pregunta entre los jugadores que han empatado para ver si asi deshacen el empate
-		 		RealizarPreguntasMultijugador(empatados, 1);
+		 		RealizarPreguntasMultijugador(empatados, 1, PreguntasSeleccionadas);
 		 		int c = 0;
 		 		for (int i = 0; i < multijugadores.size(); ++i)
 		 		{
@@ -699,7 +699,7 @@ void multijugador(DBConnector BD, jugador jugadorPrincipal)
 	 }
  }
 
- void RealizarPreguntasMultijugador(vector<jugador> multijugadores, int cantPreg)
+ void RealizarPreguntasMultijugador(vector<jugador> multijugadores, int cantPreg, vector <preguntas_respuestas*> PreguntasSeleccionadas)
  {
  	int cont = 0;
  	int respValida = -1;
