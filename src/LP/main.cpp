@@ -600,8 +600,10 @@ void multijugador(DBConnector BD, jugador jugadorPrincipal)
  	}
 
  	//El primer jugador es el actual 
+ 	cout << "Fuera del vector" << jugadorPrincipal.getNick() << endl;
  	multijugadores.push_back(jugadorPrincipal);
  	multijugadores[0].setPuntuacion(0);
+	cout << "Dentro del vector" << multijugadores[0].getNick() << endl;
 
  	mostrarMensaje("Introduce los nombres de los jugadores contra los que vas a jugar:");
  	for (int i = 1; i < cantJugadores; i++)
