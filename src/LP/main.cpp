@@ -297,7 +297,7 @@ int main(int argc, char** argv)
 
   		default:
   			break;
-  	} 
+  	}
  }
 
  int elegirDificultad()
@@ -322,6 +322,7 @@ int main(int argc, char** argv)
 
  void individual(DBConnector BD, jugador jugadorPrincipal)
  {
+ 	int noHayPreguntas = 0;
  	int opcionDificultad;
  	int cant_preguntas;
  	int max_preguntas; //Leer las preguntas, meterlas en un array y contar la cantidad de posiciones de ese array
@@ -346,6 +347,12 @@ int main(int argc, char** argv)
  			if(listaTodasPreguntas[i]->getDificultad() == "#")
  				PreguntasSeleccionadas.push_back(listaTodasPreguntas[i]);
  		}
+
+ 		if(PreguntasSeleccionadas.size() == 0)
+ 		{
+ 			mostrarMensaje("No hay preguntas faciles.");
+ 			noHayPreguntas = 1;
+ 		}
  	}
 
  	if(opcionDificultad == 2)
@@ -355,6 +362,12 @@ int main(int argc, char** argv)
  			if(listaTodasPreguntas[i]->getDificultad() == "##")
  				PreguntasSeleccionadas.push_back(listaTodasPreguntas[i]);
  		}
+
+ 		if(PreguntasSeleccionadas.size() == 0)
+ 		{
+ 			mostrarMensaje("No hay preguntas de dificultad media.");
+ 			noHayPreguntas = 1;
+ 		}
  	}
 
  	if(opcionDificultad == 3)
@@ -363,6 +376,12 @@ int main(int argc, char** argv)
  		{
  			if(listaTodasPreguntas[i]->getDificultad() == "###")
  				PreguntasSeleccionadas.push_back(listaTodasPreguntas[i]);
+ 		}
+
+ 		if(PreguntasSeleccionadas.size() == 0)
+ 		{
+ 			mostrarMensaje("No hay preguntas dificiles.");
+ 			noHayPreguntas = 1;
  		}
  	}
 
@@ -391,144 +410,148 @@ int main(int argc, char** argv)
  		}
  	}
 
- 	mostrarMensaje("¿Cuantas preguntas deseas que se te realicen?");
- 	recogerInt(cant_preguntas);
-
- 	cantidadPreguntasValida = maxPreguntas(cant_preguntas, PreguntasSeleccionadas.size());
- 	
- 	while(cant_preguntas<0 || cantidadPreguntasValida == 0)
+ 	if(noHayPreguntas == 0)
  	{
-		mostrarMensaje("El numero de preguntas no es valido, debe ser mayor que 0 y menor o igual al total de preguntas disponibles.");
-		mostrarMensaje("Numero de preguntas disponibles:");
-		mostrarInt(PreguntasSeleccionadas.size());
+	 	mostrarMensaje("¿Cuantas preguntas deseas que se te realicen?");
+	 	recogerInt(cant_preguntas);
 
-		mostrarMensaje("Por favor, introduce otro numero:");
- 		recogerInt(cant_preguntas);
- 		cantidadPreguntasValida = maxPreguntas(cant_preguntas, PreguntasSeleccionadas.size());
- 	}
+	 	cantidadPreguntasValida = maxPreguntas(cant_preguntas, PreguntasSeleccionadas.size());
+	 	
+	 	while(cant_preguntas<0 || cantidadPreguntasValida == 0)
+	 	{
+			mostrarMensaje("El numero de preguntas no es valido, debe ser mayor que 0 y menor o igual al total de preguntas disponibles.");
+			mostrarMensaje("Numero de preguntas disponibles:");
+			mostrarInt(PreguntasSeleccionadas.size());
 
- 	for(int i = 0; i < cant_preguntas; i++)
- 	{
- 		 pregunta = generarPregunta(PreguntasSeleccionadas, preguntasSalidas);
-		 
+			mostrarMensaje("Por favor, introduce otro numero:");
+	 		recogerInt(cant_preguntas);
+	 		cantidadPreguntasValida = maxPreguntas(cant_preguntas, PreguntasSeleccionadas.size());
+	 	}
 
-		 if((*pregunta).getDificultad() == "#")
-		 {
-		 	prfacil* preguntaAux = dynamic_cast<prfacil*> (pregunta);
-		 	mostrarPregunta(*preguntaAux);
-			respuesta = recogerOpcionRespuesta(respValida, (*pregunta).getDificultad());
+	 	for(int i = 0; i < cant_preguntas; i++)
+	 	{
+	 		pregunta = generarPregunta(PreguntasSeleccionadas, preguntasSalidas);
+			 
 
-		 	while(respValida == -1)
+			if((*pregunta).getDificultad() == "#")
 			{
-		 		respuesta = recogerOpcionRespuesta(respValida, preguntaAux->getDificultad());
-		 	}
+			 	prfacil* preguntaAux = dynamic_cast<prfacil*> (pregunta);
+			 	mostrarPregunta(*preguntaAux);
+				respuesta = recogerOpcionRespuesta(respValida, (*pregunta).getDificultad());
 
-			switch (respuesta)
+			 	while(respValida == -1)
+				{
+			 		respuesta = recogerOpcionRespuesta(respValida, preguntaAux->getDificultad());
+			 	}
+
+				switch (respuesta)
+				{
+					case 'a':
+						respCorrecta = comprobarRespuesta(preguntaAux->getRespuesta1());
+						break;
+
+					case 'b':
+						respCorrecta = comprobarRespuesta(preguntaAux->getRespuesta2());
+						break;
+				}
+			} 
+
+			else if((*pregunta).getDificultad() == "##")
 			{
-				case 'a':
-					respCorrecta = comprobarRespuesta(preguntaAux->getRespuesta1());
-					break;
+			 	prmedio* preguntaAux = dynamic_cast<prmedio*> (pregunta);
 
-				case 'b':
-					respCorrecta = comprobarRespuesta(preguntaAux->getRespuesta2());
-					break;
+				mostrarPregunta(*preguntaAux);
+				respuesta = recogerOpcionRespuesta(respValida, (*pregunta).getDificultad());
+
+			 	while(respValida == -1)
+				{
+			 		respuesta = recogerOpcionRespuesta(respValida, preguntaAux->getDificultad());
+			 	}
+
+				switch (respuesta)
+				{
+					case 'a':
+						respCorrecta = comprobarRespuesta(preguntaAux->getRespuesta1());
+						break;
+
+					case 'b':
+						respCorrecta = comprobarRespuesta(preguntaAux->getRespuesta2());
+						break;
+
+					case 'c':
+						respCorrecta = comprobarRespuesta(preguntaAux->getRespuesta3());
+						break;
+				}
+			} else if((*pregunta).getDificultad() == "###")
+			{
+			 	prdificil* preguntaAux = dynamic_cast<prdificil*> (pregunta);
+
+			 	mostrarPregunta(*preguntaAux);
+				respuesta = recogerOpcionRespuesta(respValida, (*pregunta).getDificultad());
+
+			 	while(respValida == -1)
+				{
+			 		respuesta = recogerOpcionRespuesta(respValida, preguntaAux->getDificultad());
+			 	}
+
+				switch (respuesta)
+				{
+					case 'a':
+						respCorrecta = comprobarRespuesta(preguntaAux->getRespuesta1());
+						break;
+
+					case 'b':
+						respCorrecta = comprobarRespuesta(preguntaAux->getRespuesta2());
+						break;
+
+					case 'c':
+						respCorrecta = comprobarRespuesta(preguntaAux->getRespuesta3());
+						break;
+
+					case 'd':
+						respCorrecta = comprobarRespuesta(preguntaAux->getRespuesta4());
+				}
 			}
-		 } 
-
-		 else if((*pregunta).getDificultad() == "##")
-		 {
-		 	prmedio* preguntaAux = dynamic_cast<prmedio*> (pregunta);
-
-			mostrarPregunta(*preguntaAux);
-			respuesta = recogerOpcionRespuesta(respValida, (*pregunta).getDificultad());
-
-		 	while(respValida == -1)
+					
+			if(respCorrecta == 1)
 			{
-		 		respuesta = recogerOpcionRespuesta(respValida, preguntaAux->getDificultad());
-		 	}
-
-			switch (respuesta)
-			{
-				case 'a':
-					respCorrecta = comprobarRespuesta(preguntaAux->getRespuesta1());
-					break;
-
-				case 'b':
-					respCorrecta = comprobarRespuesta(preguntaAux->getRespuesta2());
-					break;
-
-				case 'c':
-					respCorrecta = comprobarRespuesta(preguntaAux->getRespuesta3());
-					break;
+			 	mostrarMensaje("Respuesta correcta");
+			 	(*pregunta).sumarPunto(jugadorPrincipal);
 			}
-		 } 
-
-		 else if((*pregunta).getDificultad() == "###")
-		 {
-		 	prdificil* preguntaAux = dynamic_cast<prdificil*> (pregunta);
-
-		 	mostrarPregunta(*preguntaAux);
-			respuesta = recogerOpcionRespuesta(respValida, (*pregunta).getDificultad());
-
-		 	while(respValida == -1)
+			else
 			{
-		 		respuesta = recogerOpcionRespuesta(respValida, preguntaAux->getDificultad());
-		 	}
-
-			switch (respuesta)
-			{
-				case 'a':
-					respCorrecta = comprobarRespuesta(preguntaAux->getRespuesta1());
-					break;
-
-				case 'b':
-					respCorrecta = comprobarRespuesta(preguntaAux->getRespuesta2());
-					break;
-
-				case 'c':
-					respCorrecta = comprobarRespuesta(preguntaAux->getRespuesta3());
-					break;
-
-				case 'd':
-					respCorrecta = comprobarRespuesta(preguntaAux->getRespuesta4());
+			 	mostrarMensaje("Respuesta incorrecta");
 			}
-		 }
-				
-		 if(respCorrecta == 1)
-		 {
-		 	mostrarMensaje("Respuesta correcta");
-		 	(*pregunta).sumarPunto(jugadorPrincipal);
-		 }
-		 else
-		 {
-		 	mostrarMensaje("Respuesta incorrecta");
-		 }
-	 }
+		}
 
-	 mostrarMensaje("---Fin de la partida---");
-	 mostrarMensaje("Deseas volver a jugar o regresar al menu?");
-	 mostrarMensaje("1.- Volver a jugar");
-	 mostrarMensaje("2.- Volver al menu");
-	 mostrarMensaje("Introduce la opcion deseada:");
-	 recogerInt(opcionRepetir);
+		mostrarMensaje("---Fin de la partida---");
+		mostrarMensaje("Deseas volver a jugar o regresar al menu?");
+		mostrarMensaje("1.- Volver a jugar");
+		mostrarMensaje("2.- Volver al menu");
+		mostrarMensaje("Introduce la opcion deseada:");
+		recogerInt(opcionRepetir);
 
-	 actualizarPuntuacion(listaTodosJugadores, jugadorPrincipal);
-	 jugadorPrincipal.setPuntuacion(0);
+		actualizarPuntuacion(listaTodosJugadores, jugadorPrincipal);
+		jugadorPrincipal.setPuntuacion(0);
 
-	 while(opcionRepetir != 1 && opcionRepetir != 2)
-	 {
-	 	 mostrarMensaje("\nLa opcion introducida no es valida. Por favor, intentalo de nuevo:  ");
-	 	 recogerInt(opcionRepetir);
-	 }
+		while(opcionRepetir != 1 && opcionRepetir != 2)
+		{
+			mostrarMensaje("\nLa opcion introducida no es valida. Por favor, intentalo de nuevo:  ");
+			recogerInt(opcionRepetir);
+		}
 
-	 if(opcionRepetir == 1)
-	 {
-	 	individual(BD, jugadorPrincipal);
-	 }
-	 else
-	 {
-	 	menuJugador(BD, jugadorPrincipal);
-	 }
+		if(opcionRepetir == 1)
+		{
+		 	individual(BD, jugadorPrincipal);
+		}
+		else
+		{
+			menuJugador(BD, jugadorPrincipal);
+		}
+	} else
+	{
+		menuJugador(BD, jugadorPrincipal);
+	}
  }
 
 void multijugador(DBConnector BD, jugador jugadorPrincipal)
