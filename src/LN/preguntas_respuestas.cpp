@@ -9,10 +9,8 @@ using namespace std;
 #define DEFAULT_RESPUESTA "defaultAnswer1"
 #define DEFAULT_DIFICULTAD "#"
 
-//esto es para q haga una vez el inicio del contador
 int preguntas_respuestas::cont = 0;
 
-//constructores
 preguntas_respuestas:: preguntas_respuestas()
 {
   this -> pregunta = DEFAULT_PREGUNTA;
@@ -37,11 +35,11 @@ preguntas_respuestas:: preguntas_respuestas(string pregunta, string respuesta1, 
   }
 }
 
-//destructor
- preguntas_respuestas::~preguntas_respuestas()
+preguntas_respuestas::~preguntas_respuestas()
 {
+
 }
-//constructor copia
+
 preguntas_respuestas::preguntas_respuestas(const preguntas_respuestas &p_r)
 {
   this -> id = p_r.id;
@@ -50,7 +48,6 @@ preguntas_respuestas::preguntas_respuestas(const preguntas_respuestas &p_r)
   this -> respuesta1 = p_r.respuesta1;
 }
 
-//getters y setters
 void preguntas_respuestas:: setPregunta(string pregunta)
 {
   this -> pregunta = pregunta;
@@ -96,7 +93,6 @@ int preguntas_respuestas:: getID () const
   return id;
 }
 
-//sobrecarga de operador =
 preguntas_respuestas& preguntas_respuestas::operator=(const preguntas_respuestas& p_r)
 {
   this -> id = p_r.id;
