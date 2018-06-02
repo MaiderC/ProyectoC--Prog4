@@ -43,9 +43,34 @@ namespace operaciones
 			repetida = 0;
 
 			random = rand() % listaTodasPreguntas.size(); //genera un número aleatorio entre 0 y sizeTotalPreguntas-1
-			pregunta = listaTodasPreguntas[random];
 
-			preguntasSalidas.push_back(pregunta);
+			if (listaTodasPreguntas[random]->getDificultad() == "#")
+			{
+				prfacil* pregunta = dynamic_cast<prfacil*> (listaTodasPreguntas[random]);
+				preguntasSalidas.push_back(pregunta);
+
+				pregunta->prepararRespuestas();
+
+				return pregunta;
+			}
+			else if (listaTodasPreguntas[random]->getDificultad() == "##")
+			{
+				prmedio* pregunta = dynamic_cast<prmedio*> (listaTodasPreguntas[random]);
+				preguntasSalidas.push_back(pregunta);
+
+				pregunta->prepararRespuestas();
+
+				return pregunta;
+			}
+			else if(listaTodasPreguntas[random]->getDificultad() == "###")
+			{
+				prdificil* pregunta = dynamic_cast<prdificil*> (listaTodasPreguntas[random]);
+				preguntasSalidas.push_back(pregunta);
+
+				pregunta->prepararRespuestas();
+
+				return pregunta;
+			}
 		}
 		else
 		{
@@ -54,9 +79,10 @@ namespace operaciones
 				 		repetida = 0;
 				 		random = rand() % listaTodasPreguntas.size(); //Genera un número aleatorio entre 0 y sizeTotalPreguntas-1
 
-				 		pregunta = listaTodasPreguntas[random];
-				 		
-					 		for(int j = 0; j < preguntasSalidas.size(); j++)
+				 		if (listaTodasPreguntas[random]->getDificultad() == "#")
+						{
+							prfacil* pregunta = dynamic_cast<prfacil*> (listaTodasPreguntas[random]);
+							for(int j = 0; j < preguntasSalidas.size(); j++)
 					 		{
 					 			//si son iguales, será 0
 					 			if(pregunta->getID() == preguntasSalidas[j]->getID())
@@ -64,16 +90,85 @@ namespace operaciones
 					 				repetida = 1; //si son iguales, será 1
 					 			}
 					 		}
+
+					 		if(repetida == 0)
+					 		{
+								preguntasSalidas.push_back(pregunta);
+
+								pregunta->prepararRespuestas();
+
+								return pregunta;
+					 		} else if (cont == (MAX_INTENTOS-1))
+					 		{
+					 			preguntasSalidas.push_back(pregunta);
+
+								pregunta->prepararRespuestas();
+
+								return pregunta;
+					 		}
+						}
+						else if (listaTodasPreguntas[random]->getDificultad() == "##")
+						{
+							prmedio* pregunta = dynamic_cast<prmedio*> (listaTodasPreguntas[random]);
+							for(int j = 0; j < preguntasSalidas.size(); j++)
+					 		{
+					 			//si son iguales, será 0
+					 			if(pregunta->getID() == preguntasSalidas[j]->getID())
+					 			{
+					 				repetida = 1; //si son iguales, será 1
+					 			}
+					 		}
+
+					 		if(repetida == 0)
+					 		{
+								preguntasSalidas.push_back(pregunta);
+
+								pregunta->prepararRespuestas();
+
+								return pregunta;
+					 		} else if (cont == (MAX_INTENTOS-1))
+					 		{
+					 			preguntasSalidas.push_back(pregunta);
+								
+								pregunta->prepararRespuestas();
+
+								return pregunta;
+					 		}
+						}
+						else if(listaTodasPreguntas[random]->getDificultad() == "###")
+						{
+							prdificil* pregunta = dynamic_cast<prdificil*> (listaTodasPreguntas[random]);
+							for(int j = 0; j < preguntasSalidas.size(); j++)
+					 		{
+					 			//si son iguales, será 0
+					 			if(pregunta->getID() == preguntasSalidas[j]->getID())
+					 			{
+					 				repetida = 1; //si son iguales, será 1
+					 			}
+					 		}
+
+					 		if(repetida == 0)
+					 		{
+								preguntasSalidas.push_back(pregunta);
+
+								pregunta->prepararRespuestas();
+
+								return pregunta;
+					 		} else if (cont == (MAX_INTENTOS-1))
+					 		{
+					 			preguntasSalidas.push_back(pregunta);
+								
+								pregunta->prepararRespuestas();
+
+								return pregunta;
+					 		}
+						}
 				 	cont++;
 			 	}
 			 	while(repetida == 1 && cont < MAX_INTENTOS); //Hará esto hasta que encuentre una pregunta no repetida o agote la cantidad de intentos
-			
-			 	preguntasSalidas.push_back(pregunta);
 		}
 
-		 pregunta->prepararRespuestas();
-
-		 return pregunta;
+		 return NULL;
 	}
 
 	//Verificar si la respuesta elegida es la correcta
