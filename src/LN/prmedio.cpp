@@ -6,13 +6,10 @@
 
 using namespace std;
 
-
 #define DEFAULT_RESPUESTA2 "defaultAnswer2"
 #define DEFAULT_RESPUESTA3 "defaultAnswer3"
 #define DEFAULT_DIFICULTAD "##"
 
-
-//constructores
 prmedio::prmedio()
 {
   this -> respuesta2 = DEFAULT_RESPUESTA2;
@@ -26,21 +23,16 @@ prmedio::prmedio(string pregunta, string respuesta1, string respuesta2, string r
   this -> dificultad = "##";
 }
 
-//destructor
- prmedio::~prmedio()
+prmedio::~prmedio()
 {
+
 }
 
-//constructor copia
 prmedio::prmedio(const prmedio &pm): preguntas_respuestas(pm)
 {
 	this -> respuesta2 = pm.respuesta2;
 	this -> respuesta3 = pm.respuesta3;
-	//para los atributos que estan en la madre
-	// preguntas_respuestas :: prmedio();
 }
-
-//getter y setter
 
 void prmedio::setRespuesta2(string RDos)
 {
@@ -62,27 +54,23 @@ string prmedio::getRespuesta3() const
 	return respuesta3;
 }
 
-//metodos
-
- void prmedio::sumarPunto(jugador& jugador)
+void prmedio::sumarPunto(jugador& jugador)
 {
 	jugador.setPuntuacion(jugador.getPuntuacion() + 2);
 }
 
- void prmedio::prepararRespuestas()
+void prmedio::prepararRespuestas()
 {
 	int i = 2;
 	int igual = 0;
 	int r;
 	int random[3];
-	//array de respuestas auxiliares 
 	string respuestas[3];
 
 	random[0] = -1;
 	random[1] = -1;
 	random[2] = -1;
  	
-	// Este while llena el array random con numeros aleatorios de 0 a 2, pero que no se repitan.
 	while(i>=0)
 	{
 		igual = 0;
@@ -124,8 +112,6 @@ prmedio& prmedio::operator=(const prmedio& pm)
 
 ostream& operator<<(ostream& out, const prmedio& preguntamedio)
 {
-	//prfacil preguntamedio = dynamic_cast<*prfacil>(Pregunta);
-
 	out << (preguntamedio).getPregunta() << endl;
 
 	out << "a) ";
@@ -136,7 +122,8 @@ ostream& operator<<(ostream& out, const prmedio& preguntamedio)
 		aux.erase(0, 1);
 
 		out << aux << endl;
-	} else
+	} 
+	else
 	{
 		out << (preguntamedio).getRespuesta1() << endl;
 	}
@@ -149,7 +136,8 @@ ostream& operator<<(ostream& out, const prmedio& preguntamedio)
 		aux.erase(0, 1);
 
 		out << aux << endl;
-	} else
+	} 
+	else
 	{
 		out << (preguntamedio).respuesta2 << endl;
 	}
@@ -162,7 +150,8 @@ ostream& operator<<(ostream& out, const prmedio& preguntamedio)
 		aux.erase(0, 1);
 
 		out << aux << endl;
-	} else
+	} 
+	else
 	{
 		out << (preguntamedio).respuesta3 << endl;
 	}
