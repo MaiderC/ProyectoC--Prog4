@@ -201,24 +201,59 @@ istream& operator>>(istream& in, prdificil& preguntadificil)
 
 	cout << "Introduce la pregunta a insertar: "<< endl;
 	getline(in, pregunta);
+
+	while(pregunta.length())
+	{
+		cout << "No has introducido nada. Introduce la pregunta a insertar: "<< endl;
+		getline(in, pregunta);
+	}
+
 	preguntadificil.setPregunta(pregunta);
 
 	cout << "*La respuesta no debe contener la letra de la opcion (a o b) ni signos de puntuacion al inicio (salvo que se trate de un guion, por ser la respuesta un numero negativo)"<< endl;
 	cout << "Introduce la respuesta correcta: "<< endl;
 	getline(in, r1);
+
+	while(r1.length())
+	{
+		cout << " No has introducido nada. Introduce la respuesta a insertar: "<< endl;
+		getline(in, r1);
+	}
+
 	r1 = '#' + r1;
 	preguntadificil.setRespuesta1(r1);
 
 	cout << "Introduce otra respuesta (una incorrecta): "<< endl;
 	getline(in, r2);
+
+	while(r2.length())
+	{
+		cout << " No has introducido nada. Introduce la respuesta a insertar: "<< endl;
+		getline(in, r2);
+	}
+
 	preguntadificil.setRespuesta2(r2);
 
 	cout << "Introduce otra respuesta (una incorrecta): "<< endl;
 	getline(in, r3);
+
+	while(r3.length())
+	{
+		cout << " No has introducido nada. Introduce la respuesta a insertar: "<< endl;
+		getline(in, r3);
+	}
+
 	preguntadificil.setRespuesta3(r3);
 
 	cout << "Introduce otra respuesta (una incorrecta): "<< endl;
 	getline(in, r4);
+
+	while(r4.length())
+	{
+		cout << " No has introducido nada. Introduce la respuesta a insertar: "<< endl;
+		getline(in, r4);
+	}
+
 	preguntadificil.setRespuesta4(r4);
 
 	preguntadificil.setID((preguntadificil.getID()+1));
