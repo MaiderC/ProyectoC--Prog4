@@ -172,7 +172,7 @@ namespace operaciones
 		}
 
 		 return NULL;
-
+	}
 	//Verificar si la respuesta elegida es la correcta
 	//(ver si la respuesta a la que se le ha asignado el valor de la letra que se ha elegido empieza por punto)
 	int comprobarRespuesta(const string& respuesta)
