@@ -657,7 +657,8 @@ void multijugador(DBConnector BD, jugador jugadorPrincipal)
 	 	}
 
 	 	//El primer jugador es el actual 
-	 	multijugadores.push_back(jugadorPrincipal);
+	 	Jugador push = jugadorPrincipal;
+	 	multijugadores.push_back(push);
 	 	multijugadores[0].setPuntuacion(0);
 
 	 	mostrarMensaje("Introduce los nombres de los jugadores contra los que vas a jugar:");
@@ -729,8 +730,8 @@ void multijugador(DBConnector BD, jugador jugadorPrincipal)
 		 		{
 		 			mensajeGanador(multijugadores[i]);
 		 		}
-		 		actualizarPuntuacion(listaTodosJugadores, multijugadores);
 		 	}
+		 	actualizarPuntuacion(listaTodosJugadores, multijugadores);
 
 		 //Volver al menu o volver a jugar
 		 mostrarMensaje("Fin de la partida.");
