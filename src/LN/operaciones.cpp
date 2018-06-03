@@ -47,8 +47,9 @@ namespace operaciones
 			if (listaTodasPreguntas[random]->getDificultad() == "#")
 			{
 				prfacil* pregunta = dynamic_cast<prfacil*> (listaTodasPreguntas[random]);
-				preguntasSalidas.push_back(pregunta);
-
+				prfacil* p = new prfacil(pregunta->getPregunta(), pregunta->getRespuesta1(), pregunta->getRespuesta2(), pregunta->getID(), true);
+				
+				preguntasSalidas.push_back(p);
 				pregunta->prepararRespuestas();
 
 				return pregunta;
@@ -56,8 +57,9 @@ namespace operaciones
 			else if (listaTodasPreguntas[random]->getDificultad() == "##")
 			{
 				prmedio* pregunta = dynamic_cast<prmedio*> (listaTodasPreguntas[random]);
-				preguntasSalidas.push_back(pregunta);
-
+				prmedio* p = new prmedio(pregunta->getPregunta(), pregunta->getRespuesta1(), pregunta->getRespuesta2(), pregunta->getRespuesta3(), pregunta->getID(), true);
+				
+				preguntasSalidas.push_back(p);
 				pregunta->prepararRespuestas();
 
 				return pregunta;
@@ -65,9 +67,10 @@ namespace operaciones
 			else if(listaTodasPreguntas[random]->getDificultad() == "###")
 			{
 				prdificil* pregunta = dynamic_cast<prdificil*> (listaTodasPreguntas[random]);
-				preguntasSalidas.push_back(pregunta);
-
-				pregunta->prepararRespuestas();
+				prdificil* p = new prdificil(pregunta->getPregunta(), pregunta->getRespuesta1(), pregunta->getRespuesta2(), pregunta->getRespuesta3(), pregunta->getRespuesta4(), pregunta->getID(), true);
+				
+				preguntasSalidas.push_back(p);
+				pregunta->prepararRespuestas( );
 
 				return pregunta;
 			}
@@ -169,7 +172,6 @@ namespace operaciones
 		}
 
 		 return NULL;
-	}
 
 	//Verificar si la respuesta elegida es la correcta
 	//(ver si la respuesta a la que se le ha asignado el valor de la letra que se ha elegido empieza por punto)
