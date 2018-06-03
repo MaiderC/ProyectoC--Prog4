@@ -193,7 +193,7 @@ using namespace std;
 	    }
 	     string nick= jugadorInsertar.getNick();
 	    //Le pasamos el nick al statement
-	    result = sqlite3_bind_text(stmt, 1, nick.c_str(), nick.length(), SQLITE_STATIC);
+	    result = sqlite3_bind_text(stmt, 1, nick.c_str(), nick.length(), SQLITE_TRANSIENT);
 
 	    if (result != SQLITE_OK)
 	    {
@@ -266,7 +266,7 @@ int DBConnector::insert_Pregunta (preguntas_respuestas* PreguntaInsertar)
 		    //PREGUNTA
 		     string pregunta = (*p).getPregunta();
 	
-		    result = sqlite3_bind_text(stmt, 2, pregunta.c_str(), pregunta.length(), SQLITE_STATIC);
+		    result = sqlite3_bind_text(stmt, 2, pregunta.c_str(), pregunta.length(), SQLITE_TRANSIENT);
 		    if (result != SQLITE_OK)
 		    {
 		       ofs << "Error binding parameters" <<  endl;
@@ -280,7 +280,7 @@ int DBConnector::insert_Pregunta (preguntas_respuestas* PreguntaInsertar)
 		    //R1:
 		     string r1 = (*p).getRespuesta1();
 	
-		    result = sqlite3_bind_text(stmt, 3, r1.c_str(), r1.length(), SQLITE_STATIC);
+		    result = sqlite3_bind_text(stmt, 3, r1.c_str(), r1.length(), SQLITE_TRANSIENT);
 		    if (result != SQLITE_OK)
 		    {
 		       ofs << "Error binding parameters" <<  endl;
@@ -293,7 +293,7 @@ int DBConnector::insert_Pregunta (preguntas_respuestas* PreguntaInsertar)
 		    //R2:
 		     string r2 = (*p).getRespuesta2();
 
-		    result = sqlite3_bind_text(stmt, 4, r2.c_str(), r2.length(), SQLITE_STATIC);
+		    result = sqlite3_bind_text(stmt, 4, r2.c_str(), r2.length(), SQLITE_TRANSIENT);
 		    if (result != SQLITE_OK)
 		    {
 		       ofs << "Error binding parameters" <<  endl;
@@ -304,7 +304,7 @@ int DBConnector::insert_Pregunta (preguntas_respuestas* PreguntaInsertar)
 		    }
 
 			//R3 NULL
-	    	result = sqlite3_bind_text(stmt, 5,  NULL, 0, SQLITE_STATIC);
+	    	result = sqlite3_bind_text(stmt, 5,  NULL, 0, SQLITE_TRANSIENT);
 		    if (result != SQLITE_OK)
 		    {
 		       ofs << "Error binding parameters" <<  endl;
@@ -315,7 +315,7 @@ int DBConnector::insert_Pregunta (preguntas_respuestas* PreguntaInsertar)
 		    }
 
 		    //R4 NULL
-	    	result = sqlite3_bind_text(stmt, 5,  NULL, 0, SQLITE_STATIC);
+	    	result = sqlite3_bind_text(stmt, 5,  NULL, 0, SQLITE_TRANSIENT);
 		    if (result != SQLITE_OK)
 		    {
 		       ofs << "Error binding parameters" <<  endl;
@@ -327,7 +327,7 @@ int DBConnector::insert_Pregunta (preguntas_respuestas* PreguntaInsertar)
 		     //DIFICULTAD
 		     string dificultad = (*p).getDificultad();
 	
-		     result = sqlite3_bind_text(stmt, 7, dificultad.c_str(), dificultad.length(), SQLITE_STATIC);
+		     result = sqlite3_bind_text(stmt, 7, dificultad.c_str(), dificultad.length(), SQLITE_TRANSIENT);
 			
 		    if (result != SQLITE_OK)
 		    {
@@ -357,7 +357,7 @@ int DBConnector::insert_Pregunta (preguntas_respuestas* PreguntaInsertar)
 		    //PREGUNTA
 		     string pregunta = (*p).getPregunta();
 	
-		    result = sqlite3_bind_text(stmt, 2, pregunta.c_str(), pregunta.length(), SQLITE_STATIC);
+		    result = sqlite3_bind_text(stmt, 2, pregunta.c_str(), pregunta.length(), SQLITE_TRANSIENT);
 		    if (result != SQLITE_OK)
 		    {
 		       ofs << "Error binding parameters" <<  endl;
@@ -370,7 +370,7 @@ int DBConnector::insert_Pregunta (preguntas_respuestas* PreguntaInsertar)
 		    //R1:
 		     string r1 = (*p).getRespuesta1();
 	
-		    result = sqlite3_bind_text(stmt, 3, r1.c_str(), r1.length(), SQLITE_STATIC);
+		    result = sqlite3_bind_text(stmt, 3, r1.c_str(), r1.length(), SQLITE_TRANSIENT);
 		    if (result != SQLITE_OK)
 		    {
 		       ofs << "Error binding parameters" <<  endl;
@@ -383,7 +383,7 @@ int DBConnector::insert_Pregunta (preguntas_respuestas* PreguntaInsertar)
 		    //R2:
 		     string r2 = (*p).getRespuesta2();
 
-		    result = sqlite3_bind_text(stmt, 4, r2.c_str(), r2.length(), SQLITE_STATIC);
+		    result = sqlite3_bind_text(stmt, 4, r2.c_str(), r2.length(), SQLITE_TRANSIENT);
 		    if (result != SQLITE_OK)
 		    {
 		       ofs << "Error binding parameters" <<  endl;
@@ -396,7 +396,7 @@ int DBConnector::insert_Pregunta (preguntas_respuestas* PreguntaInsertar)
 		    //R3:
 		    string r3 = (*p).getRespuesta3();
 			    
-		    result = sqlite3_bind_text(stmt, 5, r3.c_str(), r3.length(), SQLITE_STATIC);
+		    result = sqlite3_bind_text(stmt, 5, r3.c_str(), r3.length(), SQLITE_TRANSIENT);
 		    if (result != SQLITE_OK)
 		    {
 		       ofs << "Error binding parameters" <<  endl;
@@ -407,7 +407,7 @@ int DBConnector::insert_Pregunta (preguntas_respuestas* PreguntaInsertar)
 		    }
 
 		    //R4 NULL
-	    	result = sqlite3_bind_text(stmt, 6, NULL, 0, SQLITE_STATIC);
+	    	result = sqlite3_bind_text(stmt, 6, NULL, 0, SQLITE_TRANSIENT);
 		    if (result != SQLITE_OK)
 		    {
 		       ofs << "Error binding parameters" <<  endl;
@@ -420,7 +420,7 @@ int DBConnector::insert_Pregunta (preguntas_respuestas* PreguntaInsertar)
 		    //DIFICULTAD
 		     string dificultad = (*p).getDificultad();
 	
-		    result = sqlite3_bind_text(stmt, 7, dificultad.c_str(), dificultad.length(), SQLITE_STATIC);
+		    result = sqlite3_bind_text(stmt, 7, dificultad.c_str(), dificultad.length(), SQLITE_TRANSIENT);
 		    if (result != SQLITE_OK)
 		    {
 		       ofs << "Error binding parameters" <<  endl;
@@ -449,7 +449,7 @@ int DBConnector::insert_Pregunta (preguntas_respuestas* PreguntaInsertar)
 		    //PREGUNTA
 		     string pregunta = (*p).getPregunta();
 	
-		    result = sqlite3_bind_text(stmt, 2, pregunta.c_str(), pregunta.length(), SQLITE_STATIC);
+		    result = sqlite3_bind_text(stmt, 2, pregunta.c_str(), pregunta.length(), SQLITE_TRANSIENT);
 		    if (result != SQLITE_OK)
 		    {
 		       ofs << "Error binding parameters" <<  endl;
@@ -461,7 +461,7 @@ int DBConnector::insert_Pregunta (preguntas_respuestas* PreguntaInsertar)
 		    //R1:
 		     string r1 = (*p).getRespuesta1();
 	
-		    result = sqlite3_bind_text(stmt, 3, r1.c_str(), r1.length(), SQLITE_STATIC);
+		    result = sqlite3_bind_text(stmt, 3, r1.c_str(), r1.length(), SQLITE_TRANSIENT);
 		    if (result != SQLITE_OK)
 		    {
 		       ofs << "Error binding parameters" <<  endl;
@@ -473,7 +473,7 @@ int DBConnector::insert_Pregunta (preguntas_respuestas* PreguntaInsertar)
 		    //R2:
 		     string r2 = (*p).getRespuesta2();
 
-		    result = sqlite3_bind_text(stmt, 4, r2.c_str(), r2.length(), SQLITE_STATIC);
+		    result = sqlite3_bind_text(stmt, 4, r2.c_str(), r2.length(), SQLITE_TRANSIENT);
 		    if (result != SQLITE_OK)
 		    {
 		       ofs << "Error binding parameters" <<  endl;
@@ -486,7 +486,7 @@ int DBConnector::insert_Pregunta (preguntas_respuestas* PreguntaInsertar)
 		    //R3:
 		    string r3 = (*p).getRespuesta3();
 			    
-		    result = sqlite3_bind_text(stmt, 5, r3.c_str(), r3.length(), SQLITE_STATIC);
+		    result = sqlite3_bind_text(stmt, 5, r3.c_str(), r3.length(), SQLITE_TRANSIENT);
 		    if (result != SQLITE_OK)
 		    {
 		       ofs << "Error binding parameters" <<  endl;
@@ -499,7 +499,7 @@ int DBConnector::insert_Pregunta (preguntas_respuestas* PreguntaInsertar)
 		    //R4:
 		     string r4 = (*p).getRespuesta4();
 			    
-		    result = sqlite3_bind_text(stmt, 6, r4.c_str(), r4.length(), SQLITE_STATIC);
+		    result = sqlite3_bind_text(stmt, 6, r4.c_str(), r4.length(), SQLITE_TRANSIENT);
 		    if (result != SQLITE_OK)
 		    {
 		       ofs << "Error binding parameters" <<  endl;
@@ -512,7 +512,7 @@ int DBConnector::insert_Pregunta (preguntas_respuestas* PreguntaInsertar)
 		    //DIFICULTAD
 		     string dificultad = (*p).getDificultad();
 	
-		    result = sqlite3_bind_text(stmt, 7, dificultad.c_str(), dificultad.length(), SQLITE_STATIC);
+		    result = sqlite3_bind_text(stmt, 7, dificultad.c_str(), dificultad.length(), SQLITE_TRANSIENT);
 		    if (result != SQLITE_OK)
 		    {
 		       ofs << "Error binding parameters" <<  endl;
@@ -584,7 +584,7 @@ int DBConnector::update_Jugador(jugador jugadorModificar)//Pasar el jugador comp
 	      return result;
 	    }
 	     //Le pasamos el nick al statement
-	    result = sqlite3_bind_text(stmt, 2, nick.c_str(), nick.length(), SQLITE_STATIC);
+	    result = sqlite3_bind_text(stmt, 2, nick.c_str(), nick.length(), SQLITE_TRANSIENT);
 
 	    if (result != SQLITE_OK)
 	    {
@@ -659,7 +659,7 @@ int DBConnector::update_Pregunta(preguntas_respuestas* preguntaModificar)
 
 		    //PREGUNTA
 	
-		    result = sqlite3_bind_text(stmt, 1, pregunta.c_str(), pregunta.length(), SQLITE_STATIC);
+		    result = sqlite3_bind_text(stmt, 1, pregunta.c_str(), pregunta.length(), SQLITE_TRANSIENT);
 		    if (result != SQLITE_OK)
 		    {
 		       ofs << "Error binding parameters" <<  endl;
@@ -671,7 +671,7 @@ int DBConnector::update_Pregunta(preguntas_respuestas* preguntaModificar)
 
 		    //R1:
 	
-		    result = sqlite3_bind_text(stmt, 2, r1.c_str(), r1.length(), SQLITE_STATIC);
+		    result = sqlite3_bind_text(stmt, 2, r1.c_str(), r1.length(), SQLITE_TRANSIENT);
 		    if (result != SQLITE_OK)
 		    {
 		       ofs << "Error binding parameters" <<  endl;
@@ -683,7 +683,7 @@ int DBConnector::update_Pregunta(preguntas_respuestas* preguntaModificar)
 
 		    //R2:
 
-		    result = sqlite3_bind_text(stmt, 3, r2.c_str(), r2.length(), SQLITE_STATIC);
+		    result = sqlite3_bind_text(stmt, 3, r2.c_str(), r2.length(), SQLITE_TRANSIENT);
 		    if (result != SQLITE_OK)
 		    {
 		       ofs << "Error binding parameters" <<  endl;
@@ -696,7 +696,7 @@ int DBConnector::update_Pregunta(preguntas_respuestas* preguntaModificar)
 		    //SOLO EN MEDIA O DIFÍCIL
 		    //R3:
 		    
-			    result = sqlite3_bind_text(stmt, 4, r3.c_str(), r3.length(), SQLITE_STATIC);
+			    result = sqlite3_bind_text(stmt, 4, r3.c_str(), r3.length(), SQLITE_TRANSIENT);
 			    if (result != SQLITE_OK)
 			    {
 			       ofs << "Error binding parameters" <<  endl;
@@ -710,7 +710,7 @@ int DBConnector::update_Pregunta(preguntas_respuestas* preguntaModificar)
 		    //R4:
 		   
 			    //Es dificil
-			    result = sqlite3_bind_text(stmt, 5, r4.c_str(), r4.length(), SQLITE_STATIC);
+			    result = sqlite3_bind_text(stmt, 5, r4.c_str(), r4.length(), SQLITE_TRANSIENT);
 			    if (result != SQLITE_OK)
 			    {
 			       ofs << "Error binding parameters" <<  endl;
@@ -722,7 +722,7 @@ int DBConnector::update_Pregunta(preguntas_respuestas* preguntaModificar)
 
 		    //DIFICULTAD
 	
-		    result = sqlite3_bind_text(stmt, 6, dificultad.c_str(), dificultad.length(), SQLITE_STATIC);
+		    result = sqlite3_bind_text(stmt, 6, dificultad.c_str(), dificultad.length(), SQLITE_TRANSIENT);
 		    if (result != SQLITE_OK)
 		    {
 		       ofs << "Error binding parameters" <<  endl;
@@ -772,7 +772,7 @@ int DBConnector::update_Pregunta(preguntas_respuestas* preguntaModificar)
 
 		    //PREGUNTA
 	
-		    result = sqlite3_bind_text(stmt, 1, pregunta.c_str(), pregunta.length(), SQLITE_STATIC);
+		    result = sqlite3_bind_text(stmt, 1, pregunta.c_str(), pregunta.length(), SQLITE_TRANSIENT);
 		    if (result != SQLITE_OK)
 		    {
 		       ofs << "Error binding parameters" <<  endl;
@@ -784,7 +784,7 @@ int DBConnector::update_Pregunta(preguntas_respuestas* preguntaModificar)
 
 		    //R1:
 	
-		    result = sqlite3_bind_text(stmt, 2, r1.c_str(), r1.length(), SQLITE_STATIC);
+		    result = sqlite3_bind_text(stmt, 2, r1.c_str(), r1.length(), SQLITE_TRANSIENT);
 		    if (result != SQLITE_OK)
 		    {
 		       ofs << "Error binding parameters" <<  endl;
@@ -796,7 +796,7 @@ int DBConnector::update_Pregunta(preguntas_respuestas* preguntaModificar)
 
 		    //R2:
 
-		    result = sqlite3_bind_text(stmt, 3, r2.c_str(), r2.length(), SQLITE_STATIC);
+		    result = sqlite3_bind_text(stmt, 3, r2.c_str(), r2.length(), SQLITE_TRANSIENT);
 		    if (result != SQLITE_OK)
 		    {
 		       ofs << "Error binding parameters" <<  endl;
@@ -808,7 +808,7 @@ int DBConnector::update_Pregunta(preguntas_respuestas* preguntaModificar)
 
 		    //SOLO EN MEDIA O DIFÍCIL
 		    //R3:
-			    result = sqlite3_bind_text(stmt, 4, r3.c_str(), r3.length(), SQLITE_STATIC);
+			    result = sqlite3_bind_text(stmt, 4, r3.c_str(), r3.length(), SQLITE_TRANSIENT);
 			    if (result != SQLITE_OK)
 			    {
 			       ofs << "Error binding parameters" <<  endl;
@@ -823,7 +823,7 @@ int DBConnector::update_Pregunta(preguntas_respuestas* preguntaModificar)
 		    //R4:
 		    	// Es media o facil, no tiene R4
 		    	//NULL
-		    	result = sqlite3_bind_text(stmt, 5, NULL, 0, SQLITE_STATIC);
+		    	result = sqlite3_bind_text(stmt, 5, NULL, 0, SQLITE_TRANSIENT);
 			    if (result != SQLITE_OK)
 			    {
 			       ofs << "Error binding parameters" <<  endl;
@@ -836,7 +836,7 @@ int DBConnector::update_Pregunta(preguntas_respuestas* preguntaModificar)
 
 		    //DIFICULTAD
 	
-		    result = sqlite3_bind_text(stmt, 6, dificultad.c_str(), dificultad.length(), SQLITE_STATIC);
+		    result = sqlite3_bind_text(stmt, 6, dificultad.c_str(), dificultad.length(), SQLITE_TRANSIENT);
 		    if (result != SQLITE_OK)
 		    {
 		       ofs << "Error binding parameters" <<  endl;
@@ -886,7 +886,7 @@ int DBConnector::update_Pregunta(preguntas_respuestas* preguntaModificar)
 
 		    //PREGUNTA
 	
-		    result = sqlite3_bind_text(stmt, 1, pregunta.c_str(), pregunta.length(), SQLITE_STATIC);
+		    result = sqlite3_bind_text(stmt, 1, pregunta.c_str(), pregunta.length(), SQLITE_TRANSIENT);
 		    if (result != SQLITE_OK)
 		    {
 		       ofs << "Error binding parameters" <<  endl;
@@ -898,7 +898,7 @@ int DBConnector::update_Pregunta(preguntas_respuestas* preguntaModificar)
 
 		    //R1:
 	
-		    result = sqlite3_bind_text(stmt, 2, r1.c_str(), r1.length(), SQLITE_STATIC);
+		    result = sqlite3_bind_text(stmt, 2, r1.c_str(), r1.length(), SQLITE_TRANSIENT);
 		    if (result != SQLITE_OK)
 		    {
 		       ofs << "Error binding parameters" <<  endl;
@@ -910,7 +910,7 @@ int DBConnector::update_Pregunta(preguntas_respuestas* preguntaModificar)
 
 		    //R2:
 
-		    result = sqlite3_bind_text(stmt, 3, r2.c_str(), r2.length(), SQLITE_STATIC);
+		    result = sqlite3_bind_text(stmt, 3, r2.c_str(), r2.length(), SQLITE_TRANSIENT);
 		    if (result != SQLITE_OK)
 		    {
 		       ofs << "Error binding parameters" <<  endl;
@@ -924,7 +924,7 @@ int DBConnector::update_Pregunta(preguntas_respuestas* preguntaModificar)
 		    //R3:
 		    
 		    	//NULL -> si es facil, le metemos NULL en r3
-		    	result = sqlite3_bind_text(stmt, 5, NULL, 0, SQLITE_STATIC);
+		    	result = sqlite3_bind_text(stmt, 5, NULL, 0, SQLITE_TRANSIENT);
 			    if (result != SQLITE_OK)
 			    {
 			       ofs << "Error binding parameters" <<  endl;
@@ -939,7 +939,7 @@ int DBConnector::update_Pregunta(preguntas_respuestas* preguntaModificar)
 		    //R4:
 		    	// Es media o facil, no tiene R4
 		    	//NULL
-		    	result = sqlite3_bind_text(stmt, 5, NULL, 0, SQLITE_STATIC);
+		    	result = sqlite3_bind_text(stmt, 5, NULL, 0, SQLITE_TRANSIENT);
 			    if (result != SQLITE_OK)
 			    {
 			       ofs << "Error binding parameters" <<  endl;
@@ -952,7 +952,7 @@ int DBConnector::update_Pregunta(preguntas_respuestas* preguntaModificar)
 
 		    //DIFICULTAD
 	
-		    result = sqlite3_bind_text(stmt, 6, dificultad.c_str(), dificultad.length(), SQLITE_STATIC);
+		    result = sqlite3_bind_text(stmt, 6, dificultad.c_str(), dificultad.length(), SQLITE_TRANSIENT);
 		    if (result != SQLITE_OK)
 		    {
 		       ofs << "Error binding parameters" <<  endl;
@@ -1024,7 +1024,7 @@ int DBConnector::delete_Jugador(jugador jugadorBorrar)
 
 	    //Juntar los parámetros con el statement
 	     //Le pasamos el nick al statement
-	    result = sqlite3_bind_text(stmt, 1, nick.c_str(), nick.length(), SQLITE_STATIC);
+	    result = sqlite3_bind_text(stmt, 1, nick.c_str(), nick.length(), SQLITE_TRANSIENT);
 	    if (result != SQLITE_OK)
 	    {
 	      ofs << "Error binding parameters" <<  endl;
