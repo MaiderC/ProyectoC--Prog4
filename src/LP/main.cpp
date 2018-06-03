@@ -880,12 +880,6 @@ void multijugador(DBConnector BD, jugador jugadorPrincipal)
 			}
  		}
  	}
-
- 	for (int i = 0; i < PreguntasSeleccionadas.size(); ++i)
- 	{
- 		delete PreguntasSeleccionadas[i];
- 	}
- 	
  }
 
   void ranking(DBConnector BD)
