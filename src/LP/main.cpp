@@ -345,7 +345,11 @@ int main(int argc, char** argv)
  		for(int i = 0; i < listaTodasPreguntas.size(); i++)
  		{
  			if(listaTodasPreguntas[i]->getDificultad() == "#")
- 				PreguntasSeleccionadas.push_back(listaTodasPreguntas[i]);
+ 			{
+ 				prfacil* preguntaAux = dynamic_cast<prfacil*> (listaTodasPreguntas[i]);
+ 				prfacil* preguntaCopiar = new prfacil(preguntaAux->getPregunta(), preguntaAux->getRespuesta1(), preguntaAux->getRespuesta2(), preguntaAux->getID(), true);
+ 				PreguntasSeleccionadas.push_back(preguntaCopiar);
+ 			}
  		}
 
  		if(PreguntasSeleccionadas.size() == 0)
@@ -360,7 +364,11 @@ int main(int argc, char** argv)
  		for(int i = 0; i < listaTodasPreguntas.size(); i++)
  		{
  			if(listaTodasPreguntas[i]->getDificultad() == "##")
- 				PreguntasSeleccionadas.push_back(listaTodasPreguntas[i]);
+ 			{
+ 				prmedio* preguntaAux = dynamic_cast<prmedio*> (listaTodasPreguntas[i]);
+ 				prmedio* preguntaCopiar = new prmedio(preguntaAux->getPregunta(), preguntaAux->getRespuesta1(), preguntaAux->getRespuesta2(), preguntaAux->getRespuesta3(), preguntaAux->getID(), true);
+ 				PreguntasSeleccionadas.push_back(preguntaCopiar);
+ 			}
  		}
 
  		if(PreguntasSeleccionadas.size() == 0)
@@ -375,7 +383,11 @@ int main(int argc, char** argv)
  		for(int i = 0; i < listaTodasPreguntas.size(); i++)
  		{
  			if(listaTodasPreguntas[i]->getDificultad() == "###")
- 				PreguntasSeleccionadas.push_back(listaTodasPreguntas[i]);
+ 			{
+ 				prdificil* preguntaAux = dynamic_cast<prdificil*> (listaTodasPreguntas[i]);
+ 				prdificil* preguntaCopiar = new prdificil(preguntaAux->getPregunta(), preguntaAux->getRespuesta1(), preguntaAux->getRespuesta2(), preguntaAux->getRespuesta3(), preguntaAux->getRespuesta4(),preguntaAux->getID(), true);
+ 				PreguntasSeleccionadas.push_back(preguntaCopiar);
+ 			}
  		}
 
  		if(PreguntasSeleccionadas.size() == 0)
@@ -582,7 +594,12 @@ void multijugador(DBConnector BD, jugador jugadorPrincipal)
  		for(int i = 0; i < listaTodasPreguntas.size(); i++)
  		{
  			if(listaTodasPreguntas[i]->getDificultad() == "#")
- 				PreguntasSeleccionadas.push_back(listaTodasPreguntas[i]);
+ 			{
+ 				prfacil* preguntaAux = dynamic_cast<prfacil*> (listaTodasPreguntas[i]);
+ 				prfacil* preguntaCopiar = new prfacil(preguntaAux->getPregunta(), preguntaAux->getRespuesta1(), preguntaAux->getRespuesta2(), preguntaAux->getID(), true);
+ 				PreguntasSeleccionadas.push_back(preguntaCopiar);
+
+ 			}
  		}
 
  		if(PreguntasSeleccionadas.size() == 0)
@@ -597,7 +614,12 @@ void multijugador(DBConnector BD, jugador jugadorPrincipal)
  		for(int i = 0; i < listaTodasPreguntas.size(); i++)
  		{
  			if(listaTodasPreguntas[i]->getDificultad() == "##")
- 				PreguntasSeleccionadas.push_back(listaTodasPreguntas[i]);
+ 			{
+ 				prmedio* preguntaAux = dynamic_cast<prmedio*> (listaTodasPreguntas[i]);
+ 				prmedio* preguntaCopiar = new prmedio(preguntaAux->getPregunta(), preguntaAux->getRespuesta1(), preguntaAux->getRespuesta2(), preguntaAux->getRespuesta3(), preguntaAux->getID(), true);
+ 				PreguntasSeleccionadas.push_back(preguntaCopiar);
+
+ 			}
  		}
 
  		if(PreguntasSeleccionadas.size() == 0)
@@ -612,7 +634,11 @@ void multijugador(DBConnector BD, jugador jugadorPrincipal)
  		for(int i = 0; i < listaTodasPreguntas.size(); i++)
  		{
  			if(listaTodasPreguntas[i]->getDificultad() == "###")
- 				PreguntasSeleccionadas.push_back(listaTodasPreguntas[i]);
+ 			{
+ 				prdificil* preguntaAux = dynamic_cast<prdificil*> (listaTodasPreguntas[i]);
+ 				prdificil* preguntaCopiar = new prdificil(preguntaAux->getPregunta(), preguntaAux->getRespuesta1(), preguntaAux->getRespuesta2(), preguntaAux->getRespuesta3(), preguntaAux->getRespuesta4(),preguntaAux->getID(), true);
+ 				PreguntasSeleccionadas.push_back(preguntaCopiar);
+ 			}
  		}
 
  		if(PreguntasSeleccionadas.size() == 0)
