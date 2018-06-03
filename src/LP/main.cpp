@@ -657,7 +657,7 @@ void multijugador(DBConnector BD, jugador jugadorPrincipal)
 	 	}
 
 	 	//El primer jugador es el actual 
-	 	Jugador push = jugadorPrincipal;
+	 	jugador push = jugadorPrincipal;
 	 	multijugadores.push_back(push);
 	 	multijugadores[0].setPuntuacion(0);
 
