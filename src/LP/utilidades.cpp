@@ -92,6 +92,12 @@ namespace utilidades
 	void recogerString(string& string_recoger)
 	{
 		getline(cin, string_recoger);
+
+		while(string_recoger.length() == 0)
+		{
+			cout << "por favor, introduce un texto: " << endl;
+			getline(cin, string_recoger);
+		}
 	}
 
 	void recogerInt(int& numero_recoger)
