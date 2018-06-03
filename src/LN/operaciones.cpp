@@ -219,7 +219,7 @@ namespace operaciones
 		   for(int i = 0; i < jugadoresLeidos.size(); i++) 
 		   { 
 		    //comparar cada elemento con todos los demás
-		    for(int j = 0; j < jugadoresLeidos.size()-i; j++)
+		    for(int j = 0; j < jugadoresLeidos.size()-1-i; j++)
 		    {
 		        if(jugadoresLeidos[j] < jugadoresLeidos[j+1])
 		        {

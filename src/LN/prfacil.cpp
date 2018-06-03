@@ -160,13 +160,14 @@ istream& operator>>(istream& in, prfacil& preguntafacil)
 
 	cout << "Introduce otra respuesta (una incorrecta): "<< endl;
 	getline(in, r2);
-	preguntafacil.setRespuesta2(r2);
 
 	while(r2.length() == 0)
 	{
 		cout << " No has introducido nada. Introduce la respuesta a insertar: "<< endl;
 		getline(in, r2);
 	}
+
+	preguntafacil.setRespuesta2(r2);
 	
 	preguntafacil.setID((preguntafacil.getID()+1));
 	preguntafacil.setCont(preguntafacil.getID());
