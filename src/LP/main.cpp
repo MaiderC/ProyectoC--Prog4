@@ -534,6 +534,11 @@ int main(int argc, char** argv)
 		actualizarPuntuacion(listaTodosJugadores, jugadorPrincipal);
 		jugadorPrincipal.setPuntuacion(0);
 
+		for (int i = 0; i < PreguntasSeleccionadas.size(); ++i)
+		{
+			delete PreguntasSeleccionadas[i];
+		}
+
 		while(opcionRepetir != 1 && opcionRepetir != 2)
 		{
 			mostrarMensaje("\nLa opcion introducida no es valida. Por favor, intentalo de nuevo:  ");
@@ -731,7 +736,13 @@ void multijugador(DBConnector BD, jugador jugadorPrincipal)
 		 			mensajeGanador(multijugadores[i]);
 		 		}
 		 	}
+		 	
 		 	actualizarPuntuacion(listaTodosJugadores, multijugadores);
+
+		 	for (int i = 0; i < PreguntasSeleccionadas.size(); ++i)
+			{
+				delete PreguntasSeleccionadas[i];
+			}
 
 		 //Volver al menu o volver a jugar
 		 mostrarMensaje("Fin de la partida.");
@@ -904,5 +915,10 @@ void multijugador(DBConnector BD, jugador jugadorPrincipal)
 	for (int i = 0; i < listaTodasPreguntas.size(); ++i)
 	{
 		delete listaTodasPreguntas[i];
+	}
+
+	for (int i = 0; i < preguntasSalidas.size(); ++i)
+	{
+		delete preguntasSalidas[i];
 	}
  }
