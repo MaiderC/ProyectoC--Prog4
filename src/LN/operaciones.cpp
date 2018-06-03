@@ -96,14 +96,16 @@ namespace operaciones
 
 					 		if(repetida == 0)
 					 		{
-								preguntasSalidas.push_back(pregunta);
+					 			prfacil* p = new prfacil(pregunta->getPregunta(), pregunta->getRespuesta1(), pregunta->getRespuesta2(), pregunta->getID(), true);
+								preguntasSalidas.push_back(p);
 
 								pregunta->prepararRespuestas();
 
 								return pregunta;
 					 		} else if (cont == (MAX_INTENTOS-1))
 					 		{
-					 			preguntasSalidas.push_back(pregunta);
+					 			prfacil* p = new prfacil(pregunta->getPregunta(), pregunta->getRespuesta1(), pregunta->getRespuesta2(), pregunta->getID(), true);
+					 			preguntasSalidas.push_back(p);
 
 								pregunta->prepararRespuestas();
 
@@ -124,14 +126,16 @@ namespace operaciones
 
 					 		if(repetida == 0)
 					 		{
-								preguntasSalidas.push_back(pregunta);
+					 			prmedio* p = new prmedio(pregunta->getPregunta(), pregunta->getRespuesta1(), pregunta->getRespuesta2(), pregunta->getRespuesta3(), pregunta->getID(), true);
+								preguntasSalidas.push_back(p);
 
 								pregunta->prepararRespuestas();
 
 								return pregunta;
 					 		} else if (cont == (MAX_INTENTOS-1))
 					 		{
-					 			preguntasSalidas.push_back(pregunta);
+					 			prmedio* p = new prmedio(pregunta->getPregunta(), pregunta->getRespuesta1(), pregunta->getRespuesta2(), pregunta->getRespuesta3(), pregunta->getID(), true);
+					 			preguntasSalidas.push_back(p);
 								
 								pregunta->prepararRespuestas();
 
@@ -152,14 +156,16 @@ namespace operaciones
 
 					 		if(repetida == 0)
 					 		{
-								preguntasSalidas.push_back(pregunta);
+					 			prdificil* p = new prdificil(pregunta->getPregunta(), pregunta->getRespuesta1(), pregunta->getRespuesta2(), pregunta->getRespuesta3(), pregunta->getRespuesta4(), pregunta->getID(), true);
+								preguntasSalidas.push_back(p);
 
 								pregunta->prepararRespuestas();
 
 								return pregunta;
 					 		} else if (cont == (MAX_INTENTOS-1))
 					 		{
-					 			preguntasSalidas.push_back(pregunta);
+					 			prdificil* p = new prdificil(pregunta->getPregunta(), pregunta->getRespuesta1(), pregunta->getRespuesta2(), pregunta->getRespuesta3(), pregunta->getRespuesta4(), pregunta->getID(), true);
+					 			preguntasSalidas.push_back(p);
 								
 								pregunta->prepararRespuestas();
 
