@@ -171,7 +171,7 @@ istream& operator>>(istream& in, prmedio& preguntamedio)
 	getline(in, pregunta);
 	preguntamedio.setPregunta(pregunta);
 
-	while(pregunta.length())
+	while(pregunta.length() == 0)
 	{
 		cout << "No has introducido nada. Introduce la pregunta a insertar: "<< endl;
 		getline(in, pregunta);
@@ -181,7 +181,7 @@ istream& operator>>(istream& in, prmedio& preguntamedio)
 	cout <<"Introduce la respuesta correcta: "<< endl;
 	getline(in, r1);
 
-	while(r1.length())
+	while(r1.length() == 0)
 	{
 		cout << " No has introducido nada. Introduce la respuesta a insertar: "<< endl;
 		getline(in, r1);
@@ -193,7 +193,7 @@ istream& operator>>(istream& in, prmedio& preguntamedio)
 	cout << "Introduce otra respuesta (una incorrecta): "<< endl;
 	getline(in, r2);
 
-	while(r2.length())
+	while(r2.length() == 0)
 	{
 		cout << " No has introducido nada. Introduce la respuesta a insertar: "<< endl;
 		getline(in, r2);
@@ -204,7 +204,7 @@ istream& operator>>(istream& in, prmedio& preguntamedio)
 	cout << "Introduce otra respuesta (una incorrecta): "<< endl;
 	getline(in, r3);
 
-	while(r3.length())
+	while(r3.length() == 0)
 	{
 		cout << " No has introducido nada. Introduce la respuesta a insertar: "<< endl;
 		getline(in, r3);
