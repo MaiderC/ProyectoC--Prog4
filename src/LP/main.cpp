@@ -19,7 +19,7 @@ void menuAdmin(DBConnector BD);
 void menuJugador(DBConnector BD, jugador jugadorPrincipal);
 void individual(DBConnector BD, jugador jugadorPrincipal);
 void multijugador(DBConnector BD, jugador jugadorPrincipal);
-void ranking(DBConnector BD);
+void ranking(DBConnector BD, jugador jugadorPrincipal);
 void acabar(DBConnector BD);
 void RealizarPreguntasMultijugador(vector<jugador>& multijugadores, int cantPreg, vector<preguntas_respuestas*> PreguntasSeleccionadas);
 int elegirDificultad();
@@ -286,7 +286,7 @@ int main(int argc, char** argv)
 
   		case 3:
 	  		mostrarMensaje("Has elegido la opcion numero 3: VER RANKING"); 
-	  		ranking(BD);
+	  		ranking(BD, jugadorPrincipal);
 	  		break;
 
   		case 4:
@@ -882,7 +882,7 @@ void multijugador(DBConnector BD, jugador jugadorPrincipal)
  	}
  }
 
-  void ranking(DBConnector BD)
+  void ranking(DBConnector BD, jugador jugadorPrincipal)
  {
  	ordenarJugadores(listaTodosJugadores);
 
