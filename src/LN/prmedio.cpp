@@ -171,18 +171,45 @@ istream& operator>>(istream& in, prmedio& preguntamedio)
 	getline(in, pregunta);
 	preguntamedio.setPregunta(pregunta);
 
+	while(pregunta.length())
+	{
+		cout << "No has introducido nada. Introduce la pregunta a insertar: "<< endl;
+		getline(in, pregunta);
+	}
+
 	cout << "*La respuesta no debe contener la letra de la opcion (a o b) ni signos de puntuacion al inicio (salvo que se trate de un guion, por ser la respuesta un numero negativo)"<< endl;
 	cout <<"Introduce la respuesta correcta: "<< endl;
 	getline(in, r1);
+
+	while(r1.length())
+	{
+		cout << " No has introducido nada. Introduce la respuesta a insertar: "<< endl;
+		getline(in, r1);
+	}
+
 	r1 = '#' + r1;
 	preguntamedio.setRespuesta1(r1);
 
 	cout << "Introduce otra respuesta (una incorrecta): "<< endl;
 	getline(in, r2);
+
+	while(r2.length())
+	{
+		cout << " No has introducido nada. Introduce la respuesta a insertar: "<< endl;
+		getline(in, r2);
+	}
+
 	preguntamedio.respuesta2 = r2;
 
 	cout << "Introduce otra respuesta (una incorrecta): "<< endl;
 	getline(in, r3);
+
+	while(r3.length())
+	{
+		cout << " No has introducido nada. Introduce la respuesta a insertar: "<< endl;
+		getline(in, r3);
+	}
+	
 	preguntamedio.respuesta3 = r3;
 
 	preguntamedio.setID((preguntamedio.getID()+1));
